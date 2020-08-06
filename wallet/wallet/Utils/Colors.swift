@@ -27,7 +27,7 @@ extension Color {
     /// \#FF9300 Color(red: 1.0, green: 0.58, blue: 0.0)
     static let zAmberGradient4 = Color(red: 1.0, green: 0.58, blue: 0.0)
     
-    static let zBlackGradient1 = Color(red:0.16, green:0.16, blue:0.17)
+    static let zBlackGradient1 = Color.black
     
     static let zBlackGradient2 = Color.black
     

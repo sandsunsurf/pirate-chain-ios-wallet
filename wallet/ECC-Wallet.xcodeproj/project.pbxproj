@@ -293,7 +293,7 @@
 		0DC167B023BE37B300332890 /* BalanceUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceUtils.swift; sourceTree = "<group>"; };
 		0DC37D7224D37D7C00ACFE12 /* AddressHelperView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressHelperView.swift; sourceTree = "<group>"; };
 		0DC37D7524D3834E00ACFE12 /* AddressValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressValidator.swift; sourceTree = "<group>"; };
-		0DCDFFE624B6722B000F6999 /* ECC-Wallet-no-logs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ECC-Wallet-no-logs.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0DCDFFE624B6722B000F6999 /* Nighthawk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nighthawk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DCDFFE724B6722B000F6999 /* ECC-Wallet-no-logs-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ECC-Wallet-no-logs-Info.plist"; sourceTree = "<group>"; };
 		0DCF43BD23DF7229007E9B49 /* CombineSynchronizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineSynchronizer.swift; sourceTree = "<group>"; };
 		0DD8B9B724B6898F0031FF42 /* EventLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLogger.swift; sourceTree = "<group>"; };
@@ -443,7 +443,7 @@
 				0D1250FF23B557E40014EE3A /* ECC Wallet.app */,
 				0D12511523B557E60014EE3A /* ECC-WalletTests.xctest */,
 				0D12512023B557E60014EE3A /* ECC-WalletUITests.xctest */,
-				0DCDFFE624B6722B000F6999 /* ECC-Wallet-no-logs.app */,
+				0DCDFFE624B6722B000F6999 /* Nighthawk.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -705,7 +705,7 @@
 			);
 			name = "ECC-Wallet-no-logging";
 			productName = wallet;
-			productReference = 0DCDFFE624B6722B000F6999 /* ECC-Wallet-no-logs.app */;
+			productReference = 0DCDFFE624B6722B000F6999 /* Nighthawk.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1296,7 +1296,7 @@
 				CURRENT_PROJECT_VERSION = 47;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"wallet/Preview Content\"";
-				DEVELOPMENT_TEAM = RLPRR8CPQG;
+				DEVELOPMENT_TEAM = QKFHD72H66;
 				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = wallet/Info.plist;
@@ -1306,7 +1306,7 @@
 				);
 				MARKETING_VERSION = 0.2.0;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D ENABLE_LOGGING";
-				PRODUCT_BUNDLE_IDENTIFIER = co.electriccoin.eccwallet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nighthawkapps.wallet.ios;
 				PRODUCT_NAME = "ECC Wallet";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1321,7 +1321,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 47;
 				DEVELOPMENT_ASSET_PATHS = "\"wallet/Preview Content\"";
-				DEVELOPMENT_TEAM = RLPRR8CPQG;
+				DEVELOPMENT_TEAM = QKFHD72H66;
 				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = wallet/Info.plist;
@@ -1331,7 +1331,7 @@
 				);
 				MARKETING_VERSION = 0.2.0;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D ENABLE_LOGGING";
-				PRODUCT_BUNDLE_IDENTIFIER = co.electriccoin.eccwallet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nighthawkapps.wallet.ios;
 				PRODUCT_NAME = "ECC Wallet";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1435,7 +1435,7 @@
 				CURRENT_PROJECT_VERSION = 47;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"wallet/Preview Content\"";
-				DEVELOPMENT_TEAM = 6J82A38BF9;
+				DEVELOPMENT_TEAM = QKFHD72H66;
 				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "ECC-Wallet-no-logs-Info.plist";
@@ -1443,9 +1443,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = co.electriccoin.eccwallet;
-				PRODUCT_NAME = "ECC-Wallet-no-logs";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nighthawkapps.wallet.ios;
+				PRODUCT_NAME = Nighthawk;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1459,7 +1459,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 47;
 				DEVELOPMENT_ASSET_PATHS = "\"wallet/Preview Content\"";
-				DEVELOPMENT_TEAM = 6J82A38BF9;
+				DEVELOPMENT_TEAM = QKFHD72H66;
 				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "ECC-Wallet-no-logs-Info.plist";
@@ -1467,9 +1467,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = co.electriccoin.eccwallet;
-				PRODUCT_NAME = "ECC-Wallet-no-logs";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nighthawkapps.wallet.ios;
+				PRODUCT_NAME = Nighthawk;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

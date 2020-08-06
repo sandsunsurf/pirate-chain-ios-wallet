@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0DCDFF9324B6722B000F6999"
-               BuildableName = "ECC-Wallet-no-logs.app"
+               BuildableName = "Nighthawk.app"
                BlueprintName = "ECC-Wallet-no-logging"
                ReferencedContainer = "container:ECC-Wallet.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0DCDFF9324B6722B000F6999"
-            BuildableName = "ECC-Wallet-no-logs.app"
+            BuildableName = "Nighthawk.app"
             BlueprintName = "ECC-Wallet-no-logging"
             ReferencedContainer = "container:ECC-Wallet.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0DCDFF9324B6722B000F6999"
-            BuildableName = "ECC-Wallet-no-logs.app"
+            BuildableName = "Nighthawk.app"
             BlueprintName = "ECC-Wallet-no-logging"
             ReferencedContainer = "container:ECC-Wallet.xcodeproj">
          </BuildableReference>

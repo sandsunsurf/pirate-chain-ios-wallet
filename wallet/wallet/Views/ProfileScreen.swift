@@ -23,37 +23,38 @@ struct ProfileScreen: View {
                 ZcashBackground()
                 VStack(alignment: .center, spacing: 16) {
                     Image("zebra_profile")
-                    VStack {
-                        Text("Shielded User".localized())
+                    Button(action: {
+                        UIPasteboard.general.string = self.appEnvironment.initializer.getAddress()
+                        tracker.track(.tap(action: .copyAddress),
+                                      properties: [:])
+                        self.isCopyAlertShown = true
+                    }) {
+                        Text("My Zcash Address\n".localized() + (appEnvironment.initializer.getAddress()?.shortZaddress ?? ""))
+                            .multilineTextAlignment(.center)
                             .font(.system(size: 18))
                             .foregroundColor(.white)
-                        Button(action: {
-                            tracker.track(.tap(action: .copyAddress),
-                                          properties: [:])
-                            self.isCopyAlertShown = true
-                        }) {
-                            Text(appEnvironment.initializer.getAddress() ?? "")
-                            .lineLimit(3)
-                                .multilineTextAlignment(.center)
-                                .font(.system(size: 18))
-                                .foregroundColor(.white)
-                        }
                     }
                     .padding(0)
                     
-                    Spacer()
-                    #if ENABLE_LOGGING
-                    NavigationLink(destination: LazyView(
-                        FeedbackForm(isActive: self.$isFeedbackActive)
-                        ),
-                                   isActive: $isFeedbackActive) {
-                                    
-                                    Text("Send Feedback".localized())
-                                        .foregroundColor(.black)
-                                        .zcashButtonBackground(shape: .roundedCorners(fillStyle: .solid(color: Color.zYellow)))
-                                        .frame(height: Self.buttonHeight)
+                    Button(action: {
+                        let url = URL(string: "https://sideshift.ai/a/EqcQp4iUM")!
+                        
+                        UIApplication.shared.open(url)}) {
+                        Text("Fund via SideShift.ai")
+                            .foregroundColor(.black)
+                            .zcashButtonBackground(shape: .roundedCorners(fillStyle: .solid(color: Color.zYellow)))
+                            .frame(height: Self.buttonHeight)
                     }
-                    #endif
+                                        
+                    Button(action: {
+                        let url = URL(string: "https://twitter.com/nighthawkwallet")!
+                        
+                        UIApplication.shared.open(url)}) {
+                        Text("@nighthawkwallet")
+                            .foregroundColor(.black)
+                            .zcashButtonBackground(shape: .roundedCorners(fillStyle: .solid(color: Color.zYellow)))
+                            .frame(height: Self.buttonHeight)
+                    }
                     
                     NavigationLink(destination: LazyView(
                         SeedBackup(hideNavBar: false)
@@ -66,16 +67,15 @@ struct ProfileScreen: View {
                             .frame(height: Self.buttonHeight)
                         
                     }
-                    // TODO: Make Troubleshooting great again
-//                    Text("See Application Log".localized())
-//                        .font(.system(size: 20))
-//                        .foregroundColor(Color.zLightGray)
-//                        .opacity(0.6)
-//                        .frame(height: Self.buttonHeight)
-//
-                    ActionableMessage(message: "\("ECC Wallet".localized()) v\(ZECCWalletEnvironment.appVersion ?? "Unknown")", actionText: "Build \(ZECCWalletEnvironment.appBuild ?? "Unknown")", action: {})
-                        .disabled(true)
                     
+                    Button(action: {
+                        UIPasteboard.general.string = "zs1nhawkewaslscuey9qhnv9e4wpx77sp73kfu0l8wh9vhna7puazvfnutyq5ymg830hn5u2dmr0sf"
+                        self.isCopyAlertShown = true}) {
+                        Text("Donate to Nighthawk\n".localized() + ("zs1nhawkewaslscuey9qhnv9e4wpx77sp73kfu0l8wh9vhna7puazvfnutyq5ymg830hn5u2dmr0sf"))
+                            .multilineTextAlignment(.center)
+                            .font(.system(size: 18))
+                            .foregroundColor(.white)
+                    }
                     
                     NavigationLink(destination: LazyView (
                         NukeWarning().environmentObject(self.appEnvironment)
@@ -93,8 +93,6 @@ struct ProfileScreen: View {
                             .frame(height: Self.buttonHeight)
                     }
                     
-                    
-                    
                 }
                 .padding(.horizontal, Self.horizontalPadding)
                 .padding(.bottom, 30)
@@ -104,9 +102,6 @@ struct ProfileScreen: View {
                           dismissButton: .default(Text("OK".localized()))
                     )
                 }
-            }
-            .onAppear {
-                tracker.track(.screen(screen: .profile), properties: [:])
             }
             .navigationBarTitle("", displayMode: .inline)
             .navigationBarHidden(false)

@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0D1250FE23B557E40014EE3A"
+               BlueprintIdentifier = "0DCDFF9324B6722B000F6999"
                BuildableName = "Nighthawk Wallet.app"
-               BlueprintName = "wallet"
+               BlueprintName = "wallet-no-logging"
                ReferencedContainer = "container:wallet.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,26 +28,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0D12511423B557E60014EE3A"
-               BuildableName = "walletTests.xctest"
-               BlueprintName = "walletTests"
-               ReferencedContainer = "container:wallet.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0D12511F23B557E60014EE3A"
-               BuildableName = "walletUITests.xctest"
-               BlueprintName = "walletUITests"
-               ReferencedContainer = "container:wallet.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -64,9 +44,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0D1250FE23B557E40014EE3A"
+            BlueprintIdentifier = "0DCDFF9324B6722B000F6999"
             BuildableName = "Nighthawk Wallet.app"
-            BlueprintName = "wallet"
+            BlueprintName = "wallet-no-logging"
             ReferencedContainer = "container:wallet.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -88,9 +68,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0D1250FE23B557E40014EE3A"
+            BlueprintIdentifier = "0DCDFF9324B6722B000F6999"
             BuildableName = "Nighthawk Wallet.app"
-            BlueprintName = "wallet"
+            BlueprintName = "wallet-no-logging"
             ReferencedContainer = "container:wallet.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
