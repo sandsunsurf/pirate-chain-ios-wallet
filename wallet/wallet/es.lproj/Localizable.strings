@@ -5,6 +5,22 @@
   Copyright © 2020 Francisco Gindre. All rights reserved.
 */
 
+// ERRORS
+// titles
+"Wallet Improperly Initialized" = "Wallet Improperly Initialized";
+"Processor Error" = "Processor Error";
+"Connection Error" = "Connection Error";
+"Failed to Send" = "Failed to Send";
+"Oops something happened" = "Oops something happened";
+"Critical Error" = "Critical Error";
+
+// messages
+"This wallet has not been initialized correctly! Perhaps an error occurred during install.\n\nThis can be fixed with a reset. First, locate your backup seed phrase, then \"Nuke Wallet\" and reimport it." = "This wallet has not been initialized correctly! Perhaps an error occurred during install.\n\nThis can be fixed with a reset. First, locate your backup seed phrase, then \"Nuke Wallet\" and reimport it.";
+"An error ocurred while syncing the blockchain. If the problem persists, back up your seed phrase and restore your wallet." = "An error ocurred while syncing the blockchain. If the problem persists, back up your seed phrase and restore your wallet.";
+"We are having problems with the network connection." = "We are having problems with the network connection.";
+"We were unable to send your transaction. Your funds are safe, we just need to wait until the transaction expires before you can send them again." = "We were unable to send your transaction. Your funds are safe, we just need to wait until the transaction expires before you can send them again.";
+"There's an internal error. Probably nothing serious. If this error persists, back up your seed phrase and restore your wallet" = "There's an internal error. Probably nothing serious. If this error persists, back up your seed phrase and restore your wallet";
+"If this error persists, back up your seed phrase and restore your wallet" = "If this error persists, back up your seed phrase and restore your wallet";
 // COMPONENTS:
 "Zcash address in buffer!" = "Dirección de Zcash en el búfer!";
 "Paste" = "Pegar";
@@ -30,7 +46,7 @@
 "OK" = "OK";
 "Shielded User\n" = "Usuario blindado\n";
 "Pending confirmation" = "Confirmación pendiente";
-"Confirmations" = "Confirmaciones";
+"of 10 Confirmations" = "de 10 Confirmaciones";
 "Sent" = "Enviado %@";
 // WalletDetailsHeader
 "Your Wallet History" = "Historial de tu Wallet";
@@ -80,6 +96,8 @@
 "If you don't know it, leave it blank. First Sync will take longer." = "Si no lo sabe, déjelo en blanco. La primera sincronización llevará más tiempo.";
 "Proceed" = "Continuar";
 "Restore from Seed Phrase" = "Restaurar desde frase semilla";
+"Your seed phrase is valid" = "Tu frase semilla es válida";
+"Your seed phrase is invalid!" = "¡Tu frase semilla es inválida!";
 
 //BackupWallet
 "Your Wallet needs\nto be Backed up" = "Su wallet necesita \n ser respaldada";
@@ -101,7 +119,7 @@
 "Retry" = "Reintentar";
 "Send" = "Enviar";
 "No Balance" = "Sin Balance";
-"Wallet History" = "Historial de wallet";
+"View History" = "Ver Historial";
 "Receive Funds" = "Recibir fondos";
 "Your Profile" = "Tu perfil";
 
@@ -114,6 +132,7 @@
 "We don't have permission to access your camera" = "No tenemos permiso para acceder a tu cámara";
 "Camera Unavailable" = "Cámara no disponible";
 "Switch to your Zcash address" = "Cambie a su dirección de Zcash";
+"This QR Code does not contain a Zcash valid address!" = "¡Este Código QR no contiene una dirección Zcash!";
 
 //ShareScreen
 "Share Screen" = "Compartir pantalla";

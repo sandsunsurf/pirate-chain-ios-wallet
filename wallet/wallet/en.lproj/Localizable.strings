@@ -30,7 +30,7 @@
 "OK" = "OK";
 "Shielded User\n" = "Shielded User\n";
 "Pending confirmation" = "Pending confirmation";
-"Confirmations" = "Confirmations";
+"of 10 Confirmations" = "of 10 Confirmations";
 "Sent" = "Sent";
 // WalletDetailsHeader
 "Your Wallet History" = "Your Wallet History";
@@ -83,6 +83,8 @@
 "If you don't know it, leave it blank. First Sync will take longer." = "If you don't know it, leave it blank. First Sync will take longer.";
 "Proceed" = "Proceed";
 "Restore from Seed Phrase" = "Restore from Seed Phrase";
+"Your seed phrase is valid" = "Your seed phrase is valid";
+"Your seed phrase is invalid!" = "Your seed phrase is invalid!";
 
 //BackupWallet
 "Your Wallet needs\nto be Backed up" = "Your Wallet needs\nto be Backed up";
@@ -104,7 +106,7 @@
 "Retry" = "Retry";
 "Send" = "Send";
 "No Balance" = "No Balance";
-"Wallet History" = "Wallet History";
+"View History" = "View History";
 "Receive Funds" = "Receive Funds";
 "Your Profile" = "Your Profile";
 
@@ -117,6 +119,7 @@
 "We don't have permission to access your camera" = "We don't have permission to access your camera";
 "Camera Unavailable" = "Camera Unavailable";
 "Switch to your Zcash address" = "Switch to your Zcash address";
+"This QR Code does not contain a Zcash valid address!" = "This QR Code does not contain a Zcash valid address!";
 
 //ShareScreen
 "Share Screen" = "Share Screen";

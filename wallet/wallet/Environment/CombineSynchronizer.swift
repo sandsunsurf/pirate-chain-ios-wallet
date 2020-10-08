@@ -16,14 +16,15 @@ class CombineSynchronizer {
     }
     private var synchronizer: SDKSynchronizer
     
-    var status: CurrentValueSubject<Status, Never>
+    var walletDetailsBuffer: CurrentValueSubject<[DetailModel],Never>
+    var status: CurrentValueSubject<Status,Never>
     var progress: CurrentValueSubject<Float,Never>
     var syncBlockHeight: CurrentValueSubject<BlockHeight,Never>
     var minedTransaction = PassthroughSubject<PendingTransactionEntity,Never>()
     var balance: CurrentValueSubject<Double,Never>
     var verifiedBalance: CurrentValueSubject<Double,Never>
     var cancellables = [AnyCancellable]()
-    var error = PassthroughSubject<Error, Never>()
+    var errorPublisher = PassthroughSubject<Error, Never>()
     var receivedTransactions: Future<[ConfirmedTransactionEntity],Never> {
         Future<[ConfirmedTransactionEntity], Never>() {
             promise in
@@ -69,7 +70,7 @@ class CombineSynchronizer {
     }
         
     init(initializer: Initializer) throws {
-        
+        self.walletDetailsBuffer = CurrentValueSubject([DetailModel]())
         self.synchronizer = try SDKSynchronizer(initializer: initializer)
         self.status = CurrentValueSubject(.disconnected)
         self.progress = CurrentValueSubject(0)
@@ -77,16 +78,27 @@ class CombineSynchronizer {
         self.verifiedBalance = CurrentValueSubject(0)
         self.syncBlockHeight = CurrentValueSubject(ZcashSDK.SAPLING_ACTIVATION_HEIGHT)
         
-        NotificationCenter.default.publisher(for: .synchronizerSynced).sink(receiveValue: { _ in
+        NotificationCenter.default.publisher(for: .synchronizerSynced).sink(receiveValue: { [weak self] _ in
+            guard let self = self else { return }
             self.balance.send(initializer.getBalance().asHumanReadableZecBalance())
             self.verifiedBalance.send(initializer.getVerifiedBalance().asHumanReadableZecBalance())
         }).store(in: &cancellables)
         
-        NotificationCenter.default.publisher(for: .synchronizerStarted).sink { _ in
-            self.status.send(.syncing)
+        NotificationCenter.default.publisher(for: .synchronizerSynced).sink(receiveValue: { [weak self] _ in
+            guard let self = self else { return }
+            self.walletDetails.sink(receiveCompletion: { _ in
+            }) { [weak self] (details) in
+                guard !details.isEmpty else { return }
+                self?.walletDetailsBuffer.send(details)
+            }
+            .store(in: &self.cancellables)
+        }).store(in: &cancellables)
+        NotificationCenter.default.publisher(for: .synchronizerStarted).sink { [weak self] _ in
+            self?.status.send(.syncing)
         }.store(in: &cancellables)
         
-        NotificationCenter.default.publisher(for: .synchronizerProgressUpdated).receive(on: DispatchQueue.main).sink(receiveValue: { (progressNotification) in
+        NotificationCenter.default.publisher(for: .synchronizerProgressUpdated).receive(on: DispatchQueue.main).sink(receiveValue: { [weak self] (progressNotification) in
+            guard let self = self else { return }
             guard let newProgress = progressNotification.userInfo?[SDKSynchronizer.NotificationKeys.progress] as? Float else { return }
             self.progress.send(newProgress)
             
@@ -94,18 +106,22 @@ class CombineSynchronizer {
             self.syncBlockHeight.send(blockHeight)
         }).store(in: &cancellables)
         
-        NotificationCenter.default.publisher(for: .synchronizerMinedTransaction).sink(receiveValue: {minedNotification in
+        NotificationCenter.default.publisher(for: .synchronizerMinedTransaction).sink(receiveValue: { [weak self] minedNotification in
+            guard let self = self else { return }
             guard let minedTx = minedNotification.userInfo?[SDKSynchronizer.NotificationKeys.minedTransaction] as? PendingTransactionEntity else { return }
             self.minedTransaction.send(minedTx)
         }).store(in: &cancellables)
         
-        NotificationCenter.default.publisher(for: .synchronizerFailed).sink { (notification) in
+        NotificationCenter.default.publisher(for: .synchronizerFailed).sink {[weak self] (notification) in
+            
+            guard let self = self else { return }
+            
             guard let error = notification.userInfo?[SDKSynchronizer.NotificationKeys.error] as? Error else {
-                self.error.send(ZECCWalletEnvironment.WalletError.genericError(message: "An error ocurred, but we can't figure out what it is. Please check device logs for more details")
+                self.errorPublisher.send(WalletError.genericErrorWithMessage(message: "An error ocurred, but we can't figure out what it is. Please check device logs for more details")
                 )
                 return
             }
-            self.error.send(error)
+            self.errorPublisher.send(error)
         }.store(in: &cancellables)
         
     }
@@ -119,15 +135,12 @@ class CombineSynchronizer {
             try synchronizer.start(retry: retry)
         } catch {
             logger.error("error starting \(error)")
+            self.errorPublisher.send(error)
         }
     }
     
     func stop() {
-        do {
-            try synchronizer.stop()
-        } catch {
-            logger.error("error stopping \(error)")
-        }  
+        synchronizer.stop()
     }
     
     func cancel(pendingTransaction: PendingTransactionEntity) -> Bool {
@@ -152,7 +165,6 @@ class CombineSynchronizer {
                 }
             }
         }
-        
     }
 }
 
@@ -165,11 +177,14 @@ extension CombineSynchronizer {
                 return
             }
             DispatchQueue.global().async {
+                [weak self] in
+                guard let self = self else { return }
                 var collectables = Set<AnyCancellable>()
                 
                 do {
                     
-                    let pending = try self.synchronizer.allPendingTransactions().map { DetailModel(pendingTransaction: $0, latestBlockHeight: self.syncBlockHeight.value) }
+                    let blockHeight = self.syncBlockHeight.value
+                    let pending = try self.synchronizer.allPendingTransactions().map { DetailModel(pendingTransaction: $0, latestBlockHeight: blockHeight) }
                     
                     let txs = try self.synchronizer.allClearedTransactions().map { DetailModel(confirmedTransaction: $0, sent: ($0.toAddress != nil)) }.filter({ s in
                         pending.first { (p) -> Bool in
