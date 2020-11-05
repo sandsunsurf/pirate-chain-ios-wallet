@@ -13,7 +13,8 @@ import ZcashLightClientKit
 struct Sending: View {
     
     @EnvironmentObject var flow: SendFlowEnvironment
-    @State var showHistory: Bool = false
+    @State var details: DetailModel? = nil
+    
     var loading = LottieAnimation(filename: "lottie_sending")
     var errorMessage: String {
         guard let e = flow.error else {
@@ -22,14 +23,7 @@ struct Sending: View {
         
         return "\(e)"
     }
-    var sendGerund: String {
-        "Sending"
-    }
-    
-    var sendPastTense: String {
-        "Sent"
-    }
-    
+ 
     var showErrorAlert: Alert {
         var errorMessage = "an error ocurred while submitting your transaction"
         
@@ -39,7 +33,7 @@ struct Sending: View {
         return Alert(title: Text("Error"),
                      message: Text(errorMessage),
                      dismissButton: .default(
-                        Text("close"),
+                        Text("button_close"),
                         action: {
                             self.flow.close()
                             
@@ -48,43 +42,20 @@ struct Sending: View {
         )
     }
     
-    var sendText: String {
+    var sendText: some View {
         guard flow.error == nil else {
-            return "Unable to send"
+            return Text("label_unabletosend")
         }
         
-        return flow.isDone ? sendPastTense : sendGerund
+        return flow.isDone ? Text("send_sent") :     Text(String(format: NSLocalizedString("send_sending", comment: ""), flow.amount))
     }
-    
-    var includesMemoView: AnyView {
-        guard flow.includesMemo else { return AnyView(EmptyView()) }
-        return  AnyView(
-            HStack {
-                ZcashCheckCircle(isChecked: .constant(flow.includesMemo),externalRingColor: .clear, backgroundColor: .black)
-                    .disabled(true)
-                Text("Includes memo")
-                    .foregroundColor(.black)
-                    .font(.footnote)
-            }
-        )
-    }
-    
-    var doneButton: AnyView {
-        guard flow.isDone else { return AnyView(EmptyView()) }
-        return AnyView(
-            Text("Done")
-                .foregroundColor(.black)
-                .frame(height: 58)
-        )
-    }
-    
     
     var body: some View {
         ZStack {
             ZcashBackground.amberGradient
             VStack(alignment: .center, spacing: 40) {
                 Spacer()
-                Text("\(sendText.localized()) \(flow.amount) \("ZEC to".localized())")
+                sendText
                     .foregroundColor(.black)
                     .font(.title)
                 Text("\(flow.address)")
@@ -92,44 +63,63 @@ struct Sending: View {
                     .foregroundColor(.black)
                     .font(.title)
                     .lineLimit(1)
-                includesMemoView
+                
                 if !flow.isDone {
                     loading
                         .frame(height: 48)
                     
                 }
                 Spacer()
-                if self.flow.isDone {
-                    VStack {
-                        Button(action: {
-                            tracker.track(.tap(action: .sendFinalDetails), properties: [:])
-                            self.showHistory = true
-                        }) {
-                            Text("See Details")
-                                .foregroundColor(.black)
-                                .zcashButtonBackground(shape: .roundedCorners(fillStyle: .outline(color: Color.black, lineWidth: 2)))
-                                .frame(height: 58)
+                if self.flow.isDone && self.flow.pendingTx != nil {
+                    Button(action: {
+                        guard let pendingTx = self.flow.pendingTx  else {
+                            
+                            tracker.track(.error(severity: .warning), properties: [ErrorSeverity.messageKey : "Attempt to open transaction details in sending screen with no pending transaction in send flow"])
+                            self.flow.close() // close this so it does not get stuck here
+                            return
                         }
-                        NavigationLink(destination: WalletDetails(isActive: $showHistory)
-                            .environmentObject(WalletDetailsViewModel())
-                            .navigationBarTitle("", displayMode: .inline)
-                            .navigationBarHidden(true),
-                                       isActive: $showHistory) {
-                                        EmptyView()
-                        }.isDetailLink(false)
+                        
+                        let latestHeight = ZECCWalletEnvironment.shared.synchronizer.syncBlockHeight.value
+                        self.details = DetailModel(pendingTransaction: pendingTx,latestBlockHeight: latestHeight)
+                        tracker.track(.tap(action: .sendFinalDetails), properties: [:])
+                        
+                    }) {
+                        Text("button_seedetails")
+                            .foregroundColor(.black)
+                            .zcashButtonBackground(shape: .roundedCorners(fillStyle: .outline(color: Color.black, lineWidth: 2)))
+                            .frame(height: 58)
                     }
                 }
                 
-                Button(action: {
-                    tracker.track(.tap(action: .sendFinalClose), properties: [:])
-                    self.flow.close()
-                }) {
-                    doneButton
+                if flow.isDone {
+                    Button(action: {
+                        tracker.track(.tap(action: .sendFinalClose), properties: [:])
+                        self.flow.close()
+                    }) {
+                        Text("button_done")
+                            .foregroundColor(.black)
+                            .frame(height: 58)
+                    }
                 }
-                
             }
             .padding([.horizontal, .bottom], 40)
-            
+        }
+        .sheet(item: $details, onDismiss: { self.flow.close() }){ item in
+            TransactionDetails(detail: item)
+                .zcashNavigationBar(leadingItem: {
+                  EmptyView()
+                }, headerItem: {
+                    HStack{
+                        Text("Transaction Details")
+                            .font(.title)
+                            .foregroundColor(.white)
+                            .frame(alignment: Alignment.center)
+                    }
+                }, trailingItem: {
+                    ZcashCloseButton(action: {
+                        self.details = nil
+                    })
+                })
         }
         .alert(isPresented: self.$flow.showError) {
             showErrorAlert

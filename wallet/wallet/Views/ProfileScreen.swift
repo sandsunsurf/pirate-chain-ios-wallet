@@ -27,7 +27,7 @@ struct ProfileScreen: View {
                         PasteboardAlertHelper.shared.copyToPasteBoard(value: self.appEnvironment.initializer.getAddress() ?? "", notify: "Address Copied to clipboard!")
                         
                     }) {
-                        Text("My Zcash Address\n".localized() + (appEnvironment.initializer.getAddress() ?? ""))
+                        Text("My Zcash Address\n".localized() + (appEnvironment.initializer.getAddress()?.shortZaddress ?? ""))
                             .lineLimit(3)
                             .multilineTextAlignment(.center)
                             .font(.system(size: 18))
@@ -63,24 +63,16 @@ struct ProfileScreen: View {
                             .environmentObject(self.appEnvironment)
                         )
                     ) {
-                        Text("Backup Wallet".localized())
+                        Text("button_backup")
                             .foregroundColor(.white)
                             .zcashButtonBackground(shape: .roundedCorners(fillStyle: .outline(color: .white, lineWidth: 1)))
                             .frame(height: Self.buttonHeight)
                         
                     }
                     
-                    Button(action: {
-                        PasteboardAlertHelper.shared.copyToPasteBoard(value: "zs1nhawkewaslscuey9qhnv9e4wpx77sp73kfu0l8wh9vhna7puazvfnutyq5ymg830hn5u2dmr0sf", notify: "Address Copied to clipboard!")
-                    }) {
-                        Text("Donate to Nighthawk\n".localized() + ("zs1nhawkewaslscuey9qhnv9e4wpx77sp73kfu0l8wh9vhna7puazvfnutyq5ymg830hn5u2dmr0sf"))
-                            .multilineTextAlignment(.center)
-                            .font(.system(size: 18))
-                            .foregroundColor(.white)
-                    }
-                    .onReceive(PasteboardAlertHelper.shared.publisher) { (item) in
-                        self.copiedValue = item
-                    }
+                    ActionableMessage(message: "\("Nighthawk Wallet".localized()) v\(ZECCWalletEnvironment.appVersion ?? "Unknown")", actionText: "Build \(ZECCWalletEnvironment.appBuild ?? "Unknown")", action: {})
+                        .disabled(true)
+
                     
                     NavigationLink(destination: LazyView (
                         NukeWarning().environmentObject(self.appEnvironment)

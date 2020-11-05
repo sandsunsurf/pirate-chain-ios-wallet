@@ -110,12 +110,17 @@ final class SendFlowEnvironment: ObservableObject {
             let message = "attempt to send tx twice"
             logger.error(message)
             tracker.track(.error(severity: .critical), properties:  [ErrorSeverity.messageKey : message])
+            self.error = FlowError.duplicateSent
+            self.showError = true
+            self.isDone = true
             return
         }
         let environment = ZECCWalletEnvironment.shared
         guard let zatoshi = doubleAmount?.toZatoshi(),
             environment.isValidAddress(self.address),
-            let spendingKey = SeedManager.default.getKeys()?.first,
+            let phrase = try? SeedManager.default.exportPhrase(),
+            let seedBytes = try? MnemonicSeedProvider.default.toSeed(mnemonic: phrase),
+            let spendingKey = try? DerivationTool.default.deriveSpendingKeys(seed: seedBytes, numberOfAccounts: 1).first,
             let replyToAddress = environment.initializer.getAddress() else {
                 self.error = FlowError.invalidEnvironment
                 self.showError = true
@@ -148,7 +153,7 @@ final class SendFlowEnvironment: ObservableObject {
                     self.error = error
                     self.showError = true
                     tracker.track(.error(severity: .critical), properties:  [ErrorSeverity.messageKey : "\(ZECCWalletEnvironment.mapError(error: error))"])
-                    SendFlow.end()
+                    
                 }
                 // fix me:                
                 self.isDone = true

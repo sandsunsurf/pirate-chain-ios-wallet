@@ -40,7 +40,7 @@ final class ZECCWalletEnvironment: ObservableObject {
     var cancellables = [AnyCancellable]()
     
     static func getInitialState() -> WalletState {
-        guard let keys = SeedManager.default.getKeys(), keys.count > 0 else {
+        guard (try? SeedManager.default.exportPhrase()) != nil else {
             return .uninitialized
         }
         return .initalized
@@ -62,6 +62,7 @@ final class ZECCWalletEnvironment: ObservableObject {
             endpoint: endpoint,
             spendParamsURL: self.spendParamsURL,
             outputParamsURL: self.outputParamsURL,
+            
             loggerProxy: logger)
         self.synchronizer = try CombineSynchronizer(initializer: initializer)
         cancellables.append(
@@ -87,9 +88,9 @@ final class ZECCWalletEnvironment: ObservableObject {
         
         do {
             let randomPhrase = try MnemonicSeedProvider.default.randomMnemonic()
-            let randomSeed = try MnemonicSeedProvider.default.toSeed(mnemonic: randomPhrase)
+            
             let birthday = WalletBirthday.birthday(with: BlockHeight.max)
-            try SeedManager.default.importSeed(randomSeed)
+            
             try SeedManager.default.importBirthday(birthday.height)
             try SeedManager.default.importPhrase(bip39: randomPhrase)
             try self.initialize()
@@ -100,13 +101,10 @@ final class ZECCWalletEnvironment: ObservableObject {
     }
     
     func initialize() throws {
-        
-        if let keys = try self.initializer.initialize(seedProvider: SeedManager.default, walletBirthdayHeight: try SeedManager.default.exportBirthday()) {
-            
-            SeedManager.default.saveKeys(keys)
-        }
-        
-        
+        let seedPhrase = try SeedManager.default.exportPhrase()
+        let seedBytes = try MnemonicSeedProvider.default.toSeed(mnemonic: seedPhrase)
+        let viewingKeys = try DerivationTool.default.deriveViewingKeys(seed: seedBytes, numberOfAccounts: 1)
+        try self.initializer.initialize(viewingKeys: viewingKeys, walletBirthday: try SeedManager.default.exportBirthday())
         self.synchronizer.start()
     }
     
@@ -140,8 +138,9 @@ final class ZECCWalletEnvironment: ObservableObject {
     }
     
     static func mapError(error: Error) -> WalletError {
-        
-        if let rustError = error as? RustWeldingError {
+        if let walletError = error as? WalletError {
+            return walletError
+        } else if let rustError = error as? RustWeldingError {
             switch rustError {
             case .genericError(let message):
                 return WalletError.genericErrorWithMessage(message: message)
@@ -176,6 +175,8 @@ final class ZECCWalletEnvironment: ObservableObject {
                 return WalletError.genericErrorWithError(error: underlyingError)
             case .criticalError:
                 return WalletError.criticalError
+            case .parameterMissing(let underlyingError):
+                return WalletError.sendFailed(error: underlyingError)
             }
         } else if let serviceError = error as? LightWalletServiceError {
             switch serviceError {
