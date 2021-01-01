@@ -72,10 +72,10 @@ struct TransactionDetails: View {
             case .copiedItem(let p):
                 return PasteboardAlertHelper.alert(for: p)
             case .explorerNotice:
-                return Alert(title: Text("You are exiting your wallet"),
-                             message: Text("While usually an acceptable risk, you will possibly exposing your behavior and interest in this transaction by going online. OH NOES! What will you do?"),
-                             primaryButton: .cancel(Text("NEVERMIND")),
-                             secondaryButton: .default(Text("SEE TX ONLINE"), action: {
+                return Alert(title: Text("Leaving Nighthawk Wallet"),
+                             message: Text("While usually an acceptable risk, you will be possibly exposing your interest in this transaction id by visiting blockchair.com"),
+                             primaryButton: .cancel(Text("Cancel")),
+                             secondaryButton: .default(Text("View TX Details"), action: {
                                 
                                 guard let url = UrlHandler.blockExplorerURL(for: self.detail.id) else {
                                     return

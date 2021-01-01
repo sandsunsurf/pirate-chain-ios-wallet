@@ -136,7 +136,7 @@ struct SeedBackup: View {
         }
         .alert(isPresented: self.$showError) {
             Alert(title: Text("Problem Retrieving your seed"),
-                  message: Text("we are unable to display your seed phrase. close the app and retry this operation"),
+                  message: Text("We are unable to display your seed phrase. Please close the app and retry this operation"),
                   dismissButton: .default(Text("button_close")))
         }
         .onAppear {

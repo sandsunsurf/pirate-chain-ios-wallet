@@ -25,7 +25,7 @@ struct Sending: View {
     }
  
     var showErrorAlert: Alert {
-        var errorMessage = "an error ocurred while submitting your transaction"
+        var errorMessage = "Oops. An error ocurred while submitting your transaction."
         
         if let error = self.flow.error {
             errorMessage = "\(ZECCWalletEnvironment.mapError(error: error) )"
@@ -47,7 +47,7 @@ struct Sending: View {
             return Text("label_unabletosend")
         }
         
-        return flow.isDone ? Text("send_sent") :     Text(String(format: NSLocalizedString("send_sending", comment: ""), flow.amount))
+        return flow.isDone ? Text("send_sent") : Text(String(format: NSLocalizedString("send_sending", comment: ""), flow.amount))
     }
     
     var body: some View {

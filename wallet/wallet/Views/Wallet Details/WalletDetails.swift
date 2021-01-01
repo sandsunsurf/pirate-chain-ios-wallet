@@ -76,6 +76,7 @@ struct WalletDetails: View {
                         }) {
                             Image("Back")
                                 .renderingMode(.original)
+                                .accessibility(label: Text("button_back"))
                         }
                     },
                    headerItem: {
@@ -149,8 +150,8 @@ struct WalletDetails: View {
         }
         .navigationBarHidden(true)
         .alert(isPresented: self.$viewModel.showError) {
-            Alert(title: Text("Error"),
-                  message: Text("an error ocurred"),
+            Alert(title: Text("Oops"),
+                  message: Text("An error ocurred"),
                   dismissButton: .default(Text("button_close")))
         }
     }
