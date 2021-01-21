@@ -40,18 +40,10 @@ final class ZECCWalletEnvironment: ObservableObject {
     var cancellables = [AnyCancellable]()
     
     static func getInitialState() -> WalletState {
-        let fileManager = FileManager()
-        do {
-            let dataDbURL = try URL.dataDbURL()
-            let attrs = try fileManager.attributesOfItem(atPath: dataDbURL.path)
-            return attrs.count > 0 ? .initalized : .uninitialized
-        } catch {
-            tracker.track(.error(severity: .critical), properties: [
-                            ErrorSeverity.underlyingError : "error",
-                            ErrorSeverity.messageKey : "exception thrown when getting initial state"
-            ])
+        guard (try? SeedManager.default.exportPhrase()) != nil else {
             return .uninitialized
         }
+        return .initalized
     }
     
     private init() throws {
@@ -73,6 +65,12 @@ final class ZECCWalletEnvironment: ObservableObject {
             
             loggerProxy: logger)
         self.synchronizer = try CombineSynchronizer(initializer: initializer)
+    }
+    
+    
+    // Warning: Use with care
+    static func reset() {
+        Self.shared = try! ZECCWalletEnvironment()
     }
     
     func createNewWallet() throws {
@@ -312,4 +310,31 @@ extension ZECCWalletEnvironment {
     static var minerFee: Double {
         Int64(ZcashSDK.defaultFee()).asHumanReadableZecBalance()
     }
+    
+    func credentialsAlreadyPresent() -> Bool {
+        (try? SeedManager.default.exportPhrase()) != nil
+    }
 }
+
+
+fileprivate struct WalletEnvironmentKey: EnvironmentKey {
+    static let defaultValue: ZECCWalletEnvironment = ZECCWalletEnvironment.shared
+}
+
+extension EnvironmentValues {
+    var walletEnvironment: ZECCWalletEnvironment  {
+        get {
+            self[WalletEnvironmentKey.self]
+        }
+        set {
+            self[WalletEnvironmentKey.self] = newValue
+        }
+    }
+}
+
+extension View {
+    func walletEnvironment(_ env: ZECCWalletEnvironment) -> some View {
+        environment(\.walletEnvironment, env)
+    }
+}
+ 
