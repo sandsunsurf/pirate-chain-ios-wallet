@@ -26,7 +26,7 @@ final class ZECCWalletEnvironment: ObservableObject {
     
     @Published var state: WalletState
     
-    let endpoint = LightWalletEndpoint(address: "shielded.nighthawkwallet.com", port: 9067, secure: true)
+    let endpoint = LightWalletEndpoint(address: "mainnet.lightwalletd.com", port: 9067, secure: true)
 
     var dataDbURL: URL
     var cacheDbURL: URL

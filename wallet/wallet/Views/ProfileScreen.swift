@@ -16,6 +16,8 @@ struct ProfileScreen: View {
     static let horizontalPadding = CGFloat(30)
     @State var copiedValue: PasteboardItemModel?
     @Binding var isShown: Bool
+    @State var alertItem: AlertItem?
+    @State var shareItem: ShareItem? = nil
     @State var isFeedbackActive = false
     var body: some View {
         NavigationView {
@@ -72,6 +74,29 @@ struct ProfileScreen: View {
                     
                     ActionableMessage(message: "\("Nighthawk Wallet".localized()) v\(ZECCWalletEnvironment.appVersion ?? "Unknown")", actionText: "Build \(ZECCWalletEnvironment.appBuild ?? "Unknown")", action: {})
                         .disabled(true)
+                    
+                    Button(action: {
+                        do {
+                            guard let latestLogfile = try LogfileHelper.latestLogfile() else {
+                                self.alertItem = AlertItem(type: .feedback(message: "No logfile found"))
+                                return
+                            }
+                            self.shareItem = ShareItem.file(fileUrl: latestLogfile)
+                            
+                        } catch {
+                            logger.error("Failed to get logfile \(error)")
+                            self.alertItem = AlertItem(type: .error(underlyingError: error))
+                        }
+                    }) {
+                        Text("button_applicationlogs".localized())
+                            .font(.system(size: 20))
+                            .foregroundColor(Color.zLightGray)
+                            .opacity(0.6)
+                            .frame(height: Self.buttonHeight)
+                    }
+
+                    ActionableMessage(message: "\("ECC Wallet".localized()) v\(ZECCWalletEnvironment.appVersion ?? "Unknown")", actionText: "Build \(ZECCWalletEnvironment.appBuild ?? "Unknown")", action: {})
+                        .disabled(true)
 
                     
                     NavigationLink(destination: LazyView (
@@ -90,13 +115,24 @@ struct ProfileScreen: View {
                             .frame(height: Self.buttonHeight)
                     }
                 }
-                
             }
             .padding(.horizontal, Self.horizontalPadding)
             .padding(.bottom, 30)
             .alert(item: self.$copiedValue) { (p) -> Alert in
                 PasteboardAlertHelper.alert(for: p)
             }
+            .sheet(item: self.$shareItem, content: { item in
+                ShareSheet(activityItems: [item.activityItem])
+            })
+            .alert(item: self.$alertItem, content: { a in
+                a.asAlert()
+            })
+            .navigationBarTitle("", displayMode: .inline)
+            .navigationBarHidden(false)
+            .navigationBarItems(trailing: ZcashCloseButton(action: {
+                tracker.track(.tap(action: .profileClose), properties: [:])
+                self.isShown = false
+            }).frame(width: 30, height: 30))
         }
         .navigationBarTitle("", displayMode: .inline)
         .navigationBarHidden(false)
