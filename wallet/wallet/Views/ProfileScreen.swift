@@ -75,30 +75,6 @@ struct ProfileScreen: View {
                     ActionableMessage(message: "\("Nighthawk Wallet".localized()) v\(ZECCWalletEnvironment.appVersion ?? "Unknown")", actionText: "Build \(ZECCWalletEnvironment.appBuild ?? "Unknown")", action: {})
                         .disabled(true)
                     
-                    Button(action: {
-                        do {
-                            guard let latestLogfile = try LogfileHelper.latestLogfile() else {
-                                self.alertItem = AlertItem(type: .feedback(message: "No logfile found"))
-                                return
-                            }
-                            self.shareItem = ShareItem.file(fileUrl: latestLogfile)
-                            
-                        } catch {
-                            logger.error("Failed to get logfile \(error)")
-                            self.alertItem = AlertItem(type: .error(underlyingError: error))
-                        }
-                    }) {
-                        Text("button_applicationlogs".localized())
-                            .font(.system(size: 20))
-                            .foregroundColor(Color.zLightGray)
-                            .opacity(0.6)
-                            .frame(height: Self.buttonHeight)
-                    }
-
-                    ActionableMessage(message: "\("ECC Wallet".localized()) v\(ZECCWalletEnvironment.appVersion ?? "Unknown")", actionText: "Build \(ZECCWalletEnvironment.appBuild ?? "Unknown")", action: {})
-                        .disabled(true)
-
-                    
                     NavigationLink(destination: LazyView (
                         NukeWarning().environmentObject(self.appEnvironment)
                     ), isActive: self.$nukePressed) {
