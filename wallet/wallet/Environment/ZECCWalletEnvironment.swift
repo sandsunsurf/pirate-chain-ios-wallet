@@ -47,9 +47,9 @@ final class ZECCWalletEnvironment: ObservableObject {
             // are there any keys?
             let keysPresent = SeedManager.default.keysPresent
         
-            let dbFilesPresent = try dbFilesPresent()
+            let areFilesPresent = try dbFilesPresent()
             
-            switch (keysPresent,dbFilesPresent) {
+            switch (keysPresent,areFilesPresent) {
             case (false, false):
                 return .uninitialized
             case (false, true):

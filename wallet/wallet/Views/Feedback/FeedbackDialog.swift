@@ -31,9 +31,9 @@ struct ScreenOverlay<ForegroundContent: View>: ViewModifier {
                 .padding(.all, 24)
             }
             .transition(.opacity)
-        } else {
-            content
         }
+        
+        return content
     }
 }
 
