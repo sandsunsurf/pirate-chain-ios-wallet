@@ -21,14 +21,10 @@ struct ReceiveFunds: View {
                 VStack(alignment: .center, spacing: 10, content: {
                     TabSelector(tabs: [
                         (Text("Shielded")
+                            .padding(.bottom, 10)
                             .font(.system(size: 18))
                             .frame(maxWidth: .infinity, idealHeight: 48)
-                         ,.zYellow),
-                        (Text("Transparent")
-                            .font(.system(size: 18))
-                            .frame(maxWidth: .infinity, minHeight: 48, idealHeight: 48)
-                         ,.zTransparentBlue)
-                            
+                         ,.zYellow)
                     ], selectedTabIndex: $selectedTab)
                     .padding([.horizontal], 16)
                    

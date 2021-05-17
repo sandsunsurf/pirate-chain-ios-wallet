@@ -18,18 +18,18 @@ extension Color {
     static let zTransparentBlue = Color(red: 24/255, green: 144/255, blue: 226/255)
     
     /// \#FFD000 Color(red: 1, red: 0.82, blue: 0)
-    static let zAmberGradient0 = Color(red: 1.0, green: 0.82, blue: 0.0)
+    static let zAmberGradient0 = Color(red: 0.0, green: 0.0, blue: 0.0)
     /// Color(red: 1.0, green:0.64, blue:0.0)
-    static let zAmberGradient1 = Color(red: 1.0, green:0.64, blue:0.0)
+    static let zAmberGradient1 = Color(red: 8/255, green:8/255, blue:8/255)
     
     /// \#FF9400
-    static let zAmberGradient2 = Color(red: 1.0, green:0.74, blue:0.0)
+    static let zAmberGradient2 = Color(red: 24/255, green:24/255, blue:24/255)
     
     ///  \#FFB300 Color(red: 1.0, green:0.70, blue:0.0)
-    static let zAmberGradient3 = Color(red: 1.0, green:0.70, blue:0.0)
+    static let zAmberGradient3 = Color(red: 40/255, green:40/255, blue:40/255)
     
     /// \#FF9300 Color(red: 1.0, green: 0.58, blue: 0.0)
-    static let zAmberGradient4 = Color(red: 1.0, green: 0.58, blue: 0.0)
+    static let zAmberGradient4 = Color(red: 60/255, green: 60/255, blue: 60/255)
     
     static let zBlackGradient1 = Color(red:0.16, green:0.16, blue:0.17)
     
