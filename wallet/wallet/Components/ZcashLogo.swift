@@ -25,7 +25,7 @@ struct ZcashLogo<S: ShapeStyle>: View {
                 .frame(width: 167, height: 167, alignment: .center)
                 .padding(20)
             VStack (alignment: .center) {
-                ZcashSymbol()
+                PirateSymbol()
                     .fill(fillStyle)
                     .frame(width: 100, height: 105, alignment: .center)
                 
@@ -42,5 +42,11 @@ extension LinearGradient {
                                     ),
                        startPoint: UnitPoint(x: 0.5, y: 0),
                        endPoint: UnitPoint(x: 0.5, y: 1.0))
+    }
+}
+
+struct ZcashLogo_Previews: PreviewProvider {
+    static var previews: some View {
+        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
     }
 }
