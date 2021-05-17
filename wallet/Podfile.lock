@@ -135,7 +135,7 @@ CHECKOUT OPTIONS:
     :commit: 714cc6e2631ac322fc0067b2302358c1baad9275
     :git: https://github.com/zcash-hackworks/MnemonicSwift.git
   ZcashLightClientKit:
-    :commit: 962ceb483ed588c7622fc3797594a065b1c52966
+    :commit: 3f2365989d2cb6883c0c3c1792b591f0f263a7ae
     :git: https://github.com/Meshbits/ZcashLightClientKit.git
   zealous-logger:
     :commit: c9f8d8d9f74a456094b9143616da3b4eba91ddcf
