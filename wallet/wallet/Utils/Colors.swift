@@ -116,6 +116,9 @@ extension Color {
     static let zBalanceBreakdownItem1 = Color(red: 134/255, green: 134/255, blue: 134/255, opacity: 0.081)
     static let zBalanceBreakdownItem2 = Color(red: 0, green: 0, blue: 0, opacity: 0.081)
     
+    static let pGoldenColor = Color(red: 218/255, green: 165/255, blue: 32/255, opacity: 0.081)
+    
+    
 }
 
 extension Gradient {

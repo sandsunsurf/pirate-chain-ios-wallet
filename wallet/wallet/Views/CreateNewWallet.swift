@@ -75,8 +75,8 @@ struct CreateNewWallet: View {
                 }) {
                     Text("Create New".localized())
                       .font(.system(size: 20))
-                      .foregroundColor(Color.black)
-                      .zcashButtonBackground(shape: .roundedCorners(fillStyle: .gradient(gradient: LinearGradient.zButtonGradient)))
+                       .foregroundColor(.white)
+                        .zcashButtonBackground(shape: .roundedCorners(fillStyle: .gradientRadiant(gradient: RadialGradient.zButtonRadialGradient)))
                       
                       .frame(height: self.buttonHeight)
                 }
@@ -87,8 +87,8 @@ struct CreateNewWallet: View {
                     self.appEnvironment.nuke()
                 }) {
                     Text("NUKE WALLET".localized())
-                        .foregroundColor(.red)
-                        .zcashButtonBackground(shape: .roundedCorners(fillStyle: .outline(color: .red, lineWidth: 1)))
+                        .foregroundColor(.gray)
+                        .zcashButtonBackground(shape: .roundedCorners(fillStyle: .outline(color: .gray, lineWidth: 1)))
                         .frame(height: self.buttonHeight)
                     
                 }
@@ -108,7 +108,7 @@ struct CreateNewWallet: View {
                         self.destination = .restoreWallet
                     }) {
                         Text("Restore".localized())
-                            .foregroundColor(Color.zDarkGray3)
+                            .foregroundColor(.white)
                             .font(.system(size: 20))
                             .frame(height: self.buttonHeight)
                     }
