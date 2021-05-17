@@ -12,9 +12,9 @@
 "expecting " = "expecting";
 "Create new Wallet" = "Create new Wallet";
 "button_backup" = "Backup Wallet";
-"Press and hold\nto send ZEC" = "Press and hold\nto send ZEC";
+"Press and hold\nto send ZEC" = "Press and hold\nto send ARRR";
 
-"Tap\nto send ZEC" = "Tap\nto send ZEC";
+"Tap\nto send ZEC" = "Tap\nto send ARRR";
 "Enter Shielded Address" = "Enter Shielded Address";
 "Error" = "Error";
 "an error ocurred" = "an error ocurred";
@@ -50,7 +50,7 @@
 // Balance Screen
 "balance_screen" = "Bilancio";
 "balance_amounttosend" = "Inserisci un importo da inviare";
-"balance_expecting" = "aspettando %@ ZEC";
+"balance_expecting" = "aspettando %@ ARRR";
 "balance_available" = "Disponibile";
 "balance_nofunds" = "Nessun fondo disponibile";
 "balance_syncing" = "Sincronizzando %@%%";
@@ -63,8 +63,8 @@
 "address_shielded" = "Il tuo indirizzo blindato";
 "address_transparent" = "Il tuo indirizzo trasparente";
 "feedback_addresscopied" = "Indirizzo Copiato!";
-"Request ZEC" = "Richiedi ZEC";
-"receive_title" = "Ricevi ZEC";
+"Request ZEC" = "Richiedi ARRR";
+"receive_title" = "Ricevi ARRR";
 "button_copytoclipboard" = "copia negli appunti";
 
 // Profile Screen
@@ -94,8 +94,8 @@
 "send_unknown" = "Sconosciuto";
 "send_scanQR" = "Scansione indirizzo destinatario";
 "send_securityauth" = "Accedi per inviare";
-"send_securityauth2" = "Conferma che vuoi inviare %@ ZEC a";
-"send_sending" = "Inviando %@ ZEC a";
+"send_securityauth2" = "Conferma che vuoi inviare %@ ARRR a";
+"send_sending" = "Inviando %@ ARRR a";
 "send_sending_taz" = "Inviando %@ TAZ a";
 "send_cancelled" = "Annullato";
 "send_sent" = "Inviato!";

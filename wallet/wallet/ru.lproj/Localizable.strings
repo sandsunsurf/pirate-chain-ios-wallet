@@ -1,4 +1,4 @@
-"ECC Wallet" = "Кошелек ECC";
+"ECC Wallet" = "Кошелек ARRR";
 "loadingtext" = "Загрузка";
 "welcometext" = "Добро пожаловать!";
 // Seed Backup/Restore Ваша фраза восстановления
@@ -24,7 +24,7 @@
 
 "balance_screen" = "Экран баланса";
 "balance_amounttosend" = "Введите сумму для отправки";
-"balance_expecting" = "Ожидание %@ ZEC";
+"balance_expecting" = "Ожидание %@ ARRR";
 "balance_available" = "Доступно";
 "balance_nofunds" = "Нет доступных средств";
 "balance_syncing" = "Синхронизация %@%%";
@@ -37,8 +37,8 @@
 "address_shielded" = "Ваш защищённый адрес";
 "address_transparent" = "Ваш прозрачный адрес";
 "feedback_addresscopied" = "Адрес скопирован!";
-"Request ZEC" = "Запросить сумму в ZEC";
-"Receive" = "Получите ZEC";
+"Request ZEC" = "Запросить сумму в ARRR";
+"Receive" = "Получите ARRR";
 "button_copytoclipboard" = "Скопировать в буфер обмена";
 // Profile Screen
 "profile_screen" = "Защищенный пользователь";
@@ -67,8 +67,8 @@
 "send_unknown" = "Неизвестно";
 "send_scanQR" = "Сканировать адрес получателя";
 "send_securityauth" = "Подтвердите, чтобы отправить";
-"send_securityauth2" = "Пожалуйста подтвердите, что хотите отправить %@ ZEC на адрес";
-"send_sending" = "Отправка XX ZEC на";
+"send_securityauth2" = "Пожалуйста подтвердите, что хотите отправить %@ ARRR на адрес";
+"send_sending" = "Отправка XX ARRR на";
 "send_sending_taz" = "Отправка XX TAZ на";
 "send_cancelled" = "Отменено";
 "send_sent" = "Отправлено!";
