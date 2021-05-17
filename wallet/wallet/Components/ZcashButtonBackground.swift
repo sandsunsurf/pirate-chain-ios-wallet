@@ -145,7 +145,7 @@ extension LinearGradient {
 
 extension RadialGradient {
     static var zButtonRadialGradient: RadialGradient {
-        RadialGradient(gradient: Gradient(colors: [Color.pGoldenColor,.white]), center: .center, startRadius: 100, endRadius: 400)
+        RadialGradient(gradient: Gradient(colors: [Color.pGoldenColor,.white]), center: .center, startRadius: 70, endRadius: 300)
     }
 }
 

@@ -130,7 +130,7 @@ struct WalletBalanceBreakdown: View {
                 .cornerRadius(5)
             Spacer()
             if model.unconfirmedFunds > 0 {
-                Text("(\(model.unconfirmedFunds.toZecAmount()) ZEC pending)")
+                Text("(\(model.unconfirmedFunds.toZecAmount()) ARRR pending)")
                     .foregroundColor(.zGray3)
                 Spacer()
             }
@@ -141,7 +141,7 @@ struct WalletBalanceBreakdown: View {
             }) {
                 Text("Shield Transparent Funds")
                     .foregroundColor(.black)
-                    .zcashButtonBackground(shape: .roundedCorners(fillStyle: .gradient(gradient: .zButtonGradient)))
+                    .zcashButtonBackground(shape: .roundedCorners(fillStyle: .gradientRadiant(gradient: .zButtonRadialGradient)))
                     .frame(height: 48)
             }
             .disabled(!model.isShieldingButtonEnabled)
