@@ -26,7 +26,7 @@ struct BalanceBreakdown: View {
     @ViewBuilder var shieldedZecTitle: some View {
         HStack {
             Image("ic_shieldtick_yellow")
-            Text("SHIELDED ARRR")
+            Text("TOTAL SHIELDED ARRR")
                 .font(.system(size: 14))
                 .foregroundColor(.zYellow)
         }
@@ -46,13 +46,13 @@ struct BalanceBreakdown: View {
                               amount: model.shielded.total,
                               backgroundColor: .zBalanceBreakdownItem0)
                 
-                BreakdownItem(title: boringTitle(localizedKey: "+ TRANSPARENT"),
-                              amount: model.transparent.total,
-                              backgroundColor: .zBalanceBreakdownItem1)
+//                BreakdownItem(title: boringTitle(localizedKey: "+ TRANSPARENT"),
+//                              amount: model.transparent.total,
+//                              backgroundColor: .zBalanceBreakdownItem1)
                 
-                BreakdownItem(title: boringTitle(localizedKey: "= TOTAL"),
-                              amount: model.transparent.total + model.shielded.total,
-                              backgroundColor: .zBalanceBreakdownItem2)
+//                BreakdownItem(title: boringTitle(localizedKey: "= TOTAL"),
+//                              amount: model.transparent.total + model.shielded.total,
+//                              backgroundColor: .zBalanceBreakdownItem1)
                 
             })
             .padding(16)
