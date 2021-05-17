@@ -11,25 +11,26 @@ import ZcashLightClientKit
 class UrlHandler {
     
     static func blockExplorerURL(for txId: String) -> URL? {
-        ZcashSDK.isMainnet ? blockExplorerURLMainnet(for: txId) : blockExplorerURLTestnet(for: txId)
+//        ZcashSDK.isMainnet ? blockExplorerURLMainnet(for: txId) : blockExplorerURLTestnet(for: txId)
+        blockExplorerURLMainnet(for: txId)
     }
     
     // blockchair does not support testnet zcash
-    static func blockExplorerURLTestnet(for txId: String) -> URL? {
-        var urlComponents = URLComponents()
-
-        urlComponents.host = "explorer.testnet.z.cash"
-        urlComponents.scheme = "https"
-        urlComponents.path = "/tx"
-        
-        return urlComponents.url?.appendingPathComponent(txId)
-    }
+//    static func blockExplorerURLTestnet(for txId: String) -> URL? {
+//        var urlComponents = URLComponents()
+//
+//        urlComponents.host = "explorer.testnet.z.cash"
+//        urlComponents.scheme = "https"
+//        urlComponents.path = "/tx"
+//
+//        return urlComponents.url?.appendingPathComponent(txId)
+//    }
     
     static func blockExplorerURLMainnet(for txId: String) -> URL? {
         var urlComponents = URLComponents()
-        urlComponents.host = "blockchair.com"
+        urlComponents.host = "explorer.pirate.black"
         urlComponents.scheme = "https"
-        urlComponents.path = "/zcash/transaction"
+        urlComponents.path = "/tx"
         
         return urlComponents.url?.appendingPathComponent(txId)
     }
