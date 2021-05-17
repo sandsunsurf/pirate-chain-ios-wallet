@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/satinder/repo/meshbits/zcash-ios-wallet/wallet/ARRR-Wallet.xcodeproj">
+      location = "group:ARRR-Wallet.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

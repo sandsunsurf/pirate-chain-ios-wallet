@@ -28,7 +28,8 @@ final class ZECCWalletEnvironment: ObservableObject {
     
     @Published var state: WalletState
     
-    let endpoint = LightWalletEndpoint(address: ZcashSDK.isMainnet ? "mainnet.lightwalletd.com" : "mainnet.lightwalletd.com", port: 9067, secure: true)
+//    let endpoint = LightWalletEndpoint(address: "mainnet.lightwalletd.com", port: 9067, secure: true)
+    let endpoint = LightWalletEndpoint(address: "lightd.meshbits.io", port: 9067, secure: true)
     var dataDbURL: URL
     var cacheDbURL: URL
     var pendingDbURL: URL
@@ -375,11 +376,7 @@ final class ZECCWalletEnvironment: ObservableObject {
 extension ZECCWalletEnvironment {
     
     static var appName: String {
-        if ZcashSDK.isMainnet {
-            return "ECC Wallet".localized()
-        } else {
-            return "ECC Testnet"
-        }
+        return "ARRR Wallet".localized()
     }
     
     static var appBuild: String? {

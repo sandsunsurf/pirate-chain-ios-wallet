@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1200"
+   LastUpgradeVersion = "1240"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0DCDFF9324B6722B000F6999"
-               BuildableName = "ECC-Wallet-no-logs.app"
-               BlueprintName = "ECC-Wallet-no-logging"
-               ReferencedContainer = "container:ECC-Wallet.xcodeproj">
+               BuildableName = "ARRR-Wallet-no-logs.app"
+               BlueprintName = "ARRR-Wallet-no-logging"
+               ReferencedContainer = "container:ARRR-Wallet.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -40,9 +40,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0D12511F23B557E60014EE3A"
-               BuildableName = "ECC-WalletUITests.xctest"
-               BlueprintName = "ECC-WalletUITests"
-               ReferencedContainer = "container:ECC-Wallet.xcodeproj">
+               BuildableName = "ARRR-WalletUITests.xctest"
+               BlueprintName = "ARRR-WalletUITests"
+               ReferencedContainer = "container:ARRR-Wallet.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -50,9 +50,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0D12511423B557E60014EE3A"
-               BuildableName = "ECC-WalletTests.xctest"
-               BlueprintName = "ECC-WalletTests"
-               ReferencedContainer = "container:ECC-Wallet.xcodeproj">
+               BuildableName = "ARRR-WalletTests.xctest"
+               BlueprintName = "ARRR-WalletTests"
+               ReferencedContainer = "container:ARRR-Wallet.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0DCDFF9324B6722B000F6999"
-            BuildableName = "ECC-Wallet-no-logs.app"
-            BlueprintName = "ECC-Wallet-no-logging"
-            ReferencedContainer = "container:ECC-Wallet.xcodeproj">
+            BuildableName = "ARRR-Wallet-no-logs.app"
+            BlueprintName = "ARRR-Wallet-no-logging"
+            ReferencedContainer = "container:ARRR-Wallet.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -89,9 +89,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0DCDFF9324B6722B000F6999"
-            BuildableName = "ECC-Wallet-no-logs.app"
-            BlueprintName = "ECC-Wallet-no-logging"
-            ReferencedContainer = "container:ECC-Wallet.xcodeproj">
+            BuildableName = "ARRR-Wallet-no-logs.app"
+            BlueprintName = "ARRR-Wallet-no-logging"
+            ReferencedContainer = "container:ARRR-Wallet.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
