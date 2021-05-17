@@ -77,11 +77,7 @@ struct BalanceDetail: View {
     }
     
     var zec: String {
-        if ZcashSDK.isMainnet {
-            return "ZEC"
-        } else {
-            return "TAZ"
-        }
+        return "ARRR"
     }
 }
 
