@@ -41,18 +41,18 @@ struct OhMyScreen: View {
             VStack(spacing: 24) {
 
                 Text("We couldn't initialize your wallet")
-                    .foregroundColor(.black)
+                    .foregroundColor(.white)
                     .font(.system(size: 24))
                 if let error = environment.error {
                     Text("""
                          Reason:
                          \(error.localizedDescription)
-                         """)
+                         """).foregroundColor(.white)
                 }
                 
                 VStack(alignment: .leading) {
-                    Text("Close the app and try to restart it.")
-                    Text("If you have done so, here are some options:")
+                    Text("Close the app and try to restart it.").foregroundColor(.white)
+                    Text("If you have done so, here are some options:").foregroundColor(.white)
                 }
                 .padding(0)
                 NavigationLink(destination: SeedBackup(hideNavBar: false,
@@ -64,8 +64,8 @@ struct OhMyScreen: View {
                                selection: self.$destination,
                                label: {
                                 Text("Backup Seed")
-                                    .foregroundColor(.black)
-                                    .zcashButtonBackground(shape: .roundedCorners(fillStyle: .outline(color: .black, lineWidth: 1)))
+                                    .foregroundColor(.white)
+                                    .zcashButtonBackground(shape: .roundedCorners(fillStyle: .outline(color: .white, lineWidth: 1)))
                                         .frame(height: 48)
                                })
                 
@@ -96,7 +96,7 @@ struct OhMyScreen: View {
                 }) {
                     Text("button_applicationlogs".localized())
                         .font(.system(size: 20))
-                        .foregroundColor(.black)
+                        .foregroundColor(.white)
                         .opacity(0.6)
                         .frame(height: ScreenConstants.buttonHeight)
                 }

@@ -10,15 +10,8 @@ import UIKit
 import BackgroundTasks
 
 
-#if ENABLE_LOGGING
-import Bugsnag
-import zealous_logger
-let tracker = MixPanelLogger(token: Constants.mixpanelProject)
-let logger = SimpleFileLogger(logsDirectory: try! URL.logsDirectory(), alsoPrint: true, level: .debug)
-#else
 let tracker = NullLogger()
 let logger = SimpleLogger(logLevel: .debug)
-#endif
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {  
@@ -45,11 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             BackgroundTaskSyncronizing.default.handleBackgroundProcessingTask(task as! BGProcessingTask)
         }
         #endif
-        
-        #if ENABLE_LOGGING
-        Bugsnag.start(withApiKey: Constants.bugsnagApiKey)
-        #endif
-        
+       
         return true
     }
     
