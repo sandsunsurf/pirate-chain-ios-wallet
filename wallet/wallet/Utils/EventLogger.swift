@@ -64,10 +64,15 @@ enum Action: String {
     case sendMemoNext = "send.memo.next"
     case sendFinalExit = "send.final.exit"
     case sendFinalClose = "send.final.close"
+    case sendFinalDetails = "send.final.details"
     case profileClose = "profile.close"
     case profileNuke = "profile.nuke"
     case profileBackup = "profile.backup"
     case copyAddress = "copy.address"
+    case backgroundAppRefreshStart = "background.apprefresh.start"
+    case backgroundAppRefreshEnd = "background.apprefresh.end"
+    case backgroundProcessingStart = "background.processing.start"
+    case backgroundProcessingEnd = "background.processing.end"
 }
 enum LogEvent: Equatable {
     case screen(screen: Screen)
@@ -137,7 +142,7 @@ class MixPanelLogger: EventLogging {
         }
     }
     
-    var cancellables = [AnyCancellable]()
+    var synchronizerEvents = [AnyCancellable]()
     var scheduler = DispatchQueue.global()
     
     /// Attempts to log to console logger if true
@@ -160,7 +165,7 @@ class MixPanelLogger: EventLogging {
             .sink { (event) in
                 self.trackEvent(event)
         }
-        .store(in: &cancellables)
+        .store(in: &synchronizerEvents)
     }
 }
 

@@ -7,10 +7,8 @@
 //
 
 import XCTest
-@testable import ECC_Wallet
+@testable import ECC_Wallet_no_logs
 class DetailCardTests: XCTestCase {
-
-   
 
     func testSubtitle() throws {
         
@@ -23,13 +21,13 @@ class DetailCardTests: XCTestCase {
         XCTAssertEqual(DetailModel.subtitle(isPending: true, isSubmitSuccess: true, minedHeight: -1, date: date, latestBlockHeight: latestHeight), "Pending confirmation".localized())
         
         // transaction submitted, mined with height
-        XCTAssertEqual(DetailModel.subtitle(isPending: true, isSubmitSuccess: true, minedHeight: minedHeight, date: date, latestBlockHeight: latestHeight), "Confirmations".localized(with: abs(latestHeight - minedHeight)))
+        XCTAssertEqual(DetailModel.subtitle(isPending: true, isSubmitSuccess: true, minedHeight: minedHeight, date: date, latestBlockHeight: latestHeight), "2 of 10 Confirmations")
         
         // submitted, mined but no info on current latestheight
         XCTAssertEqual(DetailModel.subtitle(isPending: true, isSubmitSuccess: true, minedHeight: minedHeight, date: date, latestBlockHeight: -1), "Pending confirmation".localized())
         
         // submission failed
-        XCTAssertEqual(DetailModel.subtitle(isPending: false, isSubmitSuccess: false, minedHeight: -1, date: date, latestBlockHeight: latestHeight), "Sent" + " \(date)")
+        XCTAssertEqual(DetailModel.subtitle(isPending: false, isSubmitSuccess: false, minedHeight: -1, date: date, latestBlockHeight: latestHeight), "wallet_history_sent".localized() + " \(date)")
         
     }
 

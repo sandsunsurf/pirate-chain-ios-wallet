@@ -13,6 +13,10 @@ extension Color {
     /// \#FFB900 Color(red: 1, green: 185.0/255.0, blue: 0)
     static let zYellow = Color(red: 1, green: 185.0/255.0, blue: 0)
     
+    /// Transparent things blue
+    /// \#4A90E2 Color(red:24/255, red: 144/255, blue: 226/255)
+    static let zTransparentBlue = Color(red: 24/255, green: 144/255, blue: 226/255)
+    
     /// \#FFD000 Color(red: 1, red: 0.82, blue: 0)
     static let zAmberGradient0 = Color(red: 1.0, green: 0.82, blue: 0.0)
     /// Color(red: 1.0, green:0.64, blue:0.0)
@@ -27,7 +31,7 @@ extension Color {
     /// \#FF9300 Color(red: 1.0, green: 0.58, blue: 0.0)
     static let zAmberGradient4 = Color(red: 1.0, green: 0.58, blue: 0.0)
     
-    static let zBlackGradient1 = Color(red:0.16, green:0.16, blue:0.17)
+    static let zBlackGradient1 = Color.black
     
     static let zBlackGradient2 = Color.black
     

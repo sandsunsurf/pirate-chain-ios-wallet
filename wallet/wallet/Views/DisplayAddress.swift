@@ -10,7 +10,7 @@ import SwiftUI
 
 struct DisplayAddress: View {
     
-    @State var isCopyAlertShown = false
+    @State var copyItemModel: PasteboardItemModel?
     @State var isShareModalDisplayed = false
     @State var isShareAddressShown = false
     var qrImage: Image {
@@ -37,15 +37,15 @@ struct DisplayAddress: View {
                 .frame(width: qrSize, height: qrSize, alignment: .center)
                 .layoutPriority(1)
             
-            Text("Your Shielded Address")
+            Text("address_shielded")
                 .foregroundColor(.white)
                 .font(.system(size: 18))
                 
             
             Button(action: {
-                UIPasteboard.general.string = self.address
+                PasteboardAlertHelper.shared.copyToPasteBoard(value: self.address, notify: "feedback_addresscopied".localized())
                 logger.debug("address copied to clipboard")
-                self.isCopyAlertShown = true
+         
                 tracker.track(.tap(action: .copyAddress), properties: [:])
             }) {
                 VStack {
@@ -59,22 +59,21 @@ struct DisplayAddress: View {
                         }
                     }
                     
-                }.padding([.horizontal], 30)
-            }.alert(isPresented: self.$isCopyAlertShown) {
-                Alert(title: Text(""),
-                      message: Text("Address Copied to clipboard!"),
-                      dismissButton: .default(Text("OK"))
-                )
+                }.padding([.horizontal], 15)
+            }.alert(item: self.$copyItemModel) { (p) -> Alert in
+                PasteboardAlertHelper.alert(for: p)
+            }
+            .onReceive(PasteboardAlertHelper.shared.publisher) { (p) in
+                self.copyItemModel = p 
             }
             
             Spacer()
-            
             
             Button(action: {
                 tracker.track(.tap(action: .receiveScan), properties: [:])
                 self.isShareAddressShown = true
             }) {
-                Text("Share Address")
+                Text("button_share_address")
                     .foregroundColor(Color.white)
                     .zcashButtonBackground(shape: .roundedCorners(fillStyle: .outline(color: .white, lineWidth: 1)))
                     .frame(height: 58)

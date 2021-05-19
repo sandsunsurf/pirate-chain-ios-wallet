@@ -9,41 +9,44 @@
 import SwiftUI
 import Combine
 class WalletDetailsViewModel: ObservableObject {
-    
-    var items: [DetailModel] = []
+    // look at before changing https://stackoverflow.com/questions/60956270/swiftui-view-not-updating-based-on-observedobject
+    @Published var items = [DetailModel]()
+
     var showError = false
     var balance: Double = 0
-    private var cancellables = Set<AnyCancellable>()
+    private var synchronizerEvents = Set<AnyCancellable>()
+    private var internalEvents = Set<AnyCancellable>()
     init(){
-        
-        ZECCWalletEnvironment.shared.synchronizer.walletDetails
+        subscribeToSynchonizerEvents()
+    }
+    
+    deinit {
+        unsubscribeFromSynchonizerEvents()
+    }
+
+    
+    func subscribeToSynchonizerEvents() {
+        ZECCWalletEnvironment.shared.synchronizer.walletDetailsBuffer
             .receive(on: RunLoop.main)
-            .sink(receiveCompletion: { [weak self] (completion) in
-                guard let self = self else { return }
-                switch completion {
-                case .failure(_):
-                    self.showError = true
-                case .finished:
-                    break
-                }
-            }) { (models) in
-                self.items = [DetailModel](models)
-        }
-            
-        .store(in: &cancellables)
+            .sink(receiveValue: { [weak self] (d) in
+                self?.items = d
+            })
+            .store(in: &synchronizerEvents)
         
         ZECCWalletEnvironment.shared.synchronizer.balance
             .receive(on: RunLoop.main)
-            .assign(to: \.balance, on: self)
-            .store(in: &cancellables)
-        
-    }
-    deinit {
-        cancellables.forEach { (c) in
-            c.cancel()
-        }
+            .sink(receiveValue: { [weak self] (b) in
+                self?.balance = b
+            })
+            .store(in: &synchronizerEvents)
     }
     
+    func unsubscribeFromSynchonizerEvents() {
+        synchronizerEvents.forEach { (c) in
+            c.cancel()
+        }
+        synchronizerEvents.removeAll()
+    }
     var balanceStatus: BalanceStatus {
         let status = ZECCWalletEnvironment.shared.balanceStatus
         switch status {
@@ -61,7 +64,9 @@ class WalletDetailsViewModel: ObservableObject {
 
 struct WalletDetails: View {
     @EnvironmentObject var viewModel: WalletDetailsViewModel
-    
+    @Environment(\.walletEnvironment) var appEnvironment: ZECCWalletEnvironment
+    @Binding var isActive: Bool
+    @State var selectedModel: DetailModel? = nil
     var zAddress: String {
         viewModel.zAddress
     }
@@ -75,16 +80,40 @@ struct WalletDetails: View {
         ZStack {
             ZcashBackground()
             VStack(alignment: .center) {
+                ZcashNavigationBar(
+                    leadingItem: {
+                        Button(action: {
+                            self.isActive.toggle()
+                        }) {
+                            Image("Back")
+                                .renderingMode(.original)
+                                .accessibility(label: Text("button_back"))
+                        }
+                        
+                    },
+                   headerItem: {
+                        BalanceDetail(
+                            availableZec: appEnvironment.synchronizer.verifiedBalance.value,
+                            status: status)
+                            
+                    },
+                   trailingItem: { EmptyView() }
+                )
+                .padding(.horizontal, 10)
                 
+
                 List {
                     WalletDetailsHeader(zAddress: zAddress)
                         .listRowBackground(Color.zDarkGray2)
                         .frame(height: 100)
                         .padding([.trailing], 24)
-                    ForEach(self.viewModel.items, id: \.id) { row in    
-                        NavigationLink(destination: LazyView(TransactionDetails(model: row))) {
-                            DetailCard(model: row, backgroundColor: Color.zDarkGray2)
-                            }.isDetailLink(true)
+                    ForEach(self.viewModel.items, id: \.id) { row in
+                       
+                        Button(action: {
+                            self.selectedModel = row
+                        }) {
+                            DetailCard(model: row, backgroundColor: .zDarkGray2)
+                        }
                         .listRowBackground(Color.zDarkGray2)
                         .frame(height: 69)
                         .padding(.horizontal, 16)
@@ -94,14 +123,13 @@ struct WalletDetails: View {
                             
                     }
                 }
+                .listStyle(PlainListStyle())
                 .cornerRadius(20)
                 .overlay(
                     RoundedRectangle(cornerRadius: 20)
                         .stroke(Color.zGray, lineWidth: 1.0)
                 )
-                    .padding()
-                
-                Spacer()
+                .padding()
                 
             }
         }
@@ -109,28 +137,30 @@ struct WalletDetails: View {
             
             UITableView.appearance().separatorStyle = .none
             UITableView.appearance().backgroundColor = UIColor.clear
-            
+            tracker.track(.screen(screen: .history), properties: [:])
+
+        }
+        .alert(isPresented: self.$viewModel.showError) {
+            Alert(title: Text("Oops"),
+                  message: Text("An error ocurred"),
+                  dismissButton: .default(Text("button_close")))
         }
         .onDisappear() {
             UITableView.appearance().separatorStyle = .singleLine
         }
-        .edgesIgnoringSafeArea([.bottom])
-        .navigationBarItems(trailing:
-            HStack {
-                BalanceDetail(availableZec: ZECCWalletEnvironment.shared.synchronizer.verifiedBalance.value, status: status)
-                Spacer().frame(width: 110)
-            }.offset(x: 0, y: 5)
-            
-        )
-            .alert(isPresented: self.$viewModel.showError) {
-                Alert(title: Text("Error".localized()), message: Text("an error ocurred".localized()), dismissButton: .default(Text("OK".localized())))
+        .navigationBarHidden(true)
+        .sheet(item: self.$selectedModel, onDismiss: {
+            self.selectedModel = nil
+        }) { (row)  in
+            TxDetailsWrapper(row: row, isActive:  self.$selectedModel)
         }
+
     }
 }
 
 struct WalletDetails_Previews: PreviewProvider {
     static var previews: some View {
-        return WalletDetails().environmentObject(ZECCWalletEnvironment.shared)
+        return WalletDetails(isActive: .constant(true)).environmentObject(ZECCWalletEnvironment.shared)
     }
 }
 
@@ -138,7 +168,7 @@ class MockWalletDetailViewModel: WalletDetailsViewModel {
     
     override init() {
         super.init()
-        self.items = DetailModel.mockDetails
+        
     }
     
 }
@@ -146,7 +176,7 @@ class MockWalletDetailViewModel: WalletDetailsViewModel {
 extension DetailModel {
     static var mockDetails: [DetailModel] {
         var items =  [DetailModel]()
-        for _ in 0 ... 5 {
+       
             items.append(contentsOf:
                 [
                     
@@ -183,7 +213,7 @@ extension DetailModel {
                     
                 ]
             )
-        }
+        
         return items
     }
 }

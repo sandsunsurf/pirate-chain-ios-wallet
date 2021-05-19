@@ -12,12 +12,12 @@ struct KeyPad: View {
     
     let keySize: CGFloat = 60
     let hSpacing: CGFloat = 50
-    let vSpacing: CGFloat = 20
+    let vSpacing: CGFloat = 16
     
     var viewModel: KeyPadViewModel
     
-    init(initialValue: Double = 0.0) {
-        self.viewModel = KeyPadViewModel(initialValue: initialValue)
+    init(value: Binding<String>) {
+        self.viewModel = KeyPadViewModel(value: value)
     }
     
     var body: some View {
@@ -28,15 +28,28 @@ struct KeyPad: View {
                     HStack(alignment: .center, spacing: self.hSpacing) {
                         ForEach(row, id: \.self) { pad in
                             HStack {
-                            Button(action: {
-                                self.viewModel.valuePressed(pad)
-                            }) {
-                                    Text(pad)
-                                    .font(.title)
+                                if pad == "<" {
+                                    Button(action: {
+                                        self.viewModel.valuePressed(pad)
+                                    }) {
+                                            Text(pad)
+                                            .font(.title)
 
-                            }
-                            .buttonStyle(KeyPadButtonStyle(size: self.keySize))
-//                                .cornerRadius(self.keySize/2)
+                                    }
+                                    .buttonStyle(KeyPadButtonStyle(size: self.keySize))
+                                    .simultaneousGesture(LongPressGesture().onEnded { _ in
+                                        self.viewModel.clear()
+                                    })
+                                } else {
+                                    Button(action: {
+                                        self.viewModel.valuePressed(pad)
+                                    }) {
+                                            Text(pad)
+                                            .font(.title)
+
+                                    }
+                                    .buttonStyle(KeyPadButtonStyle(size: self.keySize))
+                                }
                             }
                         }
                     }
@@ -68,9 +81,8 @@ struct KeyPadButtonStyle: ButtonStyle {
 
 class KeyPadViewModel: ObservableObject {
     
-    @Published var value: Double
-    
-    @Published var text: String
+    @Binding var value: String
+
     
     static var formatter: NumberFormatter {
        NumberFormatter.zecAmountFormatter
@@ -87,22 +99,10 @@ class KeyPadViewModel: ObservableObject {
     
     var validValues: Set<String> = ["1", "2", "3","4", "5", "6","7", "8", "9","0",KeyPadViewModel.formatter.currencyDecimalSeparator,"<"]
     
-    init(initialValue: Double = 0) {
-        
-        guard initialValue > 0 else {
-            text = ""
-            value = 0
-            return
-        }
-        
-        let number = NSNumber(value: initialValue)
-        
-        if let textValue = Self.formatter.string(from: number) {
-            text = textValue
-            value = initialValue
-        } else {
-            text = ""
-            value = 0
+    init(value: Binding<String>) {
+        self._value = value
+        if self.value.isEmpty {
+            self.value = "0"
         }
     }
     
@@ -117,6 +117,7 @@ class KeyPadViewModel: ObservableObject {
             numberTapped(text)
         }
     }
+    
     // this function assumes the given string contains a valid decimal number.
     func hasEightOrMoreDecimals(_ number: String) -> Bool {
         guard   Self.formatter.number(from: number) != nil, 
@@ -132,63 +133,60 @@ class KeyPadViewModel: ObservableObject {
     
     func numberTapped(_ number: String) {
         //catch leading zeros
-        if text == "0" {
+        if value == "0" {
             if number == "0" {
                 return
             } else {
-                text = ""
+                value = ""
             }
         }
         
-        guard !hasEightOrMoreDecimals(text) else {
+        guard !hasEightOrMoreDecimals(value) else {
             return
         }
         
-        let newText = text + number
+        let newText = value + number
         
-        guard let newValue = doubleFromText(newText) else {
+        guard let _ = doubleFromText(newText) else {
             return
         }
-        text = newText
-        value = newValue
+        value = newText
+        
     }
     
     
     func clear() {
-        text = ""
-        value = 0
+        value = "0"
     }
     
     func deleteTapped() {
-        guard text.count > 1 else {
+        guard value.count > 1 else {
             clear()
             return
         }
         
-        let startIndex = text.startIndex
-        let endIndex = text.index(startIndex, offsetBy: text.count - 1)
-        let newText = String(text[startIndex ..< endIndex])
+        let startIndex = value.startIndex
+        let endIndex = value.index(startIndex, offsetBy: value.count - 1)
+        let newText = String(value[startIndex ..< endIndex])
         
-        guard let newValue = doubleFromText(newText) else {
+        guard let _ = doubleFromText(newText) else {
             return
         }
         
-        text = newText
-        value = newValue
+        value = newText
     }
     
     func dotTapped() {
         
-        guard !text.contains(KeyPadViewModel.formatter.currencyDecimalSeparator) else { return }
+        guard !value.contains(KeyPadViewModel.formatter.currencyDecimalSeparator) else { return }
         
-        let newText = text + KeyPadViewModel.formatter.currencyDecimalSeparator
+        let newText = (value.isEmpty ? "0" : value) + KeyPadViewModel.formatter.currencyDecimalSeparator
         
-        guard let newValue = doubleFromText(newText) else {
+        guard let _ = doubleFromText(newText) else {
             return
         }
         
-        text = newText
-        value = newValue
+        value = newText
         
     }
     
@@ -202,7 +200,7 @@ struct KeyPad_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             ZcashBackground()
-            KeyPad()
+            KeyPad(value: .constant(""))
         }
     }
 }

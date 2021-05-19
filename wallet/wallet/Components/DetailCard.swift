@@ -21,6 +21,8 @@ struct DetailModel: Identifiable {
     var status: Status
     var shielded: Bool = true
     var memo: String? = nil
+    var minedHeight: Int = -1
+    var expirationHeight: Int = -1
     var title: String {
 
         switch status {
@@ -35,6 +37,12 @@ struct DetailModel: Identifiable {
     
 }
 
+extension DetailModel: Equatable {
+    static func == (lhs: DetailModel, rhs: DetailModel) -> Bool {
+        lhs.id == rhs.id
+    }
+}
+
 struct DetailCard: View {
  
     var model: DetailModel
@@ -42,7 +50,7 @@ struct DetailCard: View {
     
     var shieldImage: AnyView {
         
-        let view = model.shielded ? AnyView(Image("ic_shieldtick")) : AnyView(EmptyView())
+        let view = model.shielded ? AnyView(Image("ic_shieldtick").renderingMode(.original)) : AnyView(EmptyView())
         switch model.status {
         case .paid(let success):
             return success ? view : AnyView(EmptyView())
@@ -216,12 +224,13 @@ extension DetailModel {
         self.id = confirmedTransaction.transactionEntity.transactionId.toHexStringTxId()
         self.shielded = confirmedTransaction.toAddress?.isValidShieldedAddress ?? true
         self.status = sent ? .paid(success: confirmedTransaction.minedHeight > 0) : .received
-        self.subtitle = sent ? "Sent".localized() + " \(self.date.transactionDetail)" : "Received".localized() + " \(self.date.transactionDetail)"
+        self.subtitle = sent ? "wallet_history_sent".localized() + " \(self.date.transactionDetail)" : "Received".localized() + " \(self.date.transactionDetail)"
         self.zAddress = confirmedTransaction.toAddress
         self.zecAmount = (sent ? -Int64(confirmedTransaction.value) : Int64(confirmedTransaction.value)).asHumanReadableZecBalance()
         if let memo = confirmedTransaction.memo {
-            self.memo = String(bytes: memo, encoding: .utf8)
+            self.memo = memo.asZcashTransactionMemo()
         }
+        self.minedHeight = confirmedTransaction.minedHeight
     }
     init(pendingTransaction: PendingTransactionEntity, latestBlockHeight: BlockHeight? = nil) {
         let submitSuccess = pendingTransaction.isSubmitSuccess
@@ -231,7 +240,7 @@ extension DetailModel {
         self.id = pendingTransaction.rawTransactionId?.toHexStringTxId() ?? String(pendingTransaction.createTime)
         self.shielded = pendingTransaction.toAddress.isValidShieldedAddress
         self.status = .paid(success: submitSuccess)
-        
+        self.expirationHeight = pendingTransaction.expiryHeight
         self.subtitle = DetailModel.subtitle(isPending: isPending,
                                              isSubmitSuccess: submitSuccess,
                                              minedHeight: pendingTransaction.minedHeight,
@@ -240,23 +249,33 @@ extension DetailModel {
         self.zAddress = pendingTransaction.toAddress
         self.zecAmount = -Int64(pendingTransaction.value).asHumanReadableZecBalance()
         if let memo = pendingTransaction.memo {
-            self.memo = String(bytes: memo, encoding: .utf8)
+            self.memo = memo.asZcashTransactionMemo()
         }
+        self.minedHeight = pendingTransaction.minedHeight
     }
 }
 
 extension DetailModel {
+    var isSubmitSuccess: Bool {
+        switch status {
+        case .paid(let s):
+            return s
+        default:
+            return false
+        }
+    }
     
     static func subtitle(isPending: Bool, isSubmitSuccess: Bool, minedHeight: BlockHeight, date: String, latestBlockHeight: BlockHeight?) -> String {
         
         guard isPending else {
-            return "\("Sent".localized()) \(date)"
+            return "\("wallet_history_sent".localized()) \(date)"
         }
         
         guard minedHeight > 0, let latestHeight = latestBlockHeight, latestHeight > 0 else {
             return "Pending confirmation".localized()
         }
         
-        return "\(abs(latestHeight - minedHeight)) \("Confirmations".localized())"
+        return "\(abs(latestHeight - minedHeight)) \("of 10 Confirmations".localized())"
     }
 }
+    

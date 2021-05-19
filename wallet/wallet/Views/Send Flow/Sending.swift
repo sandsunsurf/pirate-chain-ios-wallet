@@ -13,7 +13,9 @@ import ZcashLightClientKit
 struct Sending: View {
     
     @EnvironmentObject var flow: SendFlowEnvironment
+    @State var details: DetailModel? = nil
     
+    var loading = LottieAnimation(filename: "lottie_sending")
     var errorMessage: String {
         guard let e = flow.error else {
             return "thing is that we really don't know what just went down, sorry!"
@@ -21,73 +23,31 @@ struct Sending: View {
         
         return "\(e)"
     }
-    var sendGerund: String {
-        "Sending"
-    }
-    
-    var sendPastTense: String {
-        "Sent"
-    }
-    
+ 
     var showErrorAlert: Alert {
-        var errorMessage = "an error ocurred while submitting your transaction"
+        var errorMessage = "Oops. An error ocurred while submitting your transaction."
         
         if let error = self.flow.error {
             errorMessage = "\(ZECCWalletEnvironment.mapError(error: error) )"
         }
         return Alert(title: Text("Error"),
-              message: Text(errorMessage),
-              dismissButton: .default(
-                Text("close"),
-                action: {
-                    self.flow.close()
-                    
-              }
+                     message: Text(errorMessage),
+                     dismissButton: .default(
+                        Text("button_close"),
+                        action: {
+                            self.flow.close()
+                            
+                     }
             )
         )
     }
     
-    var sendText: String {
+    var sendText: some View {
         guard flow.error == nil else {
-            return "Unable to send"
+            return Text("label_unabletosend")
         }
         
-        return flow.isDone ? sendPastTense : sendGerund
-    }
-    
-    var includesMemoView: AnyView {
-        guard flow.includesMemo else { return AnyView(EmptyView()) }
-        return  AnyView(
-            HStack {
-                ZcashCheckCircle(isChecked: .constant(flow.includesMemo),externalRingColor: .clear, backgroundColor: .black)
-                    .disabled(true)
-                Text("Includes memo")
-                    .foregroundColor(.black)
-                    .font(.footnote)
-            }
-        )
-    }
-    
-    var doneButton: AnyView {
-        guard flow.isDone else { return AnyView(EmptyView()) }
-        return AnyView(
-            Text("Done")
-                .foregroundColor(.black)
-                .zcashButtonBackground(shape: .roundedCorners(fillStyle: .outline(color: Color.black, lineWidth: 2)))
-                .frame(height: 58)
-        )
-    }
-    
-    
-    
-    var card: AnyView {
-        guard let pendingTx = flow.pendingTx else {
-            return AnyView(EmptyView())
-        }
-        return AnyView(
-            DetailCard(model: DetailModel(pendingTransaction: pendingTx))
-            .frame(height: 69)
-        )
+        return flow.isDone ? Text("send_sent") : Text(String(format: NSLocalizedString("send_sending", comment: ""), flow.amount))
     }
     
     var body: some View {
@@ -95,7 +55,7 @@ struct Sending: View {
             ZcashBackground.amberGradient
             VStack(alignment: .center, spacing: 40) {
                 Spacer()
-                Text("\(sendText.localized()) \(flow.amount) \("ZEC to".localized())")
+                sendText
                     .foregroundColor(.black)
                     .font(.title)
                 Text("\(flow.address)")
@@ -103,45 +63,57 @@ struct Sending: View {
                     .foregroundColor(.black)
                     .font(.title)
                     .lineLimit(1)
-                includesMemoView
-                Spacer()
-                Button(action: {
-                    tracker.track(.tap(action: .sendFinalClose), properties: [:])
-                    self.flow.close()
-                }) {
-                    doneButton
-                }
-                card
                 
+                if !flow.isDone {
+                    loading
+                        .frame(height: 48)
+                    
+                }
+                Spacer()
+                if self.flow.isDone && self.flow.pendingTx != nil {
+                    Button(action: {
+                        guard let pendingTx = self.flow.pendingTx  else {
+                            
+                            tracker.track(.error(severity: .warning), properties: [ErrorSeverity.messageKey : "Attempt to open transaction details in sending screen with no pending transaction in send flow"])
+                            self.flow.close() // close this so it does not get stuck here
+                            return
+                        }
+                        
+                        let latestHeight = ZECCWalletEnvironment.shared.synchronizer.syncBlockHeight.value
+                        self.details = DetailModel(pendingTransaction: pendingTx,latestBlockHeight: latestHeight)
+                        tracker.track(.tap(action: .sendFinalDetails), properties: [:])
+                        
+                    }) {
+                        Text("button_seedetails")
+                            .foregroundColor(.black)
+                            .zcashButtonBackground(shape: .roundedCorners(fillStyle: .outline(color: Color.black, lineWidth: 2)))
+                            .frame(height: 58)
+                    }
+                }
+                
+                if flow.isDone {
+                    Button(action: {
+                        tracker.track(.tap(action: .sendFinalClose), properties: [:])
+                        self.flow.close()
+                    }) {
+                        Text("button_done")
+                            .foregroundColor(.black)
+                            .frame(height: 58)
+                    }
+                }
             }
             .padding([.horizontal, .bottom], 40)
-            
-        }.navigationBarItems(trailing: Button(action: {
-            tracker.track(.tap(action: .sendFinalClose), properties: [:])
-            self.flow.close()
-        }) {
-            Image("close")
-                .renderingMode(.original)
-        }.disabled(!self.flow.isDone)
-            .opacity(self.flow.isDone ? 1.0 : 0.0)
-        )
+        }
+        .sheet(item: $details, onDismiss: { self.flow.close() }){ item in
+            TxDetailsWrapper(row: item, isActive: self.$details)
+        }
         .alert(isPresented: self.$flow.showError) {
             showErrorAlert
         }
         .onAppear() {
             tracker.track(.screen(screen: .sendFinal), properties: [:])
+            self.loading.play(loop: true)
             self.flow.send()
         }
     }
 }
-//
-//struct Sending_Previews: PreviewProvider {
-//    static var previews: some View {
-//        
-//        let flow = SendFlowEnvironment(amount: 1.234, verifiedBalance: 23.456, isActive: .constant(true))
-//        flow.address = "Ztestsapling1ctuamfer5xjnnrdr3xdazenljx0mu0gutcf9u9e74tr2d3jwjnt0qllzxaplu54hgc2tyjdc2p6"
-//        flow.includesMemo = true
-//        flow.isDone = false
-//        return Sending().environmentObject(flow)
-//    }
-//}

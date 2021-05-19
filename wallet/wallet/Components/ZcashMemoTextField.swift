@@ -31,6 +31,24 @@ struct ZcashMemoTextField: View {
     var body: some View {
         ZStack{
             ZStack(alignment: .bottom){
+                VStack(alignment: .leading, spacing: 0) {
+                    HStack {
+                        Text("\("label_memo".localized()):")
+                            .foregroundColor(isHighlighted ? inactiveColor : .white)
+                        Text("label_add_memo")
+                            .foregroundColor(inactiveColor)
+                            .opacity(self.text.isEmpty ? 1 : 0)
+                            .allowsHitTesting(false)
+                        
+                        Spacer()
+                        }
+
+                
+                    Spacer()
+                        .frame(height: textHeight)
+                     
+                }
+                .edgesIgnoringSafeArea(.all)
                 VStack(alignment: .trailing, spacing: 0) {
                     TextView(placeholder: "",
                              text: $text,
@@ -46,35 +64,19 @@ struct ZcashMemoTextField: View {
                         )
 
                     HStack {
-                        Text(String(format:NSLocalizedString("%@ chars",comment:""), "\($text.wrappedValue.count)/\(charLimit)"))
+                        Text(String(format:NSLocalizedString("label_charactercount",comment:""), "\($text.wrappedValue.count)/\(charLimit)"))
                         .font(.footnote)
                         .foregroundColor(inactiveColor)
                         
                         Spacer()
                         Toggle(isOn: $includesReplyTo) {
-                            Text("includes reply to")
+                            Text("label_replyto")
                         }
                     .toggleStyle(SquareToggleStyle(isHighlighted: $includesReplyTo))
                     }
-                        .padding(4)
+                    .padding(4)
                 }
-                VStack(alignment: .leading, spacing: 0) {
-                    HStack {
-                        Text("MEMO:")
-                            .foregroundColor(isHighlighted ? inactiveColor : .white)
-                        Text("Add Memo (optional)")
-                            .foregroundColor(inactiveColor)
-                            .opacity(self.text.isEmpty ? 1 : 0)
-                        
-                        Spacer()
-                        }
-
                 
-                    Spacer()
-                        .frame(height: textHeight)
-                     
-                }
-                .edgesIgnoringSafeArea(.all)
                 }
             .padding(0)
         }

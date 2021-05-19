@@ -20,21 +20,20 @@ class SendFlow {
             return
         }
         
-        current.isActive = false
+        current.close()
         
         Self.current = nil
     }
     
     @discardableResult static func start(appEnviroment: ZECCWalletEnvironment,
                       isActive: Binding<Bool>,
-                      amount: Double,
-                      sendTo: String?) -> SendFlowEnvironment {
+                      amount: Double) -> SendFlowEnvironment {
 
         let flow = SendFlowEnvironment(amount: amount,
                                        verifiedBalance: appEnviroment.initializer.getVerifiedBalance().asHumanReadableZecBalance(),
-                                       address: sendTo ?? "",
                                        isActive: isActive)
         Self.current = flow
+        NotificationCenter.default.post(name: .sendFlowStarted, object: nil)
         return flow
     }
 }
@@ -76,6 +75,8 @@ final class SendFlowEnvironment: ObservableObject {
                        switch completion {
                        case .failure(let error):
                            logger.error("error scanning: \(error)")
+                           tracker.track(.error(severity: .noncritical), properties:  [ErrorSeverity.messageKey : "\(error)"])
+                           self.error = error
                        case .finished:
                            logger.debug("finished scanning")
                        }
@@ -107,20 +108,28 @@ final class SendFlowEnvironment: ObservableObject {
 
     func send() {
         guard !txSent else {
-            logger.error("attempt to send tx twice")
+            let message = "attempt to send tx twice"
+            logger.error(message)
+            tracker.track(.error(severity: .critical), properties:  [ErrorSeverity.messageKey : message])
+            self.error = FlowError.duplicateSent
+            self.showError = true
+            self.isDone = true
             return
         }
         let environment = ZECCWalletEnvironment.shared
         guard let zatoshi = doubleAmount?.toZatoshi(),
             environment.isValidAddress(self.address),
-            let spendingKey = SeedManager.default.getKeys()?.first,
+            let phrase = try? SeedManager.default.exportPhrase(),
+            let seedBytes = try? MnemonicSeedProvider.default.toSeed(mnemonic: phrase),
+            let spendingKey = try? DerivationTool.default.deriveSpendingKeys(seed: seedBytes, numberOfAccounts: 1).first,
             let replyToAddress = environment.initializer.getAddress() else {
                 self.error = FlowError.invalidEnvironment
                 self.showError = true
                 self.isDone = true
                 return
         }
-
+        
+        UserSettings.shared.lastUsedAddress = self.address
         environment.synchronizer.send(
             with: spendingKey,
             zatoshi: zatoshi,
@@ -145,9 +154,10 @@ final class SendFlowEnvironment: ObservableObject {
                     logger.error("\(error)")
                     self.error = error
                     self.showError = true
-                    SendFlow.end()
+                    tracker.track(.error(severity: .critical), properties:  [ErrorSeverity.messageKey : "\(ZECCWalletEnvironment.mapError(error: error))"])
+                    
                 }
-                // fix me:                
+                // fix me:
                 self.isDone = true
                 
             }) { [weak self] (transaction) in
@@ -213,4 +223,6 @@ final class SendFlowEnvironment: ObservableObject {
 
 extension Notification.Name {
     static let sendFlowClosed = Notification.Name("sendFlowClosed")
+    static let sendFlowStarted = Notification.Name("sendFlowStarted")
 }
+
