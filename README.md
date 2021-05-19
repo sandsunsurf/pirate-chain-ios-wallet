@@ -30,7 +30,7 @@ for more information about the security and privacy limitations of the wallet.
 
 2. Create `env-vars.sh file` at `${SRCROOT}` [See Instructions](https://github.com/zcash/ZcashLightClientKit#setting-env-varsh-file-to-run-locally)
 
-3. make sure that your environment has the variable `ZCASH_NETWORK_ENVIRONMENT` set to`MAINNET`or `TESTNET`.
+3. make sure that your environment has the variable `ZCASH_NETWORK_ENVIRONMENT` set to`MAINNET`.
 
 4. Navigate to the wallet directory where the `Podfile` file is located and run `pod install`. If pod packages are already installed, and need to update the pod packages, then execute command `pod update`.
 
@@ -70,7 +70,7 @@ You can implement your own tracker proxy
 
 ### No network environment....
 if you see this message when building:
-```No network environment. Set ZCASH_NETWORK_ENVIRONMENT to MAINNET or TESTNET```
+```No network environment. Set ZCASH_NETWORK_ENVIRONMENT to MAINNET```
 make sure your dev environment has this variable set before the build starts. *DO NOT CHANGE IT DURING THE BUILD PROCESS*.
 
 If the variable was properly set *after* you've seen this message, you will need to either a) set it manually on the pod's target or b) doing a clean pod install and subsequent build.
@@ -83,7 +83,7 @@ To set the environment variable `ZCASH_NETWORK_ENVIRONMENT`'s value, make sure t
 1. on your workspace, select the Pods project
 2. on the Targets pane, select ZcashLightClientKit
 3. go to build settings
-4. scroll down to see ZCASH_NETWORK_ENVIRONMENT and complete with TESTNET or MAINNET
+4. scroll down to see ZCASH_NETWORK_ENVIRONMENT and complete with MAINNET
 
 #### Transparent address is not showing in right format as per KMD's chain params
 After the `pod install` or `pod upgrade` step, go to `zcash-ios-wallet/wallet/Pods/ZcashLightClientKit` and execute the command `cargo build` inside there.
