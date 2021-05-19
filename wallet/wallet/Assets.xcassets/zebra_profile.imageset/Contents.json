@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "vectr512.png",
+      "filename" : "Pirate_Logo_Ship_Gold.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "vectr512-1.png",
+      "filename" : "Pirate_Logo_Ship_Gold-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "vectr512-2.png",
+      "filename" : "Pirate_Logo_Ship_Gold-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
