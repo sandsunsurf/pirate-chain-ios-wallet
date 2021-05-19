@@ -8,6 +8,9 @@ PODS:
   - CNIOHTTPParser (2.27.0)
   - CNIOLinux (2.27.0)
   - CNIOWindows (2.27.0)
+  - CocoaLumberjack/Core (3.7.2)
+  - CocoaLumberjack/Swift (3.7.2):
+    - CocoaLumberjack/Core
   - gRPC-Swift (1.0.0):
     - CGRPCZlib (= 1.0.0)
     - Logging (< 2.0.0, >= 1.4.0)
@@ -67,6 +70,8 @@ PODS:
   - ZcashLightClientKit (0.11.0-alpha.2):
     - gRPC-Swift (= 1.0.0)
     - SQLite.swift (~> 0.12.2)
+  - zealous-logger (1.0.0):
+    - CocoaLumberjack/Swift (~> 3.7.0)
 
 DEPENDENCIES:
   - gRPC-Swift (= 1.0.0)
@@ -75,6 +80,7 @@ DEPENDENCIES:
   - MnemonicSwift (from `https://github.com/zcash-hackworks/MnemonicSwift.git`, branch `master`)
   - TinyQRScanner
   - ZcashLightClientKit (from `https://github.com/Meshbits/ZcashLightClientKit.git`, branch `shield-funds-poc`)
+  - zealous-logger (from `https://github.com/zcash-hackworks/zealous-logger`, branch `master`)
 
 SPEC REPOS:
   trunk:
@@ -86,6 +92,7 @@ SPEC REPOS:
     - CNIOHTTPParser
     - CNIOLinux
     - CNIOWindows
+    - CocoaLumberjack
     - gRPC-Swift
     - KeychainSwift
     - Logging
@@ -111,6 +118,9 @@ EXTERNAL SOURCES:
   ZcashLightClientKit:
     :branch: shield-funds-poc
     :git: https://github.com/Meshbits/ZcashLightClientKit.git
+  zealous-logger:
+    :branch: master
+    :git: https://github.com/zcash-hackworks/zealous-logger
 
 CHECKOUT OPTIONS:
   MnemonicSwift:
@@ -119,6 +129,9 @@ CHECKOUT OPTIONS:
   ZcashLightClientKit:
     :commit: a651ce151a91a8675f7a363eb7cd8eb5b30684d0
     :git: https://github.com/Meshbits/ZcashLightClientKit.git
+  zealous-logger:
+    :commit: c9f8d8d9f74a456094b9143616da3b4eba91ddcf
+    :git: https://github.com/zcash-hackworks/zealous-logger
 
 SPEC CHECKSUMS:
   CGRPCZlib: b0c9d704a12fa667f1824ffff20688f191945989
@@ -129,6 +142,7 @@ SPEC CHECKSUMS:
   CNIOHTTPParser: c6051552c5f332e4ec0756581e5cbd5632ca24e6
   CNIOLinux: 79227941d64216792c3c59238b0106b9e0df25bc
   CNIOWindows: f2baa102255e986467578337ffa2f777cb6bdf7f
+  CocoaLumberjack: b7e05132ff94f6ae4dfa9d5bce9141893a21d9da
   gRPC-Swift: 77154009a019e97f8c4bd8f2bb75fe9726801157
   KeychainSwift: a06190cf933ad46b1e0abc3d77d29c06331715c7
   Logging: beeb016c9c80cf77042d62e83495816847ef108b
@@ -148,7 +162,8 @@ SPEC CHECKSUMS:
   SwiftProtobuf: 9c85136c6ba74b0a1b84279dbf0f6db8efb714e0
   TinyQRScanner: 4077088ff2e8d476af79e6035413648c2c7900ef
   ZcashLightClientKit: 3f49e6094737822ae2c5b73ba8ac6775399308e2
+  zealous-logger: 2f33820d7d7e723796dabc51d60942b51b9ab024
 
-PODFILE CHECKSUM: c1f33b59f6fa77d5d3d594576fda6ea52984405f
+PODFILE CHECKSUM: 60da11e8bdbf5574c3bf15b219ef82a893fd5d20
 
 COCOAPODS: 1.10.1

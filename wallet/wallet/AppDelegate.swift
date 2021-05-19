@@ -8,10 +8,10 @@
 
 import UIKit
 import BackgroundTasks
-
+import zealous_logger
 
 let tracker = NullLogger()
-let logger = SimpleLogger(logLevel: .debug)
+let logger = SimpleFileLogger(logsDirectory: try! URL.logsDirectory(), alsoPrint: true, level: .debug)
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {  

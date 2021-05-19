@@ -32,6 +32,7 @@ struct ProfileScreen: View {
     @State var showingSheet: Bool = false
     @State var shareItem: ShareItem? = nil
     @State var destination: Destination?
+    @State private var showingTempAlert = false
     
     var body: some View {
         NavigationView {
@@ -93,6 +94,16 @@ struct ProfileScreen: View {
                             self.showingSheet = true
                         }){
                             Text("Rescan Wallet".localized())
+                                .foregroundColor(.zYellow)
+                                .zcashButtonBackground(shape: .roundedCorners(fillStyle: .outline(color: .zYellow, lineWidth: 1)))
+                                .frame(height: ScreenConstants.buttonHeight)
+                        }
+                        
+                        Button(action: {
+                            showingTempAlert = true
+
+                        }){
+                            Text("My Profile".localized())
                                 .foregroundColor(.zYellow)
                                 .zcashButtonBackground(shape: .roundedCorners(fillStyle: .outline(color: .zYellow, lineWidth: 1)))
                                 .frame(height: ScreenConstants.buttonHeight)
@@ -189,6 +200,11 @@ struct ProfileScreen: View {
             .alert(item: self.$alertItem, content: { a in
                 a.asAlert()
             })
+            .alert(isPresented: $showingTempAlert) { () -> Alert in
+                Alert(title: Text("My Profile"), message: Text("WIP - Will lead to my profile"), dismissButton: .default(Text("Ok")))
+            }
+            .edgesIgnoringSafeArea(.all)
+
             .navigationBarTitle("", displayMode: .inline)
             .navigationBarHidden(false)
             .navigationBarItems(trailing: ZcashCloseButton(action: {

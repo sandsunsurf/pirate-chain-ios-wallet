@@ -321,10 +321,13 @@ struct Home: View {
                             tracker.track(.tap(action: .showProfile), properties: [:])
                             self.viewModel.destination = .profile
                         }) {
-                            Image("person_pin-24px")
-                                .renderingMode(.original)
+                            Image("settings")
+                                .renderingMode(.template)
+                                .foregroundColor(.white)
+                                .colorMultiply(.white)
                                 .opacity(0.6)
-                                .accessibility(label: Text("Your Profile"))
+                                .frame(width: 26, height: 26)
+                                .accessibility(label: Text("Your Settings"))
                                 .padding()
                         }
                 })
