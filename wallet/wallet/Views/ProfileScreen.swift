@@ -18,6 +18,7 @@ struct ProfileScreen: View {
     enum Destination: Int, Identifiable, Hashable {
         case feedback
         case seedBackup
+        case visitPasscode
         case nuke
         var id: Int {
             return self.rawValue
@@ -32,8 +33,9 @@ struct ProfileScreen: View {
     @State var showingSheet: Bool = false
     @State var shareItem: ShareItem? = nil
     @State var destination: Destination?
-    @State private var showingTempAlert = false
-    
+    @State private var displayAnAlertAfterPasscode = false
+    @Binding public var showModal: Bool
+
     var body: some View {
         NavigationView {
             ZStack {
@@ -99,10 +101,16 @@ struct ProfileScreen: View {
                                 .frame(height: ScreenConstants.buttonHeight)
                         }
                         
-                        Button(action: {
-                            showingTempAlert = true
-
-                        }){
+                        NavigationLink(destination: LazyView(
+                            InputPasscodeScreen(callBackHandler: { (aString, aBool: (Bool) -> Void) in
+                                
+                                displayAnAlertAfterPasscode = true
+                                print("Pass Code in here>>>>")
+                                print(aString)
+                                
+                            }).environmentObject(ZECCWalletEnvironment.shared)
+                        ), tag: Destination.visitPasscode, selection: $destination) {
+                                        
                             Text("My Profile".localized())
                                 .foregroundColor(.zYellow)
                                 .zcashButtonBackground(shape: .roundedCorners(fillStyle: .outline(color: .zYellow, lineWidth: 1)))
@@ -200,8 +208,8 @@ struct ProfileScreen: View {
             .alert(item: self.$alertItem, content: { a in
                 a.asAlert()
             })
-            .alert(isPresented: $showingTempAlert) { () -> Alert in
-                Alert(title: Text("My Profile"), message: Text("WIP - Will lead to my profile"), dismissButton: .default(Text("Ok")))
+            .alert(isPresented: $displayAnAlertAfterPasscode) { () -> Alert in
+                Alert(title: Text("Passcode"), message: Text("You have set a passcode"), dismissButton: .default(Text("Ok")))
             }
             .edgesIgnoringSafeArea(.all)
 
@@ -220,8 +228,9 @@ struct ProfileScreen: View {
     }
 }
 
-//struct ProfileScreen_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ProfileScreen(isShown: .constant(nill)).environmentObject(ZECCWalletEnvironment.shared)
-//    }
-//}
+struct ProfileScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        ZcashBackground()
+        ProfileScreen(showModal: .constant(true)).environmentObject(ZECCWalletEnvironment.shared)
+    }
+}

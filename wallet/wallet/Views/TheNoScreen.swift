@@ -16,10 +16,11 @@ struct TheNoScreen: View {
     @ViewBuilder func theUnscreen() -> some View {
         ZStack(alignment: .center) {
             ZcashBackground.amberSplashScreen
-            ZcashLogo(fillStyle: Color.black)
-                .frame(width: 167,
-                       height: 167,
-                       alignment: .center)
+            Image("splash_icon")
+                .scaledToFit()
+                .frame(alignment: .center)
+                .padding(5)
+            
         }
         .navigationBarHidden(true)
         .onAppear() {

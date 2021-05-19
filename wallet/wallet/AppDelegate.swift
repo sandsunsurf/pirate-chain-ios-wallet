@@ -9,6 +9,7 @@
 import UIKit
 import BackgroundTasks
 import zealous_logger
+//import IQKeyboardManagerSwift
 
 let tracker = NullLogger()
 let logger = SimpleFileLogger(logsDirectory: try! URL.logsDirectory(), alsoPrint: true, level: .debug)
@@ -39,6 +40,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         #endif
        
+//        IQKeyboardManager.shared.enable = true
+
         return true
     }
     
