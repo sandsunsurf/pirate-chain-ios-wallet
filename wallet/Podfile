@@ -2,6 +2,7 @@ platform :ios, '13.0'
 use_frameworks!
 
 def base_pods
+  # pod 'ZcashLightClientKit', :path => '../'
   pod 'ZcashLightClientKit', :git => 'https://github.com/Meshbits/ZcashLightClientKit', :branch => 'v10'
   pod 'gRPC-Swift', '= 1.0.0-alpha.19'
   pod 'KeychainSwift', '~> 19.0.0'
@@ -38,7 +39,7 @@ post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
       if target.name == 'ZcashLightClientKit'
-         config.build_settings['ZCASH_NETWORK_ENVIRONMENT'] = ENV["ZCASH_NETWORK_ENVIRONMENT"]
+         config.build_settings['ZCASH_NETWORK_ENVIRONMENT'] = ENV["ZCASH_NETWORK_ENVIRONMENT"] = "MAINNET"
       end
       config.build_settings['ENABLE_BITCODE'] = 'NO'
     end
