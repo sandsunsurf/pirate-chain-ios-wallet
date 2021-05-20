@@ -101,6 +101,7 @@ extension Color {
     /// \#979797  Color(red:0.59, green:0.59, blue:0.59)
     static let zHoldButtonGray = Color(red:0.59, green:0.59, blue:0.59)
     
+    static let pGoldenColor = Color(red: 218/255, green: 165/255, blue: 32/255, opacity: 0.081)
 }
 
 extension Gradient {

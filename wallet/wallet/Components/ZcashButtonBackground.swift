@@ -10,6 +10,7 @@ import SwiftUI
 
 enum ZcashFillStyle {
     case gradient(gradient: LinearGradient)
+    case gradientRadiant(gradient: RadialGradient)
     case solid(color: Color)
     case outline(color: Color, lineWidth: CGFloat)
     
@@ -17,6 +18,8 @@ enum ZcashFillStyle {
         switch self {
         case .gradient(let g):
             return AnyView (s.fill(g))
+        case .gradientRadiant(let g):
+                   return AnyView (s.fill(g))
         case .solid(let color):
             return AnyView(s.fill(color))
         case .outline(color: let color, lineWidth: let lineWidth):
@@ -137,5 +140,12 @@ extension LinearGradient {
             gradient: Gradient(colors: [Color.zAmberGradient3, Color.zAmberGradient4]),
             startPoint: UnitPoint(x: 0, y: 0.5),
             endPoint: UnitPoint(x: 1, y: 0.5))
+    }
+}
+
+
+extension RadialGradient {
+    static var zButtonRadialGradient: RadialGradient {
+        RadialGradient(gradient: Gradient(colors: [.pGoldenColor,.white]), center: .center, startRadius: 100, endRadius: 400)
     }
 }

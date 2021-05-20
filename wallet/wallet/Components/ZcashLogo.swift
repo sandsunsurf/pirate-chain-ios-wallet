@@ -32,7 +32,7 @@ struct ZcashLogo: View {
                 .frame(width: 167, height: 167, alignment: .center)
                 .padding(20)
             VStack (alignment: .center) {
-                ZcashSymbol()
+                PirateSymbol()
                     .fill(fillGradient)
                     .frame(width: 100, height: 105, alignment: .center)
                 
