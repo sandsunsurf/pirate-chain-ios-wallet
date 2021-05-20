@@ -49,7 +49,7 @@ extension ZcashBackground {
         ZcashBackground(colors: [Color.zAmberGradient0, .zAmberGradient3, .zAmberGradient4])
     }
     static var pureBlack: ZcashBackground {
-           ZcashBackground(colors: [Color.zAmberGradient0])
+           ZcashBackground(colors: [Color.black])
     }
 }
 struct Background_Previews: PreviewProvider {

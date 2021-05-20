@@ -289,9 +289,12 @@ struct Home: View {
                             self.viewModel.showProfile = true
                         }) {
                             Image("settings")
-                                .renderingMode(.original)
+                                .renderingMode(.template)
+                                .foregroundColor(.white)
+                                .colorMultiply(.white)
                                 .opacity(0.6)
-                                .accessibility(label: Text("Your Profile"))
+                                .frame(width: 26, height: 26)
+                                .accessibility(label: Text("Your Settings"))
                                 .padding()
                         }
                         .sheet(isPresented: $viewModel.showProfile){

@@ -21,7 +21,10 @@ struct ProfileScreen: View {
     @State var isFeedbackActive = false
     var body: some View {
         NavigationView {
-            ZStack {
+            ZStack(alignment: .center) {
+                
+                ZcashBackground.pureBlack
+             
                 VStack(alignment: .center, spacing: 16) {
                     Button(action: {
                         tracker.track(.tap(action: .copyAddress),
@@ -101,10 +104,10 @@ struct ProfileScreen: View {
                             .zcashButtonBackground(shape: .roundedCorners(fillStyle: .outline(color: .red, lineWidth: 1)))
                             .frame(height: Self.buttonHeight)
                     }
-                }
+                }.padding(.horizontal, Self.horizontalPadding)
+                .padding(.bottom, 30)
             }
-            .padding(.horizontal, Self.horizontalPadding)
-            .padding(.bottom, 30)
+            
             .alert(item: self.$copiedValue) { (p) -> Alert in
                 PasteboardAlertHelper.alert(for: p)
             }
@@ -121,6 +124,7 @@ struct ProfileScreen: View {
                 self.isShown = false
             }).frame(width: 30, height: 30))
         }
+        .background(Color.black)
         .navigationBarTitle("", displayMode: .inline)
         .navigationBarHidden(false)
         .navigationBarItems(trailing: ZcashCloseButton(action: {

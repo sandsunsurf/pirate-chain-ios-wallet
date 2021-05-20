@@ -105,19 +105,7 @@ struct InputPasscodeWithCustomPad: View {
          
             NavigationView{
                 VStack{
-//                    if status{
-//                        Home()
-//                    }
-//                    else{
-//
-//
-//
-//
-//
-//                        if isPassCodeEntered == true {
-//
-//                        }
-//
+
                         VStack{
                             Spacer()
                             Text(!isPassCodeEntered ? aPasscodeTitle : aConfirmPasscode).font(.title)
@@ -130,10 +118,7 @@ struct InputPasscodeWithCustomPad: View {
                             
                             CustomNumberPad(uniqueCodes: $aUniqueCode,customDigits: $customDigits)
                         }
-                        
-                        
-//                    }
-                    
+                 
                 }.onAppear {
 
                     if customDigits.isEmpty {
@@ -148,7 +133,7 @@ struct InputPasscodeWithCustomPad: View {
                 
             }.preferredColorScheme(.dark)
             .animation(.spring())
-        }
+        }.background(Color.black)
         
        
         
