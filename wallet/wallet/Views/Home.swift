@@ -288,7 +288,7 @@ struct Home: View {
                             tracker.track(.tap(action: .showProfile), properties: [:])
                             self.viewModel.showProfile = true
                         }) {
-                            Image("person_pin-24px")
+                            Image("settings")
                                 .renderingMode(.original)
                                 .opacity(0.6)
                                 .accessibility(label: Text("Your Profile"))

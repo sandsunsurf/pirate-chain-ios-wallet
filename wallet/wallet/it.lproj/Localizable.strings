@@ -125,3 +125,13 @@ Stai per distruggere il tuo Wallet. Sei sicuro di voler procedere?";
 //FeedBackForm
 "Feedback Sent!" = "Feedback Sent!";
 "Thanks for your feedback!" = "Thanks for your feedback!";
+
+
+//InputPasscodeWithCustomPad
+"Enter a Passcode" = "Enter a Passcode";
+"Confirm Passcode" = "Confirm Passcode";
+
+
+//InputPasscodeWithCustomPad
+"Enter a Passcode" = "Enter a Passcode";
+"Confirm Passcode" = "Confirm Passcode";

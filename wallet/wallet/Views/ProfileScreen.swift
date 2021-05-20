@@ -72,6 +72,17 @@ struct ProfileScreen: View {
                         
                     }
                     
+                    NavigationLink(destination: LazyView(
+                        InputPasscodeWithCustomPad().environmentObject(ZECCWalletEnvironment.shared))
+                    ) {
+                                    
+                        Text("My Profile".localized())
+                            .foregroundColor(.zYellow)
+                            .zcashButtonBackground(shape: .roundedCorners(fillStyle: .outline(color: .zYellow, lineWidth: 1)))
+                            .frame(height:  Self.buttonHeight)
+                    }
+                    
+                    
                     ActionableMessage(message: "\("Nighthawk Wallet".localized()) v\(ZECCWalletEnvironment.appVersion ?? "Unknown")", actionText: "Build \(ZECCWalletEnvironment.appBuild ?? "Unknown")", action: {})
                         .disabled(true)
                     

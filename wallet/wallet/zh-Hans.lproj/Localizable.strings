@@ -90,3 +90,8 @@
 "nuke_alertmessage" = "You are about to nuke your wallet. Are you sure you want to proceed?";
 "nuke_alertcancel" = "I'm not sure";
 "nuke_alertconfirm" = "NUKE WALLET!";
+
+
+//InputPasscodeWithCustomPad
+"Enter a Passcode" = "Enter a Passcode";
+"Confirm Passcode" = "Confirm Passcode";

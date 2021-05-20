@@ -9,6 +9,7 @@
 import Foundation
 import ZcashLightClientKit
 import os
+import zealous_logger
 
 class SimpleLogger: ZcashLightClientKit.Logger {
     enum LogLevel: Int {
@@ -72,9 +73,7 @@ class SimpleLogger: ZcashLightClientKit.Logger {
     
 }
 
-#if ENABLE_LOGGING
 
-import zealous_logger
 class SimpleFileLogger: ZcashLightClientKit.Logger {
     
     let logger: zealous_logger.Logger
@@ -104,5 +103,3 @@ class SimpleFileLogger: ZcashLightClientKit.Logger {
     }
     
 }
-
-#endif

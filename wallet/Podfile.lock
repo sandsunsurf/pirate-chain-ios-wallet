@@ -22,9 +22,6 @@ PODS:
   - KeychainSwift (19.0.0)
   - Logging (1.4.0)
   - lottie-ios (3.2.3)
-  - Mixpanel-swift (2.9.3):
-    - Mixpanel-swift/Complete (= 2.9.3)
-  - Mixpanel-swift/Complete (2.9.3)
   - MnemonicSwift (2.0.0)
   - SQLite.swift (0.12.2):
     - SQLite.swift/standard (= 0.12.2)
@@ -77,7 +74,6 @@ DEPENDENCIES:
   - gRPC-Swift (= 1.0.0-alpha.19)
   - KeychainSwift (~> 19.0.0)
   - lottie-ios
-  - Mixpanel-swift
   - MnemonicSwift (from `https://github.com/zcash-hackworks/MnemonicSwift.git`, branch `master`)
   - TinyQRScanner
   - ZcashLightClientKit (from `https://github.com/Meshbits/ZcashLightClientKit`, branch `v10`)
@@ -98,7 +94,6 @@ SPEC REPOS:
     - KeychainSwift
     - Logging
     - lottie-ios
-    - Mixpanel-swift
     - SQLite.swift
     - SwiftNIO
     - SwiftNIOConcurrencyHelpers
@@ -148,7 +143,6 @@ SPEC CHECKSUMS:
   KeychainSwift: a06190cf933ad46b1e0abc3d77d29c06331715c7
   Logging: beeb016c9c80cf77042d62e83495816847ef108b
   lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
-  Mixpanel-swift: 05ab116526c72e0e66a6a2feb9005e933c414347
   MnemonicSwift: 36384fc6b2640d93df9fe9fb60a8da7957cec36d
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
   SwiftNIO: 81d33ce8c500b7e41b6cdde5f2f12330b9750219
@@ -165,6 +159,6 @@ SPEC CHECKSUMS:
   ZcashLightClientKit: a1a36be74ca95e2802ba3d6bcc40e9b2753eb0da
   zealous-logger: 2f33820d7d7e723796dabc51d60942b51b9ab024
 
-PODFILE CHECKSUM: c1871ae808e50d5262521bdd49ca325c6e85bbcc
+PODFILE CHECKSUM: d009657fbfd7a902f009e119ec6528301e8b69a7
 
 COCOAPODS: 1.10.1

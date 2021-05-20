@@ -48,6 +48,9 @@ extension ZcashBackground {
     static var amberSplashScreen: ZcashBackground {
         ZcashBackground(colors: [Color.zAmberGradient0, .zAmberGradient3, .zAmberGradient4])
     }
+    static var pureBlack: ZcashBackground {
+           ZcashBackground(colors: [Color.zAmberGradient0])
+    }
 }
 struct Background_Previews: PreviewProvider {
     static var previews: some View {
