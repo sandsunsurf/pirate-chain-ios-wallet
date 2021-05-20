@@ -12,9 +12,9 @@
 "expecting " = "expecting";
 "Create new Wallet" = "Create new Wallet";
 "button_backup" = "Backup Wallet";
-"Press and hold\nto send ZEC" = "Press and hold\nto send ZEC";
+"Press and hold\nto send ARRR" = "Press and hold\nto send ARRR";
 
-"Tap\nto send ZEC" = "Tap\nto send ZEC";
+"Tap\nto send ARRR" = "Tap\nto send ARRR";
 "Enter Shielded Address" = "Enter Shielded Address";
 "Error" = "Error";
 "an error ocurred" = "an error ocurred";
@@ -63,8 +63,8 @@
 "address_shielded" = "Il tuo indirizzo blindato";
 "address_transparent" = "Il tuo indirizzo trasparente";
 "feedback_addresscopied" = "Indirizzo Copiato!";
-"Request ZEC" = "Richiedi ZEC";
-"receive_title" = "Ricevi ZEC";
+"Request ARRR" = "Richiedi ARRR";
+"receive_title" = "Ricevi ARRR";
 "button_copytoclipboard" = "copia negli appunti";
 
 // Profile Screen
@@ -95,7 +95,7 @@
 "send_scanQR" = "Scansione indirizzo destinatario";
 "send_securityauth" = "Accedi per inviare";
 "send_securityauth2" = "Conferma che vuoi inviare %@ ZEC a";
-"send_sending" = "Inviando %@ ZEC a";
+"send_sending" = "Inviando %@ ARRR a";
 "send_cancelled" = "Annullato";
 "send_sent" = "Inviato!";
 "button_done" = "Pronto";

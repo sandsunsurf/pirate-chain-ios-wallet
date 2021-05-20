@@ -70,7 +70,7 @@ struct DetailCard: View {
             color = success ? Color.zNegativeZecAmount : Color.zLightGray2
             opacity = success ? 1 : 0.6
             
-            text = success ? text : "(\(text) ZEC)"
+            text = success ? text : "(\(text) ARRR)"
             
         default:
             break

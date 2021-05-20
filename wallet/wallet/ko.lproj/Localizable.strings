@@ -13,9 +13,9 @@
 "Create new Wallet" = "Create new Wallet";
 "button_done" = "Done";
 "button_backup" = "Backup Wallet";
-"Press and hold\nto send ZEC" = "Press and hold\nto send ZEC";
+"Press and hold\nto send ARRR" = "Press and hold\nto send ARRR";
 "Add Memo Here" = "Add Memo Here";
-"Tap\nto send ZEC" = "Tap\nto send ZEC";
+"Tap\nto send ARRR" = "Tap\nto send ARRR";
 "Enter Shielded Address" = "Enter Shielded Address";
 "Error" = "Error";
 "an error ocurred" = "an error ocurred";
@@ -65,8 +65,8 @@
 "address_shielded" = "당신의 쉴드된 주소";
 "address_transparent" = "당신의 투명 주소";
 "feedback_addresscopied" = "주소 복사";
-"Request ZEC" = "ZEC 부탁";
-"receive_title" = "ZEC 받기";
+"Request ARRR" = "ARRR 부탁";
+"receive_title" = "ARRR 받기";
 "button_copytoclipboard" = "클립 보드에 복사";
 
 // Profile Screen
@@ -97,7 +97,7 @@
 "send_scanQR" = "수신자 주소 스캔";
 "send_securityauth" = "보내기 인증";
 "send_securityauth2" = "XX ZEC를 보낼 것인지 확인하십시오.";
-"send_sending" = "XX ZEC를 보내기";
+"send_sending" = "XX ARRR를 보내기";
 "send_cancelled" = "취소되었습니다";
 "send_sent" = "보냈습니다!";
 "button_done" = "끝";

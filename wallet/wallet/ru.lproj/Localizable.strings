@@ -37,8 +37,8 @@
 "address_shielded" = "Ваш защищённый адрес";
 "address_transparent" = "Ваш прозрачный адрес";
 "feedback_addresscopied" = "Адрес скопирован!";
-"Request ZEC" = "Запросить сумму в ZEC";
-"Receive" = "Получите ZEC";
+"Request ARRR" = "Запросить сумму в ARRR";
+"Receive" = "Получите ARRR";
 "button_copytoclipboard" = "Скопировать в буфер обмена";
 // Profile Screen
 "profile_screen" = "Защищенный пользователь";
@@ -68,7 +68,7 @@
 "send_scanQR" = "Сканировать адрес получателя";
 "send_securityauth" = "Подтвердите, чтобы отправить";
 "send_securityauth2" = "Пожалуйста подтвердите, что хотите отправить %@ ZEC на адрес";
-"send_sending" = "Отправка XX ZEC на";
+"send_sending" = "Отправка XX ARRR на";
 "send_cancelled" = "Отменено";
 "send_sent" = "Отправлено!";
 "button_done" = "Готово";

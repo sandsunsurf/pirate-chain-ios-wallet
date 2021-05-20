@@ -34,8 +34,8 @@
 "address_shielded" = "您的隐蔽地址";
 "address_transparent" = "您的透明地址";
 "feedback_addresscopied" = "已复制地址";
-"Request ZEC" = "请求 ZEC";
-"receive_title" = "接收 ZEC";
+"Request ARRR" = "请求 ARRR";
+"receive_title" = "接收 ARRR";
 "button_copytoclipboard" = "已复制到剪贴板";
 "button_share_address" = "Share Address";
 // Profile Screen
@@ -65,7 +65,7 @@
 "send_scanQR" = "扫描接收人地址";
 "send_securityauth" = "授权发送";
 "send_securityauth2" = "请确认，您现在要发送 %@ ZEC 发送给 ";
-"send_sending" = "正在发送 %@ ZEC 给";
+"send_sending" = "正在发送 %@ ARRR 给";
 "send_cancelled" = "已取消";
 "send_sent" = "已发送！";
 "button_done" = "完成";

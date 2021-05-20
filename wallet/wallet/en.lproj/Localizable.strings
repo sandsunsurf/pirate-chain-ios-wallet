@@ -13,9 +13,9 @@
 "Create new Wallet" = "Create new Wallet";
 "button_done" = "Done";
 "button_backup" = "Backup Wallet";
-"Press and hold\nto send ZEC" = "Press and hold\nto send ZEC";
+"Press and hold\nto send ARRR" = "Press and hold\nto send ARRR";
 "Add Memo Here" = "Add Memo Here";
-"Tap\nto send ZEC" = "Tap\nto send ZEC";
+"Tap\nto send ARRR" = "Tap\nto send ARRR";
 "Enter Shielded Address" = "Enter Shielded Address";
 "Error" = "Error";
 "an error ocurred" = "an error ocurred";
@@ -51,15 +51,15 @@
 "label_to" = "To";
 "label_charactercount" = "%@ chars";
 "from %@" = "from %@";
-"You Have %@ sendable ZEC" = "You Have %@ sendable ZEC";
-"%@ sendable ZEC. You don't have sufficient funds to cover the amount + Miner Fee of %@ ZEC" = "%@ sendable ZEC. You don't have sufficient funds to cover the amount + Miner Fee of %@ ZEC";
-"You don't have any sendable ZEC yet" = "You don't have any sendable ZEC yet";
+"You Have %@ sendable ARRR" = "You Have %@ sendable ARRR";
+"%@ sendable ARRR. You don't have sufficient funds to cover the amount + Miner Fee of %@ ARRR" = "%@ sendable ARRR. You don't have sufficient funds to cover the amount + Miner Fee of %@ ARRR";
+"You don't have any sendable ARRR yet" = "You don't have any sendable ARRR yet";
 "send_securityauth" = "Authenticate to send";
 "label_add_memo" = "Add Memo (optional)";
 
 //Sending
 "thing is that we really don't know what just went down, sorry!" = "thing is that we really don't know what just went down, sorry!";
-"send_sending" = "Sending %@ ZEC to";
+"send_sending" = "Sending %@ ARRR to";
 "send_sent" = "Sent!";
 "an error ocurred while submitting your transaction" = "an error ocurred while submitting your transaction";
 "label_unabletosend" = "Unable to send to";
@@ -111,7 +111,7 @@
 //ReceiveFunds
 "QR Code for %@" = "QR Code for %@";
 "address_shielded" = "Your Shielded Address";
-"receive_title" = "Receive ZEC";
+"receive_title" = "Receive ARRR";
 
 //ScanAddress
 "send_scanQR" = "Scan Recipient Address";

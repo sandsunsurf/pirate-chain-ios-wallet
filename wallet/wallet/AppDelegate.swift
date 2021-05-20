@@ -11,7 +11,6 @@ import BackgroundTasks
 
 
 #if ENABLE_LOGGING
-import Bugsnag
 import zealous_logger
 let tracker = MixPanelLogger(token: Constants.mixpanelProject)
 let logger = SimpleFileLogger(logsDirectory: try! URL.logsDirectory(), alsoPrint: true, level: .debug)
@@ -31,10 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         #endif
         // Override point for customization after application launch.
-        #if ENABLE_LOGGING
-        Bugsnag.start(withApiKey: Constants.bugsnagApiKey)
-        #endif
-        
+      
         BGTaskScheduler.shared.register(
             forTaskWithIdentifier: BackgroundTaskSyncronizing.backgroundAppRefreshTaskIdentifier,
           using: nil) { (task) in

@@ -19,7 +19,7 @@ struct BalanceDetail: View {
     var status: BalanceStatus
     
     var available: some View {
-        Text(format(zec: availableZec) + " ZEC ")
+        Text(format(zec: availableZec) + " ARRR ")
             .foregroundColor(.zLightGray)
         + Text("balance_available")
             .foregroundColor(Color.zAmberGradient1)
@@ -45,7 +45,7 @@ struct BalanceDetail: View {
             Text("+" + format(zec: zec))
                            .font(.body)
                 .foregroundColor(.white)
-            + Text(" ZEC)")
+            + Text(" ARRR)")
                 .font(.body)
                 .foregroundColor(Color.zLightGray)
         
@@ -56,7 +56,7 @@ struct BalanceDetail: View {
                        Text("+" + format(zec: change))
                                       .font(.body)
                            .foregroundColor(.white)
-                       + Text(" ZEC)")
+                       + Text(" ARRR)")
                            .font(.body)
                            .foregroundColor(Color.zLightGray)
             default:
