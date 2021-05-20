@@ -369,6 +369,9 @@
 		296FEBE62652B1B1002D3D8C /* PirateSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296FEBE52652B1B1002D3D8C /* PirateSymbol.swift */; };
 		296FEBE72652B1B1002D3D8C /* PirateSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296FEBE52652B1B1002D3D8C /* PirateSymbol.swift */; };
 		296FEBE82652B1B1002D3D8C /* PirateSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296FEBE52652B1B1002D3D8C /* PirateSymbol.swift */; };
+		298D95EA26568DF400D01864 /* InputPasscodeWithCustomPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298D95E926568DF400D01864 /* InputPasscodeWithCustomPad.swift */; };
+		298D95EB26568DF400D01864 /* InputPasscodeWithCustomPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298D95E926568DF400D01864 /* InputPasscodeWithCustomPad.swift */; };
+		298D95EC26568DF400D01864 /* InputPasscodeWithCustomPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298D95E926568DF400D01864 /* InputPasscodeWithCustomPad.swift */; };
 		461EC2AE546CA75E4A73A981 /* Pods_ARRR_WalletUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F95AFCD2D694CCA492242D3 /* Pods_ARRR_WalletUITests.framework */; };
 		761A71171D3364F25CCF2278 /* Pods_ARRR_Wallet_no_logging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A33DF9FF5B24F672963329AB /* Pods_ARRR_Wallet_no_logging.framework */; };
 		8D3F362524A40FCF0087687A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D3F362724A40FCF0087687A /* Localizable.strings */; };
@@ -555,6 +558,7 @@
 		293CB4D82655379700F87462 /* InputPasscodeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPasscodeScreen.swift; sourceTree = "<group>"; };
 		293CB56B265570B300F87462 /* PirateLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PirateLogo.swift; sourceTree = "<group>"; };
 		296FEBE52652B1B1002D3D8C /* PirateSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PirateSymbol.swift; sourceTree = "<group>"; };
+		298D95E926568DF400D01864 /* InputPasscodeWithCustomPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPasscodeWithCustomPad.swift; sourceTree = "<group>"; };
 		29D1459C46D96D9D3DF2A55C /* Pods-walletUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-walletUITests.debug.xcconfig"; path = "Target Support Files/Pods-walletUITests/Pods-walletUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2A18D2CCE318B05E663B73D6 /* Pods_ARRR_WalletTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARRR_WalletTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CA18E68C36455A44147853A /* Pods-ECC-Wallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ECC-Wallet.debug.xcconfig"; path = "Target Support Files/Pods-ECC-Wallet/Pods-ECC-Wallet.debug.xcconfig"; sourceTree = "<group>"; };
@@ -658,6 +662,7 @@
 				0D11C22C23BF807E001CF6F7 /* ReceiveFunds.swift */,
 				0D11C23023BF966C001CF6F7 /* ScanAddress.swift */,
 				293CB4D82655379700F87462 /* InputPasscodeScreen.swift */,
+				298D95E926568DF400D01864 /* InputPasscodeWithCustomPad.swift */,
 				0D11C23623BFB666001CF6F7 /* ShareScreen.swift */,
 				0D8C3E2C23D8B37900B94438 /* ProfileScreen.swift */,
 				0D0AAE14241048B4009CD8F9 /* FundsAtRisk.swift */,
@@ -1575,6 +1580,7 @@
 				0D2BCF5F23E8A59D0076C5B0 /* QRCodeGenerator.swift in Sources */,
 				0D11C23123BF966C001CF6F7 /* ScanAddress.swift in Sources */,
 				0DBA1E2124CB6951009C654E /* AddressFragment.swift in Sources */,
+				298D95EA26568DF400D01864 /* InputPasscodeWithCustomPad.swift in Sources */,
 				0D24DA0625A64A8200504F29 /* TxDetailWrapper.swift in Sources */,
 				0D7D5DDB24BFAC7C0028083C /* KeyboardResponder.swift in Sources */,
 				296FEBE62652B1B1002D3D8C /* PirateSymbol.swift in Sources */,
@@ -1678,6 +1684,7 @@
 				0D2D5C2124CF85CF001A58AD /* ZecAmountHeader.swift in Sources */,
 				0DCDFFB324B6722B000F6999 /* zECC+SwiftUI.swift in Sources */,
 				0DCDFFB424B6722B000F6999 /* ZcashLogo.swift in Sources */,
+				298D95EC26568DF400D01864 /* InputPasscodeWithCustomPad.swift in Sources */,
 				0DCDFFB524B6722B000F6999 /* ZcashCheckCircle.swift in Sources */,
 				0DCDFFB624B6722B000F6999 /* CameraAccessHelper.swift in Sources */,
 				0DCDFFB724B6722B000F6999 /* ZcashHoldToSendButton.swift in Sources */,
@@ -1825,6 +1832,7 @@
 				0DE3039A263A158400CF877A /* QRCodeGenerator.swift in Sources */,
 				0DE3039B263A158400CF877A /* ScanAddress.swift in Sources */,
 				0DE3039C263A158400CF877A /* AddressFragment.swift in Sources */,
+				298D95EB26568DF400D01864 /* InputPasscodeWithCustomPad.swift in Sources */,
 				0DE3039D263A158400CF877A /* TxDetailWrapper.swift in Sources */,
 				0DE3039E263A158400CF877A /* KeyboardResponder.swift in Sources */,
 				296FEBE72652B1B1002D3D8C /* PirateSymbol.swift in Sources */,

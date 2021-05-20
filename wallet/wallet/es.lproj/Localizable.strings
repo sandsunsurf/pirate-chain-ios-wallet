@@ -168,3 +168,7 @@
 //FeedBackForm
 "Feedback Sent!" = "Feedback Sent!";
 "Thanks for your feedback!" = "Thanks for your feedback!";
+
+//InputPasscodeWithCustomPad
+"Enter a Passcode" = "Enter a Passcode";
+"Confirm Passcode" = "Confirm Passcode";

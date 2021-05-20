@@ -102,13 +102,7 @@ struct ProfileScreen: View {
                         }
                         
                         NavigationLink(destination: LazyView(
-                            InputPasscodeScreen(callBackHandler: { (aString, aBool: (Bool) -> Void) in
-                                
-                                displayAnAlertAfterPasscode = true
-                                print("Pass Code in here>>>>")
-                                print(aString)
-                                
-                            }).environmentObject(ZECCWalletEnvironment.shared)
+                            InputPasscodeWithCustomPad().environmentObject(ZECCWalletEnvironment.shared)
                         ), tag: Destination.visitPasscode, selection: $destination) {
                                         
                             Text("My Profile".localized())
