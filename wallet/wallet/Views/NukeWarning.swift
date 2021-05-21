@@ -69,7 +69,7 @@ struct NukeWarning: View {
                             Text("nuke_alertconfirm"),
                             action: {
                                 self.appEnvironment.nuke(resetToLogin: true)
-                                self.presentationMode.wrappedValue.dismiss()                                
+//                                self.presentationMode.wrappedValue.dismiss()                                
                           }
                         )
                     )

@@ -72,7 +72,7 @@ struct TransactionDetails: View {
             case .copiedItem(let p):
                 return PasteboardAlertHelper.alert(for: p)
             case .explorerNotice:
-                return Alert(title: Text("Leaving Nighthawk Wallet"),
+                return Alert(title: Text("Leaving Pirate Chain Wallet"),
                              message: Text("While usually an acceptable risk, you will be possibly exposing your interest in this transaction id by visiting blockchair.com"),
                              primaryButton: .cancel(Text("Cancel")),
                              secondaryButton: .default(Text("View TX Details"), action: {
