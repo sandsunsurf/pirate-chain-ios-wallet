@@ -53,10 +53,10 @@ final class SeedManager {
     func importLightWalletEndpoint(address: String) {
         guard keychain.get(Self.aRRRLightWalletEndpoint) == nil
         else {
-            keychain.set(ZECCWalletEnvironment.defaultLightWalletEndpoint, forKey: Self.aRRRLightWalletEndpoint)
+            keychain.set(address, forKey: Self.aRRRLightWalletEndpoint)
             return
         }
-        keychain.set(address, forKey: Self.aRRRLightWalletEndpoint)
+        keychain.set(ZECCWalletEnvironment.defaultLightWalletEndpoint, forKey: Self.aRRRLightWalletEndpoint)
     }
 
     func exportLightWalletEndpoint() -> String {

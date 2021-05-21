@@ -95,3 +95,10 @@
 //InputPasscodeWithCustomPad
 "Enter a Passcode" = "Enter a Passcode";
 "Confirm Passcode" = "Confirm Passcode";
+
+// Settings Screen
+
+"Endpoint" = "Endpoint";
+"My Pirate Chain Endpoint:" = "My Pirate Chain Endpoint:";
+"Invalid Endpoint Address, Reverting it to pirate chain address!" = "Invalid Endpoint Address, Reverting it to pirate chain address!";
+"Invalid Endpoint Address, Reverting it to pirate chain address!" = "Invalid Endpoint Address, Reverting it to pirate chain address!";
