@@ -54,7 +54,7 @@ struct CreateNewWallet: View {
             VStack(alignment: .center, spacing: self.itemSpacing) {
                 Spacer()
                 
-                ZcashLogo()
+                Image("splash_icon")
                 
                 Spacer()
                 Button(action: {

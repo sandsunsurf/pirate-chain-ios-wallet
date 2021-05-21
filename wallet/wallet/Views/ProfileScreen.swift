@@ -43,7 +43,7 @@ struct ProfileScreen: View {
                         PasteboardAlertHelper.shared.copyToPasteBoard(value: self.appEnvironment.initializer.getAddress() ?? "", notify: "Address Copied to clipboard!")
                         
                     }) {
-                        Text("My Zcash Address\n".localized() + (appEnvironment.initializer.getAddress()?.shortZaddress ?? ""))
+                        Text("My ARRR Address\n".localized() + (appEnvironment.initializer.getAddress()?.shortZaddress ?? ""))
                             .lineLimit(3)
                             .multilineTextAlignment(.center)
                             .font(.system(size: 18))
@@ -52,27 +52,27 @@ struct ProfileScreen: View {
                     .onReceive(PasteboardAlertHelper.shared.publisher) { (item) in
                         self.copiedValue = item
                     }
-                    .padding(0)
+//                    .padding(0)
+//
+//                    Button(action: {
+//                        let url = URL(string: "https://sideshift.ai/a/EqcQp4iUM")!
+//
+//                        UIApplication.shared.open(url)}) {
+//                            Text("Fund my wallet via SideShift.ai")
+//                                .foregroundColor(.black)
+//                                .zcashButtonBackground(shape: .roundedCorners(fillStyle: .solid(color: Color.zYellow)))
+//                                .frame(height: Self.buttonHeight)
+//                    }
                     
-                    Button(action: {
-                        let url = URL(string: "https://sideshift.ai/a/EqcQp4iUM")!
-
-                        UIApplication.shared.open(url)}) {
-                            Text("Fund my wallet via SideShift.ai")
-                                .foregroundColor(.black)
-                                .zcashButtonBackground(shape: .roundedCorners(fillStyle: .solid(color: Color.zYellow)))
-                                .frame(height: Self.buttonHeight)
-                    }
-                    
-                    Button(action: {
-                        let url = URL(string: "https://twitter.com/nighthawkwallet")!
-                        
-                        UIApplication.shared.open(url)}) {
-                            Text("@nighthawkwallet")
-                                .foregroundColor(.black)
-                                .zcashButtonBackground(shape: .roundedCorners(fillStyle: .solid(color: Color.zYellow)))
-                                .frame(height: Self.buttonHeight)
-                    }
+//                    Button(action: {
+//                        let url = URL(string: "https://twitter.com/nighthawkwallet")!
+//
+//                        UIApplication.shared.open(url)}) {
+//                            Text("@nighthawkwallet")
+//                                .foregroundColor(.black)
+//                                .zcashButtonBackground(shape: .roundedCorners(fillStyle: .solid(color: Color.zYellow)))
+//                                .frame(height: Self.buttonHeight)
+//                    }
                     
                     NavigationLink(destination: LazyView(
                         SeedBackup(hideNavBar: false)

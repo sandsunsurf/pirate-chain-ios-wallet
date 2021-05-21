@@ -37,7 +37,7 @@
 "send_fromshielded" = "from your shielded wallet";
 "send_fromtransparent" = "from your transparent wallet";
 "send_fromboth" = "from both wallets";
-"feedback_default" = "Enter a shielded Zcash address";
+"feedback_default" = "Enter a shielded Pirate Chain address";
 "feedback_shieldedaddress" = "This is a valid shielded address";
 "feedback_transparentaddress" = "This is a valid transparent address";
 "feedback_addresscopied" = "Address Copied!";
@@ -118,7 +118,7 @@
 "scan_cameraunallowed" = "We don't have permission to access your camera";
 "scan_cameraunallowed2" = "Allow camera access in your device settings";
 "scan_cameraunavaliable" = "Camera Unavailable";
-"scan_invalidQR" = "This QR Code does not contain a Zcash valid address!";
+"scan_invalidQR" = "This QR Code does not contain a Pirate Chain valid address!";
 
 //ShareScreen
 "Share Screen" = "Share";
@@ -133,7 +133,7 @@
 "Nighthawk Wallet" = "Nighthawk Wallet";
 
 //FundsAtRisk
-"seed_remindertext" = "Remember, with Zcash YOU are the bank. Anyone with your seed phrase has access to your wallet.";
+"seed_remindertext" = "Remember, with Pirate Chain YOU are the bank. Anyone with your seed phrase has access to your wallet.";
 "seed_remindertext2" = "You should back this up immediately as no one else can restore it for you.";
 "seed_reminder" = "Your funds are at risk!";
 "button_backup" = "Back up";
@@ -143,7 +143,7 @@
 
 
 "nuke_title" = "You are about to NUKE your wallet";
-"nuke_nukewarning" = "Remember, with Zcash YOU are the bank. Anyone with your seed phrase has access to your wallet.";
+"nuke_nukewarning" = "Remember, with Pirate Chain YOU are the bank. Anyone with your seed phrase has access to your wallet.";
 "nuke_nukewarning2" = "Make sure you backed up your wallet before proceeding.";
 "nuke_nukewarning3" = "If you nuke  your wallet without backing up your seed, there's no way to recover it";
 "nuke_nukeButton" = "NUKE WALLET";

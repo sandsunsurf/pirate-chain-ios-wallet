@@ -10,7 +10,7 @@
 "seed_restore" = "从备份助记词中恢复钱包";
 "seed_restoretext" = "您需要按照顺序输入 24 个助记词。";
 "seed_reminder" = "您的资金处在安全风险中！";
-"seed_remindertext" = "请记住，使用 Zcash 的时候，没有其他人在托管您的资金，您 是自己的银行。使用资金的唯一凭证就是助记词。如有他人知道了您的助记词，就有了转移您资金的所有权限。";
+"seed_remindertext" = "请记住，使用 Pirate Chain 的时候，没有其他人在托管您的资金，您 是自己的银行。使用资金的唯一凭证就是助记词。如有他人知道了您的助记词，就有了转移您资金的所有权限。";
 "seed_remindertext2" = "请立即备份，如果您遗失了自己的备份，没有任何人能帮您恢复钱包、找回资金。";
 "seed_accepted" = "已接受助记词，正在扫描您的帐户余额。";
 "seed_birthdaytext" = "软件正在扫描区块链以发现与您的钱包有关的交易。如果您能提供这个钱包的创建时间，可以加快扫描速度。";
@@ -51,7 +51,7 @@
 "send_fromtransparent" = "从您的透明钱包发送";
 "send_fromboth" = "同时从您的隐蔽钱包和透明钱包拼凑数额";
 "label_to" = "至";
-"feedback_default" = "请输入一个有效的 Zcash 地址";
+"feedback_default" = "请输入一个有效的 Pirate Chain 地址";
 "feedback_shieldedaddress" = "这是一个有效的隐蔽地址";
 "feedback_transparentaddress" = "这是一个有效的透明地址";
 "feedback_sameaddress" = "警告，该地址似乎是您自己的地址！";
@@ -72,7 +72,7 @@
 "button_seedetails" = "查看细节";
 "button_back" = "返回";
 "label_add_memo" = "Add Memo Here (optional)";
-"scan_invalidQR" = "This QR Code does not contain a Zcash valid address!";
+"scan_invalidQR" = "This QR Code does not contain a Pirate Chain valid address!";
 "label_unabletosend" = "Unable to send";
 // Wallet History
 "screen_wallethistory" = "您的钱包历史";
@@ -81,7 +81,7 @@
 //NukeWarning
 
 "nuke_title" = "You are about to NUKE your wallet";
-"nuke_nukewarning" = "Remember, with Zcash YOU are the bank. Anyone with your seed phrase has access to your wallet.";
+"nuke_nukewarning" = "Remember, with Pirate Chain YOU are the bank. Anyone with your seed phrase has access to your wallet.";
 "nuke_nukewarning2" = "Make sure you backed up your wallet before proceeding.";
 "nuke_nukewarning3" = "If you nuke  your wallet without backing up your seed, there's no way to recover it";
 "nuke_nukeButton" = "NUKE WALLET";

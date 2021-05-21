@@ -10,7 +10,7 @@
 "seed_restore" = "Восстановление из резервной копии";
 "seed_restoretext" = "Вам необходимо будет ввести 24 слова фразы восстановления по порядку.";
 "seed_reminder" = "Существует риск потерять средства!";
-"seed_remindertext" = "Помните, что с Zcash Вы сами находитесь в роли банка. Любой, кто владеет фразой восстановления, получает полный доступ к кошельку.";
+"seed_remindertext" = "Помните, что с Pirate Chain Вы сами находитесь в роли банка. Любой, кто владеет фразой восстановления, получает полный доступ к кошельку.";
 "seed_remindertext2" = "Вам следует незамедлительно создать резервную копию, так она позволит восстановить доступ к Вашему кошельку.";
 "seed_accepted" = "Фраза восстановления принята, идёт сканирование блокчейна!";
 "seed_birthdaytext" = "Мы сканируем блокчейн на предмет транзакций, которые относятся к вашему кошельку. Если вы можете указать дату создания данного кошелька, процесс ускорится.";
@@ -54,7 +54,7 @@
 "send_fromtransparent" = "с Вашего прозрачного кошелька";
 "send_fromboth" = "с двух кошельков";
 "label_to" = "на";
-"feedback_default" = "Введите действующий Zcash-адрес ";
+"feedback_default" = "Введите действующий Pirate Chain-адрес ";
 "feedback_shieldedaddress" = "Это действующий защищённый адрес";
 "feedback_transparentaddress" = "Это действующий прозрачный адрес";
 "feedback_sameaddress" = "Внимание, похоже, это ваш адрес!";
@@ -75,7 +75,7 @@
 "button_seedetails" = "Смотреть подробности";
 "button_back" = "Вернуться назад";
 "label_add_memo" = "Add Memo Here (optional)";
-"scan_invalidQR" = "This QR Code does not contain a Zcash valid address!";
+"scan_invalidQR" = "This QR Code does not contain a Pirate Chain valid address!";
 "label_unabletosend" = "Unable to send";
 // Wallet History
 "screen_wallethistory" = "История транзакций";
@@ -83,7 +83,7 @@
 
 //NukeWarning
 "nuke_title" = "You are about to NUKE your wallet";
-"nuke_nukewarning" = "Remember, with Zcash YOU are the bank. Anyone with your seed phrase has access to your wallet.";
+"nuke_nukewarning" = "Remember, with Pirate Chain YOU are the bank. Anyone with your seed phrase has access to your wallet.";
 "nuke_nukewarning2" = "Make sure you backed up your wallet before proceeding.";
 "nuke_nukewarning3" = "If you nuke  your wallet without backing up your seed, there's no way to recover it";
 "nuke_nukeButton" = "NUKE WALLET";

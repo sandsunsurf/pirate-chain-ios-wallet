@@ -38,7 +38,7 @@
 "seed_restore" = "백업에서 복원";
 "seed_restoretext" = "24 개의 시드 단어를 모두 순서대로 입력해야합니다.";
 "seed_reminder" = "당신의 자금이 위험에 처해 있습니다";
-"seed_remindertext" = "Zcash에서 당신은 은행이라는 것을 기억하십시오. 시드 문구가있는 사람은 누구나 지갑에 액세스 할 수 있습니다.";
+"seed_remindertext" = "Pirate Chain에서 당신은 은행이라는 것을 기억하십시오. 시드 문구가있는 사람은 누구나 지갑에 액세스 할 수 있습니다.";
 "seed_remindertext2" = "다른 사람이 대신 백업 할 수 없으므로 즉시 백업해야합니다.";
 "seed_accepted" = "시드 수락, 지금 스캔!";
 "seed_birthdaytext" = "지갑에 대한 거래를 위해 블록 체인을 스캔하고 있습니다. 이 지갑의 생일 날짜를 제공 할 수 있다면 동기화 속도를 높일 수 있습니다.";
@@ -83,7 +83,7 @@
 "send_fromtransparent" = "투명한 지갑에서";
 "send_fromboth" = "두 지갑에서";
 "label_to" = "에";
-"feedback_default" = "유효한 zcash 주소를 입력하십시오";
+"feedback_default" = "유효한 Pirate Chain 주소를 입력하십시오";
 "feedback_shieldedaddress" = "유효한 쉴드된 주소입니다.";
 "feedback_transparentaddress" = "유효한 투명 주소입니다.";
 "feedback_sameaddress" = "경고, 이것은 귀하의 주소 인 것 같습니다!";
@@ -114,7 +114,7 @@
 
 
 "nuke_title" = "You are about to NUKE your wallet";
-"nuke_nukewarning" = "Remember, with Zcash YOU are the bank. Anyone with your seed phrase has access to your wallet.";
+"nuke_nukewarning" = "Remember, with Pirate Chain YOU are the bank. Anyone with your seed phrase has access to your wallet.";
 "nuke_nukewarning2" = "Make sure you backed up your wallet before proceeding.";
 "nuke_nukewarning3" = "If you nuke  your wallet without backing up your seed, there's no way to recover it";
 "nuke_nukeButton" = "NUKE WALLET";
