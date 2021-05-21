@@ -21,7 +21,8 @@ final class SeedManager {
     private static let zECCWalletSeedKey = "zEECWalletSeedKey"
     private static let zECCWalletBirthday = "zECCWalletBirthday"
     private static let zECCWalletPhrase = "zECCWalletPhrase"
-    
+    private static let aRRRLightWalletEndpoint = "aRRRLightWalletEndpoint"
+
     private let keychain = KeychainSwift()
     
     func importBirthday(_ height: BlockHeight) throws {
@@ -47,6 +48,23 @@ final class SeedManager {
     func exportPhrase() throws -> String {
         guard let seed = keychain.get(Self.zECCWalletPhrase) else { throw SeedManagerError.uninitializedWallet }
         return seed
+    }
+    
+    func importLightWalletEndpoint(address: String) {
+        guard keychain.get(Self.aRRRLightWalletEndpoint) == nil
+        else {
+            keychain.set(ZECCWalletEnvironment.defaultLightWalletEndpoint, forKey: Self.aRRRLightWalletEndpoint)
+            return
+        }
+        keychain.set(address, forKey: Self.aRRRLightWalletEndpoint)
+    }
+
+    func exportLightWalletEndpoint() -> String {
+        guard let address = keychain.get(Self.aRRRLightWalletEndpoint) else
+        {
+            return ZECCWalletEnvironment.defaultLightWalletEndpoint
+        }
+        return address
     }
     
     /**
