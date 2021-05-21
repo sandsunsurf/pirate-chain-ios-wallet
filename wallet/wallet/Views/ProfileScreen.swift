@@ -90,7 +90,7 @@ struct ProfileScreen: View {
                         InputPasscodeWithCustomPad().environmentObject(ZECCWalletEnvironment.shared))
                     ) {
                                     
-                        Text("My Profile".localized())
+                        Text("Change PIN".localized())
                             .foregroundColor(.zYellow)
                             .zcashButtonBackground(shape: .roundedCorners(fillStyle: .outline(color: .zYellow, lineWidth: 1)))
                             .frame(height:  Self.buttonHeight)
