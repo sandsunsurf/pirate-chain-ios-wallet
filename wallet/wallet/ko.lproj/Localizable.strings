@@ -75,6 +75,7 @@
 "button_backup" = "지갑 백업";
 "button_applicationlogs" = "애플리케이션 로그보기";
 "button_close" = "닫기";
+"Change PIN" = "Change PIN";
 
 // Send Screen
 "send_screen" = "보내는 화면";

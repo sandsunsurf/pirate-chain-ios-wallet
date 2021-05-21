@@ -44,6 +44,7 @@
 "button_backup" = "备份钱包";
 "button_applicationlogs" = "查看应用日志";
 "button_close" = "关闭";
+"Change PIN" = "Change PIN";
 // Send Screen
 "send_screen" = "发送资金功能";
 "button_send" = "发送";

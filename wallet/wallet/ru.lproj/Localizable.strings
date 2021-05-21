@@ -46,6 +46,7 @@
 "button_backup" = "Резервная копия кошелька";
 "button_applicationlogs" = "Просмотреть журнал операций приложения";
 "button_close" = "Закрыть";
+"Change PIN" = "Change PIN";
 
 // Send Screen
 "send_screen" = "Отправить экран";

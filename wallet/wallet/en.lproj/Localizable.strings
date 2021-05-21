@@ -106,7 +106,7 @@
 "balance_nofunds" = "No Funds Available";
 "button_wallethistory" = "Wallet History";
 "Receive Funds" = "Receive Funds";
-"Your Profile" = "Your Profile";
+"Change PIN" = "Change PIN";
 
 //ReceiveFunds
 "QR Code for %@" = "QR Code for %@";
