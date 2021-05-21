@@ -139,7 +139,11 @@ final class ZECCWalletEnvironment: ObservableObject {
         }
         
         if resetToLogin {
-            NotificationCenter.default.post(name: NSNotification.Name("MoveToFirstViewLayout"), object: nil)
+            ZECCWalletEnvironment.shared.state = .uninitialized
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                NotificationCenter.default.post(name: NSNotification.Name("MoveToFirstViewLayout"), object: nil)
+            }
+           
 //            abort()
         }
     }
