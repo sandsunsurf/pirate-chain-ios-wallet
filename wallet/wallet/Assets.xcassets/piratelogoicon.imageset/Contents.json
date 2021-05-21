@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Pirate_Logo_Ship_Gold.png",
+      "filename" : "piratelogoicon copy 2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Pirate_Logo_Ship_Gold-1.png",
+      "filename" : "piratelogoicon copy.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Pirate_Logo_Ship_Gold-2.png",
+      "filename" : "piratelogoicon.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

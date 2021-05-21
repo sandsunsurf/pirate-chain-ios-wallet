@@ -17,7 +17,7 @@ struct DisplayAddress: View {
         if let img = QRCodeGenerator.generate(from: self.address) {
             return Image(img, scale: 1, label: Text(String(format:NSLocalizedString("QR Code for %@", comment: ""),"\(self.address)") ))
         } else {
-            return Image("zebra_profile")
+            return Image("pirate_logo_splash")
         }
     }
     var address: String

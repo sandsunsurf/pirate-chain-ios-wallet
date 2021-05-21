@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "Pirate_Logo_Ship_Gold-1.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Pirate_Logo_Ship_Gold-2.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "Pirate_Logo_Ship_Gold.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
