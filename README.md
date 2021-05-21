@@ -1,4 +1,4 @@
-# zcash-ios-wallet
+# pirate-chain-ios-wallet
 
 [![Build Status](https://travis-ci.org/zcash/zcash-ios-wallet.svg?branch=master)](https://travis-ci.org/zcash/zcash-ios-wallet)
 
@@ -34,7 +34,7 @@ for more information about the security and privacy limitations of the wallet.
 
 4. Navigate to the wallet directory where the `Podfile` file is located and run `pod install`. If pod packages are already installed, and need to update the pod packages, then execute command `pod update`.
 
-5. open the `ARRR-Wallet.xcworkspace` file. (It is a "X WORK SPACE" file. Do not confuse to read it as "X CODE PROJECT" file.)
+5. open the `ECC-Wallet.xcworkspace` file. (It is a "X WORK SPACE" file. Do not confuse to read it as "X CODE PROJECT" file.)
 
 6. locate the `.params` files that are missing in the project and include them at the specified locations. These are the 2 files named `sapling-output.params` and `sapling-spend.params`, which you'll find from the ZcashParams data directory which you usually get while compiling Zcash or Komodo. If need to get the files, you can use this [fetch-params.sh](https://github.com/PirateNetwork/pirate/blob/master/zcutil/fetch-params.sh) file on your machine via Terminal. After it finished downloading the parameters, on MacOS go to `$HOME/Library/Application Support/ZcashParams` and you'll find the relevant files there. Copy the files mentioned earlier and paste them inside `zcash-ios-wallet/wallet/wallet` directory.
 
@@ -76,7 +76,7 @@ make sure your dev environment has this variable set before the build starts. *D
 
 If the variable was properly set *after* you've seen this message, you will need to either a) set it manually on the pod's target or b) doing a clean pod install and subsequent build.
 
-To set the environment variable `ZCASH_NETWORK_ENVIRONMENT`'s value, make sure to open `X WORK SPACE` file `ARRR-Wallet.xcworkspace`, and then click on `Pods` from left pane, which will result in showing build settings in right/middle pane. There under `TARGETS` click on `ZcashLiteClientKit`, then select `Build Settings` from top buttons showing under this settings pane. Scroll to the bottom and find the variable showing in bold named `ZCASH_NETWORK_ENVIRONMENT`. Double click on the right side of that variable where you can input `MAINNET` and hit enter key. That will set this environment variable's value. For reference see the following screen shot:
+To set the environment variable `ZCASH_NETWORK_ENVIRONMENT`'s value, make sure to open `X WORK SPACE` file `ECC-Wallet.xcworkspace`, and then click on `Pods` from left pane, which will result in showing build settings in right/middle pane. There under `TARGETS` click on `ZcashLiteClientKit`, then select `Build Settings` from top buttons showing under this settings pane. Scroll to the bottom and find the variable showing in bold named `ZCASH_NETWORK_ENVIRONMENT`. Double click on the right side of that variable where you can input `MAINNET` and hit enter key. That will set this environment variable's value. For reference see the following screen shot:
 <img width="809" alt="Screen Shot 2021-05-19 at 10 58 04 PM" src="https://user-images.githubusercontent.com/12998093/118802714-979c4a80-b8f6-11eb-94a4-23816faf856b.png">
 
 
