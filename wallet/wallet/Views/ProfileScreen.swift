@@ -12,6 +12,7 @@ import SwiftUI
 struct ProfileScreen: View {
     @EnvironmentObject var appEnvironment: ZECCWalletEnvironment
     @State var nukePressed = false
+    @Environment(\.presentationMode) var presentationMode
     static let buttonHeight = CGFloat(48)
     static let horizontalPadding = CGFloat(30)
     @State var copiedValue: PasteboardItemModel?

@@ -168,7 +168,7 @@ struct CreateNewWallet: View {
               secondaryButton: .destructive(Text("Discard them and continue"),
                                             action: {
                                                 
-                                                ZECCWalletEnvironment.shared.nuke(abortApplication: false)
+                                                ZECCWalletEnvironment.shared.nuke(resetToLogin: false)
                                                 do {
                                                     try ZECCWalletEnvironment.shared.reset()
                                                 } catch {

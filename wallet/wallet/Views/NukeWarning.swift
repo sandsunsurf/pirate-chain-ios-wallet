@@ -10,6 +10,7 @@ import SwiftUI
 
 struct NukeWarning: View {
     @EnvironmentObject var appEnvironment: ZECCWalletEnvironment
+    @Environment(\.presentationMode) var presentationMode
     @State private var showNukeAlert = false
     let buttonHeight: CGFloat = 50
     var disclaimer: String {
@@ -67,7 +68,8 @@ struct NukeWarning: View {
                           secondaryButton: .destructive(
                             Text("nuke_alertconfirm"),
                             action: {
-                                self.appEnvironment.nuke(abortApplication: true)
+                                self.appEnvironment.nuke(resetToLogin: true)
+                                self.presentationMode.wrappedValue.dismiss()                                
                           }
                         )
                     )

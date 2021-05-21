@@ -12,28 +12,40 @@ import BackgroundTasks
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
+    var aScene: UIScene?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
+        
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        
+                
+        self.aScene = scene
         // Create the SwiftUI view that provides the window contents.
+            
+        self.addSwiftUIView()
         
-    
-        // Use a UIHostingController as window root view controller.
-        if let windowScene = scene as? UIWindowScene {
-            let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = HostingController(rootView:
-                    AnyView(
-                        NavigationView {
-                            firstView()
-                        }
-                    )
-                )
-            self.window = window
-            window.makeKeyAndVisible()
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("MoveToFirstViewLayout"), object: nil, queue: .main) { (_) in
+            
+            self.addSwiftUIView()
         }
+    }
+    
+    func addSwiftUIView(){
+        
+            // Use a UIHostingController as window root view controller.
+            if let windowScene = aScene as? UIWindowScene {
+                let window = UIWindow(windowScene: windowScene)
+                window.rootViewController = HostingController(rootView:
+                        AnyView(
+                            NavigationView {
+                                firstView()
+                            }
+                        )
+                    )
+                self.window = window
+                window.makeKeyAndVisible()
+            }
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

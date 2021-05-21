@@ -115,7 +115,7 @@ final class ZECCWalletEnvironment: ObservableObject {
     /**
      only for internal use
      */
-    func nuke(abortApplication: Bool = false) {
+    func nuke(resetToLogin: Bool = false) {
         self.synchronizer.stop()
         
         SeedManager.default.nukeWallet()
@@ -136,8 +136,9 @@ final class ZECCWalletEnvironment: ObservableObject {
             logger.error("could not nuke wallet: \(error)")
         }
         
-        if abortApplication {
-            abort()
+        if resetToLogin {
+            NotificationCenter.default.post(name: NSNotification.Name("MoveToFirstViewLayout"), object: nil)
+//            abort()
         }
     }
     

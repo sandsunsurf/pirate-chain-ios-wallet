@@ -26,11 +26,11 @@ struct ZcashLogo: View {
     var body: some View {
         ZStack {
             
-            Ring()
-            .stroke(lineWidth: 14)
-                .fill(fillGradient)
-                .frame(width: 167, height: 167, alignment: .center)
-                .padding(20)
+//            Ring()
+//            .stroke(lineWidth: 14)
+//                .fill(fillGradient)
+//                .frame(width: 167, height: 167, alignment: .center)
+//                .padding(20)
             VStack (alignment: .center) {
                 PirateSymbol()
                     .fill(fillGradient)
