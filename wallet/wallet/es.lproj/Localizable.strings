@@ -121,7 +121,7 @@
 "balance_nofunds" = "No hay fondos disponibles";
 "button_wallethistory" = "Historial de Wallet";
 "Receive Funds" = "Recibir fondos"; // These are accessibility strings
-"Your Profile" = "Tu perfil"; // These are accessibility strings
+"Change PIN" = "Change PIN"; // These are accessibility strings
 
 //ReceiveFunds
 "QR Code for %@" = "Código QR para %@";

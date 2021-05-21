@@ -73,6 +73,7 @@
 "button_backup" = "Backup Wallet";
 "button_applicationlogs" = "Vedere Registri dell'applicazione";
 "button_close" = "Chiudere";
+"Change PIN" = "Change PIN";
 
 // Send Screen
 "send_screen" =    "Invio";
