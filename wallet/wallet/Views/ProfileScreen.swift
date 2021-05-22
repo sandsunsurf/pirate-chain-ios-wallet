@@ -13,6 +13,7 @@ struct ProfileScreen: View {
     @EnvironmentObject var appEnvironment: ZECCWalletEnvironment
     @State var nukePressed = false
     @State var isDisplayAddressAlert = false
+    @State var isUserOptingtoChangeLanguage = false
     @State var anAddress = SeedManager.default.exportLightWalletEndpoint()
     @Environment(\.presentationMode) var presentationMode
     static let buttonHeight = CGFloat(48)
@@ -94,6 +95,46 @@ struct ProfileScreen: View {
                             .foregroundColor(.zYellow)
                             .zcashButtonBackground(shape: .roundedCorners(fillStyle: .outline(color: .zYellow, lineWidth: 1)))
                             .frame(height:  Self.buttonHeight)
+                    }
+                    
+                    Button(action: {
+                        isUserOptingtoChangeLanguage = true
+                    }, label: {
+                        Text("Choose a language".localized())
+                            .zcashButtonBackground(shape: .roundedCorners(fillStyle: .outline(color: .white, lineWidth: 1)))
+                            .foregroundColor(.white)
+                          .frame(height: Self.buttonHeight)
+                    }).actionSheet(isPresented: $isUserOptingtoChangeLanguage) { () -> ActionSheet in
+                        
+                       ActionSheet(
+                                        title: Text(""),
+                                        message: Text("Change app language?"),
+                                        buttons: [
+                                            .default(Text("English")) {
+                                                print("Changed To English")
+                                            },
+                                            .default(Text("Spanish")) {
+                                                print("Changed To Spanish")
+                                            },
+                                            .default(Text("Russian")) {
+                                                print("Changed To Russian")
+                                            },
+                                            .default(Text("Chinese")) {
+                                                print("Changed To Chinese")
+                                            },
+                                            .default(Text("Italian")) {
+                                                print("Changed To Italian")
+                                            },
+                                            .default(Text("Korean")) {
+                                                print("Changed To Korean")
+                                            },
+                                            .destructive(Text("Cancel")) {
+                                                print("cancel")
+                                            }
+                                            
+                                        ]
+                                    )
+                        
                     }
                     
                     Text("My Pirate Chain Endpoint:".localized())
