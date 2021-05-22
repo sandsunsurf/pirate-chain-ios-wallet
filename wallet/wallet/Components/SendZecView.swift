@@ -16,7 +16,7 @@ struct SendZecView: View {
         
         HStack(alignment: .center, spacing: 0) {
   
-            Image("piratelogoicon").frame(width: 20, height: 20, alignment: .top).offset(x: -10, y: -20)
+            Image("piratelogoicon").frame(width: 20, height: 20, alignment: .top).offset(x: -10, y: -20).foregroundColor(.white)
             Text("\(self.$zatoshi.wrappedValue)")
             .lineLimit(1)
             .minimumScaleFactor(0.5)
