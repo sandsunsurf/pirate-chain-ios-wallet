@@ -18,22 +18,22 @@ struct Sending: View {
     var loading = LottieAnimation(filename: "lottie_sending")
     var errorMessage: String {
         guard let e = flow.error else {
-            return "thing is that we really don't know what just went down, sorry!"
+            return "thing is that we really don't know what just went down, sorry!".localized()
         }
         
         return "\(e)"
     }
  
     var showErrorAlert: Alert {
-        var errorMessage = "Oops. An error ocurred while submitting your transaction."
+        var errorMessage = "Oops. An error ocurred while submitting your transaction.".localized()
         
         if let error = self.flow.error {
             errorMessage = "\(ZECCWalletEnvironment.mapError(error: error) )"
         }
-        return Alert(title: Text("Error"),
+        return Alert(title: Text("Error".localized()),
                      message: Text(errorMessage),
                      dismissButton: .default(
-                        Text("button_close"),
+                        Text("button_close".localized()),
                         action: {
                             self.flow.close()
                             
@@ -74,7 +74,7 @@ struct Sending: View {
                     Button(action: {
                         guard let pendingTx = self.flow.pendingTx  else {
                             
-                            tracker.track(.error(severity: .warning), properties: [ErrorSeverity.messageKey : "Attempt to open transaction details in sending screen with no pending transaction in send flow"])
+                            tracker.track(.error(severity: .warning), properties: [ErrorSeverity.messageKey : "Attempt to open transaction details in sending screen with no pending transaction in send flow".localized()])
                             self.flow.close() // close this so it does not get stuck here
                             return
                         }
@@ -84,7 +84,7 @@ struct Sending: View {
                         tracker.track(.tap(action: .sendFinalDetails), properties: [:])
                         
                     }) {
-                        Text("button_seedetails")
+                        Text("button_seedetails".localized())
                             .foregroundColor(.black)
                             .zcashButtonBackground(shape: .roundedCorners(fillStyle: .outline(color: Color.black, lineWidth: 2)))
                             .frame(height: 58)
@@ -96,7 +96,7 @@ struct Sending: View {
                         tracker.track(.tap(action: .sendFinalClose), properties: [:])
                         self.flow.close()
                     }) {
-                        Text("button_done")
+                        Text("button_done".localized())
                             .foregroundColor(.black)
                             .frame(height: 58)
                     }

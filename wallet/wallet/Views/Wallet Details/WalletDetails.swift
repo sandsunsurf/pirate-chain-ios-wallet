@@ -141,8 +141,8 @@ struct WalletDetails: View {
 
         }
         .alert(isPresented: self.$viewModel.showError) {
-            Alert(title: Text("Oops"),
-                  message: Text("An error ocurred"),
+            Alert(title: Text("Oops".localized()),
+                  message: Text("an error ocurred".localized()),
                   dismissButton: .default(Text("button_close")))
         }
         .onDisappear() {

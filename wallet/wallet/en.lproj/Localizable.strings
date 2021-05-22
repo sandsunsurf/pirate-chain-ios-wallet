@@ -213,6 +213,16 @@
 "Total Spent" = "Total Spent";
 
 "You Received" = "You Received";
+"This is embarassing" = "This is embarassing";
+"you shouldn't be seeing this" = "you shouldn't be seeing this";
+"Authorization Failed!" = "Authorization Failed!";
+"It appears that you were not able to authenticate" = "It appears that you were not able to authenticate";
+"Oops" = "Oops";
+"Transaction Detail" = "Transaction Detail";
+
+"Attempt to open transaction details in sending screen with no pending transaction in send flow" = "Attempt to open transaction details in sending screen with no pending transaction in send flow";
+
+
 
 
 

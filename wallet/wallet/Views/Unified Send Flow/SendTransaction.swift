@@ -43,10 +43,10 @@ struct SendTransaction: View {
             if ZECCWalletEnvironment.shared.sufficientFundsToSend(amount: amountToSend) {
                 return String(format:NSLocalizedString("You Have %@ sendable ARRR", comment: ""), "\(balance)")
             } else {
-                return String(format: "%@ sendable ARRR. You don't have sufficient funds to cover the amount + Miner Fee of %@ ARRR", "\(balance)", "\(ZECCWalletEnvironment.minerFee)")
+                return String(format: "%@ sendable ARRR. You don't have sufficient funds to cover the amount + Miner Fee of %@ ARRR".localized(), "\(balance)", "\(ZECCWalletEnvironment.minerFee)")
             }
         } else {
-            return "You don't have any sendable ARRR yet"
+            return "You don't have any sendable ARRR yet".localized()
         }
     }
     
