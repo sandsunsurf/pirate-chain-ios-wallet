@@ -222,7 +222,25 @@
 
 "Attempt to open transaction details in sending screen with no pending transaction in send flow" = "Attempt to open transaction details in sending screen with no pending transaction in send flow";
 
+"Existing keys found!" = "Existing keys found!";
 
+"it appears that this device already has keys stored on it. What do you want to do?" = "it appears that this device already has keys stored on it. What do you want to do?";
+
+"Restore existing keys" = "Restore existing keys";
+
+"Discard them and continue" = "Discard them and continue";
+
+"Error Initializing Wallet" = "Error Initializing Wallet";
+
+"There was a problem initializing the wallet" = "There was a problem initializing the wallet";
+
+"Could not restore wallet" = "Could not restore wallet";
+
+"There's a problem restoring your wallet. Please verify your seed phrase and try again." = "There's a problem restoring your wallet. Please verify your seed phrase and try again.";
+
+"Problem Retrieving your seed" = "Problem Retrieving your seed";
+
+"We are unable to display your seed phrase. Please close the app and retry this operation" = "We are unable to display your seed phrase. Please close the app and retry this operation";
 
 
 

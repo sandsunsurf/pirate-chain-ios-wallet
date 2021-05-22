@@ -113,7 +113,7 @@ struct SeedBackup: View {
                     }
                     PasteboardAlertHelper.shared.copyToPasteBoard(value: self.copyText, notify: "send_onclipboard".localized())
                 }) {
-                    Text("button_copytoclipboard")
+                    Text("button_copytoclipboard".localized())
                         .font(.system(size: 20))
                         .foregroundColor(.white)
                         .frame(height: buttonHeight)
@@ -121,7 +121,7 @@ struct SeedBackup: View {
                 }
                 if proceedsToHome {
                     NavigationLink(destination: LazyView( Home(amount: 0, verifiedBalance: appEnvironment.initializer.getBalance().asHumanReadableZecBalance())).environmentObject(HomeViewModel(amount: 0, balance: self.appEnvironment.initializer.getVerifiedBalance().asHumanReadableZecBalance()))) {
-                        Text("button_done")
+                        Text("button_done".localized())
                             .foregroundColor(.black)
                             .zcashButtonBackground(shape: .roundedCorners(fillStyle: .gradient(gradient: LinearGradient.zButtonGradient)))
                             .frame(height: buttonHeight)
@@ -135,9 +135,9 @@ struct SeedBackup: View {
             }
         }
         .alert(isPresented: self.$showError) {
-            Alert(title: Text("Problem Retrieving your seed"),
-                  message: Text("We are unable to display your seed phrase. Please close the app and retry this operation"),
-                  dismissButton: .default(Text("button_close")))
+            Alert(title: Text("Problem Retrieving your seed".localized()),
+                  message: Text("We are unable to display your seed phrase. Please close the app and retry this operation".localized()),
+                  dismissButton: .default(Text("button_close".localized())))
         }
         .onAppear {
             tracker.track(.screen(screen: .backup), properties: [:])

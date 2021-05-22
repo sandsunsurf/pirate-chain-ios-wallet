@@ -11,7 +11,7 @@ import Combine
 import ZcashLightClientKit
 final class HomeViewModel: ObservableObject {
     var isFirstAppear = true
-    let genericErrorMessage = "An error ocurred, please check your device logs"
+    let genericErrorMessage = "An error ocurred, please check your device logs".localized()
     var sendZecAmount: Double {
         zecAmountFormatter.number(from: sendZecAmountText)?.doubleValue ?? 0.0
     }
@@ -141,7 +141,7 @@ final class HomeViewModel: ObservableObject {
         
         let defaultAlert = Alert(title: Text(error.title),
                                 message: Text(error.message),
-                                dismissButton: .default(Text("button_close"),
+                                dismissButton: .default(Text("button_close".localized()),
                                                     action: errorAction))
         switch error {
         case .synchronizerError(let canRetry):
@@ -149,8 +149,8 @@ final class HomeViewModel: ObservableObject {
                 return Alert(
                         title: Text(error.title),
                         message: Text(error.message),
-                        primaryButton: .default(Text("button_close"),action: errorAction),
-                        secondaryButton: .default(Text("Retry"),
+                        primaryButton: .default(Text("button_close".localized()),action: errorAction),
+                        secondaryButton: .default(Text("Retry".localized()),
                                                      action: {
                                                         self.clearError()
                                                         try? ZECCWalletEnvironment.shared.synchronizer.start(retry: true)
@@ -204,7 +204,7 @@ struct Home: View {
             tracker.track(.tap(action: .homeSend), properties: [:])
             self.startSendFlow()
         }) {
-            Text("button_send")
+            Text("button_send".localized())
                 .foregroundColor(.black)
                 .zcashButtonBackground(shape: .roundedCorners(fillStyle: .solid(color: Color.zYellow)))
                 .frame(height: buttonHeight)
@@ -226,7 +226,7 @@ struct Home: View {
             )
         } else {
             return AnyView(
-                ActionableMessage(message: "balance_nofunds".localized())
+                ActionableMessage(message: "balance_nofunds".localized().localized())
             )
         }
     }
@@ -235,7 +235,7 @@ struct Home: View {
         Button(action: {
             self.viewModel.showHistory = true
         }, label: {
-            Text("button_wallethistory")
+            Text("button_wallethistory".localized())
                 .foregroundColor(.white)
                 .font(.body)
                 .opacity(0.6)
@@ -267,7 +267,7 @@ struct Home: View {
                         }) {
                             Image("QRCodeIcon")
                                 .renderingMode(.original)
-                                .accessibility(label: Text("Receive Funds"))
+                                .accessibility(label: Text("Receive Funds".localized()))
                                 .scaleEffect(0.5)
                             
                         }
@@ -278,7 +278,7 @@ struct Home: View {
                         }
                 },
                     headerItem: {
-                        Text("balance_amounttosend")
+                        Text("balance_amounttosend".localized())
                             .font(.system(size: 14))
                             .foregroundColor(.white)
                             .opacity(self.isSendingEnabled ? 1 : 0.4)
@@ -294,7 +294,7 @@ struct Home: View {
                                 .colorMultiply(.white)
                                 .opacity(0.6)
                                 .frame(width: 26, height: 26)
-                                .accessibility(label: Text("Your Settings"))
+                                .accessibility(label: Text("Your Settings".localized()))
                                 .padding()
                         }
                         .sheet(isPresented: $viewModel.showProfile){
