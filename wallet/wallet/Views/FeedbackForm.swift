@@ -26,10 +26,10 @@ struct FeedbackForm: View {
                 VStack(alignment: .center, spacing: 30) {
                     HStack {
                         VStack(alignment: .leading, spacing: 4) {
-                            Text("Please Rank Your Experience")
+                            Text("Please Rank Your Experience".localized())
                                 .foregroundColor(.white)
                                 .font(.title)
-                            Text("We improve and iterate with YOUR feedback")
+                            Text("We improve and iterate with YOUR feedback".localized())
                                 .foregroundColor(.white)
                                 .font(.footnote)
                         }
@@ -40,7 +40,7 @@ struct FeedbackForm: View {
                     
                     
                     VStack(alignment: .leading, spacing: 4) {
-                        Text("Any details to share?")
+                        Text("Any details to share?".localized())
                             .font(.body)
                             .foregroundColor(.white)
                         
@@ -50,10 +50,10 @@ struct FeedbackForm: View {
                     }
                     
                     VStack(alignment: .leading, spacing: 4) {
-                        Text("Was your Balance Clear?")
+                        Text("Was your Balance Clear?".localized())
                             .font(.body)
                             .foregroundColor(.white)
-                        TextField("My balance was...", text: $balance)
+                        TextField("My balance was...".localized(), text: $balance)
                             .textFieldStyle(CustomTextFieldStyle())
                     }
                     VStack(alignment: .leading, spacing: 4) {
@@ -72,7 +72,7 @@ struct FeedbackForm: View {
                         ])
                         self.showFeedbackSentAlert = true
                     }) {
-                        Text("button_send")
+                        Text("button_send".localized())
                             .foregroundColor(.black)
                             .zcashButtonBackground(
                                 shape: .roundedCorners(

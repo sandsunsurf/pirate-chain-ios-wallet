@@ -84,7 +84,7 @@ struct ScanAddress: View {
                 Spacer()
                 VStack {
                     scanFrame
-                    Text("scan_invalidQR")
+                    Text("scan_invalidQR".localized())
                         .bold()
                         .foregroundColor(.white)
                         .opacity(self.wrongAddressScanned ? 1 : 0)
@@ -111,7 +111,7 @@ struct ScanAddress: View {
                 Spacer()
                 ZStack {
                     scanFrame
-                    Text("We don't have permission to access your camera")
+                    Text("We don't have permission to access your camera".localized())
                         .multilineTextAlignment(.center)
                         .foregroundColor(.white)
                         .padding(.all, 36)
@@ -134,7 +134,7 @@ struct ScanAddress: View {
              
                 ZStack {
                     scanFrame
-                    Text("scan_cameraunavaliable")
+                    Text("scan_cameraunavaliable".localized())
                         .foregroundColor(.white)
                 }
             }
@@ -145,6 +145,7 @@ struct ScanAddress: View {
     func viewFor(state: CameraAccessHelper.Status) -> some View {
         switch state {
         case .authorized, .undetermined:
+//            let aTitle = "send_scanQR".localized()
             let auth = authorized.navigationBarTitle("send_scanQR", displayMode: .inline)
             
             if viewModel.showCloseButton {

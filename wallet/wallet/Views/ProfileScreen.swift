@@ -43,7 +43,7 @@ struct ProfileScreen: View {
                         PasteboardAlertHelper.shared.copyToPasteBoard(value: self.appEnvironment.initializer.getAddress() ?? "", notify: "Address Copied to clipboard!")
                         
                     }) {
-                        Text("My ARRR Address\n".localized() + (appEnvironment.initializer.getAddress()?.shortZaddress ?? ""))
+                        Text("My ARRR Address".localized() + (appEnvironment.initializer.getAddress()?.shortZaddress ?? ""))
                             .lineLimit(3)
                             .multilineTextAlignment(.center)
                             .font(.system(size: 18))
@@ -79,7 +79,7 @@ struct ProfileScreen: View {
                             .environmentObject(self.appEnvironment)
                         )
                     ) {
-                        Text("button_backup")
+                        Text("button_backup".localized())
                             .foregroundColor(.white)
                             .zcashButtonBackground(shape: .roundedCorners(fillStyle: .outline(color: .white, lineWidth: 1)))
                             .frame(height: Self.buttonHeight)
@@ -102,7 +102,7 @@ struct ProfileScreen: View {
                         .font(.system(size: 18))
                         .foregroundColor(.white).padding([.top], 20)
                     
-                    TextField("Enter an endpoint", text: $anAddress, onEditingChanged: { (changed) in
+                    TextField("Enter an endpoint".localized(), text: $anAddress, onEditingChanged: { (changed) in
                     }) {
                         self.didEndEditingTextField()
                     }.multilineTextAlignment(.center).foregroundColor(.white).overlay(

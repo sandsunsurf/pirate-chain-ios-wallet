@@ -37,7 +37,7 @@ struct DisplayAddress: View {
                 .frame(width: qrSize, height: qrSize, alignment: .center)
                 .layoutPriority(1)
             
-            Text("address_shielded")
+            Text("address_shielded".localized())
                 .foregroundColor(.white)
                 .font(.system(size: 18))
                 
@@ -73,7 +73,7 @@ struct DisplayAddress: View {
                 tracker.track(.tap(action: .receiveScan), properties: [:])
                 self.isShareAddressShown = true
             }) {
-                Text("button_share_address")
+                Text("button_share_address".localized())
                     .foregroundColor(Color.white)
                     .zcashButtonBackground(shape: .roundedCorners(fillStyle: .outline(color: .white, lineWidth: 1)))
                     .frame(height: 58)

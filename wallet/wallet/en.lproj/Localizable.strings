@@ -180,7 +180,7 @@
 
 
 
-// User Facing Errors
+// Misc
 
 "Wallet Improperly Initialized" = "Wallet Improperly Initialized";
 "Processor Error" = "Processor Error";
@@ -242,5 +242,30 @@
 
 "We are unable to display your seed phrase. Please close the app and retry this operation" = "We are unable to display your seed phrase. Please close the app and retry this operation";
 
+"We don't have permission to access your camera" = "We don't have permission to access your camera";
 
+"My ARRR Address" = "My ARRR Address \n";
 
+"Enter an endpoint" = "Enter an endpoint";
+
+"Pirate Chain Wallet" = "Pirate Chain Wallet";
+
+"DELETE WALLET" = "DELETE WALLET";
+
+"Please Rank Your Experience" = "Please Rank Your Experience";
+
+"We improve and iterate with YOUR feedback" = "We improve and iterate with YOUR feedback";
+
+"Any details to share?" = "Any details to share?";
+
+"My Experience was..." = "My Experience was...";
+
+"Was your Balance Clear?" = "Was your Balance Clear?";
+
+"My balance was..." = "My balance was...";
+
+"What feature would you like to see next?" = "What feature would you like to see next?";
+
+"I'd like..." = "I'd like...";
+
+"Transaction Details" = "Transaction Details";
