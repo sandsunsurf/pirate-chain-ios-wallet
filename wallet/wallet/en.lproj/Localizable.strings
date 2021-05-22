@@ -169,3 +169,7 @@
 "My Pirate Chain Endpoint:" = "My Pirate Chain Endpoint:";
 "Invalid Endpoint Address, Reverting it to pirate chain address!" = "Invalid Endpoint Address, Reverting it to pirate chain address!";
 "Powered By Meshbits Ltd Team" = "Powered By Meshbits Ltd Team";
+
+
+"An error occured" = "An error occured";
+"dismiss" = "dismiss";

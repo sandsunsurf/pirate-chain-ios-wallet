@@ -32,9 +32,9 @@ extension AlertType {
     func asAlert() -> Alert {
         switch self {
         case .error(let underlyingError):
-            return Alert(title: Text("Error"), message: Text("An error occured \(underlyingError.localizedDescription)"), dismissButton: .default(Text("dismiss")))
+            return Alert(title: Text("Error".localized()), message: Text("An error occured".localized() + (underlyingError.localizedDescription)), dismissButton: .default(Text("dismiss".localized())))
         case .feedback(let message):
-            return Alert(title: Text(""),message: Text(message), dismissButton: .default(Text("dismiss")))
+            return Alert(title: Text(""),message: Text(message), dismissButton: .default(Text("dismiss".localized())))
         }
     }
 }
