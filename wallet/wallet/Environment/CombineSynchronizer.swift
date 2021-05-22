@@ -145,7 +145,7 @@ class CombineSynchronizer {
             guard let self = self else { return }
             
             guard let error = notification.userInfo?[SDKSynchronizer.NotificationKeys.error] as? Error else {
-                self.errorPublisher.send(WalletError.genericErrorWithMessage(message: "An error ocurred, but we can't figure out what it is. Please check device logs for more details")
+                self.errorPublisher.send(WalletError.genericErrorWithMessage(message: "An error ocurred, but we can't figure out what it is. Please check device logs for more details".localized())
                 )
                 return
             }

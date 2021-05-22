@@ -44,7 +44,7 @@ struct AddressHelperView: View {
         switch mode {
         case .lastUsed(let address):
             return VStack(spacing: 0) {
-                AddressHelperViewSection(title: "LAST USED") {
+                AddressHelperViewSection(title: "LAST USED".localized()) {
                     AddrezzHelperViewCell(address: address, shielded: isValidZ(address: address),selected: self.selection == Selection.lastUsedSelection)
                 }.onTapGesture {
                     self.onTap(selection: Selection.lastUsedSelection, value: address)
@@ -58,7 +58,7 @@ struct AddressHelperView: View {
                 .onTapGesture {
                     self.onTap(selection: Selection.clipboardSelection, value: clipboard)
                 }
-                AddressHelperViewSection(title: "LAST USED") {
+                AddressHelperViewSection(title: "LAST USED".localized()) {
                     AddrezzHelperViewCell(address: lastUsed, shielded: isValidZ(address: lastUsed   ),selected: self.selection == Selection.lastUsedSelection)
                 }
                 .onTapGesture {

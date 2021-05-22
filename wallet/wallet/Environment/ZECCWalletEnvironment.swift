@@ -20,7 +20,7 @@ enum WalletState {
 
 final class ZECCWalletEnvironment: ObservableObject {
     
-    static let genericErrorMessage = "An error ocurred, please check your device logs"
+    static let genericErrorMessage = "An error ocurred, please check your device logs".localized()
     static var shared: ZECCWalletEnvironment = try! ZECCWalletEnvironment() // app can't live without this existing.
     static let memoLengthLimit: Int = 512
     static let defaultLightWalletEndpoint = "lightd.meshbits.io"
@@ -95,7 +95,7 @@ final class ZECCWalletEnvironment: ObservableObject {
             
             try SeedManager.default.importBirthday(birthday.height)
             try SeedManager.default.importPhrase(bip39: randomPhrase)
-            try SeedManager.default.importLightWalletEndpoint(address: ZECCWalletEnvironment.defaultLightWalletEndpoint)
+            SeedManager.default.importLightWalletEndpoint(address: ZECCWalletEnvironment.defaultLightWalletEndpoint)
             try self.initialize()
         
         } catch {

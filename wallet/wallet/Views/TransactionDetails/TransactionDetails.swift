@@ -24,7 +24,7 @@ struct TransactionDetails: View {
         }) {
             HStack {
                 Spacer()
-                Text("Explore")
+                Text("Explore".localized())
                     .foregroundColor(.white)
                 Image(systemName: "arrow.up.right.square")
                     .foregroundColor(.white)

@@ -173,3 +173,46 @@
 
 "An error occured" = "An error occured";
 "dismiss" = "dismiss";
+"An error ocurred, please check your device logs" = "An error ocurred, please check your device logs";
+"An error ocurred, but we can't figure out what it is. Please check device logs for more details" = "An error ocurred, but we can't figure out what it is. Please check device logs for more details";
+"LAST USED" = "LAST USED";
+"Zcash address in buffer!" = "Zcash address in buffer!";
+
+
+
+// User Facing Errors
+
+"Wallet Improperly Initialized" = "Wallet Improperly Initialized";
+"Processor Error" = "Processor Error";
+"Connection Error" = "Connection Error";
+"Failed to Send" = "Failed to Send";
+"Oops Something happened" = "Oops Something happened";
+"Critical Error" = "Critical Error";
+"This wallet has not been initialized correctly! Perhaps an error occurred during install. If you just created a new wallet close the app and retry.\n\n If this is an existing wallet, it can be fixed with a reset. First, locate your backup seed phrase, then \"Nuke Wallet\" and reimport it." = "This wallet has not been initialized correctly! Perhaps an error occurred during install. If you just created a new wallet close the app and retry.\n\n If this is an existing wallet, it can be fixed with a reset. First, locate your backup seed phrase, then \"Nuke Wallet\" and reimport it.";
+
+"An error ocurred while syncing the blockchain. If the problem persists, back up your seed phrase and restore your wallet." = "An error ocurred while syncing the blockchain. If the problem persists, back up your seed phrase and restore your wallet.";
+
+"We are having problems with the network connection." = "We are having problems with the network connection.";
+
+"We were unable to send your transaction. Your funds are safe, we just need to wait until the transaction expires before you can send them again." = "We were unable to send your transaction. Your funds are safe, we just need to wait until the transaction expires before you can send them again.";
+
+"There's an internal error. Probably nothing serious. If this error persists, back up your seed phrase and restore your wallet" = "There's an internal error. Probably nothing serious. If this error persists, back up your seed phrase and restore your wallet";
+
+"If this error persists, back up your seed phrase and restore your wallet" = "If this error persists, back up your seed phrase and restore your wallet";
+
+"Explore" = "Explore";
+
+"from" = "from ";
+
+"block" = "block ";
+
+"with a" = "with a";
+
+"You Failed to send" = "You Failed to send";
+
+"Total Spent" = "Total Spent";
+
+"You Received" = "You Received";
+
+
+
