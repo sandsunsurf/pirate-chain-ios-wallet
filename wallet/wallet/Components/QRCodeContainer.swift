@@ -19,6 +19,8 @@ struct QRCodeContainer: View {
             badge
             .resizable()
             .frame(width: 64, height: 64)
+            Image("piratelogoicon").resizable().frame(width: 32, height: 32).foregroundColor(.black)
+
         }
     }
 }
