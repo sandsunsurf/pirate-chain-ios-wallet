@@ -127,6 +127,12 @@ struct ProfileScreen: View {
                             .zcashButtonBackground(shape: .roundedCorners(fillStyle: .outline(color: .red, lineWidth: 1)))
                             .frame(height: Self.buttonHeight)
                     }
+                    
+                    Text("Powered By Meshbits Ltd Team".localized())
+                        .foregroundColor(.white)
+                        .offset(y:100).font(.system(size: 10))
+                        .frame(height: Self.buttonHeight).padding(.bottom, 20)
+                    
                 }.padding(.horizontal, Self.horizontalPadding)
                 .padding(.bottom, 30)
             }
