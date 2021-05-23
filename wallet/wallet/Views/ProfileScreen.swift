@@ -8,7 +8,6 @@
 
 import SwiftUI
 
-
 struct ProfileScreen: View {
     @EnvironmentObject var appEnvironment: ZECCWalletEnvironment
     @State var nukePressed = false
@@ -34,7 +33,6 @@ struct ProfileScreen: View {
     var body: some View {
         NavigationView {
             ZStack(alignment: .center) {
-                
                 ZcashBackground.pureBlack
              
                 VStack(alignment: .center, spacing: 16) {
@@ -44,7 +42,7 @@ struct ProfileScreen: View {
                         PasteboardAlertHelper.shared.copyToPasteBoard(value: self.appEnvironment.initializer.getAddress() ?? "", notify: "Address Copied to clipboard!")
                         
                     }) {
-                        Text("My ARRR Address".localized() + (appEnvironment.initializer.getAddress()?.shortZaddress ?? ""))
+                        Text("My ARRR Address \n".localized() + (appEnvironment.initializer.getAddress()?.shortZaddress ?? ""))
                             .lineLimit(3)
                             .multilineTextAlignment(.center)
                             .font(.system(size: 18))
@@ -100,7 +98,7 @@ struct ProfileScreen: View {
                     Button(action: {
                         isUserOptingtoChangeLanguage = true
                     }, label: {
-                        Text("Choose a language".localized())
+                        Text("Change app language".localized())
                             .zcashButtonBackground(shape: .roundedCorners(fillStyle: .outline(color: .white, lineWidth: 1)))
                             .foregroundColor(.white)
                           .frame(height: Self.buttonHeight)
@@ -108,24 +106,30 @@ struct ProfileScreen: View {
                         
                        ActionSheet(
                                         title: Text(""),
-                                        message: Text("Change app language?"),
+                                        message: Text("Change app language"),
                                         buttons: [
                                             .default(Text("English")) {
+                                                updateLanguageAndResetApp(language: "en")
                                                 print("Changed To English")
                                             },
                                             .default(Text("Spanish")) {
+                                                updateLanguageAndResetApp(language: "es")
                                                 print("Changed To Spanish")
                                             },
                                             .default(Text("Russian")) {
+                                                updateLanguageAndResetApp(language: "ru")
                                                 print("Changed To Russian")
                                             },
                                             .default(Text("Chinese")) {
+                                                updateLanguageAndResetApp(language: "zh-Hans")
                                                 print("Changed To Chinese")
                                             },
                                             .default(Text("Italian")) {
+                                                updateLanguageAndResetApp(language: "it")
                                                 print("Changed To Italian")
                                             },
                                             .default(Text("Korean")) {
+                                                updateLanguageAndResetApp(language: "ko")
                                                 print("Changed To Korean")
                                             },
                                             .destructive(Text("Cancel")) {
@@ -208,8 +212,23 @@ struct ProfileScreen: View {
             tracker.track(.tap(action: .profileClose), properties: [:])
             self.isShown = false
         }).frame(width: 30, height: 30))
+        .onAppear(){
+            
+        }
     }
     
+    func updateLanguageAndResetApp(language: String){
+        Bundle.setLanguage(lang: language)
+        
+//        let storyboard = UIStoryboard(name: "LaunchScreen", bundle: nil)
+//
+//        return storyboard.instantiateInitialViewController()!
+        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//            NotificationCenter.default.post(name: NSNotification.Name("MoveToFirstViewLayout"), object: nil)
+//        }
+    }
+//
     func didEndEditingTextField(){
         if anAddress.count == 0 {
             isDisplayAddressAlert = true

