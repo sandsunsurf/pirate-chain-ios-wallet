@@ -12,14 +12,14 @@ import SwiftUI
 
 struct InputPasscodeWithCustomPad: View {
     
-    @State var isPassCodeEntered = false
-        
+    @State var isPassCodeEntered = SeedManager.default.getPinCode() == "" ? false : true
+    
     @EnvironmentObject var appEnvironment: ZECCWalletEnvironment
-
+    
     @Environment(\.presentationMode) var mode:Binding<PresentationMode>
-        
+    
     @State var copiedValue: PasteboardItemModel?
-
+    
     @State var destination: Destination?
     
     @State var aUniqueCode : [String] = []
@@ -38,35 +38,35 @@ struct InputPasscodeWithCustomPad: View {
             return self.rawValue
         }
     }
-
     
-      func getRandomNumbers()->[Int]{
-          
-          var allNumbers = [0,1,2,3,4,5,6,7,8,9]
+    
+    func getRandomNumbers()->[Int]{
         
-          var uniqueNumbers = [Int]()
-
-          while allNumbers.count > 0 {
-
-              let number = Int(arc4random_uniform(UInt32(allNumbers.count)))
-
-              uniqueNumbers.append(allNumbers[number])
-              
-              allNumbers.swapAt(number, allNumbers.count-1)
-              
-              allNumbers.removeLast()
-          }
-          
-          return uniqueNumbers
-      }
-      
+        var allNumbers = [0,1,2,3,4,5,6,7,8,9]
+        
+        var uniqueNumbers = [Int]()
+        
+        while allNumbers.count > 0 {
+            
+            let number = Int(arc4random_uniform(UInt32(allNumbers.count)))
+            
+            uniqueNumbers.append(allNumbers[number])
+            
+            allNumbers.swapAt(number, allNumbers.count-1)
+            
+            allNumbers.removeLast()
+        }
+        
+        return uniqueNumbers
+    }
+    
     
     func getRandomizedPadDigits()->[NumPadRow]{
         
         var customPadDigits = [NumPadRow]()
-
+        
         let uniqueNumbers = getRandomNumbers()
-       
+        
         var aColumnIndex = 0
         
         var aRowIndex = 0
@@ -91,7 +91,7 @@ struct InputPasscodeWithCustomPad: View {
             
             aColumnIndex += 1
         }
-                      
+        
         customPadDigits.append(NumPadRow(id: 3, row: arrayOfNumPadValues))
         
         return customPadDigits
@@ -99,43 +99,56 @@ struct InputPasscodeWithCustomPad: View {
     
     var body: some View {
         
-        ZStack(alignment: .center) {
-            
-            ZcashBackground.pureBlack
-         
-            NavigationView{
-                VStack{
+        ZStack() {
 
+            NavigationView{
+
+                ZStack {
+
+                    Color.black.edgesIgnoringSafeArea(.all)
+                    
+                    VStack{
+                        
                         VStack{
-                            Spacer()
-                            Text(!isPassCodeEntered ? aPasscodeTitle : aConfirmPasscode).font(.title)
+
+                            Spacer().background(Color.black)
+
+                            Text(!isPassCodeEntered ? aPasscodeTitle : aConfirmPasscode).font(.title).foregroundColor(.white)
+
                             HStack(spacing: 20){
+                                
                                 ForEach(aUniqueCode,id: \.self){i in
-                                    Text(i).font(.title).fontWeight(.semibold)
+                                
+                                    Text(i).font(.title).fontWeight(.semibold).foregroundColor(.white)
+                                
                                 }
+                                
                             }.padding(.vertical)
-                            Spacer()
+
+                            Spacer().background(Color.black)
                             
                             CustomNumberPad(uniqueCodes: $aUniqueCode,customDigits: $customDigits)
-                        }
-                 
-                }.onAppear {
 
-                    if customDigits.isEmpty {
-                        customDigits = getRandomizedPadDigits()
-                    }
-
-                    NotificationCenter.default.addObserver(forName: NSNotification.Name("EnteredCode"), object: nil, queue: .main) { (_) in
+                        }.background(Color.aPureBlack).edgesIgnoringSafeArea(.all)
                         
-                        self.isPassCodeEntered = true
-                    }
+                    }.background(Color.aPureBlack).edgesIgnoringSafeArea(.all).onAppear {
+                        
+                        if customDigits.isEmpty {
+                            customDigits = getRandomizedPadDigits()
+                        }
+                        
+                        NotificationCenter.default.addObserver(forName: NSNotification.Name("EnteredCode"), object: nil, queue: .main) { (_) in
+                            
+                            self.isPassCodeEntered = true
+                        }
+                    
+                    }.background(Color.aPureBlack).edgesIgnoringSafeArea(.all).padding(.bottom)
+                    
                 }
                 
-            }.preferredColorScheme(.dark)
+            }
             .animation(.spring())
-        }.background(Color.black)
-        
-       
+        }.background(Color.aPureBlack).edgesIgnoringSafeArea(.all)
         
     }
 }
@@ -168,7 +181,7 @@ struct CustomNumberPad : View {
     var body : some View{
         
         VStack(alignment: .leading,spacing: 20){
-                        
+            
             ForEach(customDigits){index in
                 
                 HStack(spacing: self.getScreenSpacing()){
@@ -178,7 +191,7 @@ struct CustomNumberPad : View {
                         Button(action: {
                             
                             if jIndex.value == "delete.left.fill"{
-                             
+                                
                                 self.uniqueCodes.removeLast()
                             }
                             else{
@@ -193,7 +206,7 @@ struct CustomNumberPad : View {
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                         
                                         NotificationCenter.default.post(name: NSNotification.Name("EnteredCode"), object: nil)
-
+                                        
                                         self.uniqueCodes.removeAll()
                                     }
                                     
@@ -220,7 +233,7 @@ struct CustomNumberPad : View {
             
         }.foregroundColor(.white)
     }
-
+    
     
     func getScreenSpacing()->CGFloat{
         
@@ -232,11 +245,11 @@ struct CustomNumberPad : View {
         var code = ""
         
         for i in self.uniqueCodes{
-        
+            
             code += i
             
         }
-
+        
         return code.replacingOccurrences(of: " ", with: "")
     }
 }

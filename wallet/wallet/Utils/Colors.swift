@@ -60,7 +60,9 @@ extension Color {
     static let zDarkGray3 = Color(red: 0.65, green: 0.65, blue: 0.65)
     
    
+    static let aPureBlack = Color(red: 0.0, green: 0.0, blue: 0.0)
     
+   
     /// # Card colors
     
     
