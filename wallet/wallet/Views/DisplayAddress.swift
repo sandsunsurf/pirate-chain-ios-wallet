@@ -33,7 +33,7 @@ struct DisplayAddress: View {
         VStack(alignment: .center, spacing: 20) {
             Spacer()
             QRCodeContainer(qrImage: qrImage,
-                            badge: Image("yellow_shield"))
+                            badge: Image("QR-piratelogo"))
                 .frame(width: qrSize, height: qrSize, alignment: .center)
                 .layoutPriority(1)
             
