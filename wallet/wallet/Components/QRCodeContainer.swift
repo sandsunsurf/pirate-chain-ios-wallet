@@ -18,7 +18,7 @@ struct QRCodeContainer: View {
                 .aspectRatio(contentMode: .fit)
             badge
             .resizable()
-            .frame(width: 64, height: 64)
+            .frame(width: 56, height: 64)
         }
     }
 }
