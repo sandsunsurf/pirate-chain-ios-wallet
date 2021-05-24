@@ -190,9 +190,13 @@ struct CustomNumberPad : View {
                                     // Success here code is verified
                                     print(self.getPasscode())
                                     
-                                    NotificationCenter.default.post(name: NSNotification.Name("EnteredCode"), object: nil)
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                        
+                                        NotificationCenter.default.post(name: NSNotification.Name("EnteredCode"), object: nil)
 
-                                    self.uniqueCodes.removeAll()
+                                        self.uniqueCodes.removeAll()
+                                    }
+                                    
                                 }
                             }
                             
