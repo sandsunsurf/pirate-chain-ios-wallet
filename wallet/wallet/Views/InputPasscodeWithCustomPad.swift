@@ -90,8 +90,9 @@ struct InputPasscodeWithCustomPad: View {
             }
             
             if uniqueNumbers.last == aNumber {
-                arrayOfNumPadValues.append(NumPadValue(id: 0, value: "delete.left.fill"))
-                arrayOfNumPadValues.append(NumPadValue(id: 1, value: String(aNumber)))
+                arrayOfNumPadValues.append(NumPadValue(id: 0, value: String(aNumber)))
+                arrayOfNumPadValues.append(NumPadValue(id: 1, value: ""))
+                arrayOfNumPadValues.append(NumPadValue(id: 2, value: "delete.left.fill"))
             }else{
                 arrayOfNumPadValues.append(NumPadValue(id: aColumnIndex, value: String(aNumber)))
             }
@@ -229,7 +230,7 @@ struct CustomNumberPad : View {
     
     var body : some View{
         
-        VStack(alignment: .leading,spacing: 20){
+        VStack(alignment: .center,spacing: 20){
             
             ForEach(customDigits){index in
                 
@@ -242,6 +243,9 @@ struct CustomNumberPad : View {
                             if jIndex.value == "delete.left.fill"{
                                 
                                 self.uniqueCodes.removeLast()
+                            }else if jIndex.value == ""{
+                                
+                                // Do nothing
                             }
                             else{
                                 
@@ -270,11 +274,22 @@ struct CustomNumberPad : View {
                             
                             if jIndex.value == "delete.left.fill"{
                                 
-                                Image(systemName: jIndex.value).font(.body).padding(.vertical)
+                                Image(systemName: jIndex.value).font(.body).padding()
+                                
+                            }else if jIndex.value == ""{
+                                    
+                                    Text(jIndex.value).font(.title).fontWeight(.semibold).padding()
+                                 
                             }
                             else{
                                 
-                                Text(jIndex.value).font(.title).fontWeight(.semibold).multilineTextAlignment(.center)
+                                Text(jIndex.value).font(.title).fontWeight(.semibold).padding()
+                                  .overlay( Circle()
+                                        .stroke(Color.gray, lineWidth: 2)
+                                      .padding(6)
+                                  )
+                                
+                                
                             }
                             
                             
@@ -290,7 +305,7 @@ struct CustomNumberPad : View {
     
     func getScreenSpacing()->CGFloat{
         
-        return UIScreen.main.bounds.width / 3
+        return UIScreen.main.bounds.width / 3 - 40
     }
     
     func getPasscode()->String{
