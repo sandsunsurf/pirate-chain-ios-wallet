@@ -18,6 +18,8 @@ class UserSettings {
         static let lastUsedAddress = "lastUsedAddress"
         static let everShielded = "everShielded"
         static let rescanPendingFix = "rescanPendingFix"
+        static let aPassCode = "aPassCode"
+
     }
     
     var lastUsedAddress: String? {
@@ -39,5 +41,15 @@ class UserSettings {
         }
     }
     
+    
+    var savedPasscode: String?  {
+        get {
+            UserDefaults.standard.string(forKey: Keys.aPassCode)
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: Keys.aPassCode)
+        }
+    }
+
     
 }

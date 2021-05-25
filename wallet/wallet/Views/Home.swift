@@ -174,6 +174,7 @@ struct Home: View {
     let buttonHeight: CGFloat = 64
     let buttonPadding: CGFloat = 40
     @State var sendingPushed = false
+    @State var showPassCodeScreen = true
     @EnvironmentObject var viewModel: HomeViewModel
     @Environment(\.walletEnvironment) var appEnvironment: ZECCWalletEnvironment
     
@@ -363,8 +364,7 @@ struct Home: View {
                     }.isDetailLink(false)
                 }
                 
-               
-                    NavigationLink(
+                NavigationLink(
                         destination:
                             LazyView(WalletDetails(isActive: self.$viewModel.showHistory)
                             .environmentObject(WalletDetailsViewModel())
@@ -377,6 +377,12 @@ struct Home: View {
                         .opacity(viewModel.isSyncing ? 0.4 : 1.0)
                         .disabled(viewModel.isSyncing)
                 
+                NavigationLink(
+                    destination: LazyView(InputPasscodeWithCustomPad().environmentObject(ZECCWalletEnvironment.shared).navigationBarHidden(false))
+                    ,isActive: $showPassCodeScreen) {
+                    EmptyView()
+                }.animation(.spring())
+                
             }
             .padding([.bottom], 20)
         }
@@ -385,8 +391,14 @@ struct Home: View {
         .navigationBarHidden(true)
         .onAppear {
             tracker.track(.screen(screen: .home), properties: [:])
+        }.onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+            self.showPassCodeScreen = true
+        }.onReceive(NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) { _ in
+            self.showPassCodeScreen = false
         }
+
     }
+    
 }
 
 

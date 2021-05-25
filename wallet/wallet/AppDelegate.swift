@@ -49,6 +49,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             break
         }
         
+        UserDefaults.standard.register(defaults: [
+            UserSettings.Keys.aPassCode: ""])
+        
         return true
     }
     

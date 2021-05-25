@@ -22,7 +22,6 @@ final class SeedManager {
     private static let zECCWalletBirthday = "zECCWalletBirthday"
     private static let zECCWalletPhrase = "zECCWalletPhrase"
     private static let aRRRLightWalletEndpoint = "aRRRLightWalletEndpoint"
-    private static let aRRRPincode = "aRRRPinCode"
 
     private let keychain = KeychainSwift()
     
@@ -67,25 +66,7 @@ final class SeedManager {
         }
         return address
     }
-    
-    func setPinCode(pincoode: String) {
-        guard keychain.get(Self.aRRRPincode) == nil
-        else {
-            keychain.set(pincoode, forKey: Self.aRRRPincode)
-            return
-        }
-        keychain.set("", forKey: Self.aRRRPincode)
-    }
 
-    func getPinCode() -> String {
-        guard let pincode = keychain.get(Self.aRRRPincode) else
-        {
-            return ""
-        }
-        return pincode
-    }
-    
-    
     /**
      Use carefully: Deletes the seed phrase from the keychain
      */

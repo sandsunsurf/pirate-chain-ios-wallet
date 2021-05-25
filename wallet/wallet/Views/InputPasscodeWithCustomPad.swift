@@ -12,11 +12,15 @@ import SwiftUI
 
 struct InputPasscodeWithCustomPad: View {
     
-    @State var isPassCodeEntered = SeedManager.default.getPinCode() == "" ? false : true
+    @State var isPassCodeEntered = UserSettings.shared.savedPasscode == "" ? false : true
     
     @EnvironmentObject var appEnvironment: ZECCWalletEnvironment
     
     @Environment(\.presentationMode) var mode:Binding<PresentationMode>
+    
+    @State var isInCorrectPasscode = false
+    
+    @State var isCorrectPasscode = false
     
     @State var copiedValue: PasteboardItemModel?
     
@@ -26,11 +30,13 @@ struct InputPasscodeWithCustomPad: View {
     
     @State var customDigits : [NumPadRow] = []
     
-    var anInitialPassCode = ""
-    
     let aPasscodeTitle = "Enter a Passcode".localized()
     
     let aConfirmPasscode = "Confirm Passcode".localized()
+    
+    @State var aTempPasscode = UserSettings.shared.savedPasscode
+    
+    @State var aTempConfirmPasscode = ""
     
     enum Destination: Int, Identifiable, Hashable {
         case inputPasscode
@@ -139,16 +145,45 @@ struct InputPasscodeWithCustomPad: View {
                         
                         NotificationCenter.default.addObserver(forName: NSNotification.Name("EnteredCode"), object: nil, queue: .main) { (_) in
                             
-                            self.isPassCodeEntered = true
+                                // Existing User use case
+                            
+                            if !aTempPasscode!.isEmpty {
+                                    aTempConfirmPasscode = aUniqueCode.joined()
+                            }else if aTempPasscode!.isEmpty {
+                                    aTempPasscode = aUniqueCode.joined()
+                            }
+                            
+                            if !aTempPasscode!.isEmpty && aTempPasscode == aTempConfirmPasscode {
+                                    isCorrectPasscode = true
+                            }else if !aTempPasscode!.isEmpty && aTempConfirmPasscode.isEmpty {
+                                    self.isPassCodeEntered = true
+                            }else{
+                                self.isInCorrectPasscode = true
+                            }
                         }
                     
                     }.background(Color.aPureBlack).edgesIgnoringSafeArea(.all).padding(.bottom)
+                    .alert(isPresented: $isInCorrectPasscode) { () -> Alert in
+                        Alert(title: Text("".localized()),
+                              message: Text("Invalid Passcode, Please enter a valid passcode to change it".localized()),
+                              dismissButton: .default(Text("button_close".localized()),action: {
+
+                         }))
+                    }.alert(isPresented: $isCorrectPasscode) { () -> Alert in
+                        Alert(title: Text("".localized()),
+                              message: Text("Passcode Saved.".localized()),
+                              dismissButton: .default(Text("button_close".localized()),action: {
+                                UserSettings.shared.savedPasscode = aTempConfirmPasscode
+                                self.mode.wrappedValue.dismiss()
+                         }))
+                    }
                     
                 }
                 
             }
             .animation(.spring())
         }.background(Color.aPureBlack).edgesIgnoringSafeArea(.all)
+        .navigationBarHidden(false)
         
     }
 }
@@ -178,6 +213,8 @@ struct CustomNumberPad : View {
     
     @Binding var customDigits : [NumPadRow]
     
+    @State var notifyOnce = false
+    
     var body : some View{
         
         VStack(alignment: .leading,spacing: 20){
@@ -198,16 +235,20 @@ struct CustomNumberPad : View {
                                 
                                 self.uniqueCodes.append(jIndex.value)
                                 
-                                if self.uniqueCodes.count == 4{
+                                if self.uniqueCodes.count == 6{
                                     
                                     // Success here code is verified
                                     print(self.getPasscode())
                                     
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                         
-                                        NotificationCenter.default.post(name: NSNotification.Name("EnteredCode"), object: nil)
+                                        if notifyOnce == false {
+                                            notifyOnce = true
+                                            NotificationCenter.default.post(name: NSNotification.Name("EnteredCode"), object: nil)
+                                        }
                                         
                                         self.uniqueCodes.removeAll()
+                                        notifyOnce = false
                                     }
                                     
                                 }
@@ -221,7 +262,7 @@ struct CustomNumberPad : View {
                             }
                             else{
                                 
-                                Text(jIndex.value).font(.title).fontWeight(.semibold).padding(.vertical)
+                                Text(jIndex.value).font(.title).fontWeight(.semibold).multilineTextAlignment(.center)
                             }
                             
                             

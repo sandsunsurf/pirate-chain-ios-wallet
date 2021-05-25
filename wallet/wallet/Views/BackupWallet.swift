@@ -53,12 +53,12 @@ struct BackupWallet: View {
                         .frame(height: self.buttonHeight)
                 }.isDetailLink(false)
                 
-                NavigationLink(destination:  FundsAtRisk().environmentObject(appEnvironment)) {
-                    Text("button_skip".localized())
-                        .foregroundColor(Color.zDarkGray3)
-                        .font(.system(size: 20))
-                        .frame(height: buttonHeight)
-                }.isDetailLink(false)
+//                NavigationLink(destination:  FundsAtRisk().environmentObject(appEnvironment)) {
+//                    Text("button_skip".localized())
+//                        .foregroundColor(Color.zDarkGray3)
+//                        .font(.system(size: 20))
+//                        .frame(height: buttonHeight)
+//                }.isDetailLink(false)
                 
             }.padding([.horizontal, .bottom], 24)
             
