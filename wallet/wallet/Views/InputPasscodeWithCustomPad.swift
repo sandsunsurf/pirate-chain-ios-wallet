@@ -16,13 +16,15 @@ struct InputPasscodeWithCustomPad: View {
     
     @EnvironmentObject var appEnvironment: ZECCWalletEnvironment
     
-    @Environment(\.presentationMode) var mode:Binding<PresentationMode>
+    @Environment(\.presentationMode) var presentationMode:Binding<PresentationMode>
     
     @State var isInCorrectPasscode = false
     
     @State var isCorrectPasscode = false
     
     @State var copiedValue: PasteboardItemModel?
+    
+    @State var isReenteringAPasscode = false
     
     @State var destination: Destination?
     
@@ -44,7 +46,6 @@ struct InputPasscodeWithCustomPad: View {
             return self.rawValue
         }
     }
-    
     
     func getRandomNumbers()->[Int]{
         
@@ -116,9 +117,9 @@ struct InputPasscodeWithCustomPad: View {
                     VStack{
                         
                         VStack{
-
+                            
                             Spacer().background(Color.black)
-
+                           
                             Text(!isPassCodeEntered ? aPasscodeTitle : aConfirmPasscode).font(.title).foregroundColor(.white)
 
                             HStack(spacing: 20){
@@ -154,9 +155,22 @@ struct InputPasscodeWithCustomPad: View {
                             }
                             
                             if !aTempPasscode!.isEmpty && aTempPasscode == aTempConfirmPasscode {
+                                
+                                if isReenteringAPasscode == true {
+                                    self.presentationMode.wrappedValue.dismiss()
+                                }else{
                                     isCorrectPasscode = true
+                                }
+                                
+                                    
                             }else if !aTempPasscode!.isEmpty && aTempConfirmPasscode.isEmpty {
-                                    self.isPassCodeEntered = true
+                                    
+                                    if isReenteringAPasscode == true {
+                                        self.presentationMode.wrappedValue.dismiss()
+                                    }else{
+                                        self.isPassCodeEntered = true
+                                    }
+                                
                             }else{
                                 self.isInCorrectPasscode = true
                             }
@@ -174,17 +188,15 @@ struct InputPasscodeWithCustomPad: View {
                               message: Text("Passcode Saved.".localized()),
                               dismissButton: .default(Text("button_close".localized()),action: {
                                 UserSettings.shared.savedPasscode = aTempConfirmPasscode
-                                self.mode.wrappedValue.dismiss()
+                                self.presentationMode.wrappedValue.dismiss()
                          }))
                     }
-                    
+                                        
                 }
                 
             }
-            .animation(.spring())
         }.background(Color.aPureBlack).edgesIgnoringSafeArea(.all)
-        .navigationBarHidden(false)
-        
+
     }
 }
 

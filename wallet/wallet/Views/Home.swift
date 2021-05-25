@@ -362,6 +362,7 @@ struct Home: View {
                     ) {
                         EmptyView()
                     }.isDetailLink(false)
+                   
                 }
                 
                 NavigationLink(
@@ -377,11 +378,7 @@ struct Home: View {
                         .opacity(viewModel.isSyncing ? 0.4 : 1.0)
                         .disabled(viewModel.isSyncing)
                 
-                NavigationLink(
-                    destination: LazyView(InputPasscodeWithCustomPad().environmentObject(ZECCWalletEnvironment.shared).navigationBarHidden(false))
-                    ,isActive: $showPassCodeScreen) {
-                    EmptyView()
-                }.animation(.spring())
+               
                 
             }
             .padding([.bottom], 20)
@@ -391,10 +388,17 @@ struct Home: View {
         .navigationBarHidden(true)
         .onAppear {
             tracker.track(.screen(screen: .home), properties: [:])
-        }.onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
-            self.showPassCodeScreen = true
+        }.sheet(isPresented: $showPassCodeScreen){
+            InputPasscodeWithCustomPad(isReenteringAPasscode:true).environmentObject(ZECCWalletEnvironment.shared).background(Color.black)
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.showPassCodeScreen = true
+            }
         }.onReceive(NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) { _ in
-            self.showPassCodeScreen = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.showPassCodeScreen = false
+            }
         }
 
     }
