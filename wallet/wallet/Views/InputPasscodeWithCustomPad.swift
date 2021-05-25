@@ -91,7 +91,7 @@ struct InputPasscodeWithCustomPad: View {
             
             if uniqueNumbers.last == aNumber {
                 arrayOfNumPadValues.append(NumPadValue(id: 0, value: String(aNumber)))
-                arrayOfNumPadValues.append(NumPadValue(id: 1, value: ""))
+                arrayOfNumPadValues.append(NumPadValue(id: 1, value: "   "))
                 arrayOfNumPadValues.append(NumPadValue(id: 2, value: "delete.left.fill"))
             }else{
                 arrayOfNumPadValues.append(NumPadValue(id: aColumnIndex, value: String(aNumber)))
@@ -157,7 +157,7 @@ struct InputPasscodeWithCustomPad: View {
                             
                             if !aTempPasscode!.isEmpty && aTempPasscode == aTempConfirmPasscode {
                                 
-                                if isReenteringAPasscode == true {
+                                if isReenteringAPasscode == true && UserSettings.shared.savedPasscode != ""{
                                     self.presentationMode.wrappedValue.dismiss()
                                 }else{
                                     isCorrectPasscode = true
@@ -166,7 +166,7 @@ struct InputPasscodeWithCustomPad: View {
                                     
                             }else if !aTempPasscode!.isEmpty && aTempConfirmPasscode.isEmpty {
                                     
-                                    if isReenteringAPasscode == true {
+                                if isReenteringAPasscode == true && UserSettings.shared.savedPasscode != ""{
                                         self.presentationMode.wrappedValue.dismiss()
                                     }else{
                                         self.isPassCodeEntered = true
@@ -276,7 +276,7 @@ struct CustomNumberPad : View {
                                 
                                 Image(systemName: jIndex.value).font(.body).padding()
                                 
-                            }else if jIndex.value == ""{
+                            }else if jIndex.value == "   "{
                                     
                                     Text(jIndex.value).font(.title).fontWeight(.semibold).padding()
                                  
