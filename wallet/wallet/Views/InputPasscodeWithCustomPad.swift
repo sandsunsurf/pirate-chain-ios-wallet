@@ -37,7 +37,7 @@ struct InputPasscodeWithCustomPad: View {
     let aPasscodeTitle = "Enter a Passcode".localized()
     
     let aConfirmPasscode = "Confirm Passcode".localized()
-    
+        
     @State var aTempPasscode = UserSettings.shared.savedPasscode
     
     @State var aTempConfirmPasscode = ""
@@ -93,7 +93,7 @@ struct InputPasscodeWithCustomPad: View {
             
             if uniqueNumbers.last == aNumber {
                 arrayOfNumPadValues.append(NumPadValue(id: 0, value: String(aNumber)))
-                arrayOfNumPadValues.append(NumPadValue(id: 1, value: "   "))
+                arrayOfNumPadValues.append(NumPadValue(id: 1, value: "     "))
                 arrayOfNumPadValues.append(NumPadValue(id: 2, value: "delete.left.fill"))
             }else{
                 arrayOfNumPadValues.append(NumPadValue(id: aColumnIndex, value: String(aNumber)))
@@ -232,7 +232,7 @@ struct CustomNumberPad : View {
     
     var body : some View{
         
-        VStack(alignment: .center,spacing: 20){
+        VStack(alignment: .center){
             
             ForEach(customDigits){index in
                 
@@ -244,8 +244,10 @@ struct CustomNumberPad : View {
                             
                             if jIndex.value == "delete.left.fill"{
                                 
-                                self.uniqueCodes.removeLast()
-                            }else if jIndex.value == ""{
+                                if self.uniqueCodes.count > 0 {
+                                    self.uniqueCodes.removeLast()
+                                }
+                            }else if jIndex.value == "     "{
                                 
                                 // Do nothing
                             }
@@ -278,15 +280,15 @@ struct CustomNumberPad : View {
                                 
                                 Image(systemName: jIndex.value).font(.body).padding()
                                 
-                            }else if jIndex.value == "   "{
+                            }else if jIndex.value == "     "{
                                     
                                     Text(jIndex.value).font(.title).fontWeight(.semibold).padding()
                                  
                             }
                             else{
                                 
-                                Text(jIndex.value).font(.title).fontWeight(.semibold).padding()
-                                  .overlay( Circle()
+                                Text(jIndex.value).font(.title).fontWeight(.semibold).padding().multilineTextAlignment(.center).frame(width: 60, height: 60, alignment: .center)
+                                  .overlay(Circle()
                                         .stroke(Color.gray, lineWidth: 2)
                                       .padding(6)
                                   )
@@ -301,7 +303,7 @@ struct CustomNumberPad : View {
                 
             }
             
-        }.foregroundColor(.white)
+        }.foregroundColor(.white).padding(EdgeInsets(top: 0, leading: 40, bottom: 20, trailing: 40))
     }
     
     
