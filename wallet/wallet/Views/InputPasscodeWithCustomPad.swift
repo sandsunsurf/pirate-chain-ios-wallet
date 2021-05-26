@@ -19,7 +19,7 @@ struct InputPasscodeWithCustomPad: View {
     @Environment(\.presentationMode) var presentationMode:Binding<PresentationMode>
     
     let dragGesture = DragGesture()
-
+    
     @State var isInCorrectPasscode = false
     
     @State var isCorrectPasscode = false
@@ -28,13 +28,15 @@ struct InputPasscodeWithCustomPad: View {
     
     @State var isReenteringAPasscode = false
     
+    @State var isFromSettings = false
+    
     @State var destination: Destination?
     
     @State var aUniqueCode : [String] = []
     
     @State var customDigits : [NumPadRow] = []
     
-    let aPasscodeTitle = "Enter a Passcode".localized()
+    let aPasscodeTitle = "Enter a New Passcode".localized()
     
     let aConfirmPasscode = "Confirm Passcode".localized()
         
@@ -143,13 +145,16 @@ struct InputPasscodeWithCustomPad: View {
                         
                     }.background(Color.aPureBlack).edgesIgnoringSafeArea(.all).onAppear {
                         
+                        print("isReenteringAPasscode")
+                        print(isReenteringAPasscode)
+                        
                         if customDigits.isEmpty {
                             customDigits = getRandomizedPadDigits()
                         }
                         
                         NotificationCenter.default.addObserver(forName: NSNotification.Name("EnteredCode"), object: nil, queue: .main) { (_) in
                             
-                                // Existing User use case
+                            // Existing User use case
                             
                             if !aTempPasscode!.isEmpty {
                                     aTempConfirmPasscode = aUniqueCode.joined()
@@ -159,20 +164,29 @@ struct InputPasscodeWithCustomPad: View {
                             
                             if !aTempPasscode!.isEmpty && aTempPasscode == aTempConfirmPasscode {
                                 
+                                if isFromSettings == true {
+//                                    print("IS FROM SETTINGS")
+                                    isPassCodeEntered = false
+                                    aTempPasscode = ""
+                                    aTempConfirmPasscode = ""
+                                }
+                                else{
+                                    if isReenteringAPasscode == true && UserSettings.shared.savedPasscode != ""{
+                                        self.presentationMode.wrappedValue.dismiss()
+                                    }else{
+                                        isCorrectPasscode = true
+                                    }
+                                }
+                                    
+                            }else if !aTempPasscode!.isEmpty && aTempConfirmPasscode.isEmpty && isFromSettings == false{
+                                
+                        
                                 if isReenteringAPasscode == true && UserSettings.shared.savedPasscode != ""{
                                     self.presentationMode.wrappedValue.dismiss()
                                 }else{
-                                    isCorrectPasscode = true
+                                    self.isPassCodeEntered = true
                                 }
                                 
-                                    
-                            }else if !aTempPasscode!.isEmpty && aTempConfirmPasscode.isEmpty {
-                                    
-                                if isReenteringAPasscode == true && UserSettings.shared.savedPasscode != ""{
-                                        self.presentationMode.wrappedValue.dismiss()
-                                    }else{
-                                        self.isPassCodeEntered = true
-                                    }
                                 
                             }else{
                                 self.isInCorrectPasscode = true
@@ -203,11 +217,11 @@ struct InputPasscodeWithCustomPad: View {
     }
 }
 
-struct InputPasscodeWithCustomPad_Previews: PreviewProvider {
-    static var previews: some View {
-        InputPasscodeWithCustomPad()
-    }
-}
+//struct InputPasscodeWithCustomPad_Previews: PreviewProvider {
+//    static var previews: some View {
+//        InputPasscodeWithCustomPad()
+//    }
+//}
 
 struct NumPadRow : Identifiable {
     
@@ -229,6 +243,8 @@ struct CustomNumberPad : View {
     @Binding var customDigits : [NumPadRow]
     
     @State var notifyOnce = false
+    
+    var MAX_DIGITS = 6
     
     var body : some View{
         
@@ -255,18 +271,19 @@ struct CustomNumberPad : View {
                                 
                                 self.uniqueCodes.append(jIndex.value)
                                 
-                                if self.uniqueCodes.count == 6{
+                                if self.uniqueCodes.count == MAX_DIGITS{
                                     
                                     // Success here code is verified
-                                    print(self.getPasscode())
+//                                    print(self.getPasscode())
                                     
+                                    
+                                    if notifyOnce == false {
+                                        notifyOnce = true
+                                        NotificationCenter.default.post(name: NSNotification.Name("EnteredCode"), object: nil)
+                                    }
+
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                                        
-                                        if notifyOnce == false {
-                                            notifyOnce = true
-                                            NotificationCenter.default.post(name: NSNotification.Name("EnteredCode"), object: nil)
-                                        }
-                                        
+                                       
                                         self.uniqueCodes.removeAll()
                                         notifyOnce = false
                                     }

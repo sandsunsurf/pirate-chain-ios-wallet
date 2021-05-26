@@ -96,7 +96,7 @@
 
 
 //InputPasscodeWithCustomPad
-"Enter a Passcode" = "Enter a Passcode";
+"Enter New Passcode" = "Enter New Passcode";
 "Confirm Passcode" = "Confirm Passcode";
 
 // Settings Screen

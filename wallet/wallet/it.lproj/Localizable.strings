@@ -129,12 +129,7 @@ Stai per distruggere il tuo Wallet. Sei sicuro di voler procedere?";
 
 
 //InputPasscodeWithCustomPad
-"Enter a Passcode" = "Enter a Passcode";
-"Confirm Passcode" = "Confirm Passcode";
-
-
-//InputPasscodeWithCustomPad
-"Enter a Passcode" = "Enter a Passcode";
+"Enter New Passcode" = "Enter New Passcode";
 "Confirm Passcode" = "Confirm Passcode";
 
 // Settings Screen

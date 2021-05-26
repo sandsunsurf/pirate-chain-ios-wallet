@@ -24,6 +24,7 @@ struct ProfileScreen: View {
     var activeColor = Color.zAmberGradient2
     var inactiveColor = Color.zGray2
     var isUserTyping = false
+
     var afterEditedString = ""
     @State var isFeedbackActive = false
     var isHighlighted: Bool {
@@ -86,7 +87,7 @@ struct ProfileScreen: View {
                     }
                     
                     NavigationLink(destination: LazyView(
-                        InputPasscodeWithCustomPad().environmentObject(ZECCWalletEnvironment.shared))
+                                    InputPasscodeWithCustomPad(isFromSettings:true).environmentObject(ZECCWalletEnvironment.shared))
                     ) {
                                     
                         Text("Change PIN".localized())
