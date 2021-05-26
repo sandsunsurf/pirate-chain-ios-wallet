@@ -298,13 +298,15 @@ struct Home: View {
                                 .accessibility(label: Text("Your Settings".localized()))
                                 .padding()
                         }
-                        .sheet(isPresented: $viewModel.showProfile){
-                            ProfileScreen(isShown: self.$viewModel.showProfile)
-                                .environmentObject(self.appEnvironment)
-                        }
                 })
                     .frame(height: 64)
                 
+                NavigationLink(destination: LazyView (
+                    ProfileScreen(isShown: self.$viewModel.showProfile)
+                        .environmentObject(self.appEnvironment)
+                ), isActive: $viewModel.showProfile) {
+                    EmptyView()
+                }.isDetailLink(false)
                 
                 SendZecView(zatoshi: self.$viewModel.sendZecAmountText)
                     .opacity(amountOpacity)

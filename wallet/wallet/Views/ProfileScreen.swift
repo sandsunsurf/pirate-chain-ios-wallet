@@ -198,16 +198,14 @@ struct ProfileScreen: View {
                         SeedManager.default.importLightWalletEndpoint(address: ZECCWalletEnvironment.defaultLightWalletEndpoint)
                   }))
             })
-            .navigationBarTitle("", displayMode: .inline)
+            .navigationBarTitle("Settings", displayMode: .inline)
             .navigationBarHidden(false)
-            .navigationBarItems(trailing: ZcashCloseButton(action: {
-                tracker.track(.tap(action: .profileClose), properties: [:])
-                self.isShown = false
-            }).frame(width: 30, height: 30))
+//            .navigationBarItems(trailing: ZcashCloseButton(action: {
+//                tracker.track(.tap(action: .profileClose), properties: [:])
+//                self.isShown = false
+//            }).frame(width: 30, height: 30))
         }
         .background(Color.black)
-        .navigationBarTitle("", displayMode: .inline)
-        .navigationBarHidden(false)
         .navigationBarItems(trailing: ZcashCloseButton(action: {
             tracker.track(.tap(action: .profileClose), properties: [:])
             self.isShown = false
