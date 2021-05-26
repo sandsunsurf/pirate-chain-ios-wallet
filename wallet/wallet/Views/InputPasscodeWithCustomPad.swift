@@ -18,6 +18,8 @@ struct InputPasscodeWithCustomPad: View {
     
     @Environment(\.presentationMode) var presentationMode:Binding<PresentationMode>
     
+    let dragGesture = DragGesture()
+
     @State var isInCorrectPasscode = false
     
     @State var isCorrectPasscode = false
@@ -195,7 +197,7 @@ struct InputPasscodeWithCustomPad: View {
                                         
                 }
                 
-            }
+            }.highPriorityGesture(dragGesture)
         }.background(Color.aPureBlack).edgesIgnoringSafeArea(.all)
 
     }
