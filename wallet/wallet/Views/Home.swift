@@ -397,7 +397,7 @@ struct Home: View {
         .onAppear {
             tracker.track(.screen(screen: .home), properties: [:])
         }.sheet(isPresented: $showPassCodeScreen){
-            InputPasscodeWithCustomPad(isReenteringAPasscode:true).environmentObject(ZECCWalletEnvironment.shared).background(Color.black)
+            InputPasscodeWithCustomPad(isReenteringAPasscode:true,aTempPasscode:UserSettings.shared.savedPasscode ?? "").environmentObject(ZECCWalletEnvironment.shared).background(Color.black)
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

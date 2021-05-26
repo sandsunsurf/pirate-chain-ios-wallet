@@ -39,8 +39,8 @@ struct InputPasscodeWithCustomPad: View {
     let aPasscodeTitle = "Enter a New Passcode".localized()
     
     let aConfirmPasscode = "Confirm Passcode".localized()
-        
-    @State var aTempPasscode = UserSettings.shared.savedPasscode
+    
+    @State var aTempPasscode = ""
     
     @State var aTempConfirmPasscode = ""
     
@@ -112,11 +112,11 @@ struct InputPasscodeWithCustomPad: View {
     var body: some View {
         
         ZStack() {
-
+            
             NavigationView{
-
+                
                 ZStack {
-
+                    
                     Color.black.edgesIgnoringSafeArea(.all)
                     
                     VStack{
@@ -124,29 +124,26 @@ struct InputPasscodeWithCustomPad: View {
                         VStack{
                             
                             Spacer().background(Color.black)
-                           
+                            
                             Text(!isPassCodeEntered ? aPasscodeTitle : aConfirmPasscode).font(.title).foregroundColor(.white)
-
+                            
                             HStack(spacing: 20){
                                 
                                 ForEach(aUniqueCode,id: \.self){i in
-                                
+                                    
                                     Text(i).font(.title).fontWeight(.semibold).foregroundColor(.white)
-                                
+                                    
                                 }
                                 
                             }.padding(.vertical)
-
+                            
                             Spacer().background(Color.black)
                             
                             CustomNumberPad(uniqueCodes: $aUniqueCode,customDigits: $customDigits)
-
+                            
                         }.background(Color.aPureBlack).edgesIgnoringSafeArea(.all)
                         
                     }.background(Color.aPureBlack).edgesIgnoringSafeArea(.all).onAppear {
-                        
-                        print("isReenteringAPasscode")
-                        print(isReenteringAPasscode)
                         
                         if customDigits.isEmpty {
                             customDigits = getRandomizedPadDigits()
@@ -156,65 +153,77 @@ struct InputPasscodeWithCustomPad: View {
                             
                             // Existing User use case
                             
-                            if !aTempPasscode!.isEmpty {
-                                    aTempConfirmPasscode = aUniqueCode.joined()
-                            }else if aTempPasscode!.isEmpty {
-                                    aTempPasscode = aUniqueCode.joined()
-                            }
+                            if isFromSettings == false {
                             
-                            if !aTempPasscode!.isEmpty && aTempPasscode == aTempConfirmPasscode {
-                                
-                                if isFromSettings == true {
-//                                    print("IS FROM SETTINGS")
-                                    isPassCodeEntered = false
-                                    aTempPasscode = ""
-                                    aTempConfirmPasscode = ""
-                                }
-                                else{
-                                    if isReenteringAPasscode == true && UserSettings.shared.savedPasscode != ""{
-                                        self.presentationMode.wrappedValue.dismiss()
-                                    }else{
-                                        isCorrectPasscode = true
-                                    }
-                                }
-                                    
-                            }else if !aTempPasscode!.isEmpty && aTempConfirmPasscode.isEmpty && isFromSettings == false{
-                                
-                        
-                                if isReenteringAPasscode == true && UserSettings.shared.savedPasscode != ""{
-                                    self.presentationMode.wrappedValue.dismiss()
-                                }else{
-                                    self.isPassCodeEntered = true
-                                }
-                                
-                                
-                            }else{
-                                self.isInCorrectPasscode = true
-                            }
-                        }
-                    
-                    }.background(Color.aPureBlack).edgesIgnoringSafeArea(.all).padding(.bottom)
-                    .alert(isPresented: $isInCorrectPasscode) { () -> Alert in
-                        Alert(title: Text("".localized()),
-                              message: Text("Invalid Passcode, Please enter a valid passcode to change it".localized()),
-                              dismissButton: .default(Text("button_close".localized()),action: {
-
-                         }))
-                    }.alert(isPresented: $isCorrectPasscode) { () -> Alert in
-                        Alert(title: Text("".localized()),
-                              message: Text("Passcode Saved.".localized()),
-                              dismissButton: .default(Text("button_close".localized()),action: {
-                                UserSettings.shared.savedPasscode = aTempConfirmPasscode
-                                self.presentationMode.wrappedValue.dismiss()
-                         }))
-                    }
+                                        if !aTempPasscode.isEmpty {
+                                            aTempConfirmPasscode = aUniqueCode.joined()
+                                        }else if aTempPasscode.isEmpty {
+                                            aTempPasscode = aUniqueCode.joined()
+                                        }
                                         
+                                        if !aTempPasscode.isEmpty && aTempPasscode == aTempConfirmPasscode {
+                                            
+                                            if isFromSettings == true {
+                                                //                                    print("IS FROM SETTINGS")
+                                                isPassCodeEntered = false
+                                                aTempPasscode = ""
+                                                aTempConfirmPasscode = ""
+                                            }
+                                            else{
+                                                if isReenteringAPasscode == true && UserSettings.shared.savedPasscode != ""{
+                                                    self.presentationMode.wrappedValue.dismiss()
+                                                }else{
+                                                    isCorrectPasscode = true
+                                                }
+                                            }
+                                            
+                                        }else if !aTempPasscode.isEmpty && aTempConfirmPasscode.isEmpty && isFromSettings == false{
+                                            
+                                            
+                                            if isReenteringAPasscode == true && UserSettings.shared.savedPasscode != ""{
+                                                self.presentationMode.wrappedValue.dismiss()
+                                            }else{
+                                                self.isPassCodeEntered = true
+                                            }
+                                            
+                                            
+                                        }else{
+                                            self.isInCorrectPasscode = true
+                                        }
+                            }else{
+                                
+                                if aUniqueCode.joined() == UserSettings.shared.savedPasscode {
+                                    // Passcode Matched
+                                    
+                                    // Handle all cases here
+                                }
+                                
+                                
+                            }
+                    }
+                    
+                }.background(Color.aPureBlack).edgesIgnoringSafeArea(.all).padding(.bottom)
+                .alert(isPresented: $isInCorrectPasscode) { () -> Alert in
+                    Alert(title: Text("".localized()),
+                          message: Text("Invalid Passcode, Please enter a valid passcode to change it".localized()),
+                          dismissButton: .default(Text("button_close".localized()),action: {
+                            
+                          }))
+                }.alert(isPresented: $isCorrectPasscode) { () -> Alert in
+                    Alert(title: Text("".localized()),
+                          message: Text("Passcode Saved.".localized()),
+                          dismissButton: .default(Text("button_close".localized()),action: {
+                            UserSettings.shared.savedPasscode = aTempConfirmPasscode
+                            self.presentationMode.wrappedValue.dismiss()
+                          }))
                 }
                 
-            }.highPriorityGesture(dragGesture)
-        }.background(Color.aPureBlack).edgesIgnoringSafeArea(.all)
-
-    }
+            }
+            
+        }.highPriorityGesture(dragGesture)
+    }.background(Color.aPureBlack).edgesIgnoringSafeArea(.all)
+    
+}
 }
 
 //struct InputPasscodeWithCustomPad_Previews: PreviewProvider {
@@ -274,16 +283,16 @@ struct CustomNumberPad : View {
                                 if self.uniqueCodes.count == MAX_DIGITS{
                                     
                                     // Success here code is verified
-//                                    print(self.getPasscode())
+                                    //                                    print(self.getPasscode())
                                     
                                     
                                     if notifyOnce == false {
                                         notifyOnce = true
                                         NotificationCenter.default.post(name: NSNotification.Name("EnteredCode"), object: nil)
                                     }
-
+                                    
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                                       
+                                        
                                         self.uniqueCodes.removeAll()
                                         notifyOnce = false
                                     }
@@ -298,17 +307,17 @@ struct CustomNumberPad : View {
                                 Image(systemName: jIndex.value).font(.body).padding()
                                 
                             }else if jIndex.value == "     "{
-                                    
-                                    Text(jIndex.value).font(.title).fontWeight(.semibold).padding()
-                                 
+                                
+                                Text(jIndex.value).font(.title).fontWeight(.semibold).padding()
+                                
                             }
                             else{
                                 
                                 Text(jIndex.value).font(.title).fontWeight(.semibold).padding().multilineTextAlignment(.center).frame(width: 60, height: 60, alignment: .center)
-                                  .overlay(Circle()
-                                        .stroke(Color.gray, lineWidth: 2)
-                                      .padding(6)
-                                  )
+                                    .overlay(Circle()
+                                                .stroke(Color.gray, lineWidth: 2)
+                                                .padding(6)
+                                    )
                                 
                                 
                             }
