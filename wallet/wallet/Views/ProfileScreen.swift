@@ -198,21 +198,19 @@ struct ProfileScreen: View {
                         SeedManager.default.importLightWalletEndpoint(address: ZECCWalletEnvironment.defaultLightWalletEndpoint)
                   }))
             })
-            .navigationBarTitle("Settings", displayMode: .inline)
-            .navigationBarHidden(false)
-//            .navigationBarItems(trailing: ZcashCloseButton(action: {
-//                tracker.track(.tap(action: .profileClose), properties: [:])
-//                self.isShown = false
-//            }).frame(width: 30, height: 30))
+//            .navigationBarTitle("Settings", displayMode: .inline)
+            .navigationBarHidden(true)
+            .navigationBarItems(trailing: ZcashCloseButton(action: {
+                tracker.track(.tap(action: .profileClose), properties: [:])
+                self.isShown = false
+            }).frame(width: 30, height: 30))
         }
         .background(Color.black)
-        .navigationBarItems(trailing: ZcashCloseButton(action: {
-            tracker.track(.tap(action: .profileClose), properties: [:])
-            self.isShown = false
-        }).frame(width: 30, height: 30))
-        .onAppear(){
-            
-        }
+//        .navigationBarItems(trailing: ZcashCloseButton(action: {
+//            tracker.track(.tap(action: .profileClose), properties: [:])
+//            self.isShown = false
+//        }).frame(width: 30, height: 30))
+       
     }
     
     func updateLanguageAndResetApp(language: String){
