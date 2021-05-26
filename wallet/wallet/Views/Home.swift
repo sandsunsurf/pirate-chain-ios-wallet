@@ -272,11 +272,6 @@ struct Home: View {
                                 .scaleEffect(0.5)
                             
                         }
-                        .sheet(isPresented: $viewModel.showReceiveFunds){
-                            ReceiveFunds(address: self.appEnvironment.initializer.getAddress() ?? "",
-                                         isShown:  self.$viewModel.showReceiveFunds)
-                                .environmentObject(self.appEnvironment)
-                        }
                 },
                     headerItem: {
                         Text("balance_amounttosend".localized())
@@ -301,12 +296,23 @@ struct Home: View {
                 })
                     .frame(height: 64)
                 
+                // Navigation link for Profile Screen
                 NavigationLink(destination: LazyView (
                     ProfileScreen(isShown: self.$viewModel.showProfile)
                         .environmentObject(self.appEnvironment)
                 ), isActive: $viewModel.showProfile) {
                     EmptyView()
                 }.isDetailLink(false)
+                
+                // Navigation Link for QR Code Screen
+                NavigationLink(destination: LazyView (
+                    ReceiveFunds(address: self.appEnvironment.initializer.getAddress() ?? "",
+                                 isShown:  self.$viewModel.showReceiveFunds)
+                        .environmentObject(self.appEnvironment)
+                ), isActive: $viewModel.showReceiveFunds) {
+                    EmptyView()
+                }.isDetailLink(false)
+                
                 
                 SendZecView(zatoshi: self.$viewModel.sendZecAmountText)
                     .opacity(amountOpacity)

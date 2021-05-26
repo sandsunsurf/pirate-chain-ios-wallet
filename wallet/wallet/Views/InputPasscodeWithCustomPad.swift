@@ -260,7 +260,7 @@ struct CustomNumberPad : View {
                                     // Success here code is verified
                                     print(self.getPasscode())
                                     
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                                         
                                         if notifyOnce == false {
                                             notifyOnce = true
