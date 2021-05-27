@@ -47,7 +47,7 @@ struct InputPasscodeWithCustomPad: View {
     @State var mScreenState: ScreenStates?
     
     enum ScreenStates {
-        case validatePasscode, newPasscode, confirmPasscode
+        case validatePasscode, newPasscode, confirmPasscode, passcodeAlreadyExists
     }
     
     enum Destination: Int, Identifiable, Hashable {
@@ -231,6 +231,14 @@ struct InputPasscodeWithCustomPad: View {
                                             isCorrectPasscode = true
                                             
                                         }
+                                        
+                                    case .passcodeAlreadyExists:
+                                                                                
+                                         if aTempPasscode == anEnteredPasscode {
+                                           
+                                            self.presentationMode.wrappedValue.dismiss()
+                                             
+                                         }
                                         
                                     default:
                                         print("Invalid use case")

