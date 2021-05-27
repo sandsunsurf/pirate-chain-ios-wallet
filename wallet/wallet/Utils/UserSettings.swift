@@ -19,6 +19,7 @@ class UserSettings {
         static let everShielded = "everShielded"
         static let rescanPendingFix = "rescanPendingFix"
         static let aPassCode = "aPassCode"
+        static let aBiometricEnable = "aBiometricEnable"
 
     }
     
@@ -48,6 +49,15 @@ class UserSettings {
         }
         set {
             UserDefaults.standard.setValue(newValue, forKey: Keys.aPassCode)
+        }
+    }
+
+    var biometricStatus: Bool  {
+        get {
+            UserDefaults.standard.bool(forKey: Keys.aBiometricEnable)
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: Keys.aBiometricEnable)
         }
     }
 

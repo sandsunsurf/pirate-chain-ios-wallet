@@ -27,6 +27,7 @@ struct ProfileScreen: View {
 
     var afterEditedString = ""
     @State var isFeedbackActive = false
+    @State var isBiometricEnabled = UserSettings.shared.biometricStatus
     var isHighlighted: Bool {
         anAddress.count > 0
     }
@@ -52,6 +53,7 @@ struct ProfileScreen: View {
                     .onReceive(PasteboardAlertHelper.shared.publisher) { (item) in
                         self.copiedValue = item
                     }
+                    
 //                    .padding(0)
 //
 //                    Button(action: {
@@ -142,19 +144,27 @@ struct ProfileScreen: View {
                         
                     }
                     
-                    Text("My Pirate Chain Endpoint:".localized())
-                        .lineLimit(3)
-                        .multilineTextAlignment(.center)
-                        .font(.system(size: 18))
-                        .foregroundColor(.white).padding([.top], 20)
-                    
-                    TextField("Enter an endpoint".localized(), text: $anAddress, onEditingChanged: { (changed) in
-                    }) {
-                        self.didEndEditingTextField()
-                    }.multilineTextAlignment(.center).foregroundColor(.white).overlay(
-                        Baseline().stroke(isHighlighted ? activeColor : inactiveColor , lineWidth: 1)).padding([.leading, .trailing], 60).padding([.top, .bottom], 10)
-                    
-                    
+                    Group {
+                                                
+                        Toggle(isOn:$isBiometricEnabled){
+                            Text("Enable Biometric Security").foregroundColor(.zYellow)
+                                .zcashButtonBackground(shape: .roundedCorners(fillStyle: .outline(color: .zYellow, lineWidth:0)))
+                                .frame(height:  Self.buttonHeight/2).multilineTextAlignment(.leading)
+                        }
+                        
+                        Text("My Pirate Chain Endpoint:".localized())
+                            .lineLimit(3)
+                            .multilineTextAlignment(.center)
+                            .font(.system(size: 18))
+                            .foregroundColor(.white).padding([.top], 20)
+                        
+                        TextField("Enter an endpoint".localized(), text: $anAddress, onEditingChanged: { (changed) in
+                        }) {
+                            self.didEndEditingTextField()
+                        }.multilineTextAlignment(.center).foregroundColor(.white).overlay(
+                            Baseline().stroke(isHighlighted ? activeColor : inactiveColor , lineWidth: 1)).padding([.leading, .trailing], 60).padding([.top, .bottom], 10)
+                        
+                    }
                     ActionableMessage(message: "\("Pirate Chain Wallet".localized()) v\(ZECCWalletEnvironment.appVersion ?? "Unknown")", actionText: "Build \(ZECCWalletEnvironment.appBuild ?? "Unknown")", action: {})
                         .disabled(true)
                     
@@ -179,8 +189,11 @@ struct ProfileScreen: View {
                         .offset(y:100).font(.system(size: 10))
                         .frame(height: Self.buttonHeight).padding(.bottom, 20)
                     
+                    
                 }.padding(.horizontal, Self.horizontalPadding)
                 .padding(.bottom, 30)
+                
+                
             }
             
             .alert(item: self.$copiedValue) { (p) -> Alert in

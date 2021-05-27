@@ -221,14 +221,6 @@ struct InputPasscodeWithCustomPad: View {
                         }
                         
                     }.background(Color.aPureBlack).edgesIgnoringSafeArea(.all).padding(.bottom)
-//                    .alert(isPresented: $isNewPasscodeCreated) { () -> Alert in
-//                        Alert(title: Text("Pirate Chain".localized()),
-//                              message: Text("Great, you have set a new passcode!".localized()),
-//                              dismissButton: .default(Text("button_close".localized()),action: {
-//                                UserSettings.shared.savedPasscode = aTempConfirmPasscode
-//                                self.presentationMode.wrappedValue.dismiss()
-//                              }))
-//                    }
                     .alert(item: $aUserAlertItem) { alertItem in
                         Alert(title: aUserAlertItem!.title, message: aUserAlertItem!.message, dismissButton: aUserAlertItem!.dismissButton)
                     }
@@ -253,6 +245,7 @@ struct InputPasscodeWithCustomPad: View {
                                         })
     }
 }
+
 
 struct NumPadRow : Identifiable {
     
