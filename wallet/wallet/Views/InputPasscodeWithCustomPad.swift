@@ -22,14 +22,10 @@ struct InputPasscodeWithCustomPad: View {
     
     @State var isInCorrectPasscode = false
     
-    @State var isCorrectPasscode = false
+    @State var isNewPasscodeCreated = false
     
     @State var copiedValue: PasteboardItemModel?
-    
-    @State var isReenteringAPasscode = false
-    
-    @State var isFromSettings = false
-    
+            
     @State var destination: Destination?
     
     @State var aUniqueCode : [String] = []
@@ -156,48 +152,7 @@ struct InputPasscodeWithCustomPad: View {
                         }
                         
                         NotificationCenter.default.addObserver(forName: NSNotification.Name("EnteredCode"), object: nil, queue: .main) { (_) in
-                            
-                            // Existing User use case
-                            
-                            if isFromSettings == false {
-                                
-                                if !aTempPasscode.isEmpty {
-                                    aTempConfirmPasscode = aUniqueCode.joined()
-                                }else if aTempPasscode.isEmpty {
-                                    aTempPasscode = aUniqueCode.joined()
-                                }
-                                
-                                if !aTempPasscode.isEmpty && aTempPasscode == aTempConfirmPasscode {
-                                    
-                                    if isFromSettings == true {
-                                        //                                    print("IS FROM SETTINGS")
-                                        isPassCodeEntered = false
-                                        aTempPasscode = ""
-                                        aTempConfirmPasscode = ""
-                                    }
-                                    else{
-                                        if isReenteringAPasscode == true && UserSettings.shared.savedPasscode != ""{
-                                            self.presentationMode.wrappedValue.dismiss()
-                                        }else{
-                                            isCorrectPasscode = true
-                                        }
-                                    }
-                                    
-                                }else if !aTempPasscode.isEmpty && aTempConfirmPasscode.isEmpty && isFromSettings == false{
-                                    
-                                    
-                                    if isReenteringAPasscode == true && UserSettings.shared.savedPasscode != ""{
-                                        self.presentationMode.wrappedValue.dismiss()
-                                    }else{
-                                        self.isPassCodeEntered = true
-                                    }
-                                    
-                                    
-                                }else{
-                                    self.isInCorrectPasscode = true
-                                }
-                            }else{
-                                
+                           
                                 let anEnteredPasscode = aUniqueCode.joined()
                                 
                                 if anEnteredPasscode != "" {
@@ -216,11 +171,11 @@ struct InputPasscodeWithCustomPad: View {
 
                                     case .newPasscode:
                                         
-                                        aTempPasscode = anEnteredPasscode
-                                        
-                                        mScreenState = .confirmPasscode
-                                        
-                                        isPassCodeEntered = true
+                                            aTempPasscode = anEnteredPasscode
+                                            
+                                            mScreenState = .confirmPasscode
+                                            
+                                            isPassCodeEntered = true
                                         
                                     case .confirmPasscode:
                                        
@@ -228,7 +183,7 @@ struct InputPasscodeWithCustomPad: View {
                                           
                                             aTempConfirmPasscode = anEnteredPasscode
                                             
-                                            isCorrectPasscode = true
+                                            isNewPasscodeCreated = true
                                             
                                         }
                                         
@@ -249,7 +204,7 @@ struct InputPasscodeWithCustomPad: View {
                                 
                                 
                                 aUniqueCode.removeAll()
-                            }
+
                         }
                         
                     }.background(Color.aPureBlack).edgesIgnoringSafeArea(.all).padding(.bottom)
@@ -259,7 +214,7 @@ struct InputPasscodeWithCustomPad: View {
                               dismissButton: .default(Text("button_close".localized()),action: {
                                 
                               }))
-                    }.alert(isPresented: $isCorrectPasscode) { () -> Alert in
+                    }.alert(isPresented: $isNewPasscodeCreated) { () -> Alert in
                         Alert(title: Text("".localized()),
                               message: Text("Great, you have set a new passcode!".localized()),
                               dismissButton: .default(Text("button_close".localized()),action: {
