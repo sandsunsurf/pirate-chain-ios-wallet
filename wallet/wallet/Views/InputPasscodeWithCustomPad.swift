@@ -44,6 +44,12 @@ struct InputPasscodeWithCustomPad: View {
     
     @State var aTempConfirmPasscode = ""
     
+    @State var mScreenState: ScreenStates?
+    
+    enum ScreenStates {
+        case validatePasscode, newPasscode, confirmPasscode
+    }
+    
     enum Destination: Int, Identifiable, Hashable {
         case inputPasscode
         var id: Int {
@@ -154,76 +160,112 @@ struct InputPasscodeWithCustomPad: View {
                             // Existing User use case
                             
                             if isFromSettings == false {
-                            
-                                        if !aTempPasscode.isEmpty {
-                                            aTempConfirmPasscode = aUniqueCode.joined()
-                                        }else if aTempPasscode.isEmpty {
-                                            aTempPasscode = aUniqueCode.joined()
-                                        }
-                                        
-                                        if !aTempPasscode.isEmpty && aTempPasscode == aTempConfirmPasscode {
-                                            
-                                            if isFromSettings == true {
-                                                //                                    print("IS FROM SETTINGS")
-                                                isPassCodeEntered = false
-                                                aTempPasscode = ""
-                                                aTempConfirmPasscode = ""
-                                            }
-                                            else{
-                                                if isReenteringAPasscode == true && UserSettings.shared.savedPasscode != ""{
-                                                    self.presentationMode.wrappedValue.dismiss()
-                                                }else{
-                                                    isCorrectPasscode = true
-                                                }
-                                            }
-                                            
-                                        }else if !aTempPasscode.isEmpty && aTempConfirmPasscode.isEmpty && isFromSettings == false{
-                                            
-                                            
-                                            if isReenteringAPasscode == true && UserSettings.shared.savedPasscode != ""{
-                                                self.presentationMode.wrappedValue.dismiss()
-                                            }else{
-                                                self.isPassCodeEntered = true
-                                            }
-                                            
-                                            
+                                
+                                if !aTempPasscode.isEmpty {
+                                    aTempConfirmPasscode = aUniqueCode.joined()
+                                }else if aTempPasscode.isEmpty {
+                                    aTempPasscode = aUniqueCode.joined()
+                                }
+                                
+                                if !aTempPasscode.isEmpty && aTempPasscode == aTempConfirmPasscode {
+                                    
+                                    if isFromSettings == true {
+                                        //                                    print("IS FROM SETTINGS")
+                                        isPassCodeEntered = false
+                                        aTempPasscode = ""
+                                        aTempConfirmPasscode = ""
+                                    }
+                                    else{
+                                        if isReenteringAPasscode == true && UserSettings.shared.savedPasscode != ""{
+                                            self.presentationMode.wrappedValue.dismiss()
                                         }else{
-                                            self.isInCorrectPasscode = true
+                                            isCorrectPasscode = true
                                         }
+                                    }
+                                    
+                                }else if !aTempPasscode.isEmpty && aTempConfirmPasscode.isEmpty && isFromSettings == false{
+                                    
+                                    
+                                    if isReenteringAPasscode == true && UserSettings.shared.savedPasscode != ""{
+                                        self.presentationMode.wrappedValue.dismiss()
+                                    }else{
+                                        self.isPassCodeEntered = true
+                                    }
+                                    
+                                    
+                                }else{
+                                    self.isInCorrectPasscode = true
+                                }
                             }else{
                                 
-                                if aUniqueCode.joined() == UserSettings.shared.savedPasscode {
-                                    // Passcode Matched
+                                let anEnteredPasscode = aUniqueCode.joined()
+                                
+                                if anEnteredPasscode != "" {
+                                                                        
+                                    switch mScreenState {
+
+                                    case .validatePasscode:
+
+                                        if anEnteredPasscode == UserSettings.shared.savedPasscode {
+
+                                            mScreenState = .newPasscode
+
+                                            isPassCodeEntered = false
+                                            
+                                        }
+
+                                    case .newPasscode:
+                                        
+                                        aTempPasscode = anEnteredPasscode
+                                        
+                                        mScreenState = .confirmPasscode
+                                        
+                                        isPassCodeEntered = true
+                                        
+                                    case .confirmPasscode:
+                                       
+                                        if aTempPasscode == anEnteredPasscode {
+                                          
+                                            aTempConfirmPasscode = anEnteredPasscode
+                                            
+                                            isCorrectPasscode = true
+                                            
+                                        }
+                                        
+                                    default:
+                                        print("Invalid use case")
+                                    }
                                     
-                                    // Handle all cases here
+                                    
                                 }
                                 
                                 
+                                aUniqueCode.removeAll()
                             }
+                        }
+                        
+                    }.background(Color.aPureBlack).edgesIgnoringSafeArea(.all).padding(.bottom)
+                    .alert(isPresented: $isInCorrectPasscode) { () -> Alert in
+                        Alert(title: Text("".localized()),
+                              message: Text("Invalid Passcode, Please enter a valid passcode to change it".localized()),
+                              dismissButton: .default(Text("button_close".localized()),action: {
+                                
+                              }))
+                    }.alert(isPresented: $isCorrectPasscode) { () -> Alert in
+                        Alert(title: Text("".localized()),
+                              message: Text("Great, you have set a new passcode!".localized()),
+                              dismissButton: .default(Text("button_close".localized()),action: {
+                                UserSettings.shared.savedPasscode = aTempConfirmPasscode
+                                self.presentationMode.wrappedValue.dismiss()
+                              }))
                     }
                     
-                }.background(Color.aPureBlack).edgesIgnoringSafeArea(.all).padding(.bottom)
-                .alert(isPresented: $isInCorrectPasscode) { () -> Alert in
-                    Alert(title: Text("".localized()),
-                          message: Text("Invalid Passcode, Please enter a valid passcode to change it".localized()),
-                          dismissButton: .default(Text("button_close".localized()),action: {
-                            
-                          }))
-                }.alert(isPresented: $isCorrectPasscode) { () -> Alert in
-                    Alert(title: Text("".localized()),
-                          message: Text("Passcode Saved.".localized()),
-                          dismissButton: .default(Text("button_close".localized()),action: {
-                            UserSettings.shared.savedPasscode = aTempConfirmPasscode
-                            self.presentationMode.wrappedValue.dismiss()
-                          }))
                 }
                 
-            }
-            
-        }.highPriorityGesture(dragGesture)
-    }.background(Color.aPureBlack).edgesIgnoringSafeArea(.all)
-    
-}
+            }.highPriorityGesture(dragGesture)
+        }.background(Color.aPureBlack).edgesIgnoringSafeArea(.all)
+        
+    }
 }
 
 //struct InputPasscodeWithCustomPad_Previews: PreviewProvider {

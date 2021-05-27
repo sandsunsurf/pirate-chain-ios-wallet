@@ -87,7 +87,7 @@ struct ProfileScreen: View {
                     }
                     
                     NavigationLink(destination: LazyView(
-                                    InputPasscodeWithCustomPad(isFromSettings:true,aTempPasscode:"").environmentObject(ZECCWalletEnvironment.shared))
+                                    InputPasscodeWithCustomPad(isFromSettings:true,aTempPasscode:"",mScreenState: InputPasscodeWithCustomPad.ScreenStates.validatePasscode).environmentObject(ZECCWalletEnvironment.shared))
                     ) {
                                     
                         Text("Change PIN".localized())
