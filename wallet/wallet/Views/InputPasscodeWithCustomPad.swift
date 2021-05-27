@@ -167,7 +167,9 @@ struct InputPasscodeWithCustomPad: View {
 
                                             isPassCodeEntered = false
                                             
-                                        }
+                                        }else{
+                                            isInCorrectPasscode = true
+                                         }
 
                                     case .newPasscode:
                                         
@@ -193,6 +195,8 @@ struct InputPasscodeWithCustomPad: View {
                                            
                                             self.presentationMode.wrappedValue.dismiss()
                                              
+                                         }else{
+                                            isInCorrectPasscode = true
                                          }
                                         
                                     default:
@@ -209,13 +213,13 @@ struct InputPasscodeWithCustomPad: View {
                         
                     }.background(Color.aPureBlack).edgesIgnoringSafeArea(.all).padding(.bottom)
                     .alert(isPresented: $isInCorrectPasscode) { () -> Alert in
-                        Alert(title: Text("".localized()),
+                        Alert(title: Text("Pirate Chain".localized()),
                               message: Text("Invalid Passcode, Please enter a valid passcode to change it".localized()),
                               dismissButton: .default(Text("button_close".localized()),action: {
-                                
+                                isInCorrectPasscode = false
                               }))
                     }.alert(isPresented: $isNewPasscodeCreated) { () -> Alert in
-                        Alert(title: Text("".localized()),
+                        Alert(title: Text("Pirate Chain".localized()),
                               message: Text("Great, you have set a new passcode!".localized()),
                               dismissButton: .default(Text("button_close".localized()),action: {
                                 UserSettings.shared.savedPasscode = aTempConfirmPasscode
