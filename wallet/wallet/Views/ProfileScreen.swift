@@ -27,7 +27,7 @@ struct ProfileScreen: View {
 
     var afterEditedString = ""
     @State var isFeedbackActive = false
-    @State var isBiometricEnabled = UserSettings.shared.biometricStatus
+    @State var isBiometricEnabled = UserSettings.shared.biometricInAppStatus
     var isHighlighted: Bool {
         anAddress.count > 0
     }
@@ -150,6 +150,8 @@ struct ProfileScreen: View {
                             Text("Enable Biometric Security").foregroundColor(.zYellow)
                                 .zcashButtonBackground(shape: .roundedCorners(fillStyle: .outline(color: .zYellow, lineWidth:0)))
                                 .frame(height:  Self.buttonHeight/2).multilineTextAlignment(.leading)
+                        }.onReceive([self.isBiometricEnabled].publisher.first()) { (value) in
+                            UserSettings.shared.biometricInAppStatus = value
                         }
                         
                         Text("My Pirate Chain Endpoint:".localized())
@@ -199,6 +201,7 @@ struct ProfileScreen: View {
             .alert(item: self.$copiedValue) { (p) -> Alert in
                 PasteboardAlertHelper.alert(for: p)
             }
+            
             .sheet(item: self.$shareItem, content: { item in
                 ShareSheet(activityItems: [item.activityItem])
             })

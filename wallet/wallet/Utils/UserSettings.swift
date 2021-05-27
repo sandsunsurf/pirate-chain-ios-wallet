@@ -19,7 +19,8 @@ class UserSettings {
         static let everShielded = "everShielded"
         static let rescanPendingFix = "rescanPendingFix"
         static let aPassCode = "aPassCode"
-        static let aBiometricEnable = "aBiometricEnable"
+        static let aBiometricInAppStatus = "aBiometricInAppStatus"
+        static let aBiometricEnabled = "aBiometricEnabled"
 
     }
     
@@ -52,12 +53,21 @@ class UserSettings {
         }
     }
 
-    var biometricStatus: Bool  {
+    var biometricInAppStatus: Bool  {
         get {
-            UserDefaults.standard.bool(forKey: Keys.aBiometricEnable)
+            UserDefaults.standard.bool(forKey: Keys.aBiometricInAppStatus)
         }
         set {
-            UserDefaults.standard.setValue(newValue, forKey: Keys.aBiometricEnable)
+            UserDefaults.standard.setValue(newValue, forKey: Keys.aBiometricInAppStatus)
+        }
+    }
+    
+    var biometricEnableStatus: Bool  {
+        get {
+            UserDefaults.standard.bool(forKey: Keys.aBiometricEnabled)
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: Keys.aBiometricEnabled)
         }
     }
 
