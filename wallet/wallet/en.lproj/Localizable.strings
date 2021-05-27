@@ -270,7 +270,7 @@
 
 "Transaction Details" = "Transaction Details";
 
-"Invalid Passcode, Please enter a valid passcode to change it"  = "Invalid Passcode, Please enter a valid passcode to change it" ;
+"Invalid Passcode, Please enter a valid passcode."  = "Invalid Passcode, Please enter a valid passcode." ;
 
 "Great, you have set a new passcode!" = "Great, you have set a new passcode!";
 

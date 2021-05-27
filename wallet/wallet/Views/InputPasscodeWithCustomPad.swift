@@ -20,8 +20,6 @@ struct InputPasscodeWithCustomPad: View {
     
     let dragGesture = DragGesture()
     
-    @State var isInCorrectPasscode = false
-    
     @State var isNewPasscodeCreated = false
     
     @State var copiedValue: PasteboardItemModel?
@@ -41,6 +39,15 @@ struct InputPasscodeWithCustomPad: View {
     @State var aTempConfirmPasscode = ""
     
     @State var mScreenState: ScreenStates?
+    
+    @State private var aUserAlertItem: AlertItem?
+    
+    struct AlertItem: Identifiable {
+        var id = UUID()
+        var title: Text
+        var message: Text?
+        var dismissButton: Alert.Button?
+    }
     
     enum ScreenStates {
         case validatePasscode, newPasscode, confirmPasscode, passcodeAlreadyExists
@@ -168,7 +175,7 @@ struct InputPasscodeWithCustomPad: View {
                                             isPassCodeEntered = false
                                             
                                         }else{
-                                            isInCorrectPasscode = true
+                                            displayAlertForAnInvalidPasscodeAlert()
                                          }
 
                                     case .newPasscode:
@@ -185,8 +192,10 @@ struct InputPasscodeWithCustomPad: View {
                                           
                                             aTempConfirmPasscode = anEnteredPasscode
                                             
-                                            isNewPasscodeCreated = true
+                                            displayAlertForSettingUpANewPasscode()
                                             
+                                        }else{
+                                            displayAlertForAnInvalidPasscodeAlert()
                                         }
                                         
                                     case .passcodeAlreadyExists:
@@ -196,7 +205,7 @@ struct InputPasscodeWithCustomPad: View {
                                             self.presentationMode.wrappedValue.dismiss()
                                              
                                          }else{
-                                            isInCorrectPasscode = true
+                                            displayAlertForAnInvalidPasscodeAlert()
                                          }
                                         
                                     default:
@@ -212,19 +221,16 @@ struct InputPasscodeWithCustomPad: View {
                         }
                         
                     }.background(Color.aPureBlack).edgesIgnoringSafeArea(.all).padding(.bottom)
-                    .alert(isPresented: $isInCorrectPasscode) { () -> Alert in
-                        Alert(title: Text("Pirate Chain".localized()),
-                              message: Text("Invalid Passcode, Please enter a valid passcode to change it".localized()),
-                              dismissButton: .default(Text("button_close".localized()),action: {
-                                isInCorrectPasscode = false
-                              }))
-                    }.alert(isPresented: $isNewPasscodeCreated) { () -> Alert in
-                        Alert(title: Text("Pirate Chain".localized()),
-                              message: Text("Great, you have set a new passcode!".localized()),
-                              dismissButton: .default(Text("button_close".localized()),action: {
-                                UserSettings.shared.savedPasscode = aTempConfirmPasscode
-                                self.presentationMode.wrappedValue.dismiss()
-                              }))
+//                    .alert(isPresented: $isNewPasscodeCreated) { () -> Alert in
+//                        Alert(title: Text("Pirate Chain".localized()),
+//                              message: Text("Great, you have set a new passcode!".localized()),
+//                              dismissButton: .default(Text("button_close".localized()),action: {
+//                                UserSettings.shared.savedPasscode = aTempConfirmPasscode
+//                                self.presentationMode.wrappedValue.dismiss()
+//                              }))
+//                    }
+                    .alert(item: $aUserAlertItem) { alertItem in
+                        Alert(title: aUserAlertItem!.title, message: aUserAlertItem!.message, dismissButton: aUserAlertItem!.dismissButton)
                     }
                     
                 }
@@ -233,13 +239,20 @@ struct InputPasscodeWithCustomPad: View {
         }.background(Color.aPureBlack).edgesIgnoringSafeArea(.all)
         
     }
-}
+    
+    func displayAlertForAnInvalidPasscodeAlert(){
+        self.aUserAlertItem = AlertItem(title: Text("Pirate Chain".localized()), message: Text("Invalid Passcode, Please enter a valid passcode.".localized()), dismissButton: .cancel(Text("button_close".localized())))
+    }
+    
+    func displayAlertForSettingUpANewPasscode(){
 
-//struct InputPasscodeWithCustomPad_Previews: PreviewProvider {
-//    static var previews: some View {
-//        InputPasscodeWithCustomPad()
-//    }
-//}
+        self.aUserAlertItem = AlertItem(title: Text("Pirate Chain".localized()), message: Text("Great, you have set a new passcode!".localized()),
+                                        dismissButton: .default(Text("button_close".localized())){
+                                            UserSettings.shared.savedPasscode = aTempConfirmPasscode
+                                            self.presentationMode.wrappedValue.dismiss()
+                                        })
+    }
+}
 
 struct NumPadRow : Identifiable {
     
