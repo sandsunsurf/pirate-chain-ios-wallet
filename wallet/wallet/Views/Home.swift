@@ -9,6 +9,7 @@
 import SwiftUI
 import Combine
 import ZcashLightClientKit
+
 final class HomeViewModel: ObservableObject {
     var isFirstAppear = true
     let genericErrorMessage = "An error ocurred, please check your device logs".localized()
@@ -108,7 +109,7 @@ final class HomeViewModel: ObservableObject {
         }).store(in: &environmentCancellables)
        
     }
-    
+
     func unbindSubcribedEnvironmentEvents() {
         environmentCancellables.forEach { $0.cancel() }
         environmentCancellables.removeAll()

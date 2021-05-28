@@ -10,6 +10,8 @@ import Foundation
 
 import SwiftUI
 
+import LocalAuthentication
+
 struct InputPasscodeWithCustomPad: View {
     
     @State var isPassCodeEntered = UserSettings.shared.savedPasscode == "" ? false : true
@@ -41,6 +43,8 @@ struct InputPasscodeWithCustomPad: View {
     @State var mScreenState: ScreenStates?
     
     @State private var aUserAlertItem: AlertItem?
+    
+    @State private var isUnlocked = false
     
     struct AlertItem: Identifiable {
         var id = UUID()
@@ -117,6 +121,14 @@ struct InputPasscodeWithCustomPad: View {
         
         return customPadDigits
     }
+    
+    
+    func authenticate() {
+        if UserSettings.shared.biometricInAppStatus && mScreenState == .passcodeAlreadyExists{           
+            AuthenticationHelper.authenticate(with: "Authenticate Biometric".localized())
+        }
+    }
+    
     
     var body: some View {
         
@@ -229,7 +241,19 @@ struct InputPasscodeWithCustomPad: View {
                 
             }.highPriorityGesture(dragGesture)
         }.background(Color.aPureBlack).edgesIgnoringSafeArea(.all)
-        
+        .onAppear(perform: authenticate)
+        .onReceive(AuthenticationHelper.authenticationPublisher) { (output) in
+            switch output {
+            case .failed(_), .userFailed:
+                print("SOME ERROR OCCURRED")
+            case .success:
+                print("SUCCESS")
+                self.presentationMode.wrappedValue.dismiss()
+            case .userDeclined:
+                print("DECLINED")
+                break
+            }
+        }
     }
     
     func displayAlertForAnInvalidPasscodeAlert(){

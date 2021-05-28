@@ -7,10 +7,12 @@
 //
 
 import SwiftUI
+import LocalAuthentication
 
 struct ProfileScreen: View {
     @EnvironmentObject var appEnvironment: ZECCWalletEnvironment
     @State var nukePressed = false
+    @State var isDisableBioMetric = false
     @State var isDisplayAddressAlert = false
     @State var isUserOptingtoChangeLanguage = false
     @State var anAddress = SeedManager.default.exportLightWalletEndpoint()
@@ -145,15 +147,21 @@ struct ProfileScreen: View {
                     }
                     
                     Group {
-                                                
+                        
                         Toggle(isOn:$isBiometricEnabled){
                             Text("Enable Biometric Security").foregroundColor(.zYellow)
                                 .zcashButtonBackground(shape: .roundedCorners(fillStyle: .outline(color: .zYellow, lineWidth:0)))
                                 .frame(height:  Self.buttonHeight/2).multilineTextAlignment(.leading)
+                          
                         }.onReceive([self.isBiometricEnabled].publisher.first()) { (value) in
                             UserSettings.shared.biometricInAppStatus = value
-                        }
+                            
+                            if UserSettings.shared.biometricInAppStatus {
+                                authenticate()
+                            }
+                        }.disabled(isDisableBioMetric)
                         
+                       
                         Text("My Pirate Chain Endpoint:".localized())
                             .lineLimit(3)
                             .multilineTextAlignment(.center)
@@ -223,11 +231,29 @@ struct ProfileScreen: View {
             }).frame(width: 30, height: 30))
         }
         .background(Color.black)
-//        .navigationBarItems(trailing: ZcashCloseButton(action: {
-//            tracker.track(.tap(action: .profileClose), properties: [:])
-//            self.isShown = false
-//        }).frame(width: 30, height: 30))
+        .onReceive(AuthenticationHelper.authenticationPublisher) { (output) in
+            switch output {
+            case .failed(_), .userFailed:
+                print("SOME ERROR OCCURRED")
+            case .success:
+                print("SUCCESS AND SHOW SOME ALERT HERE")
+            case .userDeclined:
+                print("DECLINED AND SHOW SOME ALERT HERE")
+                break
+            }
+        }.onAppear(){
+            #if targetEnvironment(simulator)
+                isDisableBioMetric = true
+            #endif
+        }
+        
        
+    }
+    
+    func authenticate() {
+        if UserSettings.shared.biometricInAppStatus {
+            AuthenticationHelper.authenticate(with: "Authenticate Biometric".localized())
+        }
     }
     
     func updateLanguageAndResetApp(language: String){

@@ -184,3 +184,4 @@
 "Pirate Chain" = "Pirate Chain";
 "Invalid Passcode, Please enter a valid passcode."  = "Invalid Passcode, Please enter a valid passcode." ;
 "Enable Biometric Security" = "Enable Biometric Security";
+"Authenticate Biometric" = "Enable biometric authentication to secure the wallet.";
