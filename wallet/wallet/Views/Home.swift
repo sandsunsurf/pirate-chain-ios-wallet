@@ -401,11 +401,11 @@ struct Home: View {
             InputPasscodeWithCustomPad(aTempPasscode:UserSettings.shared.savedPasscode ?? "",mScreenState: UserSettings.shared.savedPasscode == "" ? InputPasscodeWithCustomPad.ScreenStates.newPasscode : InputPasscodeWithCustomPad.ScreenStates.passcodeAlreadyExists).environmentObject(ZECCWalletEnvironment.shared).background(Color.black)
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 self.showPassCodeScreen = true
             }
         }.onReceive(NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) { _ in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 self.showPassCodeScreen = false
             }
         }

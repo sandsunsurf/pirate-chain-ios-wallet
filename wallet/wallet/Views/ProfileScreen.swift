@@ -148,20 +148,37 @@ struct ProfileScreen: View {
                     
                     Group {
                         
-                        Toggle(isOn:$isBiometricEnabled){
-                            Text("Enable Biometric Security").foregroundColor(.zYellow)
-                                .zcashButtonBackground(shape: .roundedCorners(fillStyle: .outline(color: .zYellow, lineWidth:0)))
-                                .frame(height:  Self.buttonHeight/2).multilineTextAlignment(.leading)
-                          
-                        }.onReceive([self.isBiometricEnabled].publisher.first()) { (value) in
-                            UserSettings.shared.biometricInAppStatus = value
+                        if #available(iOS 14.0, *) {
+                            Toggle(isOn:$isBiometricEnabled){
+                                Text("Enable Biometric Security").foregroundColor(.zYellow)
+                                    .zcashButtonBackground(shape: .roundedCorners(fillStyle: .outline(color: .zYellow, lineWidth:0)))
+                                    .frame(height:  Self.buttonHeight/2).multilineTextAlignment(.leading)
+                                
+                            }.onChange(of: isBiometricEnabled) {
+                                (value) in
+                                UserSettings.shared.biometricInAppStatus = value
+                                
+                                if UserSettings.shared.biometricInAppStatus {
+                                    authenticate()
+                                }
+                            }.disabled(isDisableBioMetric)
                             
-                            if UserSettings.shared.biometricInAppStatus {
-                                authenticate()
-                            }
-                        }.disabled(isDisableBioMetric)
-                        
-                       
+                        } else {
+                            
+                            
+                            
+                            Toggle(isOn:$isBiometricEnabled.didSet { (state) in
+                                   print(state)
+                            }){
+                                Text("Enable Biometric Security").foregroundColor(.zYellow)
+                                        .zcashButtonBackground(shape: .roundedCorners(fillStyle: .outline(color: .zYellow, lineWidth:0)))
+                                        .frame(height:  Self.buttonHeight/2).multilineTextAlignment(.leading)
+                                    
+                            }.disabled(isDisableBioMetric)
+                            
+                        }
+//
+//
                         Text("My Pirate Chain Endpoint:".localized())
                             .lineLimit(3)
                             .multilineTextAlignment(.center)
@@ -224,12 +241,13 @@ struct ProfileScreen: View {
                   }))
             })
 //            .navigationBarTitle("Settings", displayMode: .inline)
-            .navigationBarHidden(true)
-            .navigationBarItems(trailing: ZcashCloseButton(action: {
-                tracker.track(.tap(action: .profileClose), properties: [:])
-                self.isShown = false
-            }).frame(width: 30, height: 30))
-        }
+            
+        }.navigationBarBackButtonHidden(true)
+        .navigationBarHidden(false)
+        .navigationBarItems(trailing: ZcashCloseButton(action: {
+            tracker.track(.tap(action: .profileClose), properties: [:])
+            self.isShown = false
+        }).frame(width: 30, height: 30))
         .background(Color.black)
         .onReceive(AuthenticationHelper.authenticationPublisher) { (output) in
             switch output {
@@ -280,5 +298,17 @@ struct ProfileScreen: View {
 struct ProfileScreen_Previews: PreviewProvider {
     static var previews: some View {
         ProfileScreen(isShown: .constant(true)).environmentObject(ZECCWalletEnvironment.shared)
+    }
+}
+
+extension Binding {
+    func didSet(execute: @escaping (Value) -> Void) -> Binding {
+        return Binding(
+            get: { self.wrappedValue },
+            set: {
+                self.wrappedValue = $0
+                execute($0)
+            }
+        )
     }
 }
