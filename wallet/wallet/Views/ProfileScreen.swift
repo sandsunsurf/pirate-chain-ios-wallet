@@ -49,7 +49,7 @@ struct ProfileScreen: View {
                         Text("My ARRR Address \n".localized() + (appEnvironment.initializer.getAddress()?.shortZaddress ?? ""))
                             .lineLimit(3)
                             .multilineTextAlignment(.center)
-                            .font(.system(size: 18))
+                            .font(.system(size: 15))
                             .foregroundColor(.white)
                     }
                     .onReceive(PasteboardAlertHelper.shared.publisher) { (item) in
@@ -214,7 +214,7 @@ struct ProfileScreen: View {
                     Text("Powered By Meshbits Ltd Team".localized())
                         .foregroundColor(.white)
                         .offset(y:100).font(.system(size: 10))
-                        .frame(height: Self.buttonHeight).padding(.bottom, 20)
+                        .frame(height: Self.buttonHeight).padding(.bottom, 40)
                     
                     
                 }.padding(.horizontal, Self.horizontalPadding)
