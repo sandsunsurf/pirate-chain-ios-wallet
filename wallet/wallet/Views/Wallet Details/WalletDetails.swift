@@ -66,6 +66,7 @@ struct WalletDetails: View {
     @EnvironmentObject var viewModel: WalletDetailsViewModel
     @Environment(\.walletEnvironment) var appEnvironment: ZECCWalletEnvironment
     @Binding var isActive: Bool
+    @State var pushToDetail = false
     @State var selectedModel: DetailModel? = nil
     var zAddress: String {
         viewModel.zAddress
@@ -111,6 +112,7 @@ struct WalletDetails: View {
                        
                         Button(action: {
                             self.selectedModel = row
+                            self.pushToDetail = true
                         }) {
                             DetailCard(model: row, backgroundColor: .zDarkGray2)
                         }
@@ -131,6 +133,12 @@ struct WalletDetails: View {
                 )
                 .padding()
                 
+                NavigationLink(destination: LazyView (
+                    TxDetailsWrapper(row: self.selectedModel!, isActive:  self.$selectedModel)
+                ), isActive: $pushToDetail) {
+                    EmptyView()
+                }.isDetailLink(true)
+                
             }
         }
         .onAppear() {
@@ -148,12 +156,12 @@ struct WalletDetails: View {
         .onDisappear() {
             UITableView.appearance().separatorStyle = .singleLine
         }
-        .navigationBarHidden(true)
-        .sheet(item: self.$selectedModel, onDismiss: {
-            self.selectedModel = nil
-        }) { (row)  in
-            TxDetailsWrapper(row: row, isActive:  self.$selectedModel)
-        }
+        .navigationBarHidden(false)
+//        .sheet(item: self.$selectedModel, onDismiss: {
+//            self.selectedModel = nil
+//        }) { (row)  in
+//            TxDetailsWrapper(row: row, isActive:  self.$selectedModel)
+//        }
 
     }
 }

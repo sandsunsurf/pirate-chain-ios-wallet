@@ -12,6 +12,7 @@ import SwiftUI
 struct TxDetailsWrapper: View {
     @State var row: DetailModel
     @Binding var isActive: DetailModel?
+    @Environment(\.presentationMode) var presentationMode
     var body: some View {
         ZStack {
             ZcashBackground()
@@ -28,7 +29,8 @@ struct TxDetailsWrapper: View {
                         }
                     }, trailingItem: {
                         ZcashCloseButton(action: {
-                            self.isActive = nil
+//                            self.isActive = nil
+                            presentationMode.wrappedValue.dismiss()
                             }).frame(width: 30, height: 30)
                     })
             }

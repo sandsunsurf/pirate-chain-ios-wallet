@@ -207,7 +207,7 @@ struct Home: View {
             self.startSendFlow()
         }) {
             Text("button_send".localized())
-                .foregroundColor(.black)
+                .foregroundColor(.white)
                 .zcashButtonBackground(shape: .roundedCorners(fillStyle: .solid(color: Color.zYellow)))
                 .frame(height: buttonHeight)
                 .padding([.leading, .trailing], buttonPadding)
