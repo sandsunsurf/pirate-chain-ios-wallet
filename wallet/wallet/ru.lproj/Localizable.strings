@@ -102,8 +102,8 @@
 // Settings Screen
 
 "Endpoint" = "Endpoint";
-"My Pirate Chain Endpoint:" = "My Pirate Chain Endpoint:";
-"Invalid Endpoint Address, Reverting it to pirate chain address!" = "Invalid Endpoint Address, Reverting it to pirate chain address!";
+"My Pirate Chain Lite Server:" = "My Pirate Chain Lite Server:";
+"Invalid Lite Server Address, Reverting it to pirate chain address!" = "Invalid Lite Server Address, Reverting it to pirate chain address!";
 "Powered By Meshbits Ltd Team" = "Powered By Meshbits Ltd Team";
 "Great, you have set a new passcode!" = "Great, you have set a new passcode!";
 "Pirate Chain" = "Pirate Chain";

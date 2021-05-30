@@ -179,13 +179,13 @@ struct ProfileScreen: View {
                         }
 //
 //
-                        Text("My Pirate Chain Endpoint:".localized())
+                        Text("My Pirate Chain Lite Server:".localized())
                             .lineLimit(3)
                             .multilineTextAlignment(.center)
                             .font(.system(size: 18))
                             .foregroundColor(.white).padding([.top], 20)
                         
-                        TextField("Enter an endpoint".localized(), text: $anAddress, onEditingChanged: { (changed) in
+                        TextField("Enter a lite server address".localized(), text: $anAddress, onEditingChanged: { (changed) in
                         }) {
                             self.didEndEditingTextField()
                         }.multilineTextAlignment(.center).foregroundColor(.white).overlay(
@@ -235,7 +235,7 @@ struct ProfileScreen: View {
             })
             .alert(isPresented: self.$isDisplayAddressAlert, content: { () -> Alert in
                 Alert(title: Text("".localized()),
-                      message: Text("Invalid Endpoint Address, Reverting it to pirate chain address!".localized()),
+                      message: Text("Invalid Lite Server Address, Reverting it to pirate chain address!".localized()),
                       dismissButton: .default(Text("button_close".localized()),action: {
                         SeedManager.default.importLightWalletEndpoint(address: ZECCWalletEnvironment.defaultLightWalletEndpoint)
                   }))

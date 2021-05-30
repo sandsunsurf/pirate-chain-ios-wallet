@@ -231,7 +231,7 @@
 
 "My ARRR Address \n" = "My ARRR Address \n";
 
-"Enter an endpoint" = "Enter an endpoint";
+"Enter a lite server address" = "Enter a lite server address";
 
 "Pirate Chain Wallet" = "Pirate Chain Wallet";
 
@@ -260,8 +260,8 @@
 // Settings Screen
 
 "Endpoint" = "Endpoint";
-"My Pirate Chain Endpoint:" = "Mi Pirate Chain Endpoint:";
-"Invalid Endpoint Address, Reverting it to pirate chain address!" = "¡Dirección Endpoint inválida, revirtiendo a la dirección de pirate chain!";
+"My Pirate Chain Lite Server:" = "Mi Pirate Chain Lite Server:";
+"Invalid Lite Server Address, Reverting it to pirate chain address!" = "¡Dirección Lite Server inválida, revirtiendo a la dirección de pirate chain!";
 "Powered By Meshbits Ltd Team" = "Con tecnología del team Meshbits Ltd";
 "Great, you have set a new passcode!" = "¡Muy bien, has establecido un nuevo código de acceso!";
 "Pirate Chain" = "Pirate Chain";

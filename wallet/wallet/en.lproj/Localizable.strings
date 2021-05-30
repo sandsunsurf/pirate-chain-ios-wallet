@@ -180,14 +180,10 @@
 "Confirm Passcode" = "Confirm Passcode";
 
 // Settings Screen
-
 "Endpoint" = "Endpoint";
-
-"My Pirate Chain Endpoint:" = "My Pirate Chain Endpoint:";
-"Invalid Endpoint Address, Reverting it to pirate chain address!" = "Invalid Endpoint Address, Reverting it to pirate chain address!";
+"My Pirate Chain Lite Server:" = "My Pirate Chain Lite Server:";
+"Invalid Lite Server Address, Reverting it to pirate chain address!" = "Invalid Lite Server Address, Reverting it to pirate chain address!";
 "Powered By Meshbits Ltd Team" = "Powered By Meshbits Ltd Team";
-
-
 "An error occured" = "An error occured";
 "dismiss" = "dismiss";
 "An error ocurred, please check your device logs" = "An error ocurred, please check your device logs";
@@ -244,7 +240,7 @@
 
 "My ARRR Address \n" = "My ARRR Address \n";
 
-"Enter an endpoint" = "Enter an endpoint";
+"Enter a lite server address" = "Enter a lite server address";
 
 "Pirate Chain Wallet" = "Pirate Chain Wallet";
 
