@@ -109,3 +109,15 @@
 "Invalid Passcode, Please enter a valid passcode."  = "Invalid Passcode, Please enter a valid passcode." ;
 "Enable Biometric Security" = "Enable Biometric Security";
 "Authenticate Biometric" = "Enable biometric authentication to secure the wallet.";
+
+// History
+"to your shielded wallet" = "to your shielded wallet";
+"While usually an acceptable risk, you will be possibly exposing your interest in this transaction id by visiting explorer.pirate.black" = "While usually an acceptable risk, you will be possibly exposing your interest in this transaction id by visiting explorer.pirate.black";
+"Cancel" = "Cancel";
+"View TX Details" = "View TX Details";
+"Leaving Pirate Chain Wallet" = "Leaving Pirate Chain Wallet";
+"includes reply-to" = "includes reply-to";
+"to " = "to ";
+"failed!" = "failed!";
+"Confirmed" = "Confirmed";
+"Pending confirmation" = "Pending confirmation";

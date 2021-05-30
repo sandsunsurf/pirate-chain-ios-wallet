@@ -5,6 +5,23 @@
   Copyright © 2020 Francisco Gindre. All rights reserved.
 */
 
+// ERRORS
+// Titles
+"Wallet Improperly Initialized" = "Wallet Improperly Initialized";
+"Processor Error" = "Processor Error";
+"Connection Error" = "Connection Error";
+"Failed to Send" = "Failed to Send";
+"Oops Something happened" = "Oops Something happened";
+"Critical Error" = "Critical Error";
+
+// Messages
+"This wallet has not been initialized correctly! Perhaps an error occurred during install. If you just created a new wallet close the app and retry.\n\n If this is an existing wallet, it can be fixed with a reset. First, locate your backup seed phrase, then \"Nuke Wallet\" and reimport it." = "This wallet has not been initialized correctly! Perhaps an error occurred during install. If you just created a new wallet close the app and retry.\n\n If this is an existing wallet, it can be fixed with a reset. First, locate your backup seed phrase, then \"Nuke Wallet\" and reimport it.";
+"An error ocurred while syncing the blockchain. If the problem persists, back up your seed phrase and restore your wallet." = "An error ocurred while syncing the blockchain. If the problem persists, back up your seed phrase and restore your wallet.";
+"We are having problems with the network connection." = "We are having problems with the network connection.";
+"We were unable to send your transaction. Your funds are safe, we just need to wait until the transaction expires before you can send them again." = "We were unable to send your transaction. Your funds are safe, we just need to wait until the transaction expires before you can send them again.";
+"There's an internal error. Probably nothing serious. If this error persists, back up your seed phrase and restore your wallet" = "There's an internal error. Probably nothing serious. If this error persists, back up your seed phrase and restore your wallet";
+"If this error persists, back up your seed phrase and restore your wallet" = "If this error persists, back up your seed phrase and restore your wallet";
+
 // COMPONENTS:
 "button_back" = "Go Back";
 "Paste" = "Paste";
@@ -181,25 +198,6 @@
 
 
 // Misc
-
-"Wallet Improperly Initialized" = "Wallet Improperly Initialized";
-"Processor Error" = "Processor Error";
-"Connection Error" = "Connection Error";
-"Failed to Send" = "Failed to Send";
-"Oops Something happened" = "Oops Something happened";
-"Critical Error" = "Critical Error";
-"This wallet has not been initialized correctly! Perhaps an error occurred during install. If you just created a new wallet close the app and retry.\n\n If this is an existing wallet, it can be fixed with a reset. First, locate your backup seed phrase, then \"Nuke Wallet\" and reimport it." = "This wallet has not been initialized correctly! Perhaps an error occurred during install. If you just created a new wallet close the app and retry.\n\n If this is an existing wallet, it can be fixed with a reset. First, locate your backup seed phrase, then \"Nuke Wallet\" and reimport it.";
-
-"An error ocurred while syncing the blockchain. If the problem persists, back up your seed phrase and restore your wallet." = "An error ocurred while syncing the blockchain. If the problem persists, back up your seed phrase and restore your wallet.";
-
-"We are having problems with the network connection." = "We are having problems with the network connection.";
-
-"We were unable to send your transaction. Your funds are safe, we just need to wait until the transaction expires before you can send them again." = "We were unable to send your transaction. Your funds are safe, we just need to wait until the transaction expires before you can send them again.";
-
-"There's an internal error. Probably nothing serious. If this error persists, back up your seed phrase and restore your wallet" = "There's an internal error. Probably nothing serious. If this error persists, back up your seed phrase and restore your wallet";
-
-"If this error persists, back up your seed phrase and restore your wallet" = "If this error persists, back up your seed phrase and restore your wallet";
-
 "Explore" = "Explore";
 
 "from" = "from ";
@@ -270,12 +268,22 @@
 
 "Transaction Details" = "Transaction Details";
 
+// Settings
 "Invalid Passcode, Please enter a valid passcode."  = "Invalid Passcode, Please enter a valid passcode." ;
-
 "Great, you have set a new passcode!" = "Great, you have set a new passcode!";
-
 "Pirate Chain" = "Pirate Chain";
-
 "Enable Biometric Security" = "Enable Biometric Security";
-
 "Authenticate Biometric" = "Enable biometric authentication to secure the wallet.";
+
+
+// History
+"to your shielded wallet" = "to your shielded wallet";
+"While usually an acceptable risk, you will be possibly exposing your interest in this transaction id by visiting explorer.pirate.black" = "While usually an acceptable risk, you will be possibly exposing your interest in this transaction id by visiting explorer.pirate.black";
+"Cancel" = "Cancel";
+"View TX Details" = "View TX Details";
+"Leaving Pirate Chain Wallet" = "Leaving Pirate Chain Wallet";
+"includes reply-to" = "includes reply-to";
+"to " = "to ";
+"failed!" = "failed!";
+"Confirmed" = "Confirmed";
+"Pending confirmation" = "Pending confirmation";

@@ -72,10 +72,10 @@ struct TransactionDetails: View {
             case .copiedItem(let p):
                 return PasteboardAlertHelper.alert(for: p)
             case .explorerNotice:
-                return Alert(title: Text("Leaving Pirate Chain Wallet"),
-                             message: Text("While usually an acceptable risk, you will be possibly exposing your interest in this transaction id by visiting blockchair.com"),
-                             primaryButton: .cancel(Text("Cancel")),
-                             secondaryButton: .default(Text("View TX Details"), action: {
+                return Alert(title: Text("Leaving Pirate Chain Wallet".localized()),
+                             message: Text("While usually an acceptable risk, you will be possibly exposing your interest in this transaction id by visiting explorer.pirate.black".localized()),
+                             primaryButton: .cancel(Text("Cancel".localized())),
+                             secondaryButton: .default(Text("View TX Details".localized()), action: {
                                 
                                 guard let url = UrlHandler.blockExplorerURL(for: self.detail.id) else {
                                     return
@@ -110,14 +110,14 @@ struct SubwayPathBuilder {
         
         if detail.isOutbound {
             views.append(
-                Text("from your shielded wallet")
+                Text("send_fromshielded".localized())
                     .font(.body)
                     .foregroundColor(.gray)
                     .eraseToAnyView()
             )
         } else {
             views.append(
-                Text("to your shielded wallet")
+                Text("to your shielded wallet".localized())
                     .font(.body)
                     .foregroundColor(.gray)
                     .eraseToAnyView()
@@ -142,7 +142,7 @@ struct SubwayPathBuilder {
                         PasteboardAlertHelper.shared.copyToPasteBoard(value: validReplyToAddress, notify: "feedback_addresscopied".localized())
                         tracker.track(.tap(action: .copyAddress), properties: [:])
                     }) {
-                        Text("includes reply-to")
+                        Text("includes reply-to".localized())
                             .font(.body)
                             .foregroundColor(.gray)
                     }
@@ -157,7 +157,7 @@ struct SubwayPathBuilder {
                 Button(action:{
                     PasteboardAlertHelper.shared.copyToPasteBoard(value: fullAddr, notify: "feedback_addresscopied".localized())
                 }){
-                    (Text("to ")
+                    (Text("to ".localized())
                         .font(.body)
                         .foregroundColor(.white) +
                         Text(toAddr)
@@ -179,7 +179,7 @@ struct SubwayPathBuilder {
             )
         } else {
             views.append(
-                Text("failed!")
+                Text("failed!".localized())
                     .font(.body)
                     .foregroundColor(.red)
                     .eraseToAnyView()
@@ -195,11 +195,11 @@ extension DetailModel {
     
     func makeStatusText(latestHeight: Int) -> String {
         guard !self.isConfirmed(latestHeight: latestHeight) else {
-            return "Confirmed"
+            return "Confirmed".localized()
         }
         
         guard minedHeight > 0, latestHeight > 0 else {
-            return "Pending confirmation"
+            return "Pending confirmation".localized()
         }
         
         return "\(abs(latestHeight - minedHeight)) \("of 10 Confirmations".localized())"
