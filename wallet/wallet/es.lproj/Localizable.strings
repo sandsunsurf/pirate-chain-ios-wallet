@@ -3,31 +3,38 @@
   wallet
 
   Copyright © 2020 Francisco Gindre. All rights reserved.
+
+  Spanish Translation 29.05.2021 adapted to ARRR
 */
 
 // ERRORS
 // titles
-"Wallet Improperly Initialized" = "Wallet Improperly Initialized";
-"Processor Error" = "Processor Error";
-"Connection Error" = "Connection Error";
-"Failed to Send" = "Failed to Send";
-"Oops something happened" = "Oops something happened";
-"Critical Error" = "Critical Error";
+"Wallet Improperly Initialized" = "Wallet iniciada incorrectamente";
+"Processor Error" = "Error de procesador";
+"Connection Error" = "Error de conección";
+"Failed to Send" = "Fallo en el envío";
+"Oops something happened" = "Oops algo sucedió";
+"Critical Error" = "Error crítico";
 
 // messages
-"This wallet has not been initialized correctly! Perhaps an error occurred during install.\n\nThis can be fixed with a reset. First, locate your backup seed phrase, then \"Nuke Wallet\" and reimport it." = "This wallet has not been initialized correctly! Perhaps an error occurred during install.\n\nThis can be fixed with a reset. First, locate your backup seed phrase, then \"Nuke Wallet\" and reimport it.";
-"An error ocurred while syncing the blockchain. If the problem persists, back up your seed phrase and restore your wallet." = "An error ocurred while syncing the blockchain. If the problem persists, back up your seed phrase and restore your wallet.";
-"We are having problems with the network connection." = "We are having problems with the network connection.";
-"We were unable to send your transaction. Your funds are safe, we just need to wait until the transaction expires before you can send them again." = "We were unable to send your transaction. Your funds are safe, we just need to wait until the transaction expires before you can send them again.";
-"There's an internal error. Probably nothing serious. If this error persists, back up your seed phrase and restore your wallet" = "There's an internal error. Probably nothing serious. If this error persists, back up your seed phrase and restore your wallet";
-"If this error persists, back up your seed phrase and restore your wallet" = "If this error persists, back up your seed phrase and restore your wallet";
+"This wallet has not been initialized correctly! Perhaps an error occurred during install.\n\nThis can be fixed with a reset. First, locate your backup seed phrase, then \"Nuke Wallet\" and reimport it." = "Este Wallet no se ha inicializado correctamente! Tal vez se produjo un error durante la instalación.\n\nEsto se puede arreglar con un reinicio. Primero, localiza tu frase semilla (seed phrase) de copia de seguridad, luego \"Nuke Wallet\" y vuelve a importarla.";
+
+"An error ocurred while syncing the blockchain. If the problem persists, back up your seed phrase and restore your wallet." = "Occurrió un error al sincronizar el blockchain. Si el problema persiste, haz una copia de seguridad de tu frase semilla (seed phrase) y restaura tu Wallet.";
+
+"We are having problems with the network connection." = "Tenemos problemas con la conexión a la red.";
+
+"We were unable to send your transaction. Your funds are safe, we just need to wait until the transaction expires before you can send them again." = "No hemos podido enviar tu transacción. Tus fondos están a salvo, solo tenemos que esperar a que la transacción caduque para poder enviar de nuevo.";
+
+"There's an internal error. Probably nothing serious. If this error persists, back up your seed phrase and restore your wallet" = "Hay un error interno. Probablemente nada grave. Si este error persiste, haz una copia de seguridad de tu frase semilla (seed phrase) y restaura tu wallet";
+
+"If this error persists, back up your seed phrase and restore your wallet" = "Si este error persiste, haz una copia de seguridad de tu frase semilla (seed phrase) y restaura tu wallet";
 
 // COMPONENTS:
 "button_back" = "Volver";
 "Paste" = "Pegar";
 "balance_available" = "Disponible";
 "expecting" = "esperando";
-"Create new Wallet" = "Crea nueva Wallet";
+"Create new Wallet" = "Crear nueva Wallet";
 "button_done" = "Listo";
 "button_backup" = "Respaldar Wallet";
 "Press and hold\nto send ARRR" = "Mantén presionada\npara enviar ARRR";
@@ -39,8 +46,8 @@
 "Address Copied to clipboard!" = "Dirección copiada al portapapeles!";
 "button_close" = "Cerrar";
 "Pending confirmation" = "Confirmación pendiente";
-"of 10 Confirmations" = "de 10 Confirmaciones";
-"button_share_address" = "Compartir Dirección";
+"of 10 Confirmations" = "de 10 confirmaciones";
+"button_share_address" = "Compartir dirección";
 
 
 // profile screen
@@ -49,79 +56,80 @@
 
 // WalletDetailsHeader
 "screen_wallethistory" = "Historial de tu Wallet";
-"wallet_history_sent" = "Se nt";
-"wallet_history_received" = "Received";
+"wallet_history_sent" = "Enviado";
+"wallet_history_received" = "Recibido";
 "Shielded address:" = "Dirección Blindada:";
 
 //SendTransaction
 "send_fromshielded" = "de tu wallet blindada";
 "send_fromtransparent" = "de tu wallet transparente";
-"send_fromboth" = "from both wallets";
-"feedback_default" = "Escribe una direccion blindada de Zcash";
+"send_fromboth" = "de ambas Wallets";
+"feedback_default" = "Escribe una direccion blindada de ARRR";
+
 "feedback_shieldedaddress" = "Esta es una dirección blindada válida";
 "feedback_transparentaddress" = "Esta es una dirección transparente válida";
-"feedback_addresscopied" = "¡Dirección Copiada!";
+"feedback_addresscopied" = "¡Dirección copiada!";
 "feedback_invalidaddress" = "¡Cuidado, esta dirección no es válida!";
-"feedback_sameaddress" = "¡Cuidado, parece que esta es tu propia dirección!";
-"send_onclipboard" = "On Clipboard";
-"send_lastused" = "Last Used";
-"send_unknown" = "Unknown";
+"feedback_sameaddress" = "¡Cuidado, parece que ésta es tu propia dirección!";
+"send_onclipboard" = "En Portapapel";
+"send_lastused" = "Usado ultimamente";
+"send_unknown" = "Desconocido";
 "label_replyto" = "incluir remitente";
 "send_securityauth" = "Identifícate para enviar";
-"send_securityauth2" = "Confirma que quieres enviar %@ ZEC a";
+"send_securityauth2" = "Confirma que quieres enviar %@ ARRRC a";
 "label_memo" = "Memo";
-"label_to" = "To";
+"label_to" = "A";
 "label_charactercount" = "%@ caracteres";
 "label_add_memo" = "Agregar Memo (opcional)";
 
 "You Have %@ sendable ARRR" = "Tienes %@ ARRR para enviar";
 
 "%@ sendable ARRR. You don't have sufficient funds to cover the amount + Miner Fee of %@ ARRR" = "%@ ARRR para enviar. No tiene fondos suficientes para cubrir esa cantidad + la tarifa de minero de %@ ARRR";
-"You don't have any sendable ARRR yet" = "Todavía no tienes ARRR para enviar";
+"You don't have any sendable ARRR yet" = "No tienes ARRR para poder enviar";
 
 //Sending
 "thing is that we really don't know what just went down, sorry!" = "Lo que pasa es que realmente no sabemos qué pasó, lo sentimos.";
 "send_sending" = "Enviando %@ ARRR a";
-"an error ocurred while submitting your transaction" = "se produjo un error al enviar su transacción";
+"an error ocurred while submitting your transaction" = "se produjo un error al enviar tu transacción";
 "label_unabletosend" = "No se pudo enviar a";
-"button_seedetails" = "See Details";
+"button_seedetails" = "Ve detailles";
 
 //CreateNewWallet
 "Create New" = "Crear nueva";
 "Restore" = "Restaurar";
 
 //RestoreWallet
-"Enter your Seed Phrase" = "Ingrese su frase semilla (Seed)";
+"Enter your Seed Phrase" = "Ingrese su frase semilla (Seed Phrase)";
 "Make sure nobody is watching you!" = "¡Asegúrate de que nadie te esté mirando!";
 "Wallet Birthday height" = "Numero de bloque de nacimiento";
-"If you don't know it, leave it blank. First Sync will take longer." = "Si no lo sabe, déjelo en blanco. La primera sincronización llevará más tiempo.";
+"If you don't know it, leave it blank. First Sync will take longer." = "Si no lo sabes, déjelo en blanco. La primera sincronización llevará más tiempo.";
 "Proceed" = "Continuar";
-"Restore from Seed Phrase" = "Restaurar desde frase semilla";
+"Restore from Seed Phrase" = "Restaurar desde frase semilla (seed phrase)";
 "Your seed phrase is valid" = "Tu frase semilla es válida";
 "Your seed phrase is invalid!" = "¡Tu frase semilla es inválida!";
 
 //BackupWallet
-"Your wallet needs to be backed up." = "Su wallet necesita \n ser respaldada";
+"Your wallet needs to be backed up." = "Tu Wallet necesita \n ser respaldada";
 "balance_syncing" = "Sincronizando %@%%"; // key not mapped so that if locale fetch fails the app does not crash
 "Skip" = "Omitir";
 
 //SeedBackup
 
-"seed_birthday" = "Bloque de inicial";
+"seed_birthday" = "Bloque inicial";
 "title_backupseed" = "Tu semilla de respaldo";
-"copy_backupseed" = "¡Haz una copia de respaldo sabiamente! \n Recomendamos una copia de respaldo en papel y un administrador de contraseñas";
+"copy_backupseed" = "¡Hazte una copia de respaldo sabiamente! \n Recomendamos hacer una copia de respaldo en papel y un administrador de contraseñas";
 "button_copytoclipboard" = "Copiar al portapapeles";
 
 //Home
-"There was an error creating your wallet. Please back it up and try again" = "Se produjo un error al crear tu wallet. Por favor, haga una copia de respaldo de su frase semilla e intente nuevamente";
-"Max Retry attempts (%@) have been reached" = "Ha alcanzado el límite máximo de reintentos (%@)";
+"There was an error creating your wallet. Please back it up and try again" = "Se produjo un error al crear tu Wallet. Por favor, haz una copia de respaldo de tu frase semilla e intenta nuevamente";
+"Max Retry attempts (%@) have been reached" = "Límite máximo de reintentos alcanzado (%@)";
 "Retry" = "Reintentar";
 "button_send" = "Enviar";
 "balance_amounttosend" = "Ingresar un monto para enviar";
 "balance_nofunds" = "No hay fondos disponibles";
-"button_wallethistory" = "Historial de Wallet";
+"button_wallethistory" = "Historial del Wallet";
 "Receive Funds" = "Recibir fondos"; // These are accessibility strings
-"Change PIN" = "Change PIN"; // These are accessibility strings
+"Change PIN" = "Cambiar PIN"; // These are accessibility strings
 
 //ReceiveFunds
 "QR Code for %@" = "Código QR para %@";
@@ -130,24 +138,24 @@
 "label_to" = "Para";
 
 //ScanAddress
-"scan_cameraunallowed" = "Habilita el uso de la cámara en la configuración de tu dispositivo";
+"scan_cameraunallowed" = "Permite el uso de la cámara en la configuración de tu dispositivo";
 "scan_cameraunallowed2" = "Solicitar acceso a la cámara";
 "scan_cameraunavaliable" = "Cámara no disponible";
-"scan_invalidQR" = "¡El QR no contiene una dirección Zcash Válida!";
+"scan_invalidQR" = "¡El QR no contiene una dirección ARRR válida!";
 //ShareScreen
 "Share Screen" = "Compartir";
 
 //ProfileScreen
 "button_feedback" = "Enviar comentarios";
-"button_applicationlogs" = "Ver logs de la aplicación";
+"button_applicationlogs" = "Ver registros de la aplicación";
 "button_backup_profile" = "Respaldar Wallet";
 "Send Feedback" = "Enviar comentarios";
-"See Application Log" = "Ver log de la aplicación";
+"See Application Log" = "Ver registros de la aplicación";
 "Nighthawk Wallet" = "Pirate Chain Wallet";
 
 //FundsAtRisk
-"seed_remindertext" = "Recuerda, en Zcash tu eres el banco. Cualquiera que tenga tu frase semilla podrá acceder a tu wallet";
-"seed_remindertext2" = "Deberías respaldar tu wallet inmediatamente. Solo tú puedes hacerlo.";
+"seed_remindertext" = "Recuerda, en ARRR tú eres el banco. Cualquiera que tenga tu frase semilla podrá acceder a tu Wallet";
+"seed_remindertext2" = "¡Deberías respaldar tu Wallet inmediatamente. Solo tú puedes hacerlo!";
 "seed_reminder" = "¡Tus fondos están en riesgo!";
 "button_backup" = "Respaldar";
 "button_skip" = "Omitir por ahora";
@@ -155,33 +163,33 @@
 //NukeWarning
 
 "nuke_title" = "Estás a punto de DESTRUIR tu wallet";
-"nuke_nukewarning" = "Recuerda, en Zcash tú eres el banco. Cualquiera que tenga tu frase semilla podrá acceder a tu wallet";
+"nuke_nukewarning" = "Recuerda, en ARRR tú eres el banco. Cualquiera que tenga tu frase semilla podrá acceder a tu Wallet";
 "nuke_nukewarning2" = "Asegúrese de hacer una copia de seguridad de su wallet antes de continuar.";
 "nuke_nukewarning3" = "Si destruyes tu wallet sin haberla respaldado, no hay forma de recuperarla.";
 "nuke_nukeButton" = "DESTRUIR WALLET";
 "nuke_backupbutton" = "¡Respaldar ahora!";
-"nuke_alerttitle" = "¿Eliminar Wallet?";
+"nuke_alerttitle" = "¿Eliminar/Destruir Wallet?";
 "nuke_alertmessage" = "Estás a punto de DESTRUIR tu wallet. ¿Estás seguro que deseas continuar?";
-"nuke_alertcancel" = "No estoy seguro";
+"nuke_alertcancel" = "NO estoy seguro";
 "nuke_alertconfirm" = "¡DESTRUIR WALLET!";
 
 //FeedBackForm
-"Feedback Sent!" = "Feedback Sent!";
-"Thanks for your feedback!" = "Thanks for your feedback!";
+"Feedback Sent!" = "¡Comentario enviado!";
+"Thanks for your feedback!" = "¡Gracias por tu comentario!";
 
 
 //InputPasscodeWithCustomPad
-"Enter New Passcode" = "Enter New Passcode";
-"Confirm Passcode" = "Confirm Passcode";
+"Enter New Passcode" = "Ingresar nuevo código de acceso";
+"Confirm Passcode" = "Confirmar código de accesso";
 
 // Settings Screen
 
 "Endpoint" = "Endpoint";
-"My Pirate Chain Endpoint:" = "My Pirate Chain Endpoint:";
-"Invalid Endpoint Address, Reverting it to pirate chain address!" = "Invalid Endpoint Address, Reverting it to pirate chain address!";
-"Powered By Meshbits Ltd Team" = "Powered By Meshbits Ltd Team";
-"Great, you have set a new passcode!" = "Great, you have set a new passcode!";
+"My Pirate Chain Endpoint:" = "Mi Pirate Chain Endpoint:";
+"Invalid Endpoint Address, Reverting it to pirate chain address!" = "¡Dirección Endpoint inválida, revirtiendo a la dirección de pirate chain!";
+"Powered By Meshbits Ltd Team" = "Con tecnología del team Meshbits Ltd";
+"Great, you have set a new passcode!" = "¡Muy bien, has establecido un nuevo código de acceso!";
 "Pirate Chain" = "Pirate Chain";
-"Invalid Passcode, Please enter a valid passcode."  = "Invalid Passcode, Please enter a valid passcode." ;
-"Enable Biometric Security" = "Enable Biometric Security";
-"Authenticate Biometric" = "Enable biometric authentication to secure the wallet.";
+"Invalid Passcode, Please enter a valid passcode."  = "Código de acceso inválido, por favor introduce un código de acceso válido." ;
+"Enable Biometric Security" = "Activar seguridad biométrica";
+"Authenticate Biometric" = "Activar la autenticación biométrica para asegurar el Wallet.";
