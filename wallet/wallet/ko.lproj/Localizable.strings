@@ -148,6 +148,7 @@
 "Invalid Passcode, Please enter a valid passcode."  = "Invalid Passcode, Please enter a valid passcode." ;
 "Enable Biometric Security" = "Enable Biometric Security";
 "Authenticate Biometric" = "Enable biometric authentication to secure the wallet.";
+"Change app language" = "Change app language";
 
 // History
 "to your shielded wallet" = "to your shielded wallet";

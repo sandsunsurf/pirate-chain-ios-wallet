@@ -111,7 +111,7 @@ struct ProfileScreen: View {
                         
                        ActionSheet(
                                         title: Text(""),
-                                        message: Text("Change app language"),
+                        message: Text("Change app language".localized()),
                                         buttons: [
                                             .default(Text("English")) {
                                                 updateLanguageAndResetApp(language: "en")
@@ -150,7 +150,7 @@ struct ProfileScreen: View {
                         
                         if #available(iOS 14.0, *) {
                             Toggle(isOn:$isBiometricEnabled){
-                                Text("Enable Biometric Security").foregroundColor(.zYellow)
+                                Text("Enable Biometric Security".localized()).foregroundColor(.zYellow)
                                     .zcashButtonBackground(shape: .roundedCorners(fillStyle: .outline(color: .zYellow, lineWidth:0)))
                                     .frame(height:  Self.buttonHeight/2).multilineTextAlignment(.leading)
                                 
@@ -170,7 +170,7 @@ struct ProfileScreen: View {
                             Toggle(isOn:$isBiometricEnabled.didSet { (state) in
                                    print(state)
                             }){
-                                Text("Enable Biometric Security").foregroundColor(.zYellow)
+                                Text("Enable Biometric Security".localized()).foregroundColor(.zYellow)
                                         .zcashButtonBackground(shape: .roundedCorners(fillStyle: .outline(color: .zYellow, lineWidth:0)))
                                         .frame(height:  Self.buttonHeight/2).multilineTextAlignment(.leading)
                                     
