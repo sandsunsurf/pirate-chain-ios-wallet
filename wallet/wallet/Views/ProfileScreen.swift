@@ -283,12 +283,15 @@ struct ProfileScreen: View {
             })
 //            .navigationBarTitle("Settings", displayMode: .inline)
             
-        }.navigationBarBackButtonHidden(true)
-        .navigationBarHidden(false)
-        .navigationBarItems(trailing: ZcashCloseButton(action: {
-            tracker.track(.tap(action: .profileClose), properties: [:])
-            self.isShown = false
-        }).frame(width: 30, height: 30))
+        }
+//        .navigationBarBackButtonHidden(true)
+//        .navigationBarHidden(false)
+//        .navigationBarItems(trailing: ZcashCloseButton(action: {
+//            tracker.track(.tap(action: .profileClose), properties: [:])
+//            self.isShown = false
+//        }).frame(width: 30, height: 30))
+        
+        
         .background(Color.black)
         .onReceive(AuthenticationHelper.authenticationPublisher) { (output) in
             switch output {
