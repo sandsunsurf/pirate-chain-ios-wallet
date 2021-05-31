@@ -214,7 +214,7 @@ struct ProfileScreen: View {
                         .disabled(true)
                     
                     NavigationLink(destination: LazyView (
-                        NukeWarning().environmentObject(self.appEnvironment)
+                        NukeWarning().environmentObject(self.appEnvironment).navigationBarBackButtonHidden(true)
                     ), isActive: self.$nukePressed) {
                         EmptyView()
                     }.isDetailLink(false)
