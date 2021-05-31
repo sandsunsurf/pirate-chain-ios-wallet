@@ -379,7 +379,7 @@ struct Home: View {
                             LazyView(WalletDetails(isActive: self.$viewModel.showHistory)
                             .environmentObject(WalletDetailsViewModel())
                             .navigationBarTitle(Text(""), displayMode: .inline)
-                            .navigationBarHidden(true))
+                            .navigationBarHidden(false))
                         
                         ,isActive: self.$viewModel.showHistory) {
                         walletDetails
@@ -394,7 +394,7 @@ struct Home: View {
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarTitle("", displayMode: .inline)
-        .navigationBarHidden(true)
+//        .navigationBarHidden(true)
         .onAppear {
             tracker.track(.screen(screen: .home), properties: [:])
         }.sheet(isPresented: $showPassCodeScreen){

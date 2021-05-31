@@ -240,7 +240,7 @@ struct InputPasscodeWithCustomPad: View {
                 }
                 
             }.highPriorityGesture(dragGesture)
-        }.navigationBarBackButtonHidden(true).background(Color.aPureBlack).edgesIgnoringSafeArea(.all)
+        }.background(Color.aPureBlack).edgesIgnoringSafeArea(.all)
         .onAppear(perform: authenticate)
         .onReceive(AuthenticationHelper.authenticationPublisher) { (output) in
             switch output {

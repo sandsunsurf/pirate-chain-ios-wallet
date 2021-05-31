@@ -90,7 +90,7 @@ struct ProfileScreen: View {
                     NavigationLink(destination: LazyView(
                         SeedBackup(hideNavBar: false)
                             .environmentObject(self.appEnvironment)
-                        )
+                        ).navigationBarBackButtonHidden(true)
                     ) {
                         Text("button_backup".localized())
                             .foregroundColor(.white)
@@ -100,7 +100,7 @@ struct ProfileScreen: View {
                     }
                     
                     NavigationLink(destination: LazyView(
-                                    InputPasscodeWithCustomPad(aTempPasscode:"",mScreenState: InputPasscodeWithCustomPad.ScreenStates.validatePasscode).environmentObject(ZECCWalletEnvironment.shared))
+                                    InputPasscodeWithCustomPad(aTempPasscode:"",mScreenState: InputPasscodeWithCustomPad.ScreenStates.validatePasscode).environmentObject(ZECCWalletEnvironment.shared)).navigationBarBackButtonHidden(true)
                     ) {
                                     
                         Text("Change PIN".localized())

@@ -28,10 +28,10 @@ struct TxDetailsWrapper: View {
                                 .frame(alignment: Alignment.center)
                         }
                     }, trailingItem: {
-                        ZcashCloseButton(action: {
-//                            self.isActive = nil
-                            presentationMode.wrappedValue.dismiss()
-                            }).frame(width: 30, height: 30)
+//                        ZcashCloseButton(action: {
+////                            self.isActive = nil
+//                            presentationMode.wrappedValue.dismiss()
+//                            }).frame(width: 30, height: 30)
                     })
             }
             .padding(.top, 20)

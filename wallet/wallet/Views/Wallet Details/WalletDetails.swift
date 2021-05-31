@@ -81,27 +81,30 @@ struct WalletDetails: View {
         ZStack {
             ZcashBackground()
             VStack(alignment: .center) {
-                ZcashNavigationBar(
-                    leadingItem: {
-                        Button(action: {
-                            self.isActive.toggle()
-                        }) {
-                            Image("Back")
-                                .renderingMode(.original)
-                                .accessibility(label: Text("button_back"))
-                        }
-                        
-                    },
-                   headerItem: {
-                        BalanceDetail(
-                            availableZec: appEnvironment.synchronizer.verifiedBalance.value,
-                            status: status)
-                            
-                    },
-                   trailingItem: { EmptyView() }
-                )
-                .padding(.horizontal, 10)
-                
+//                ZcashNavigationBar(
+//                    leadingItem: {
+//                        Button(action: {
+//                            self.isActive.toggle()
+//                        }) {
+//                            Image("Back")
+//                                .renderingMode(.original)
+//                                .accessibility(label: Text("button_back"))
+//                        }
+//
+//                    },
+//                   headerItem: {
+//                        BalanceDetail(
+//                            availableZec: appEnvironment.synchronizer.verifiedBalance.value,
+//                            status: status)
+//
+//                    },
+//                   trailingItem: { EmptyView() }
+//                )
+//                .padding(.horizontal, 10)
+//
+                BalanceDetail(
+                    availableZec: appEnvironment.synchronizer.verifiedBalance.value,
+                    status: status)
 
                 List {
                     WalletDetailsHeader(zAddress: zAddress)
