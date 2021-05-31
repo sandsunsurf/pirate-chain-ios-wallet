@@ -14,8 +14,10 @@ struct ProfileScreen: View {
     @State var nukePressed = false
     @State var isDisableBioMetric = false
     @State var isDisplayAddressAlert = false
+    @State var isDisplayPortAlert = false
     @State var isUserOptingtoChangeLanguage = false
     @State var anAddress = SeedManager.default.exportLightWalletEndpoint()
+    @State var aPort = String.init(format: "%d", SeedManager.default.exportLightWalletPort())
     @Environment(\.presentationMode) var presentationMode
     static let buttonHeight = CGFloat(48)
     static let horizontalPadding = CGFloat(30)
@@ -30,8 +32,13 @@ struct ProfileScreen: View {
     var afterEditedString = ""
     @State var isFeedbackActive = false
     @State var isBiometricEnabled = UserSettings.shared.biometricInAppStatus
-    var isHighlighted: Bool {
+    
+    var isHighlightedAddress: Bool {
         anAddress.count > 0
+    }
+    
+    var isHighlightedPort: Bool {
+        aPort.count > 0
     }
     
     var body: some View {
@@ -39,7 +46,7 @@ struct ProfileScreen: View {
             ZStack(alignment: .center) {
                 ZcashBackground.pureBlack
              
-                VStack(alignment: .center, spacing: 16) {
+                VStack(alignment: .center, spacing: 14) {
                     Button(action: {
                         tracker.track(.tap(action: .copyAddress),
                                       properties: [:])
@@ -49,8 +56,8 @@ struct ProfileScreen: View {
                         Text("My ARRR Address \n".localized() + (appEnvironment.initializer.getAddress()?.shortZaddress ?? ""))
                             .lineLimit(3)
                             .multilineTextAlignment(.center)
-                            .font(.system(size: 15))
-                            .foregroundColor(.white)
+                            .font(.system(size: 14))
+                            .foregroundColor(.white).truncationMode(.tail)
                     }
                     .onReceive(PasteboardAlertHelper.shared.publisher) { (item) in
                         self.copiedValue = item
@@ -177,19 +184,24 @@ struct ProfileScreen: View {
                             }.disabled(isDisableBioMetric)
                             
                         }
-//
-//
-                        Text("My Pirate Chain Lite Server:".localized())
-                            .lineLimit(3)
-                            .multilineTextAlignment(.center)
-                            .font(.system(size: 18))
-                            .foregroundColor(.white).padding([.top], 20)
+
+                        ActionableMessage(message: "My Pirate Chain Lite Server:".localized(), actionText: "", action: {})
+                            .disabled(true)
                         
-                        TextField("Enter a lite server address".localized(), text: $anAddress, onEditingChanged: { (changed) in
-                        }) {
-                            self.didEndEditingTextField()
-                        }.multilineTextAlignment(.center).foregroundColor(.white).overlay(
-                            Baseline().stroke(isHighlighted ? activeColor : inactiveColor , lineWidth: 1)).padding([.leading, .trailing], 60).padding([.top, .bottom], 10)
+                        HStack {
+                            TextField("Enter a lite server address".localized(), text: $anAddress, onEditingChanged: { (changed) in
+                            }) {
+                                self.didEndEditingAddressTextField()
+                            }.multilineTextAlignment(.center).foregroundColor(.white).overlay(
+                                Baseline().stroke(isHighlightedAddress ? activeColor : inactiveColor , lineWidth: 1)).padding([.leading, .trailing], 10).padding([.top, .bottom], 5).frame(minWidth: 0,maxWidth: .infinity,minHeight: 0,maxHeight: .infinity).lineLimit(1)
+                            
+                            TextField("Port".localized(), text: $aPort, onEditingChanged: { (changed) in
+                            }) {
+                                self.didEndEditingPortTextField()
+                            }.multilineTextAlignment(.center).foregroundColor(.white).overlay(
+                                Baseline().stroke(isHighlightedPort ? activeColor : inactiveColor , lineWidth: 1)).padding([.leading, .trailing], 20).padding([.top, .bottom], 5).keyboardType(.numberPad).frame(minWidth: 0,maxWidth:100,minHeight: 0,maxHeight: .infinity).lineLimit(1)
+                            
+                        }
                         
                     }
                     ActionableMessage(message: "\("Pirate Chain Wallet".localized()) v\(ZECCWalletEnvironment.appVersion ?? "Unknown")", actionText: "Build \(ZECCWalletEnvironment.appBuild ?? "Unknown")", action: {})
@@ -222,7 +234,9 @@ struct ProfileScreen: View {
                 
                 
             }
-            
+            .onTapGesture {
+                UIApplication.shared.endEditing()
+            }
             .alert(item: self.$copiedValue) { (p) -> Alert in
                 PasteboardAlertHelper.alert(for: p)
             }
@@ -238,6 +252,13 @@ struct ProfileScreen: View {
                       message: Text("Invalid Lite Server Address, Reverting it to pirate chain address!".localized()),
                       dismissButton: .default(Text("button_close".localized()),action: {
                         SeedManager.default.importLightWalletEndpoint(address: ZECCWalletEnvironment.defaultLightWalletEndpoint)
+                  }))
+            })
+            .alert(isPresented: self.$isDisplayPortAlert, content: { () -> Alert in
+                Alert(title: Text("".localized()),
+                      message: Text("Invalid Lite Server Port, Reverting it to pirate chain port!".localized()),
+                      dismissButton: .default(Text("button_close".localized()),action: {
+                        SeedManager.default.importLightWalletPort(port: String.init(format: "%d", ZECCWalletEnvironment.defaultLightWalletPort))
                   }))
             })
 //            .navigationBarTitle("Settings", displayMode: .inline)
@@ -286,11 +307,20 @@ struct ProfileScreen: View {
 //        }
     }
 //
-    func didEndEditingTextField(){
+    func didEndEditingAddressTextField(){
         if anAddress.count == 0 {
             isDisplayAddressAlert = true
         }else{
             SeedManager.default.importLightWalletEndpoint(address: anAddress)
+        }
+    }
+    
+    func didEndEditingPortTextField(){
+        if aPort.count == 0 {
+            isDisplayPortAlert = true
+        }else{
+            // save port
+            SeedManager.default.importLightWalletPort(port: String.init(format: "%d", aPort))
         }
     }
 }

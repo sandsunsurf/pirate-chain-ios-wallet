@@ -22,6 +22,7 @@ final class SeedManager {
     private static let zECCWalletBirthday = "zECCWalletBirthday"
     private static let zECCWalletPhrase = "zECCWalletPhrase"
     private static let aRRRLightWalletEndpoint = "aRRRLightWalletEndpoint"
+    private static let aRRRLightWalletPort = "aRRRLightWalletPort"
 
     private let keychain = KeychainSwift()
     
@@ -66,7 +67,26 @@ final class SeedManager {
         }
         return address
     }
+    
+    func importLightWalletPort(port: String) {
+        guard keychain.get(Self.aRRRLightWalletPort) == nil
+        else {
+            keychain.set(port, forKey: Self.aRRRLightWalletPort)
+            return
+        }
+        keychain.set(String.init(format: "%d", ZECCWalletEnvironment.defaultLightWalletPort), forKey: Self.aRRRLightWalletPort)
+    }
 
+    func exportLightWalletPort() -> String {
+        guard let port = keychain.get(Self.aRRRLightWalletPort) else
+        {
+            return String.init(format: "%d", ZECCWalletEnvironment.defaultLightWalletPort)
+        }
+        return port
+    }
+
+    
+    
     /**
      Use carefully: Deletes the seed phrase from the keychain
      */
