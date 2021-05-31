@@ -17,7 +17,7 @@ struct ProfileScreen: View {
     @State var isDisplayPortAlert = false
     @State var isUserOptingtoChangeLanguage = false
     @State var anAddress = SeedManager.default.exportLightWalletEndpoint()
-    @State var aPort = String.init(format: "%d", SeedManager.default.exportLightWalletPort())
+    @State var aPort = SeedManager.default.exportLightWalletPort()
     @Environment(\.presentationMode) var presentationMode
     static let buttonHeight = CGFloat(48)
     static let horizontalPadding = CGFloat(30)
@@ -28,6 +28,8 @@ struct ProfileScreen: View {
     var activeColor = Color.zAmberGradient2
     var inactiveColor = Color.zGray2
     var isUserTyping = false
+    @State var isUserEditingPort = false
+    @State var isUserEditingAddress = false
 
     var afterEditedString = ""
     @State var isFeedbackActive = false
@@ -190,16 +192,20 @@ struct ProfileScreen: View {
                         
                         HStack {
                             TextField("Enter a lite server address".localized(), text: $anAddress, onEditingChanged: { (changed) in
+                                isUserEditingAddress = true
                             }) {
+                                isUserEditingAddress = false
                                 self.didEndEditingAddressTextField()
                             }.multilineTextAlignment(.center).foregroundColor(.white).overlay(
                                 Baseline().stroke(isHighlightedAddress ? activeColor : inactiveColor , lineWidth: 1)).padding([.leading, .trailing], 10).padding([.top, .bottom], 5).frame(minWidth: 0,maxWidth: .infinity,minHeight: 0,maxHeight: .infinity).lineLimit(1)
                             
                             TextField("Port".localized(), text: $aPort, onEditingChanged: { (changed) in
+                                isUserEditingPort = true
                             }) {
+                                isUserEditingPort = false
                                 self.didEndEditingPortTextField()
                             }.multilineTextAlignment(.center).foregroundColor(.white).overlay(
-                                Baseline().stroke(isHighlightedPort ? activeColor : inactiveColor , lineWidth: 1)).padding([.leading, .trailing], 20).padding([.top, .bottom], 5).keyboardType(.numberPad).frame(minWidth: 0,maxWidth:100,minHeight: 0,maxHeight: .infinity).lineLimit(1)
+                                Baseline().stroke(isHighlightedPort ? activeColor : inactiveColor , lineWidth: 1)).padding([.leading, .trailing], 20).padding([.top, .bottom], 5).keyboardType(.decimalPad).frame(minWidth: 0,maxWidth:100,minHeight: 0,maxHeight: .infinity).lineLimit(1)
                             
                         }
                         
@@ -235,7 +241,19 @@ struct ProfileScreen: View {
                 
             }
             .onTapGesture {
+                
+                if isUserEditingPort {
+                    isUserEditingPort = false
+                    self.didEndEditingPortTextField()
+                }
+                
+                if isUserEditingAddress {
+                    isUserEditingAddress = false
+                    self.didEndEditingAddressTextField()
+                }
+                
                 UIApplication.shared.endEditing()
+
             }
             .alert(item: self.$copiedValue) { (p) -> Alert in
                 PasteboardAlertHelper.alert(for: p)
@@ -251,14 +269,16 @@ struct ProfileScreen: View {
                 Alert(title: Text("".localized()),
                       message: Text("Invalid Lite Server Address, Reverting it to pirate chain address!".localized()),
                       dismissButton: .default(Text("button_close".localized()),action: {
-                        SeedManager.default.importLightWalletEndpoint(address: ZECCWalletEnvironment.defaultLightWalletEndpoint)
+                        anAddress = ZECCWalletEnvironment.defaultLightWalletEndpoint
+                        SeedManager.default.importLightWalletEndpoint(address: anAddress)
                   }))
             })
             .alert(isPresented: self.$isDisplayPortAlert, content: { () -> Alert in
                 Alert(title: Text("".localized()),
                       message: Text("Invalid Lite Server Port, Reverting it to pirate chain port!".localized()),
                       dismissButton: .default(Text("button_close".localized()),action: {
-                        SeedManager.default.importLightWalletPort(port: String.init(format: "%d", ZECCWalletEnvironment.defaultLightWalletPort))
+                        aPort = String.init(format: "%d", ZECCWalletEnvironment.defaultLightWalletPort)
+                        SeedManager.default.importLightWalletPort(port: aPort)
                   }))
             })
 //            .navigationBarTitle("Settings", displayMode: .inline)
@@ -320,7 +340,7 @@ struct ProfileScreen: View {
             isDisplayPortAlert = true
         }else{
             // save port
-            SeedManager.default.importLightWalletPort(port: String.init(format: "%d", aPort))
+            SeedManager.default.importLightWalletPort(port: aPort)
         }
     }
 }
