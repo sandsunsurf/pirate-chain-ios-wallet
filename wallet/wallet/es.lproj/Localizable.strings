@@ -262,6 +262,7 @@
 "Endpoint" = "Endpoint";
 "My Pirate Chain Lite Server:" = "Mi Pirate Chain Lite Server:";
 "Invalid Lite Server Address, Reverting it to pirate chain address!" = "¡Dirección Lite Server inválida, revirtiendo a la dirección de pirate chain!";
+"Invalid Lite Server Port, Reverting it to pirate chain port!" = "Invalid Lite Server Port, Reverting it to pirate chain port!";
 "Powered By Meshbits Ltd Team" = "Con tecnología del team Meshbits Ltd";
 "Great, you have set a new passcode!" = "¡Muy bien, has establecido un nuevo código de acceso!";
 "Pirate Chain" = "Pirate Chain";
