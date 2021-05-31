@@ -24,13 +24,10 @@ struct ReceiveFunds: View {
             }.navigationBarTitle(Text("receive_title".localized()),
                                  displayMode: .inline)
            
-        }.navigationBarBackButtonHidden(true)
+        }
         
         .navigationBarHidden(false)
-        .navigationBarItems(trailing: ZcashCloseButton(action: {
-            tracker.track(.tap(action: .receiveBack), properties: [:])
-            self.isShown = false
-            }).frame(width: 30, height: 30))
+        
     }
 }
 
