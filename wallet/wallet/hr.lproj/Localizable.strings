@@ -1,0 +1,291 @@
+/*
+  Localizable.strings
+  wallet
+
+  Copyright © 2020 Francisco Gindre. All rights reserved.
+  Translated by: PeLe | $ARRR#1096 (from Discord)
+*/
+
+// ERRORS
+// Titles
+"Wallet Improperly Initialized" = "Novčanik nepropisno pokrenut";
+"Processor Error" = "Pogreška procesora";
+"Connection Error" = "Greška u povezivanju";
+"Failed to Send" = "Slanje neuspjelo";
+"Oops Something happened" = "Oops nešto se dogodilo";
+"Critical Error" = "Kritična greška";
+
+// Messages
+"This wallet has not been initialized correctly! Perhaps an error occurred during install. If you just created a new wallet close the app and retry.\n\n If this is an existing wallet, it can be fixed with a reset. First, locate your backup seed phrase, then \"Nuke Wallet\" and reimport it." = "Ovaj novčanik nije pravilno inicijaliziran! Možda se dogodila pogreška tijekom instalacije. Ako ste upravo stvorili novi novčanik, zatvorite aplikaciju i pokušajte ponovo.\n\n Ako je ovo postojeći novčanik, možete ga popraviti resetiranjem. Prvo pronađite sigurnosnu kopiju 'seed' fraze, a zatim \"Spalite novčanik\" i ponovo ga uvezite.";
+"An error ocurred while syncing the blockchain. If the problem persists, back up your seed phrase and restore your wallet." = "Došlo je do pogreške prilikom sinkronizacije blockchaina. Ako je problem i dalje tu, napravite sigurnosnu kopiju 'seed' fraze i učitajte ponovno novčanik.";
+"We are having problems with the network connection." = "Imamo problema s mrežnom vezom.";
+"We were unable to send your transaction. Your funds are safe, we just need to wait until the transaction expires before you can send them again." = "Nismo uspjeli poslati transakciju. Vaša sredstva su sigurna, samo trebamo pričekati dok transakcija ne istekne prije nego što ih možete ponovno poslati.";
+"There's an internal error. Probably nothing serious. If this error persists, back up your seed phrase and restore your wallet" = "Došlo je do interne pogreške. Vjerojatno ništa ozbiljno. Ako se ova pogreška nastavi, izradite sigurnosnu kopiju 'seed' fraze i učitajte ponovno novčanik";
+"If this error persists, back up your seed phrase and restore your wallet" = "Ako se ova pogreška nastavi, izradite sigurnosnu kopiju 'seed' fraze i učitajte ponovno novčanik";
+
+// COMPONENTS:
+"button_back" = "Povratak";
+"Paste" = "Zalijepi";
+"balance_available" = "Dostupno";
+"expecting " = "očekivajući";
+"Create new Wallet" = "Napravite novi Novčanik";
+"button_done" = "Gotovo";
+"button_backup" = "Sigurnosno kopirajte Novčanik";
+"Press and hold\nto send ARRR" = "Pritisnite i držite\nkako bi poslali ARRR";
+"Add Memo Here" = "Dodaj Memo ovdje";
+"Tap\nto send ARRR" = "Dotakni\ni pošalji ARRR";
+"Enter Shielded Address" = "Unesi zaštičenu Adresu";
+"Error" = "Greška";
+"an error ocurred" = "pojavila se greška";
+"button_close" = "Zatvori";
+"Pending confirmation" = "Na čekanju potvrde";
+"of 10 Confirmations" = "od 10 potvrda";
+"button_share_address" = "Podijeli adresu";
+
+// profile screen
+"NUKE WALLET" = "SPALI NOVČANIK";
+"profile_screen" = "Zaštićeni korisnik\n";
+
+// WalletDetailsHeader
+"screen_wallethistory" = "Povijest Novčanika";
+"wallet_history_sent" = "Poslano";
+"wallet_history_received" = "Primljeno";
+"Shielded address:" = "Zaštićena adresa:";
+ //SendTransaction
+"send_fromshielded" = "iz vašeg zaštićenog novčanika";
+"send_fromtransparent" = "iz vašeg transparentnog novčanika";
+"send_fromboth" = "iz oba novčanika";
+"feedback_default" = "Unesite zaštićenu Pirate Chain adresu";
+"feedback_shieldedaddress" = "Ovo je važeća zaštićena adresa";
+"feedback_transparentaddress" = "Ovo je važeća transparentna adresa";
+"feedback_addresscopied" = "Adresa kopirana!";
+"feedback_invalidaddress" = "Upozorenje, ova adresa nije važeća!";
+"feedback_sameaddress" = "Upozorenje, čini se da je ovo vaša adresa!";
+"label_replyto" = "uključi reply-to";
+"send_onclipboard" = "Na Međuspremniku";
+"send_lastused" = "zadnje korišten";
+"send_unknown" = "Nepoznato";
+"label_memo" = "Memo";
+"label_to" = "Za";
+"label_charactercount" = "%@ znakova";
+"from %@" = "od %@";
+"You Have %@ sendable ARRR" = "Imate %@ ARRR koje možete slati";
+"%@ sendable ARRR. You don't have sufficient funds to cover the amount + Miner Fee of %@ ARRR" = "%@ ARRR za slanje. Nemate dovoljno sredstava za traženi iznos + naknada za rudarenje od %@ ARRR";
+"You don't have any sendable ARRR yet" = "Još nemate dostupne ARRR za slanje";
+"send_securityauth" = "Potvrdite za slanje";
+"label_add_memo" = "Dodaj Memo (opcionalno)";
+
+//Sending
+"thing is that we really don't know what just went down, sorry!" = "stvar je u tome što stvarno ne znamo što se upravo dogodilo, oprostite!";
+"send_sending" = "Šaljemo %@ ARRR na";
+"send_sent" = "Poslano!";
+"an error ocurred while submitting your transaction" = "došlo je do pogreške prilikom slanja transakcije";
+"label_unabletosend" = "Nije moguće poslati na";
+"button_seedetails" = "Vidi detalje";
+
+//CreateNewWallet
+"Create New" = "Stvori novi";
+"Restore" = "Obnovi";
+
+//RestoreWallet
+"Enter your Seed Phrase" = "Unesite 'seed' frazu";
+"Make sure nobody is watching you!" = "Pazite da vas nitko ne gleda!";
+"Wallet Birthday height" = "Visina rođendana novčanika";
+"If you don't know it, leave it blank. First Sync will take longer." = "Ako vam nije poznat, ostavite ga praznim. Prva sinkronizacija trajat će dulje.";
+"Proceed" = "Nastavi";
+"Restore from Seed Phrase" = "Obnovi iz 'seed' fraze";
+"Your seed phrase is valid" = "Vaša 'seed' fraza je važeća";
+"Your seed phrase is invalid!" = "Vaša 'seed' fraza nije važeća!";
+
+//BackupWallet
+"feedback_walletbackupstatus" = "Potrebno je sigurnosno kopirati vaš novčanik.";
+"balance_syncing" = "Sinkroni %@%%"; // ključ nije mapiran da se aplikacija nebi urušila u slučaju da propadne lokalno pozivanje";
+"button_skip" = "Preskoči";
+
+
+//VerifyBackup
+"Verify your backup." = "Potvrdite sigurnosnu kopiju.";
+"Please fill out the missing seed words to verify your backup." = "Ispunite nedostajuće 'seed' riječi da biste potvrdili sigurnosnu kopiju.";
+"You will need to enter all 24 seed words in order." = "Morat ćete redom unijeti sve 24 'seed' riječi.";
+//SeedBackup
+
+"seed_birthday" = "Rođendan Novčanika";
+"title_backupseed" = "Vaša 'seed' sigurnosna kopija";
+"copy_backupseed" = "Preporučujemo sigurnosnu kopiju na papiru i upravitelj lozinki.";
+"button_copytoclipboard" = "Kopiraj u međuspremnik";
+
+
+//Home
+"There was an error creating your wallet. Please back it up and try again" = "Došlo je do pogreške prilikom izrade novčanika. Izradite sigurnosnu kopiju i pokušajte ponovo";
+"Max Retry attempts (%@) have been reached" = "Došlo je do (%@) maksimalnih ponovnih pokušaja";
+"Retry" = "Pokušaj ponovno";
+"button_send" = "Pošalji";
+"balance_amounttosend" = "Unesite iznos koji želite poslati";
+"balance_nofunds" = "Nema raspoloživih sredstava";
+"button_wallethistory" = "Povijest novčanika";
+"Receive Funds" = "Primite sredstva";
+"Change PIN" = "Promijenite PIN";
+
+//ReceiveFunds
+"QR Code for %@" = "QR kôd za %@";
+"address_shielded" = "Vaša zaštićena adresa";
+"receive_title" = "Primite ARRR";
+
+//ScanAddress
+"send_scanQR" = "Skeniraj adresu primatelja";
+"scan_cameraunallowed" = "Nemamo dozvolu za pristup vašoj kameri";
+"scan_cameraunallowed2" = "Omogućite pristup kameri u postavkama uređaja";
+"scan_cameraunavaliable" = "Kamera nije dostupna";
+"scan_invalidQR" = "Ovaj QR kôd ne sadrži valjanu Pirate Chain adresu!";
+
+//ShareScreen
+"Share Screen" = "Podijeli";
+
+//ProfileScreen
+"button_feedback" = "Pošalji povratne informacije";
+"button_applicationlogs" = "Pogledaj evidenciju aplikacije";
+"ECC Wallet" = "ECC Novčanik";
+"profile_screen" = "Zaštićeni korisnik";
+"Send Feedback" = "Pošalji povratne informacije";
+"See Application Log" = "Pogledaj evidenciju aplikacije";
+"Nighthawk Wallet" = "Pirate Chain Novčanik";
+
+//FundsAtRisk
+"seed_remindertext" = "Zapamtite, kod Pirate Chain-a vi ste banka. Svatko tko ima vašu 'seed' frazu ima pristup vašem novčaniku.";
+"seed_remindertext2" = "Trebali biste odmah napraviti sigurnosnu kopiju jer nitko drugi ne može ponovno vratiti novčanik umjesto vas.";
+"seed_reminder" = "Vaša su sredstva u opasnosti!";
+"button_backup" = "Sigurnosna Kopija";
+"button_skip" = "Preskoči za sada";
+
+//NukeWarning
+
+
+"nuke_title" = "Uskoro ćete SPALITI novčanik";
+"nuke_nukewarning" = "Zapamtite, kod Pirate Chain-a vi ste banka. Svatko tko ima vašu 'seed' frazu ima pristup vašem novčaniku.";
+"nuke_nukewarning2" = "Prije nego što nastavite, napravite sigurnosnu kopiju novčanika.";
+"nuke_nukewarning3" = "Ako SPALITE novčanik bez 'seed' sigurnosne kopije, nećete ga moći ponovno vratiti";
+"nuke_nukeButton" = "SPALI NOVČANIK";
+"nuke_backupbutton" = "Sigurnosno kopirajte!";
+"nuke_alerttitle" = "Obriši novčanik?";
+"nuke_alertmessage" = "Upravo ćete spaliti novčanik. Jeste li sigurni da želite nastaviti?";
+"nuke_alertcancel" = "Nisam siguran";
+"nuke_alertconfirm" = "SPALI NOVČANIK!";
+
+//FeedBackForm
+"Feedback Sent!" = "Povratna informacija poslana!";
+"Thanks for your feedback!" = "Hvala na povratnoj informaciji!";
+
+
+//InputPasscodeWithCustomPad
+"Enter New Passcode" = "Unesite novu lozinku";
+"Confirm Passcode" = "Potvrdite lozinku";
+
+// Settings Screen
+
+"Endpoint" = "Lite server";
+
+"My Pirate Chain Lite Server:" = "Moj Pirate Chain lite server:";
+"Invalid Lite Server Address, Reverting it to pirate chain address!" = "Nevažeća adresa lite servera, vraćamo na adresu Pirate Chain-a!";
+"Invalid Lite Server Port, Reverting it to pirate chain port!" = "Invalid Lite Server Port, Reverting it to pirate chain port!";
+"Powered By Meshbits Ltd Team" = "Omogućio Meshbits Ltd Team";
+
+
+"An error occured" = "Dogodila se pogreška";
+"dismiss" = "odbaci";
+"An error ocurred, please check your device logs" = "Došlo je do pogreške, provjerite zapisnik u vašem uređaju";
+"An error ocurred, but we can't figure out what it is. Please check device logs for more details" = "Dogodila se pogreška, ali ne možemo shvatiti o čemu se radi. Molimo provjerite zapisnik uređaja za više detalja";
+"LAST USED" = "ZADNJE KORIŠTENO";
+"Zcash address in buffer!" = "Arrr adresa u međuspremniku!";
+
+
+
+// Misc
+"Explore" = "Istraži";
+
+"from" = "od ";
+
+"block" = "blok ";
+
+"with a" = "sa";
+
+"You Failed to send" = "Niste uspjeli poslati";
+
+"Total Spent" = "Ukupno potrošeno";
+
+"You Received" = "Primili ste";
+"This is embarassing" = "Ovo je neugodno";
+"you shouldn't be seeing this" = "ne bi ovo trebali vidjeti";
+"Authorization Failed!" = "Neuspjela autorizacija!";
+"It appears that you were not able to authenticate" = "Čini se da se niste uspjeli autenticirati";
+"Oops" = "Oops";
+"Transaction Detail" = "Detalji transakcije";
+
+"Attempt to open transaction details in sending screen with no pending transaction in send flow" = "Pokušaj otvaranja detalja transakcije na zaslonu slanja bez transakcije na čekanju u tijeku slanja";
+
+"Existing keys found!" = "Pronađeni su postojeći ključevi!";
+
+"it appears that this device already has keys stored on it. What do you want to do?" = "čini se da ovaj uređaj već ima pohranjene ključeve. Što želite uraditi?";
+
+"Restore existing keys" = "Vratite postojeće ključeve";
+
+"Discard them and continue" = "Odbacite ih i nastavite";
+
+"Error Initializing Wallet" = "Pogreška prilikom pokretanja Novčanika";
+
+"There was a problem initializing the wallet" = "Došlo je do problema pri pokretanju novčanika";
+
+"Could not restore wallet" = "Novčanik nije moguće ponovno vratiti";
+
+"There's a problem restoring your wallet. Please verify your seed phrase and try again." = "Došlo je do problema pri vraćanju novčanika. Provjerite svoju 'seed' frazu i pokušajte ponovo.";
+
+"Problem Retrieving your seed" = "Problem pri dohvaćanju 'seed'";
+
+"We are unable to display your seed phrase. Please close the app and retry this operation" = "Ne možemo prikazati vašu 'seed' frazu. Zatvorite aplikaciju i pokušajte ponovo";
+
+"We don't have permission to access your camera" = "Nemamo dozvolu za pristup vašoj kameri";
+
+"My ARRR Address \n" = "Moja ARRR adresa \n";
+
+"Enter an endpoint" = "Unesite krajnju točku";
+
+"Pirate Chain Wallet" = "Pirate Chain Novčanik";
+
+"DELETE WALLET" = "OBRIŠITE NOVČANIK";
+
+"Please Rank Your Experience" = "Molimo vas da rangirate svoje iskustvo";
+
+"We improve and iterate with YOUR feedback" = "Poboljšavamo i ponavljamo VAŠIM povratnim informacijama";
+
+"Any details to share?" = "Imate li detalja za podijeliti?";
+
+"My Experience was..." = "Moje iskustvo je bilo...";
+
+"Was your Balance Clear?" = "Je li vam stanje čisto?";
+
+"My balance was..." = "Moje stanje je...";
+
+"What feature would you like to see next?" = "Koju biste značajku željeli vidjeti sljedeće?";
+
+"I'd like..." = "Htio bih...";
+
+"Transaction Details" = "Detalji transakcije";
+
+// Settings
+"Invalid Passcode, Please enter a valid passcode."  = "Nevažeća lozinka, unesite važeću lozinku." ;
+"Great, you have set a new passcode!" = "Izvrsno, postavili ste novu lozinku!";
+"Pirate Chain" = "Pirate Chain";
+"Enable Biometric Security" = "Omogućite biometrijsku sigurnost";
+"Authenticate Biometric" = "Omogućite biometrijsku provjeru autentičnosti kako biste osigurali novčanik.";
+
+
+// History
+"to your shielded wallet" = "u vaš zaštićeni novčanik";
+"While usually an acceptable risk, you will be possibly exposing your interest in this transaction id by visiting explorer.pirate.black" = "Iako je to obično prihvatljiv rizik, vjerojatno ćete izložiti neke detalje ove transakcije ako posjetite explorer.pirate.black";
+"Cancel" = "Otkazati";
+"View TX Details" = "Pogledajte TX detalje";
+"Leaving Pirate Chain Wallet" = "Napuštate Pirate Chain novčanik";
+"includes reply-to" = "uključuje reply-to";
+"to " = "za ";
+"failed!" = "neuspjeh!";
+"Confirmed" = "Potvrđeno";
+"Pending confirmation" = "Na čekanju potvrde";

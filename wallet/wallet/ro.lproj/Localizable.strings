@@ -1,0 +1,291 @@
+/*
+  Localizable.strings
+  wallet
+
+  Copyright © 2020 Francisco Gindre. All rights reserved.
+  Translation by: Globexit#9643 (from Discord)
+*/
+
+// ERRORS
+// Titles
+"Wallet Improperly Initialized" = "Portofelul Inițializat Incorect";
+"Processor Error" = "Eroare Procesor";
+"Connection Error" = "Eroare de Conexiune";
+"Failed to Send" = "Nu s-a putut trimite";
+"Oops Something happened" = "Oops Ceva este in neregula";
+"Critical Error" = "Eroare Critica";
+
+// Messages
+"This wallet has not been initialized correctly! Perhaps an error occurred during install. If you just created a new wallet close the app and retry.\n\n If this is an existing wallet, it can be fixed with a reset. First, locate your backup seed phrase, then \"Nuke Wallet\" and reimport it." = "Acest portofel nu a fost initiat corect! Probabil a avut loc o eroare in timpul instalarii. Daca tocmai ai creat un portofel nou inchide aplicatia si deschide-o din nou.\n\n Daca acesta este un portofel deja existent, se poate rezolva cu un reset. Prima data, asigura-te ca ai o copie a frazei de siguranta, apoi \"Nuke Wallet\" si importa-l din nou.";
+"An error ocurred while syncing the blockchain. If the problem persists, back up your seed phrase and restore your wallet." = "A intervenit o eroare in procesul de sincronizare a blockchain-ului. Daca problema persistsa, faceți o copie a frazei de siguranță și restaurați portofelul.";
+"We are having problems with the network connection." = "Avem probleme de conexiune in retea.";
+"We were unable to send your transaction. Your funds are safe, we just need to wait until the transaction expires before you can send them again." = "Tranzactia nu a putut fi finalizata. Fondurile tale sint in siguranta, trebuie doar sa asteptam ca tranzactia sa expire pentru a putea incerca din nou.";
+"There's an internal error. Probably nothing serious. If this error persists, back up your seed phrase and restore your wallet" = "Eroare interna. Probabil nimic serios. Daca aceasta eroare persista, faceți o copie a frazei de siguranță și restaurați portofelul";
+"If this error persists, back up your seed phrase and restore your wallet" = "Daca aceasta eroare persista, faceți o copie a frazei de siguranță și restaurați portofelul";
+
+// COMPONENTS:
+"button_back" = "Inapoi";
+"Paste" = "Lipeste";
+"balance_available" = "Disponibil";
+"expecting " = "asteptare";
+"Create new Wallet" = "Creaza Portofel nou";
+"button_done" = "Gata";
+"button_backup" = "Copie de Rezerva Portofel";
+"Press and hold\nto send ARRR" = "Apasa pentru a trimite ARRR";
+"Add Memo Here" = "Adauga Memo Aici";
+"Tap\nto send ARRR" = "Atinge trimite ARRR";
+"Enter Shielded Address" = "Introdu Adresa Protejata Shielded";
+"Error" = "Eroare";
+"an error ocurred" = "a intervenit o eroare";
+"button_close" = "Inchide";
+"Pending confirmation" = "Confirmare in asteptare";
+"of 10 Confirmations" = "din 10 Confirmari";
+"button_share_address" = "Trimite Adresa";
+
+// profile screen
+"NUKE WALLET" = "NUKE WALLET";
+"profile_screen" = "Shielded User\n";
+
+// WalletDetailsHeader
+"screen_wallethistory" = "Istoricul Portofelului Tau";
+"wallet_history_sent" = "Trimis";
+"wallet_history_received" = "Primit";
+"Shielded address:" = "Adresa Protejata Shielded:";
+ //SendTransaction
+"send_fromshielded" = "din portofelul tau protejat shielded";
+"send_fromtransparent" = "din portofelul tau transparent";
+"send_fromboth" = "din ambele portofele";
+"feedback_default" = "Introdu o adresa protejata Pirate Chain shielded";
+"feedback_shieldedaddress" = "Aceasta este o adresa protejata valida shielded";
+"feedback_transparentaddress" = "Aceasta este o adresa transparenta valida";
+"feedback_addresscopied" = "Adresa Copiata!";
+"feedback_invalidaddress" = "Atentie, aceasta adresa nu este valida!";
+"feedback_sameaddress" = "Atentie, aceasta este propria ta adresa!";
+"label_replyto" = "include raspuns catre";
+"send_onclipboard" = "Pe Clipboard";
+"send_lastused" = "ultima folosita";
+"send_unknown" = "Necunoscut";
+"label_memo" = "Memo";
+"label_to" = "Catre";
+"label_charactercount" = "%@ chars";
+"from %@" = "de la %@";
+"You Have %@ sendable ARRR" = "Ai %@ ARRR de trimis";
+"%@ sendable ARRR. You don't have sufficient funds to cover the amount + Miner Fee of %@ ARRR" = "%@ ARRR de trimis. Nu ai fonduri suficiente care sa acopere suma + Taxa Minerului in valoare de %@ ARRR";
+"You don't have any sendable ARRR yet" = "Inca nu aveti disponibil ARRR pentru trimitere";
+"send_securityauth" = "Autentifica pentru a trimite";
+"label_add_memo" = "Adauga Memo (optional)";
+
+//Sending
+"thing is that we really don't know what just went down, sorry!" = "Ne cerem scuze, nu stim ce tocmai s-a intamplat!";
+"send_sending" = "Trimit %@ ARRR catre";
+"send_sent" = "Trimis!";
+"an error ocurred while submitting your transaction" = "o eroare a avut loc in timpul submiterii tranzactiei dumneavoastra";
+"label_unabletosend" = "Nu se poate trimite catre";
+"button_seedetails" = "Detalii";
+
+//CreateNewWallet
+"Create New" = "Creaza Nou";
+"Restore" = "Restaurare";
+
+//RestoreWallet
+"Enter your Seed Phrase" = "Introduceti fraza de siguranta";
+"Make sure nobody is watching you!" = "Asigurati-va ca nu priveste nimeni altcineva detaliile operatiunii!";
+"Wallet Birthday height" = "Secventa datei de creare a portofelului";
+"If you don't know it, leave it blank. First Sync will take longer." = "Daca nu stiti, lasati campul gol. Prima sincronizare va dura mai mult.";
+"Proceed" = "Continua";
+"Restore from Seed Phrase" = "Restaureaza cu ajutorul Frazei de Siguranta";
+"Your seed phrase is valid" = "Fraza de Siguranta este valida";
+"Your seed phrase is invalid!" = "Fraza de Siguranta nu este valida!";
+
+//BackupWallet
+"feedback_walletbackupstatus" = "Portofelul tau are nevoie de o copie de siguranta.";
+"balance_syncing" = "Syncing %@%%"; // cheia nu este mapata, astfel incat daca preluarea locala esueaza, aplicatia nu se blocheaza
+"button_skip" = "Skip";
+
+
+//VerifyBackup
+"Verify your backup." = "Verifica-ti copia de siguranta.";
+"Please fill out the missing seed words to verify your backup." = "Va rugam sa completati cuvintele cheie lipsa pentru a verifica backup-ul dumneavoastra.";
+"You will need to enter all 24 seed words in order." = "Va trebui sa introduceti, in ordine, cele 24 de cuvinte cheie.";
+//SeedBackup
+
+"seed_birthday" = "Data crearii Portofelului";
+"title_backupseed" = "Backup-ul frazei tale de siguranta";
+"copy_backupseed" = "Recomandam o copie de siguranta pe hartie si un seif cu parola.";
+"button_copytoclipboard" = "Copiaza in clipboard";
+
+
+//Home
+"There was an error creating your wallet. Please back it up and try again" = "A intervenit o eroare in timp ce se crea portofelul. Va rugam sa incercati inca odata";
+"Max Retry attempts (%@) have been reached" = " Numarul Max de incercari (%@) a fost atins";
+"Retry" = "Incearca din nou";
+"button_send" = "Trimite";
+"balance_amounttosend" = "Introdu suma pe care vrei sa o trimiti";
+"balance_nofunds" = "Fonduri indisponibile";
+"button_wallethistory" = "Istoric Portofel";
+"Receive Funds" = "Primeste fonduri";
+"Change PIN" = "Schimba PIN";
+
+//ReceiveFunds
+"QR Code for %@" = "QR Code for %@";
+"address_shielded" = "Adresa ta protejata Shielded";
+"receive_title" = "Primeste ARRR";
+
+//ScanAddress
+"send_scanQR" = "Scaneaza Adresa Destinatarului";
+"scan_cameraunallowed" = "Nu avem permisiunea de a-ti accesa camera";
+"scan_cameraunallowed2" = "Permiteti accesul catre camera din setarile device-ului dumneavoastra";
+"scan_cameraunavaliable" = "Camera Indisponibila";
+"scan_invalidQR" = "Acest cod QR nu contine o adresa Pirate Chain valida!";
+
+//ShareScreen
+"Share Screen" = "Share";
+
+//ProfileScreen
+"button_feedback" = "Trimite o parere";
+"button_applicationlogs" = "Vezi Log-urile Aplicatiei";
+"ECC Wallet" = "Portofel ECC";
+"profile_screen" = "Shielded Utilizator Protejat";
+"Send Feedback" = "Trimite o parere";
+"See Application Log" = "Vezi Log-urile Aplicatiei";
+"Nighthawk Wallet" = "Portofel Pirate Chain";
+
+//FundsAtRisk
+"seed_remindertext" = "Tine minte, cu Pirate Chain TU esti banca. Oricine are acces la fraza de siguranta are acces la portofelul tau.";
+"seed_remindertext2" = "Ar trebui sa faci imediat o copie de rezerva a frazei de siguranta pentru ca nimeni altcineva nu o va putea restaura pentru tine.";
+"seed_reminder" = "Fondurile tale sunt expuse riscului!";
+"button_backup" = "Fa copie de rezerva";
+"button_skip" = "Sari peste";
+
+//NukeWarning
+
+
+"nuke_title" = "Esti pe cale sa iti resetezi (NUKE) portofelul";
+"nuke_nukewarning" = "Tine minte, cu Pirate Chain TU esti banca. Oricine are acces la fraza de siguranta are acces la portofelul tau.";
+"nuke_nukewarning2" = "Asigura-te ca ai facut o copie de siguranta a portofelului inainte de a continua.";
+"nuke_nukewarning3" = "Daca iti resetezi portofelul fara a-ti face o copie de rezerva a frazei de siguranta, nu il vei mai putea recupera";
+"nuke_nukeButton" = "RESETEAZA PORTOFEL";
+"nuke_backupbutton" = "Copie de siguranta Acum!";
+"nuke_alerttitle" = "Stergi Portofel?";
+"nuke_alertmessage" = "Esti pe cale sa iti resetezi portofelul. Sigur doriti sa continuati?";
+"nuke_alertcancel" = "Nu sint sigur/a";
+"nuke_alertconfirm" = "RESETEAZA PORTOFEL!";
+
+//FeedBackForm
+"Feedback Sent!" = "Recenzie trimisa!";
+"Thanks for your feedback!" = "Va multumim pentru apreciere!";
+
+
+//InputPasscodeWithCustomPad
+"Enter New Passcode" = "Introdu Noua Parola";
+"Confirm Passcode" = "Confirma Parola";
+
+// Settings Screen
+
+"Endpoint" = "Lite server";
+
+"My Pirate Chain Lite Server:" = "Lite server-ul Meu Pirate Chain:";
+"Invalid Lite Server Address, Reverting it to pirate chain address!" = "Adresa Lite server Invalida, se realizeaza Conversie in adresa pirate chain!";
+"Invalid Lite Server Port, Reverting it to pirate chain port!" = "Invalid Lite Server Port, Reverting it to pirate chain port!";
+"Powered By Meshbits Ltd Team" = "Powered By Meshbits Ltd Team";
+
+
+"An error occured" = "A intervenit o eroare";
+"dismiss" = "inchide";
+"An error ocurred, please check your device logs" = "A intervenit o eroare, te rugam sa verifici log-urile dispozitivului tau";
+"An error ocurred, but we can't figure out what it is. Please check device logs for more details" = "A intervenit o eroare, dar nu ne putem da seama ce este. Va rugam sa verificati log-urile dispozitivului pentru detalii";
+"LAST USED" = "ULTIMA FOLOSITA";
+"ARRR address in buffer!" = "ARRR address in buffer!";
+
+
+
+// Misc
+"Explore" = "Exploreaza";
+
+"from" = "de la ";
+
+"block" = "block ";
+
+"with a" = "cu";
+
+"You Failed to send" = "Nu s-au trimis";
+
+"Total Spent" = "Total Cheltuit";
+
+"You Received" = "Ai Primit";
+"This is embarassing" = "Este jenant";
+"you shouldn't be seeing this" = "nu ar trebui sa vezi asta";
+"Authorization Failed!" = "Autorizarea a Esuat!";
+"It appears that you were not able to authenticate" = "Se pare ca nu te-ai putut autentifica";
+"Oops" = "Oops";
+"Transaction Detail" = "Deataliile Tranzactiei";
+
+"Attempt to open transaction details in sending screen with no pending transaction in send flow" = "Incercati sa deschideti detaliile tranzactiei in ecranul de trimitere fara tranzactiile in asteptare in fluxul de trimitere";
+
+"Existing keys found!" = "Gasit Chei Existente!";
+
+"it appears that this device already has keys stored on it. What do you want to do?" = "se pare ca acest dispozitiv are deja chei salvate. Cum vrei sa procedezi?";
+
+"Restore existing keys" = "Restaureaza chei existente";
+
+"Discard them and continue" = "Ignora-le si continua";
+
+"Error Initializing Wallet" = "Eroare Initiere Portofel";
+
+"There was a problem initializing the wallet" = "A intervenit o problema in procesul de initiere a portofelului";
+
+"Could not restore wallet" = "Portofelul nu a putut fi restaurat";
+
+"There's a problem restoring your wallet. Please verify your seed phrase and try again." = "Exista o problema in procesul de initiere a portofelului. Va rugam sa verificati fraza de siguranta si sa incercati din nou.";
+
+"Problem Retrieving your seed" = "Problema cu recuperarea frazei dumneavoastra de siguranta";
+
+"We are unable to display your seed phrase. Please close the app and retry this operation" = "Nu putem afisa fraza dumneavoastra de siguranta. Va rugam sa inchideti aplicatia, apoi sa incercati din nou aceasta operatiune";
+
+"We don't have permission to access your camera" = "Nu avem permisiunea sa accesam camera dumneavoastra";
+
+"My ARRR Address \n" = "Adresa mea ARRR \n";
+
+"Enter an endpoint" = "Introdu un Lite server";
+
+"Pirate Chain Wallet" = "Portofel Pirate Chain";
+
+"DELETE WALLET" = "STERGE PORTOFEL";
+
+"Please Rank Your Experience" = "Va rugam sa clasati experienta dumneavoastra";
+
+"We improve and iterate with YOUR feedback" = "Imbunatatim cu ajutorul recenziilor dumneavoastra";
+
+"Any details to share?" = "Ai detalii de impartasit?";
+
+"My Experience was..." = "Experienta mea a fost...";
+
+"Was your Balance Clear?" = "Balanta v-a fost clara?";
+
+"My balance was..." = "Balanta mea a fost...";
+
+"What feature would you like to see next?" = "Ce imbunatatire sau adaugare iti doresti sa implementam?";
+
+"I'd like..." = "Mi-ar placea...";
+
+"Transaction Details" = "Detaliile Tranzactiei";
+
+// Settings
+"Invalid Passcode, Please enter a valid passcode."  = "Parola Invalida, Va rugam introduceti o parola valida." ;
+"Great, you have set a new passcode!" = "Grozav, ti-ai schimbat parola!";
+"Pirate Chain" = "Pirate Chain";
+"Enable Biometric Security" = "Activeaza Securitate Biometrica";
+"Authenticate Biometric" = "Activeaza Autentificarea Biometrica pentru a proteja portofelul.";
+
+
+// History
+"to your shielded wallet" = "catre portofelul tau protejat shielded";
+"While usually an acceptable risk, you will be possibly exposing your interest in this transaction id by visiting explorer.pirate.black" = "Desi deobicei este un risc acceptabil, este posibil sa expuneti interesul dumneavoastra pentru id-ul acestei tranzactii vizitand explorer.pirate.black";
+"Cancel" = "Anuleaza";
+"View TX Details" = "Vezi Detalii TX";
+"Leaving Pirate Chain Wallet" = "Iesi din Portofelul Pirate Chain";
+"includes reply-to" = "include raspuns catre";
+"to " = "catre";
+"failed!" = "esuat!";
+"Confirmed" = "Confirmat";
+"Pending confirmation" = "Confirmare in asteptare";

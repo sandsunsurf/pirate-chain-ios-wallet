@@ -146,6 +146,26 @@ struct ProfileScreen: View {
                                                 updateLanguageAndResetApp(language: "ko")
                                                 print("Changed To Korean")
                                             },
+                                            .default(Text("German")) {
+                                                updateLanguageAndResetApp(language: "de")
+                                                print("Changed To German")
+                                            },
+                                            .default(Text("Romanian")) {
+                                                updateLanguageAndResetApp(language: "ro")
+                                                print("Changed To Romanian")
+                                            },
+                                            .default(Text("Swedish")) {
+                                                updateLanguageAndResetApp(language: "sv")
+                                                print("Changed To Swedish")
+                                            },
+                                            .default(Text("Croatian")) {
+                                                updateLanguageAndResetApp(language: "hr")
+                                                print("Changed To Croatian")
+                                            },
+                                            .default(Text("Danish")) {
+                                                updateLanguageAndResetApp(language: "da")
+                                                print("Changed To Danish")
+                                            },
                                             .destructive(Text("Cancel")) {
                                                 print("cancel")
                                             }

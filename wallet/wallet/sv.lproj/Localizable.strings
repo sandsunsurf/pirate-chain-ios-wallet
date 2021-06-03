@@ -1,0 +1,291 @@
+/*
+  Localizable.strings
+  wallet
+
+  Copyright © 2020 Francisco Gindre. All rights reserved.
+  Translation by: Cosmonator#3220 (from Discord)
+*/
+
+// ERRORS
+// Titles
+"Wallet Improperly Initialized" = "Plånboken initialiserades felaktigt";
+"Processor Error" = "Processorfel";
+"Connection Error" = "Anslutningsfel";
+"Failed to Send" = "Misslyckades att skicka";
+"Oops Something happened" = "Oj, något hände";
+"Critical Error" = "Kritiskt fel";
+
+// Messages
+"This wallet has not been initialized correctly! Perhaps an error occurred during install. If you just created a new wallet close the app and retry.\n\n If this is an existing wallet, it can be fixed with a reset. First, locate your backup seed phrase, then \"Nuke Wallet\" and reimport it." = "Denna plånbok har inte initierats korrekt! Kanske ett fel inträffade under installationen. Om du precis skapat en ny plånbok stänger du appen och försöker igen. \n\n Om det här är en befintlig plånbok kan den åtgärdas med en återställning. Leta först upp din fröfras, sedan \"Återställ\" och importera den igen.";
+"An error ocurred while syncing the blockchain. If the problem persists, back up your seed phrase and restore your wallet." = "Ett fel uppstod när blockchain synkroniserades. Om problemet kvarstår säkerhetskopiera din fröfras och återställ din plånbok.";
+"We are having problems with the network connection." = "Vi har problem med nätverksanslutningen.";
+"We were unable to send your transaction. Your funds are safe, we just need to wait until the transaction expires before you can send them again." = "Vi kunde inte skicka din transaktion. Dina medel är säkra, vi behöver bara vänta tills transaktionen löper ut innan du kan skicka dem igen.";
+"There's an internal error. Probably nothing serious. If this error persists, back up your seed phrase and restore your wallet" = "Det finns ett internt fel. Förmodligen inget seriöst. Om detta fel kvarstår säkerhetskopiera fröfrasen och återställ din plånbok";
+"If this error persists, back up your seed phrase and restore your wallet" = "Om detta fel kvarstår säkerhetskopiera fröfrasen och återställ din plånbok";
+
+// COMPONENTS:
+"button_back" = "Gå tillbaka";
+"Paste" = "Klistra in";
+"balance_available" = "Tillgängligt";
+"expecting " = "förväntar sig";
+"Create new Wallet" = "Skapa ny plånbok";
+"button_done" = "Klar";
+"button_backup" = "Säkerhetskopiera plånbok";
+"Press and hold\nto send ARRR" = "Håll ned\n för att skicka ARRR";
+"Add Memo Here" = "Lägg till memo här";
+"Tap\nto send ARRR" = "Knacka\n för att skicka ARRR";
+"Enter Shielded Address" = "Ange skyddad adress";
+"Error" = "Fel";
+"an error ocurred" = "ett fel uppstod";
+"button_close" = "Stäng";
+"Pending confirmation" = "Väntar på bekräftelse";
+"of 10 Confirmations" = "av 10 bekräftelser";
+"button_share_address" = "Dela adress";
+
+// profile screen
+"NUKE WALLET" = "ÅTERSTÄLL";
+"profile_screen" = "Skyddad användare\n";
+
+// WalletDetailsHeader
+"screen_wallethistory" = "Din plånbokshistoria";
+"wallet_history_sent" = "Skickat";
+"wallet_history_received" = "Mottaget";
+"Shielded address:" = "Skyddad adress:";
+ //SendTransaction
+"send_fromshielded" = "från din skyddade plånbok";
+"send_fromtransparent" = "från din transparenta plånbok";
+"send_fromboth" = "från båda plånböckerna";
+"feedback_default" = "Ange en skyddad Pirate Chain-adress";
+"feedback_shieldedaddress" = "Detta är en giltig skyddad adress";
+"feedback_transparentaddress" = "Detta är en giltig transparent adress";
+"feedback_addresscopied" = "Adress kopierad!";
+"feedback_invalidaddress" = "Varning, denna adress är inte giltig!";
+"feedback_sameaddress" = "Varning, detta verkar vara din adress!";
+"label_replyto" = "inkludera svar till";
+"send_onclipboard" = "I urklipp";
+"send_lastused" = "senast använd";
+"send_unknown" = "Okänd";
+"label_memo" = "Memo";
+"label_to" = "Till";
+"label_charactercount" = "%@ tecken";
+"from %@" = "från %@";
+"You Have %@ sendable ARRR" = "Du har %@ sändbar ARRR";
+"%@ sendable ARRR. You don't have sufficient funds to cover the amount + Miner Fee of %@ ARRR" = "%@ sändbar ARRR. Du har inte tillräckligt med medel för att täcka beloppet + minavgift på %@ ARRR";
+"You don't have any sendable ARRR yet" = "Du har ingen ARRR som kan skickas än";
+"send_securityauth" = "Autentisera för att skicka";
+"label_add_memo" = "Lägg till Memo (valfritt)";
+
+//Sending
+"thing is that we really don't know what just went down, sorry!" = "ursäkta, saken är att vi verkligen inte vet vad som just gick fel!";
+"send_sending" = "Skickar %@ ARRR till";
+"send_sent" = "Skickat!";
+"an error ocurred while submitting your transaction" = "ett fel uppstod när transaktionen skulle skickas";
+"label_unabletosend" = "Det gick inte att skicka till";
+"button_seedetails" = "Se detaljer";
+
+//CreateNewWallet
+"Create New" = "Skapa ny";
+"Restore" = "Återställ";
+
+//RestoreWallet
+"Enter your Seed Phrase" = "Ange din fröfras";
+"Make sure nobody is watching you!" = "Se till att ingen tittar på dig!";
+"Wallet Birthday height" = "Plånbok födelsedag höjd";
+"If you don't know it, leave it blank. First Sync will take longer." = "Om du inte vet det lämna det tomt. Första synkroniseringen tar längre tid.";
+"Proceed" = "Fortsätt";
+"Restore from Seed Phrase" = "Återställ från fröfras";
+"Your seed phrase is valid" = "Din fröfras är giltig";
+"Your seed phrase is invalid!" = "Din fröfras är ogiltig!";
+
+//BackupWallet
+"feedback_walletbackupstatus" = "Din plånbok måste säkerhetskopieras.";
+"balance_syncing" = "Synkar %@%%"; // key not mapped so that if locale fetch fails the app does not crash
+"button_skip" = "Hoppa över";
+
+
+//VerifyBackup
+"Verify your backup." = "Verifiera din säkerhetskopia.";
+"Please fill out the missing seed words to verify your backup." = "Fyll i de saknade fröorden för att verifiera din säkerhetskopia.";
+"You will need to enter all 24 seed words in order." = "Du måste ange alla 24 ord i ordning.";
+//SeedBackup
+
+"seed_birthday" = "Plånbok födelsedag";
+"title_backupseed" = "Ditt backupfrö";
+"copy_backupseed" = "Vi rekommenderar en pappersbackup och ett lösenordsvalv.";
+"button_copytoclipboard" = "Kopiera till urklipp";
+
+
+//Home
+"There was an error creating your wallet. Please back it up and try again" = "Det gick inte att skapa din plånbok. Säkerhetskopiera det och försök igen";
+"Max Retry attempts (%@) have been reached" = "Max försök igen (%@) har uppnåtts";
+"Retry" = "Försök igen";
+"button_send" = "Skicka";
+"balance_amounttosend" = "Ange ett belopp att skicka";
+"balance_nofunds" = "Inga tillgängliga medel";
+"button_wallethistory" = "Plånbokshistoria";
+"Receive Funds" = "Få medel";
+"Change PIN" = "Ändra PIN";
+
+//ReceiveFunds
+"QR Code for %@" = "QR-kod för %@";
+"address_shielded" = "Din skyddade adress";
+"receive_title" = "Motta ARRR";
+
+//ScanAddress
+"send_scanQR" = "Skanna mottagaradress";
+"scan_cameraunallowed" = "Vi har inte behörighet att komma åt din kamera";
+"scan_cameraunallowed2" = "Tillåt kamerainkomst i dina enhetsinställningar";
+"scan_cameraunavaliable" = "Kamera otillgänglig";
+"scan_invalidQR" = "Denna QR-kod innehåller inte en giltig adress från Pirate Chain!";
+
+//ShareScreen
+"Share Screen" = "Dela";
+
+//ProfileScreen
+"button_feedback" = "Skicka synpunkter";
+"button_applicationlogs" = "Se applikationsloggar";
+"ECC Wallet" = "ECC plånbok";
+"profile_screen" = "Skyddad användare";
+"Send Feedback" = "Skicka synpunkter";
+"See Application Log" = "Se applikationsloggar";
+"Nighthawk Wallet" = "Pirate Chain plånbok";
+
+//FundsAtRisk
+"seed_remindertext" = "Kom ihåg att med Pirate Chain är DU banken. Alla med din fröfras har tillgång till din plånbok.";
+"seed_remindertext2" = "Du bör säkerhetskopiera detta omedelbart eftersom ingen annan kan återställa det åt dig.";
+"seed_reminder" = "Dina medel är i fara!";
+"button_backup" = "Säkerhetskopiera";
+"button_skip" = "Hoppa över nu";
+
+//NukeWarning
+
+
+"nuke_title" = "Du är på väg att återställa din plånbok";
+"nuke_nukewarning" = "Kom ihåg att med Pirate Chain är DU banken. Alla med din fröfras har tillgång till din plånbok.";
+"nuke_nukewarning2" = "Se till att du har säkerhetskopierat din plånbok innan du fortsätter.";
+"nuke_nukewarning3" = "Om du återställer din plånbok utan att säkerhetskopiera ditt frö finns det inget sätt att återställa den";
+"nuke_nukeButton" = "ÅTERSTÄLL";
+"nuke_backupbutton" = "Säkerhetskopiera nu!";
+"nuke_alerttitle" = "Radera plånbok?";
+"nuke_alertmessage" = "Du håller på att återställa din plånbok. Är du säker på att du vill fortsätta?";
+"nuke_alertcancel" = "Jag är inte säker";
+"nuke_alertconfirm" = "ÅTERSTÄLL!";
+
+//FeedBackForm
+"Feedback Sent!" = "Synpunkter skickade!";
+"Thanks for your feedback!" = "Tack för din feedback!";
+
+
+//InputPasscodeWithCustomPad
+"Enter New Passcode" = "Ange nytt lösenord";
+"Confirm Passcode" = "Bekräfta lösenord";
+
+// Settings Screen
+
+"Endpoint" = "lite server";
+
+"My Pirate Chain Lite Server:" = "Min Pirate Chain lite server:";
+"Invalid Lite Server Address, Reverting it to pirate chain address!" = "Ogiltig lite server adress, återställer den till pirate chain adress!";
+"Invalid Lite Server Port, Reverting it to pirate chain port!" = "Invalid Lite Server Port, Reverting it to pirate chain port!";
+"Powered By Meshbits Ltd Team" = "Drivs av Meshbits Ltd Team";
+
+
+"An error occured" = "Ett fel uppstod";
+"dismiss" = "avfärda";
+"An error ocurred, please check your device logs" = "Ett fel inträffade. Kontrollera enhetens loggar";
+"An error ocurred, but we can't figure out what it is. Please check device logs for more details" = "Ett fel inträffade, men vi kan inte ta reda på vad det är. Se enhetens loggar för mer information";
+"LAST USED" = "SENAST ANVÄND";
+"Zcash address in buffer!" = "ARRR adress i buffert!";
+
+
+
+// Misc
+"Explore" = "Utforska";
+
+"from" = "från ";
+
+"block" = "block ";
+
+"with a" = "med en";
+
+"You Failed to send" = "Det gick inte att skicka";
+
+"Total Spent" = "Totalt spenderat";
+
+"You Received" = "Du fick";
+"This is embarassing" = "Det här är pinsamt";
+"you shouldn't be seeing this" = "du borde inte se det här";
+"Authorization Failed!" = "Auktorisering misslyckades!";
+"It appears that you were not able to authenticate" = "Det verkar som att du inte kunde autentisera";
+"Oops" = "Hoppsan";
+"Transaction Detail" = "Transaktionsdetalj";
+
+"Attempt to open transaction details in sending screen with no pending transaction in send flow" = "Försök att öppna transaktionsinformation i sändningsskärmen utan någon väntande transaktion i sändflödet";
+
+"Existing keys found!" = "Befintliga nycklar hittades!";
+
+"it appears that this device already has keys stored on it. What do you want to do?" = "det verkar som om den här enheten redan har nycklar lagrade. Vad vill du göra?";
+
+"Restore existing keys" = "Återställ befintliga nycklar";
+
+"Discard them and continue" = "Förkasta dem och fortsätt";
+
+"Error Initializing Wallet" = "Fel vid initialisering av plånboken";
+
+"There was a problem initializing the wallet" = "Det gick inte att initiera plånboken";
+
+"Could not restore wallet" = "Det gick inte att återställa plånboken";
+
+"There's a problem restoring your wallet. Please verify your seed phrase and try again." = "Det finns ett problem med att återställa din plånbok. Kontrollera din fröfras och försök igen.";
+
+"Problem Retrieving your seed" = "Problem med att hämta ditt frö";
+
+"We are unable to display your seed phrase. Please close the app and retry this operation" = "Vi kan inte visa din fröfras. Stäng appen och försök igen";
+
+"We don't have permission to access your camera" = "Vi har inte behörighet att komma åt din kamera";
+
+"My ARRR Address \n" = "Min ARRR adress \n";
+
+"Enter an endpoint" = "Ange en lite server";
+
+"Pirate Chain Wallet" = "Pirate Chain plånbok";
+
+"DELETE WALLET" = "RADERA PLÅNBOK";
+
+"Please Rank Your Experience" = "Vänligen betygsätt din upplevelse";
+
+"We improve and iterate with YOUR feedback" = "Vi förbättrar med DIN feedback";
+
+"Any details to share?" = "Några detaljer att dela?";
+
+"My Experience was..." = "Min erfarenhet var ...";
+
+"Was your Balance Clear?" = "Var din balans klar?";
+
+"My balance was..." = "Min balans var...";
+
+"What feature would you like to see next?" = "Vilken funktion skulle du vilja se härnäst?";
+
+"I'd like..." = "Jag skulle vilja...";
+
+"Transaction Details" = "Transaktionsdetaljer";
+
+// Settings
+"Invalid Passcode, Please enter a valid passcode."  = "Ogiltigt lösenord. Ange ett giltigt lösenord." ;
+"Great, you have set a new passcode!" = "Bra, du har ställt in ett nytt lösenord!";
+"Pirate Chain" = "Pirate Chain";
+"Enable Biometric Security" = "Aktivera biometrisk säkerhet";
+"Authenticate Biometric" = "Aktivera biometrisk autentisering för att säkra plånboken.";
+
+
+// History
+"to your shielded wallet" = "till din skyddade plånbok";
+"While usually an acceptable risk, you will be possibly exposing your interest in this transaction id by visiting explorer.pirate.black" = "Även om det vanligtvis är en acceptabel risk kommer du eventuellt att avslöja ditt intresse för denna transaktions-id genom att besöka explorer.pirate.black";
+"Cancel" = "Avbryt";
+"View TX Details" = "Visa TX-detaljer";
+"Leaving Pirate Chain Wallet" = "Lämnar Pirate Chain plånbok";
+"includes reply-to" = "inkluderar svar till";
+"to " = "till ";
+"failed!" = "misslyckades!";
+"Confirmed" = "Bekräftad";
+"Pending confirmation" = "Väntar på bekräftelse";
