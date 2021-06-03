@@ -1,126 +1,293 @@
-"ECC Wallet" = "Кошелек ECC";
-"loadingtext" = "Загрузка";
-"welcometext" = "Добро пожаловать!";
-// Seed Backup/Restore Ваша фраза восстановления
-"title_backupseed" = "Ваша фраза восстановления";
-"copy_backupseed" = "Мы рекомендуем использовать резервную копию на бумаге и хранилище паролей.";
-"feedback_walletbackupstatus" = "Необходимо создать резервную копию вашего кошелька.";
-"seed_verify" = "Проверьте свою резервную копию.";
-"seed_verifytext" = "Пожалуйста, заполните отсутствующие слова фразы восстановления, чтобы проверить свою резервную копию.";
-"seed_restore" = "Восстановление из резервной копии";
-"seed_restoretext" = "Вам необходимо будет ввести 24 слова фразы восстановления по порядку.";
-"seed_reminder" = "Существует риск потерять средства!";
-"seed_remindertext" = "Помните, что с Pirate Chain Вы сами находитесь в роли банка. Любой, кто владеет фразой восстановления, получает полный доступ к кошельку.";
-"seed_remindertext2" = "Вам следует незамедлительно создать резервную копию, так она позволит восстановить доступ к Вашему кошельку.";
-"seed_accepted" = "Фраза восстановления принята, идёт сканирование блокчейна!";
-"seed_birthdaytext" = "Мы сканируем блокчейн на предмет транзакций, которые относятся к вашему кошельку. Если вы можете указать дату создания данного кошелька, процесс ускорится.";
-"seed_enterdate" = "Введите дату";
-"seed_birthday" = "Кошелёк создан";
-"button_dontknow" = "Я не знаю";
-"button_backup" = "Резервная копия";
-"button_skip" = "Пропустить";
-"button_share_address" = "Share Address";
-// Balance Screen
+/*
+  Localizable.strings
+  wallet
 
-"balance_screen" = "Экран баланса";
-"balance_amounttosend" = "Введите сумму для отправки";
-"balance_expecting" = "Ожидание %@ ZEC";
-"balance_available" = "Доступно";
-"balance_nofunds" = "Нет доступных средств";
-"balance_syncing" = "Синхронизация %@%%";
-"balance_scanning" = "Сканирование %@%%";
-"button_sendamount" = "Отправить сумму";
-"button_wallethistory" = "История транзакций";
+  Copyright © 2020 Francisco Gindre. All rights reserved.
+  Translation by: Mixic#3188 (from Discord)
+*/
 
-// Address Screen
-"address_screen" = "Ваш адрес";
-"address_shielded" = "Ваш защищённый адрес";
-"address_transparent" = "Ваш прозрачный адрес";
-"feedback_addresscopied" = "Адрес скопирован!";
-"Request ARRR" = "Запросить сумму в ARRR";
-"Receive" = "Получите ARRR";
-"button_copytoclipboard" = "Скопировать в буфер обмена";
-// Profile Screen
-"profile_screen" = "Защищенный пользователь";
-"button_feedback" = "Отправить отзыв";
-"button_backup" = "Резервная копия кошелька";
-"button_applicationlogs" = "Просмотреть журнал операций приложения";
+// ERRORS
+// Titles
+"Wallet Improperly Initialized" = "Кошелек неправильно инициализирован";
+"Processor Error" = "Ошибка процессора";
+"Connection Error" = "Ошибка соединения";
+"Failed to Send" = "Не удалось отправить";
+"Oops Something happened" = "Упс, что-то случилось";
+"Critical Error" = "Критическая ошибка";
+
+// Messages
+"This wallet has not been initialized correctly! Perhaps an error occurred during install. If you just created a new wallet close the app and retry.\n\n If this is an existing wallet, it can be fixed with a reset. First, locate your backup seed phrase, then \"Nuke Wallet\" and reimport it." = "Этот кошелек был инициализирован неправильно! Возможно, во время установки произошла ошибка. Если вы только что создали новый кошелек, закройте приложение и повторите попытку.\n\n Если это существующий кошелек, его можно исправить с помощью перезагрузки. Сначала найдите свою резервную seed фразу, затем \"Уничтожить Кошелек\" и импортируйте ее заново.";
+"An error ocurred while syncing the blockchain. If the problem persists, back up your seed phrase and restore your wallet." = "Произошла ошибка при синхронизации блокчейна. Если проблема сохраняется, сделайте резервную копию seed фразы и восстановите кошелек.";
+"We are having problems with the network connection." = "У нас проблемы с сетевым подключением.";
+"We were unable to send your transaction. Your funds are safe, we just need to wait until the transaction expires before you can send them again." = "Мы не смогли отправить вашу транзакцию. Ваши средства в безопасности, нам просто нужно дождаться окончания срока действия транзакции, чтобы вы могли отправить их снова..";
+"There's an internal error. Probably nothing serious. If this error persists, back up your seed phrase and restore your wallet" = "Возникла внутренняя ошибка. Вероятно, ничего серьезного. Если эта ошибка не исчезнет, сделайте резервную копию seed фразы и восстановите кошелек";
+"If this error persists, back up your seed phrase and restore your wallet" = "если эта ошибка не исчезает, сделайте резервную копию seed фразы и восстановите кошелек";
+
+// COMPONENTS:
+"button_back" = "Назад";
+"Paste" = "вставить";
+"balance_available" = "доступно";
+"expecting " = "в ожидании";
+"Create new Wallet" = "Создать новый кошелек";
+"button_done" = "Выполнено";
+"button_backup" = "Резервный кошелек";
+"Press and hold\nto send ARRR" = "Нажмите и удерживайте\n чтобы отправить ARRR";
+"Add Memo Here" = "Добавить заметку здесь";
+"Tap\nto send ARRR" = "Нажмите\nдля отправки  ARRR";
+"Enter Shielded Address" = "Введите экранированный адрес";
+"Error" = "Ошибка";
+"an error ocurred" = "Произошла ошибка";
 "button_close" = "Закрыть";
-"Change PIN" = "Change PIN";
+"Pending confirmation" = "Ожидает подтверждения";
+"of 10 Confirmations" = "из 10 подтверждений";
+"button_share_address" = "Поделиться адресом";
 
-// Send Screen
-"send_screen" = "Отправить экран";
-"button_send" = "Отправить";
-"send_fromshielded" = "from shielded wallet";
-"send_fromtransparent" = "с Вашего прозрачного кошелька";
-"send_fromboth" = "с двух кошельков";
-"label_to" = "на";
-"feedback_default" = "Введите действующий Pirate Chain-адрес ";
-"feedback_shieldedaddress" = "Это действующий защищённый адрес";
-"feedback_transparentaddress" = "Это действующий прозрачный адрес";
-"feedback_sameaddress" = "Внимание, похоже, это ваш адрес!";
-"feedback_invalidaddress" = "Внимание, этот адрес недействителен!";
-"label_memo" = "Заметка";
-"label_charactercount" = "%@ символы (символы)";
-"label_replyto" = "добавить ответ на";
-"send_onclipboard" = "В буфере обмена";
-"send_lastused" = "Последний используемый";
+// profile screen
+"NUKE WALLET" = "УНИЧТОЖИТЬ КОШЕЛЕК";
+"profile_screen" = "Экранированный пользователь\n";
+
+// WalletDetailsHeader
+"screen_wallethistory" = "История вашего кошелька";
+"wallet_history_sent" = "Отправлено";
+"wallet_history_received" = "Получено";
+"Shielded address:" = "Экранированный адрес:";
+ //SendTransaction
+"send_fromshielded" = "из вашего экранированного кошелька";
+"send_fromtransparent" = "с вашего прозрачного кошелька";
+"send_fromboth" = "с обоих кошельков";
+"feedback_default" = "Введите экранированный адрес  Pirate Chain";
+"feedback_shieldedaddress" = "Это действительный экранированный адрес";
+"feedback_transparentaddress" = "Это действительный прозрачный адрес ";
+"feedback_addresscopied" = "Адрес скопирован!";
+"feedback_invalidaddress" = "Внимание, этот адрес не действителен!";
+"feedback_sameaddress" = "Внимание, этот адрес похож на ваш!";
+"label_replyto" = "включить ответ на";
+"send_onclipboard" = "В буфер обмена";
+"send_lastused" = "последний раз использовалось";
 "send_unknown" = "Неизвестно";
-"send_scanQR" = "Сканировать адрес получателя";
-"send_securityauth" = "Подтвердите, чтобы отправить";
-"send_securityauth2" = "Пожалуйста подтвердите, что хотите отправить %@ ZEC на адрес";
-"send_sending" = "Отправка XX ARRR на";
-"send_cancelled" = "Отменено";
+"label_memo" = "Заметка";
+"label_to" = "Кому";
+"label_charactercount" = "%@ символов";
+"from %@" = "из %@";
+"You Have %@ sendable ARRR" = "У Вас %@ отправляемые ARRR";
+"%@ sendable ARRR. You don't have sufficient funds to cover the amount + Miner Fee of %@ ARRR" = "%@ отправлено ARRR. У вас недостаточно средств для покрытия суммы + Вознаграждение майнера в размере %@ ARRR";
+"You don't have any sendable ARRR yet" = "У вас еще нет ни одного отправляемого ARRR";
+"send_securityauth" = "Аутентификация для отправки";
+"label_add_memo" = "Добавить заметку ( необязательно )";
+
+//Sending
+"thing is that we really don't know what just went down, sorry!" = "дело в том, что мы действительно не знаем, что только что произошло, извините!";
+"send_sending" = "Отправляю %@ ARRR на";
 "send_sent" = "Отправлено!";
-"button_done" = "Готово";
-"button_seedetails" = "Смотреть подробности";
-"button_back" = "Вернуться назад";
-"label_add_memo" = "Add Memo Here (optional)";
-"scan_invalidQR" = "This QR Code does not contain a Pirate Chain valid address!";
-"label_unabletosend" = "Unable to send";
-// Wallet History
-"screen_wallethistory" = "История транзакций";
-"wallet_history_sent" = "Sent";
+"an error ocurred while submitting your transaction" = "произошла ошибка при отправке вашей транзакции";
+"label_unabletosend" = "Невозможно отправить на";
+"button_seedetails" = "См. подробности";
+
+//CreateNewWallet
+"Create New" = "Создать новый";
+"Restore" = "Восстановить";
+
+//RestoreWallet
+"Enter your Seed Phrase" = "Введите вашу  seed фразу";
+"Make sure nobody is watching you!" = "Убедитесь, что за вами никто не наблюдает!";
+"Wallet Birthday height" = "Высота кошелька в день рождения";
+"If you don't know it, leave it blank. First Sync will take longer." = "если вы этого не знаете, оставьте это значение пустым. Первая синхронизация займет больше времени.";
+"Proceed" = "Приступайте";
+"Restore from Seed Phrase" = "Восстановить из seed  фразы";
+"Your seed phrase is valid" = "Ваша seed  фраза действительна";
+"Your seed phrase is invalid!" = "Ваша seed  фраза недействительна!";
+
+//BackupWallet
+"feedback_walletbackupstatus" = "Ваш кошелек нуждается в резервном копировании.";
+"balance_syncing" = "Синхронизация %@%%"; // ключ не сопоставлен, чтобы при неудачной выборке локали приложение не аварийно завершалось
+"button_skip" = "Пропуск";
+
+
+//VerifyBackup
+"Verify your backup." = "Проверьте резервную копию.";
+"Please fill out the missing seed words to verify your backup." = "Пожалуйста, заполните недостающие seed  слова для проверки резервной копии.";
+"You will need to enter all 24 seed words in order." = "Вам нужно будет ввести все 24 seed слова по порядку.";
+//SeedBackup
+
+"seed_birthday" = "Возраст кошелька";
+"title_backupseed" = "Ваше резервное seed";
+"copy_backupseed" = "Мы рекомендуем иметь бумажную резервную копию и хранилище паролей.";
+"button_copytoclipboard" = "Копировать в буфер обмена";
+
+
+//Home
+"There was an error creating your wallet. Please back it up and try again" = "Произошла ошибка при создании вашего кошелька. Пожалуйста, создайте резервную копию и повторите попытку";
+"Max Retry attempts (%@) have been reached" = "Максимальное число имеющихся (%@) попыток достигнуто";
+"Retry" = "Повторная попытка";
+"button_send" = " Отправить";
+"balance_amounttosend" = "Введите сумму для отправки";
+"balance_nofunds" = "Нет свободных средств";
+"button_wallethistory" = "История кошелька";
+"Receive Funds" = "Получить средства";
+"Change PIN" = "Изменить PIN";
+
+//ReceiveFunds
+"QR Code for %@" = "QR-код для %@";
+"address_shielded" = "Ваш Экранированный адрес";
+"receive_title" = "Получите ARRR";
+
+//ScanAddress
+"send_scanQR" = "Скан Адреса Получателя";
+"scan_cameraunallowed" = "У нас нет разрешения на доступ к вашей камере";
+"scan_cameraunallowed2" = "Разрешите доступ к камере в настройках вашего устройства";
+"scan_cameraunavaliable" = "Камера недоступна";
+"scan_invalidQR" = "Этот QR-код не содержит действительного адреса Pirate Chain!";
+
+//ShareScreen
+"Share Screen" = "Поделиться";
+
+//ProfileScreen
+"button_feedback" = "Отправить отзыв";
+"button_applicationlogs" = "Посмотреть журналы приложений";
+"ECC Wallet" = "ECC Кошелек";
+"profile_screen" = "Экранированный пользователь";
+"Send Feedback" = "Отправить отзыв";
+"See Application Log" = "Посмотреть журнал приложений";
+"Nighthawk Wallet" = "Pirate Chain Кошелек";
+
+//FundsAtRisk
+"seed_remindertext" = "Помните, в Pirate Chain банком являетесь ВЫ. Любой человек с вашей seed-фразой имеет доступ к вашему кошельку.";
+"seed_remindertext2" = "Вы должны немедленно создать резервную копию, так как никто другой не сможет восстановить ее за вас.";
+"seed_reminder" = "Ваши средства в опасности!";
+"button_backup" = "Создать резервную копию";
+"button_skip" = "Пока пропустить";
 
 //NukeWarning
-"nuke_title" = "You are about to NUKE your wallet";
-"nuke_nukewarning" = "Remember, with Pirate Chain YOU are the bank. Anyone with your seed phrase has access to your wallet.";
-"nuke_nukewarning2" = "Make sure you backed up your wallet before proceeding.";
-"nuke_nukewarning3" = "If you nuke  your wallet without backing up your seed, there's no way to recover it";
-"nuke_nukeButton" = "NUKE WALLET";
-"nuke_backupbutton" = "Backup Now!";
-"nuke_alerttitle" = "Delete Wallet?";
-"nuke_alertmessage" = "You are about to nuke your wallet. Are you sure you want to proceed?";
-"nuke_alertcancel" = "I'm not sure";
-"nuke_alertconfirm" = "NUKE WALLET!";
+
+
+"nuke_title" = "Вы собираетесь УНИЧТОЖИТЬ свой кошелек";
+"nuke_nukewarning" = "Помните, в Pirate Chain банком являетесь ВЫ. Любой человек с вашей seed фразой имеет доступ к вашему кошельку.";
+"nuke_nukewarning2" = "Убедитесь, что вы создали резервную копию вашего кошелька, прежде чем продолжить.";
+"nuke_nukewarning3" = "Если вы оставите свой кошелек без резервного копирования seed, восстановить его будет невозможно ";
+"nuke_nukeButton" = "УНИЧТОЖИТЬ КОШЕЛЕК";
+"nuke_backupbutton" = "Создать резервную копию сейчас!";
+"nuke_alerttitle" = "Удалить кошелек?";
+"nuke_alertmessage" = "Вы собираетесь удалить свой кошелек. Вы уверены, что хотите продолжить?";
+"nuke_alertcancel" = "я  не уверен ";
+"nuke_alertconfirm" = "УНИЧТОЖИТЬ КОШЕЛЕК!";
+
+//FeedBackForm
+"Feedback Sent!" = "Отзыв отправлен!";
+"Thanks for your feedback!" = "Спасибо за ваш отзыв!";
 
 
 //InputPasscodeWithCustomPad
-"Enter New Passcode" = "Enter New Passcode";
-"Confirm Passcode" = "Confirm Passcode";
+"Enter New Passcode" = "Введите новый пароль ";
+"Confirm Passcode" = "Подтвердите пароль ";
 
 // Settings Screen
 
-"Endpoint" = "Endpoint";
-"My Pirate Chain Lite Server:" = "My Pirate Chain Lite Server:";
-"Invalid Lite Server Address, Reverting it to pirate chain address!" = "Invalid Lite Server Address, Reverting it to pirate chain address!";
+"Endpoint" = "Конечная точка";
+
+"My Pirate Chain Lite Server:" = "Моя конечная точкаPirate Chain:";
+"Invalid Lite Server Address, Reverting it to pirate chain address!" = "Неверный адрес конечной точки, возвращаю его на адрес Pirate Chain!";
 "Invalid Lite Server Port, Reverting it to pirate chain port!" = "Invalid Lite Server Port, Reverting it to pirate chain port!";
-"Powered By Meshbits Ltd Team" = "Powered By Meshbits Ltd Team";
-"Great, you have set a new passcode!" = "Great, you have set a new passcode!";
+"Powered By Meshbits Ltd Team" = "Работает от Команды Meshbits Ltd";
+
+
+"An error occured" = "Произошла ошибка";
+"dismiss" = "отклонить";
+"An error ocurred, please check your device logs" = "Произошла ошибка, пожалуйста, проверьте журналы вашего устройства";
+"An error ocurred, but we can't figure out what it is. Please check device logs for more details" = "Произошла ошибка, но мы не можем понять, в чем дело. Пожалуйста, проверьте журналы устройства для получения более подробной информации";
+"LAST USED" = "ПОСЛЕДНИЙ ИСПОЛЬЗОВАННЫЙ";
+"Zcash address in buffer!" = "Адрес ARRR в буфере!";
+
+
+
+// Misc
+"Explore" = "Исследовать";
+
+"from" = "от";
+
+"block" = "блок ";
+
+"with a" = "с помощью";
+
+"You Failed to send" = "Вы не смогли отправить";
+
+"Total Spent" = "Всего потрачено";
+
+"You Received" = "Вы получили";
+"This is embarassing" = "Это смущает";
+"you shouldn't be seeing this" = "вы не должны это видеть";
+"Authorization Failed!" = "Авторизация не прошла!";
+"It appears that you were not able to authenticate" = "Похоже, что вы не смогли пройти авторизацию";
+"Oops" = "Упс";
+"Transaction Detail" = "Детали транзакции";
+
+"Attempt to open transaction details in sending screen with no pending transaction in send flow" = "Попытка открыть детали транзакции на экране отправки без ожидающей транзакции в потоке отправки";
+
+"Existing keys found!" = "Существующие ключи найдены!";
+
+"it appears that this device already has keys stored on it. What do you want to do?" = "Похоже, что на этом устройстве уже хранятся ключи. Что вы хотите сделать?";
+
+"Restore existing keys" = "Восстановить существующие ключи";
+
+"Discard them and continue" = "Отбросить их и продолжить";
+
+"Error Initializing Wallet" = "Ошибка инициализации кошелька";
+
+"There was a problem initializing the wallet" = "Возникла проблема с инициализацией кошелька";
+
+"Could not restore wallet" = "Не удалось восстановить кошелек";
+
+"There's a problem restoring your wallet. Please verify your seed phrase and try again." = "Возникла проблема с восстановлением вашего кошелька. Пожалуйста, проверьте вашу seed-фразу и попробуйте еще раз.";
+
+"Problem Retrieving your seed" = "Проблема с получением  вашего seed";
+
+"We are unable to display your seed phrase. Please close the app and retry this operation" = "Мы не можем отобразить вашу seed-фразу. Пожалуйста, закройте приложение и повторите эту операцию";
+
+"We don't have permission to access your camera" = "У нас нет разрешения на доступ к вашей камере";
+
+"My ARRR Address \n" = "Мой ARRR Адрес \n";
+
+"Enter an endpoint" = "Введите конечную точку";
+
+"Pirate Chain Wallet" = "Pirate Chain Кошелек";
+
+"DELETE WALLET" = "УДАЛИТЬ КОШЕЛЕК";
+
+"Please Rank Your Experience" = "Пожалуйста, оцените ваш опыт";
+
+"We improve and iterate with YOUR feedback" = "Мы улучшаем и выполняем с учетом ВАШИХ отзывов";
+
+"Any details to share?" = "Любые подробности, которыми можно поделиться?";
+
+"My Experience was..." = "Мой опыт был...";
+
+"Was your Balance Clear?" = "Был ли ваш баланс чистым?";
+
+"My balance was..." = "Мой баланс был...";
+
+"What feature would you like to see next?" = "Какую функцию вы хотели бы увидеть следующей?";
+
+"I'd like..." = "Я бы хотел...";
+
+"Transaction Details" = "Детали транзакции";
+
+// Settings
+"Invalid Passcode, Please enter a valid passcode."  = "Неверный код доступа, пожалуйста, введите действительный код доступа." ;
+"Great, you have set a new passcode!" = "Отлично, вы установили новый пароль!";
 "Pirate Chain" = "Pirate Chain";
-"Invalid Passcode, Please enter a valid passcode."  = "Invalid Passcode, Please enter a valid passcode." ;
-"Enable Biometric Security" = "Enable Biometric Security";
-"Authenticate Biometric" = "Enable biometric authentication to secure the wallet.";
-"Change app language" = "Change app language";
+"Enable Biometric Security" = "Включить биометрическую безопасность ";
+"Authenticate Biometric" = "Включить биометрическую аутентификацию для защиты кошелька.";
+
 
 // History
-"to your shielded wallet" = "to your shielded wallet";
-"While usually an acceptable risk, you will be possibly exposing your interest in this transaction id by visiting explorer.pirate.black" = "While usually an acceptable risk, you will be possibly exposing your interest in this transaction id by visiting explorer.pirate.black";
-"Cancel" = "Cancel";
-"View TX Details" = "View TX Details";
-"Leaving Pirate Chain Wallet" = "Leaving Pirate Chain Wallet";
-"includes reply-to" = "includes reply-to";
-"to " = "to ";
-"failed!" = "failed!";
-"Confirmed" = "Confirmed";
-"Pending confirmation" = "Pending confirmation";
+"to your shielded wallet" = "в ваш защищенный кошелек ";
+"While usually an acceptable risk, you will be possibly exposing your interest in this transaction id by visiting explorer.pirate.black" = "Хотя обычно это приемлемый риск, вы, возможно, раскроете свой интерес к этому идентификатору транзакции, посетив explorer.pirate.black ";
+"Cancel" = "Отмена ";
+"View TX Details" = "Посмотреть TX детали";
+"Leaving Pirate Chain Wallet" = "Покинуть Pirate Chain Кошелек";
+"includes reply-to" = "включает ответ на";
+"to " = "для ";
+"failed!" = "не удалось!";
+"Confirmed" = "Подтверждено";
+"Pending confirmation" = "Ожидает подтверждения";
+
+
