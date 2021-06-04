@@ -49,7 +49,7 @@ struct ZcashButtonBackground: ViewModifier {
         case .chamfered(let fillStyle):
             
             return AnyView (
-                fillStyle.fill( ZcashChamferedButtonBackground(cornerTrim: min(geometry.size.height, geometry.size.width) / 4.0))
+                fillStyle.fill( ZcashChamferedButtonBackground(cornerTrim: min(geometry.size.height, geometry.size.width) / 8.0))
             )
         case .rounded(let fillStyle):
             return AnyView(
@@ -146,6 +146,6 @@ extension LinearGradient {
 
 extension RadialGradient {
     static var zButtonRadialGradient: RadialGradient {
-        RadialGradient(gradient: Gradient(colors: [.pGoldenColor,.white]), center: .center, startRadius: 100, endRadius: 400)
+        RadialGradient(gradient: Gradient(colors:[Color.zAmberGradient3, Color.zAmberGradient4]), center: .center, startRadius: 100, endRadius: 400)
     }
 }

@@ -13,6 +13,7 @@ struct CreateNewWallet: View {
     enum Destinations: Int {
         case createNew
         case restoreWallet
+        case icloudBackup
     }
     
     enum AlertType: Identifiable {
@@ -32,7 +33,7 @@ struct CreateNewWallet: View {
     @State var error: UserFacingErrors?
     @State var showError: AlertType?
     @State var destination: Destinations?
-    let itemSpacing: CGFloat = 24
+    let itemSpacing: CGFloat = 20
     let buttonPadding: CGFloat = 24
     let buttonHeight: CGFloat = 50
     var body: some View {
@@ -57,6 +58,8 @@ struct CreateNewWallet: View {
                 Image("splash_icon")
                 
                 Spacer()
+                
+                /***************** CREATE WALLET AND ITS ACTION******************/
                 Button(action: {
                     do {
                         tracker.track(.tap(action: .landingBackupWallet), properties: [:])
@@ -73,26 +76,44 @@ struct CreateNewWallet: View {
                     }
 
                 }) {
-                    Text("Create New".localized())
+                    Text("Create New Wallet".localized())
                       .font(.system(size: 20))
                       .foregroundColor(Color.black)
-                      .zcashButtonBackground(shape: .roundedCorners(fillStyle: .gradient(gradient: LinearGradient.zButtonGradient)))
+                      .zcashButtonBackground(shape: .rounded(fillStyle: .gradient(gradient: LinearGradient.zButtonGradient)))
                       
                       .frame(height: self.buttonHeight)
                 }
                 
+                /***************** CREATE WALLET ENDS HERE ******************/
+
+                /***************** RESTORE FROM ICLOUD BACKUP ******************/
                 
-                #if DEBUG
-                Button(action: {
-                    self.appEnvironment.nuke()
-                }) {
-                    Text("NUKE WALLET".localized())
-                        .foregroundColor(.red)
-                        .zcashButtonBackground(shape: .roundedCorners(fillStyle: .outline(color: .red, lineWidth: 1)))
-                        .frame(height: self.buttonHeight)
+                NavigationLink(
+                    destination: iCloudBackups()
+                                    .environmentObject(self.appEnvironment),
+                               tag: Destinations.icloudBackup,
+                               selection: $destination
+                        
+                ){
                     
+                    Button(action: {
+                        guard !ZECCWalletEnvironment.shared.credentialsAlreadyPresent() else {
+                            self.showError = .feedback(destination: .restoreWallet, cause: SeedManager.SeedManagerError.alreadyImported)
+                            return
+                        }
+                        self.destination = .icloudBackup
+                        
+                    }) {
+                        Text("Restore from iCloud Backup".localized())
+                          .font(.system(size: 20))
+                          .foregroundColor(Color.black)
+                          .zcashButtonBackground(shape: .rounded(fillStyle: .gradient(gradient: LinearGradient.zButtonGradient)))
+                          .frame(height: self.buttonHeight)
+                    }
                 }
-                #endif
+                /***************** RESTORE FROM ICLOUD BACKUP ENDS HERE ******************/
+                
+                /***************** RESTORE FROM SEED PHRASE ******************/
                 NavigationLink(
                     destination: RestoreWallet()
                                     .environmentObject(self.appEnvironment),
@@ -100,6 +121,7 @@ struct CreateNewWallet: View {
                                selection: $destination
                         
                 ) {
+                   
                     Button(action: {
                         guard !ZECCWalletEnvironment.shared.credentialsAlreadyPresent() else {
                             self.showError = .feedback(destination: .restoreWallet, cause: SeedManager.SeedManagerError.alreadyImported)
@@ -107,12 +129,17 @@ struct CreateNewWallet: View {
                         }
                         self.destination = .restoreWallet
                     }) {
-                        Text("Restore".localized())
-                            .foregroundColor(Color.zDarkGray3)
-                            .font(.system(size: 20))
-                            .frame(height: self.buttonHeight)
+                        Text("Restore from Recovery Phrase".localized())
+                          .font(.system(size: 20))
+                          .foregroundColor(Color.black)
+                            .zcashButtonBackground(shape: .rounded(fillStyle: .gradient(gradient: LinearGradient.zButtonGradient)))
+                          .frame(height: self.buttonHeight)
                     }
+                    
+                    
                 }
+                
+                /***************** RESTORE FROM SEED PHRASE ENDS HERE ******************/
             }
             .padding([.horizontal, .bottom], self.buttonPadding)
         }
@@ -186,6 +213,9 @@ struct CreateNewWallet: View {
                                                 case .restoreWallet:
                                                     self.destination = originalDestination
                                                 
+                                                    
+                                                case .icloudBackup:
+                                                    self.destination = originalDestination
                                                 }
                                             }))
     }

