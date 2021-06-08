@@ -33,6 +33,17 @@
 	<string>Scan zAddress Qr Codes</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string>We might require you to use face ID or pin to Authorize payments</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>io.meshbits.piratewallet.ios</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>arrr</string>
+			</array>
+		</dict>
+	</array>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Zboto.otf</string>
