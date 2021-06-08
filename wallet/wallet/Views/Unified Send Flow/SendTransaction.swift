@@ -210,8 +210,6 @@ struct SendTransaction: View {
             }.padding([.horizontal,.bottom], 24)
             
         }
-        .navigationBarBackButtonHidden(true)
-        .navigationBarHidden(true)
         .navigationBarTitle(Text(""), displayMode: .inline)
         .onAppear() {
             tracker.track(.screen(screen: .sendAddress), properties: [:])
