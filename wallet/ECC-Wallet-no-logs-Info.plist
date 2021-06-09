@@ -23,16 +23,6 @@
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
 	<string>$(MARKETING_VERSION)</string>
-	<key>CFBundleVersion</key>
-	<string>$(CURRENT_PROJECT_VERSION)</string>
-	<key>ITSAppUsesNonExemptEncryption</key>
-	<false/>
-	<key>LSRequiresIPhoneOS</key>
-	<true/>
-	<key>NSCameraUsageDescription</key>
-	<string>Scan zAddress Qr Codes</string>
-	<key>NSFaceIDUsageDescription</key>
-	<string>We might require you to use face ID or pin to Authorize payments</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -44,6 +34,16 @@
 			</array>
 		</dict>
 	</array>
+	<key>CFBundleVersion</key>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Scan zAddress Qr Codes</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>We might require you to use face ID or pin to Authorize payments</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Zboto.otf</string>
