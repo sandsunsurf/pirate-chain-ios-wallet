@@ -50,6 +50,52 @@ final class HomeViewModel: ObservableObject {
                 self?.bindToEnvironmentEvents()
             }
         ).store(in: &cancellable)
+        
+     
+        NotificationCenter.default.publisher(for: .openTransactionScreen)
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: { [weak self] notificationObject in
+                if let userInfo = notificationObject.userInfo, let url:URL = userInfo["url"] as? URL {
+                    
+                    guard let aReplyAddress = url.host else {
+                        print("Invalid Reply Address,, can't proceed")
+                        return
+                    }
+
+                    let queryComponents = url.getQueryParameters
+                    
+                    guard let amount = queryComponents["amount"] else {
+                        print("Invalid Amount,, can't proceed")
+                        return
+                    }
+                    
+                    guard let memoMessage = queryComponents["message"] else {
+                        print("Memo message not found, can't proceed")
+                        return
+                    }
+                    
+                    guard let labelMessage = queryComponents["label"] else {
+                        print("label message not found, can't proceed")
+                        return
+                    }
+                    
+                    // handle memo message = memoMessage
+                    // handle memo message = labelMessage
+                    // handle aReplyAddress
+                    
+                    self?.setAmountWithoutFee(Double(amount)!)
+                    
+                    if self?.isSyncing == false{
+                        print("Syncing is not in progress, please proceed to transaction screen")
+//                        self?.sendingPushed = true
+                        // Call respective screen
+                    }else{
+                        print("Syncing is in progress, can't proceed")
+                    }
+                }
+            }
+        ).store(in: &cancellable)
+        
     }
     
     func bindToEnvironmentEvents() {
@@ -167,6 +213,11 @@ final class HomeViewModel: ObservableObject {
     
     func setAmount(_ zecAmount: Double) {
         guard let value = self.zecAmountFormatter.string(for: zecAmount - ZcashSDK.defaultFee().asHumanReadableZecBalance()) else { return }
+        self.sendZecAmountText = value
+    }
+    
+    func setAmountWithoutFee(_ zecAmount: Double) {
+        guard let value = self.zecAmountFormatter.string(for: zecAmount) else { return }
         self.sendZecAmountText = value
     }
 }
@@ -435,5 +486,20 @@ struct Home_Previews: PreviewProvider {
 extension BlockHeight {
     static var unmined: BlockHeight {
         -1
+    }
+}
+
+
+extension URL {
+    var getQueryParameters: QueryParameters { return QueryParameters(url: self) }
+}
+
+class QueryParameters {
+    let queryItems: [URLQueryItem]
+    init(url: URL?) {
+        queryItems = URLComponents(string: url?.absoluteString ?? "")?.queryItems ?? []
+    }
+    subscript(name: String) -> String? {
+        return queryItems.first(where: { $0.name == name })?.value
     }
 }

@@ -15,9 +15,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var aScene: UIScene?
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-        print("URL Scheme triggered from outside")
+
         if let url = URLContexts.first?.url {
-            print(url)
+            let urlDataDict:[String: URL] = ["url": url]
+
+              NotificationCenter.default.post(name: .openTransactionScreen, object: nil, userInfo: urlDataDict)            
         }
     }
     
