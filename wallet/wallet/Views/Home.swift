@@ -365,12 +365,11 @@ struct Home: View {
                                 .environmentObject(
                                     SendFlow.current! //fixme
                             )
-                                .navigationBarTitle("",displayMode: .inline)
-                                .navigationBarHidden(true)
                         ), isActive: self.$sendingPushed
                     ) {
                         EmptyView()
                     }.isDetailLink(false)
+                    
                    
                 }
                 

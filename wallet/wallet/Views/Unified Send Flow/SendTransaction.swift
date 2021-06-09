@@ -111,13 +111,13 @@ struct SendTransaction: View {
                 
                 ZcashNavigationBar(
                     leadingItem: {
-                        Button(action: {
-                            self.flow.close()
-                        }) {
-                            Image("Back")
-                                .renderingMode(.original)
-                            .accessibility(label: Text("button_back"))
-                        }
+//                        Button(action: {
+//                            self.flow.close()
+//                        }) {
+//                            Image("Back")
+//                                .renderingMode(.original)
+//                            .accessibility(label: Text("button_back"))
+//                        }
                 },
                     headerItem: {
                         ZecAmountHeader(amount: self.flow.amount)
@@ -210,7 +210,9 @@ struct SendTransaction: View {
             }.padding([.horizontal,.bottom], 24)
             
         }
-        .navigationBarTitle(Text(""), displayMode: .inline)
+//        .navigationBarBackButtonHidden(true)
+//        .navigationBarHidden(true)
+//        .navigationBarTitle(Text(""), displayMode: .inline)
         .onAppear() {
             tracker.track(.screen(screen: .sendAddress), properties: [:])
         }

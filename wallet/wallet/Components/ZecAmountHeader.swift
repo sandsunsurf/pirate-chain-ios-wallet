@@ -28,9 +28,12 @@ struct ZecAmountHeader: View {
     
     var body: some View {
         VStack(alignment: .center, spacing: 4) {
-            Text("$\(amount)")
-                .font(.zoboto(size: 36))
-                .foregroundColor(.white)
+            HStack(alignment: .center, spacing: 4){
+                Image("piratelogoicon").resizable().frame(width: 20, height: 20, alignment: .top).offset(x: -2, y: -10).foregroundColor(.white)
+                Text("\(amount)")
+                    .font(.zoboto(size: 36))
+                    .foregroundColor(.white)
+            }
             Text(walletType.localizedString)
                 .font(.footnote)
                 .foregroundColor(.white)
