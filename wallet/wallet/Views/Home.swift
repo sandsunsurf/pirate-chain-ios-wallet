@@ -427,19 +427,19 @@ struct Home: View {
         if let userInfo = notificationObject.userInfo, let url:URL = userInfo["url"] as? URL {
             
             guard let aReplyAddress = url.host else {
-                print("Invalid Reply Address, can't proceed")
+                logger.info("Invalid Reply Address, can't proceed")
                 return
             }
 
             let queryComponents = url.getQueryParameters
             
             guard let amount = queryComponents["amount"] else {
-                print("Invalid Amount, can't proceed")
+                logger.info("Invalid Amount, can't proceed")
                 return
             }
             
             guard let memoMessage = queryComponents["message"] else {
-                print("Memo message not found, can't proceed")
+                logger.info("Memo message not found, can't proceed")
                 return
             }
             
@@ -456,7 +456,7 @@ struct Home: View {
             self.viewModel.setAmountWithoutFee(Double(amount)!)
             
             if self.viewModel.isSyncing == false{
-                print("Syncing is not in progress, please proceed to transaction screen")
+                logger.info("Syncing is not in progress, please proceed to transaction screen")
                 
                 let memoMessageDecoded = memoMessage.removingPercentEncoding
                 
@@ -464,7 +464,7 @@ struct Home: View {
                 
                 
             }else{
-                print("Syncing is in progress, can't proceed")
+                logger.info("Syncing is in progress, can't proceed")
             }
         }
      

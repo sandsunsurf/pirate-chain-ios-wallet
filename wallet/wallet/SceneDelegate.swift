@@ -15,7 +15,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var aScene: UIScene?
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-
+        
+        logger.info("Opened up a deep link")
+        
         if let url = URLContexts.first?.url {
             let urlDataDict:[String: URL] = ["url": url]
 
