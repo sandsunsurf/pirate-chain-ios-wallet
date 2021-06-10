@@ -133,7 +133,7 @@ struct AddrezzHelperViewCell: View {
                     HStack {
                         Image(selected ? "yellow_shield" : "gray_shield")
                         
-                        Text("Unknown")
+                        Text("Shielded Address")
                             .foregroundColor(selected ? .zYellow : .white)
                             .font(.body)
                     }

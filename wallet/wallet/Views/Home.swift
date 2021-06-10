@@ -196,10 +196,10 @@ struct Home: View {
         appEnvironment.synchronizer.status.value != .syncing && appEnvironment.synchronizer.verifiedBalance.value > 0
     }
     
-    func startSendFlow() {
+    func startSendFlow(memo:String) {
         SendFlow.start(appEnviroment: appEnvironment,
                        isActive: self.$sendingPushed,
-                       amount: viewModel.sendZecAmount)
+                       amount: viewModel.sendZecAmount,memoText: memo)
         self.sendingPushed = true
     }
     
@@ -211,7 +211,7 @@ struct Home: View {
     var enterAddressButton: some View {
         Button(action: {
             tracker.track(.tap(action: .homeSend), properties: [:])
-            self.startSendFlow()
+            self.startSendFlow(memo: "")
         }) {
             Text("button_send".localized())
                 .foregroundColor(.white)
@@ -358,7 +358,7 @@ struct Home: View {
                     
                     self.enterAddressButton.onReceive(self.viewModel.$sendingPushed) { pushed in
                         if pushed {
-                            self.startSendFlow()
+                            self.startSendFlow(memo: "")
                         } else {
                             self.endSendFlow()
                         }
@@ -443,22 +443,26 @@ struct Home: View {
                 return
             }
             
-            guard let labelMessage = queryComponents["label"] else {
-                print("label message not found, can't proceed")
-                return
-            }
+           
+//            guard let labelMessage = queryComponents["label"] else {
+//                print("label message not found, can't proceed")
+//                return
+//            }
             
-            // handle memo message = memoMessage
             // handle memo message = labelMessage
-            // handle aReplyAddress
+            
+            PasteboardAlertHelper.shared.copyToPasteBoard(value: aReplyAddress, notify: "feedback_addresscopied".localized())
             
             self.viewModel.setAmountWithoutFee(Double(amount)!)
             
-            let appEnvironment = ZECCWalletEnvironment.shared
-            
             if self.viewModel.isSyncing == false{
                 print("Syncing is not in progress, please proceed to transaction screen")
-                startSendFlow()
+                
+                let memoMessageDecoded = memoMessage.removingPercentEncoding
+                
+                self.startSendFlow(memo: memoMessageDecoded ?? "")
+                
+                
             }else{
                 print("Syncing is in progress, can't proceed")
             }
