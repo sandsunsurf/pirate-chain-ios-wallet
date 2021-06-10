@@ -51,50 +51,6 @@ final class HomeViewModel: ObservableObject {
             }
         ).store(in: &cancellable)
         
-     
-        NotificationCenter.default.publisher(for: .openTransactionScreen)
-            .receive(on: RunLoop.main)
-            .sink(receiveValue: { [weak self] notificationObject in
-                if let userInfo = notificationObject.userInfo, let url:URL = userInfo["url"] as? URL {
-                    
-                    guard let aReplyAddress = url.host else {
-                        print("Invalid Reply Address,, can't proceed")
-                        return
-                    }
-
-                    let queryComponents = url.getQueryParameters
-                    
-                    guard let amount = queryComponents["amount"] else {
-                        print("Invalid Amount,, can't proceed")
-                        return
-                    }
-                    
-                    guard let memoMessage = queryComponents["message"] else {
-                        print("Memo message not found, can't proceed")
-                        return
-                    }
-                    
-                    guard let labelMessage = queryComponents["label"] else {
-                        print("label message not found, can't proceed")
-                        return
-                    }
-                    
-                    // handle memo message = memoMessage
-                    // handle memo message = labelMessage
-                    // handle aReplyAddress
-                    
-                    self?.setAmountWithoutFee(Double(amount)!)
-                    
-                    if self?.isSyncing == false{
-                        print("Syncing is not in progress, please proceed to transaction screen")
-//                        self?.sendingPushed = true
-                        // Call respective screen
-                    }else{
-                        print("Syncing is in progress, can't proceed")
-                    }
-                }
-            }
-        ).store(in: &cancellable)
         
     }
     
@@ -458,8 +414,57 @@ struct Home: View {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 self.showPassCodeScreen = false
             }
+        }.onReceive(NotificationCenter.default.publisher(for: .openTransactionScreen)) { notificationObject in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                initiateDeeplinkDirectSendFlow(notificationObject: notificationObject)
+            }
         }
 
+    }
+    
+    func initiateDeeplinkDirectSendFlow(notificationObject:Notification){
+        
+        if let userInfo = notificationObject.userInfo, let url:URL = userInfo["url"] as? URL {
+            
+            guard let aReplyAddress = url.host else {
+                print("Invalid Reply Address, can't proceed")
+                return
+            }
+
+            let queryComponents = url.getQueryParameters
+            
+            guard let amount = queryComponents["amount"] else {
+                print("Invalid Amount, can't proceed")
+                return
+            }
+            
+            guard let memoMessage = queryComponents["message"] else {
+                print("Memo message not found, can't proceed")
+                return
+            }
+            
+            guard let labelMessage = queryComponents["label"] else {
+                print("label message not found, can't proceed")
+                return
+            }
+            
+            // handle memo message = memoMessage
+            // handle memo message = labelMessage
+            // handle aReplyAddress
+            
+            self.viewModel.setAmountWithoutFee(Double(amount)!)
+            
+            let appEnvironment = ZECCWalletEnvironment.shared
+            
+            if self.viewModel.isSyncing == false{
+                print("Syncing is not in progress, please proceed to transaction screen")
+                startSendFlow()
+            }else{
+                print("Syncing is in progress, can't proceed")
+            }
+        }
+     
+        
     }
     
 }
