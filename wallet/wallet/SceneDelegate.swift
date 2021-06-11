@@ -16,7 +16,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         
-        logger.info("Opened up a deep link")
+        // This is the use case of handling the URL Contexts - Deep linking when app is running in the background
+        
+        logger.info("Opened up a deep link - App running in the background")
         
         if let url = URLContexts.first?.url {
             let urlDataDict:[String: URL] = ["url": url]
@@ -39,6 +41,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
             self.addSwiftUIView()
         }
+        
+        // This is the use case of handling the URL Contexts - Deep linking when app is not running in the background
+        
+        if let url = connectionOptions.urlContexts.first?.url {
+            let urlDataDict:[String: URL] = ["url": url]
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                logger.info("Opened up a deep link - App is not running in the background")
+                NotificationCenter.default.post(name: .openTransactionScreen, object: nil, userInfo: urlDataDict)
+            }
+             
+        }
+        
     }
     
     func addSwiftUIView(){
