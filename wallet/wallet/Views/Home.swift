@@ -18,6 +18,7 @@ final class HomeViewModel: ObservableObject {
     }
     @Published var sendZecAmountText: String = "0"
     @Published var showReceiveFunds: Bool
+    @Published var openQRCodeScanner: Bool
     @Published var showProfile: Bool
     @Published var isSyncing: Bool = false
     @Published var sendingPushed: Bool = false
@@ -33,6 +34,7 @@ final class HomeViewModel: ObservableObject {
     init(amount: Double = 0, balance: Double = 0) {
         showProfile = false
         showReceiveFunds = false
+        openQRCodeScanner = false
         bindToEnvironmentEvents()
         
         NotificationCenter.default.publisher(for: .sendFlowStarted)
@@ -278,16 +280,27 @@ struct Home: View {
                             self.viewModel.showReceiveFunds = true
                             tracker.track(.tap(action: .receive), properties: [:])
                         }) {
-                            Image("QRCodeIcon")
-                                .renderingMode(.original)
+                            Image("receive").resizable()
+                                .frame(width: 35, height: 35)
+                                .foregroundColor(.white)
                                 .accessibility(label: Text("Receive Funds".localized()))
+                                .scaleEffect(0.5)
+                            
+                        }
+                        
+                        Button(action: {
+
+//                            self.viewModel.openQRCodeScanner = true
+                        }) {
+                            Image("QRCodeIcon").resizable()
+                                .frame(width: 35, height: 35)
                                 .scaleEffect(0.5)
                             
                         }
                 },
                     headerItem: {
                         Text("balance_amounttosend".localized())
-                            .font(.system(size: 14))
+                            .font(.system(size: 12))
                             .foregroundColor(.white)
                             .opacity(self.isSendingEnabled ? 1 : 0.4)
                 },
@@ -316,7 +329,7 @@ struct Home: View {
                     EmptyView()
                 }.isDetailLink(false)
                 
-                // Navigation Link for QR Code Screen
+                // Navigation Link for Recieve funds screen
                 NavigationLink(destination: LazyView (
                     ReceiveFunds(address: self.appEnvironment.initializer.getAddress() ?? "",
                                  isShown:  self.$viewModel.showReceiveFunds)
@@ -324,6 +337,16 @@ struct Home: View {
                 ), isActive: $viewModel.showReceiveFunds) {
                     EmptyView()
                 }.isDetailLink(false)
+                
+                
+                // Navigation Link for QR Code Screen
+//                NavigationLink(destination: LazyView (
+//                    QRCodeScanner()
+//                        .environmentObject(self.appEnvironment)
+//                ), isActive: $viewModel.openQRCodeScanner) {
+//                    EmptyView()
+//                }.isDetailLink(false)
+//
                 
                 
                 SendZecView(zatoshi: self.$viewModel.sendZecAmountText)
