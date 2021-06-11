@@ -27,12 +27,14 @@ class SendFlow {
     
     @discardableResult static func start(appEnviroment: ZECCWalletEnvironment,
                       isActive: Binding<Bool>,
-                      amount: Double, memoText: String) -> SendFlowEnvironment {
+                      amount: Double, memoText: String,address: String) -> SendFlowEnvironment {
 
         let flow = SendFlowEnvironment(amount: amount,
                                        verifiedBalance: appEnviroment.initializer.getVerifiedBalance().asHumanReadableZecBalance(),
                                        isActive: isActive)
         flow.memo = memoText
+        
+        flow.address = address
         
         Self.current = flow
         

@@ -196,10 +196,10 @@ struct Home: View {
         appEnvironment.synchronizer.status.value != .syncing && appEnvironment.synchronizer.verifiedBalance.value > 0
     }
     
-    func startSendFlow(memo:String) {
+    func startSendFlow(memo:String, address:String) {
         SendFlow.start(appEnviroment: appEnvironment,
                        isActive: self.$sendingPushed,
-                       amount: viewModel.sendZecAmount,memoText: memo)
+                       amount: viewModel.sendZecAmount,memoText: memo,address:address)
         self.sendingPushed = true
     }
     
@@ -211,7 +211,7 @@ struct Home: View {
     var enterAddressButton: some View {
         Button(action: {
             tracker.track(.tap(action: .homeSend), properties: [:])
-            self.startSendFlow(memo: "")
+            self.startSendFlow(memo: "",address: "")
         }) {
             Text("button_send".localized())
                 .foregroundColor(.white)
@@ -358,7 +358,7 @@ struct Home: View {
                     
                     self.enterAddressButton.onReceive(self.viewModel.$sendingPushed) { pushed in
                         if pushed {
-                            self.startSendFlow(memo: "")
+                            self.startSendFlow(memo: "",address:"")
                         } else {
                             self.endSendFlow()
                         }
@@ -451,7 +451,7 @@ struct Home: View {
             
             // handle memo message = labelMessage
             
-            PasteboardAlertHelper.shared.copyToPasteBoard(value: aReplyAddress, notify: "feedback_addresscopied".localized())
+//            PasteboardAlertHelper.shared.copyToPasteBoard(value: aReplyAddress, notify: "feedback_addresscopied".localized())
             
             self.viewModel.setAmountWithoutFee(Double(amount)!)
             
@@ -460,7 +460,7 @@ struct Home: View {
                 
                 let memoMessageDecoded = memoMessage.removingPercentEncoding
                 
-                self.startSendFlow(memo: memoMessageDecoded ?? "")
+                self.startSendFlow(memo: memoMessageDecoded ?? "",address: aReplyAddress ?? "")
                 
                 
             }else{
