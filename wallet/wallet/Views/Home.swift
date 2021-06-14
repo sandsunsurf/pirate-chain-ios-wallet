@@ -180,6 +180,66 @@ final class HomeViewModel: ObservableObject {
     }
 }
 
+struct NavigationBarView: View {
+    @EnvironmentObject var viewModel: HomeViewModel
+    @Environment(\.walletEnvironment) var appEnvironment: ZECCWalletEnvironment
+    var isSendingEnabled: Bool {
+        appEnvironment.synchronizer.status.value != .syncing && appEnvironment.synchronizer.verifiedBalance.value > 0
+    }
+    
+       var body: some View {
+        ZcashNavigationBar(
+            leadingItem: {
+                Button(action: {
+                    self.viewModel.showReceiveFunds = true
+                    tracker.track(.tap(action: .receive), properties: [:])
+                }) {
+                    Image("receive").resizable()
+                        .frame(width: 35, height: 35)
+                        .foregroundColor(.white)
+                        .accessibility(label: Text("Receive Funds".localized()))
+                        .scaleEffect(0.5)
+                    
+                }
+                
+                
+                           
+               NavigationLink(destination: LazyView(
+                   QRCodeScanner().environmentObject(ZECCWalletEnvironment.shared))
+               ) {
+                               
+                Image("QRCodeIcon").resizable()
+                    .frame(width: 35, height: 35)
+                    .scaleEffect(0.5)
+               }
+                  
+        },
+            headerItem: {
+                Text("balance_amounttosend".localized())
+                    .font(.system(size: 12))
+                    .foregroundColor(.white)
+                    .opacity(self.isSendingEnabled ? 1 : 0.4)
+        },
+            trailingItem: {
+                Button(action: {
+                    tracker.track(.tap(action: .showProfile), properties: [:])
+                    self.viewModel.showProfile = true
+                }) {
+                    Image("settings")
+                        .renderingMode(.template)
+                        .foregroundColor(.white)
+                        .colorMultiply(.white)
+                        .opacity(0.6)
+                        .frame(width: 26, height: 26)
+                        .accessibility(label: Text("Your Settings".localized()))
+                        .padding()
+                }
+        })
+            .frame(height: 64)
+        
+       }
+}
+
 struct Home: View {
     let buttonHeight: CGFloat = 64
     let buttonPadding: CGFloat = 40
@@ -261,7 +321,20 @@ struct Home: View {
     var amountOpacity: Double {
         self.isSendingEnabled ? self.viewModel.sendZecAmount > 0 ? 1.0 : 0.6 : 0.3
     }
-    
+//
+//    func navigateToQRCode(){
+//
+//        // Navigation Link for QR Code Screen
+//                NavigationLink(destination: LazyView (
+//                    QRCodeScanner()
+//                        .environmentObject(self.appEnvironment)
+//                ), isActive: $viewModel.openQRCodeScanner) {
+//                    EmptyView()
+//                }.isDetailLink(false)
+//
+//
+//    }
+//
     var body: some View {
         ZStack {
             
@@ -274,53 +347,7 @@ struct Home: View {
             
             VStack(alignment: .center, spacing: 5) {
                 
-                ZcashNavigationBar(
-                    leadingItem: {
-                        Button(action: {
-                            self.viewModel.showReceiveFunds = true
-                            tracker.track(.tap(action: .receive), properties: [:])
-                        }) {
-                            Image("receive").resizable()
-                                .frame(width: 35, height: 35)
-                                .foregroundColor(.white)
-                                .accessibility(label: Text("Receive Funds".localized()))
-                                .scaleEffect(0.5)
-                            
-                        }
-                        
-                        Button(action: {
-
-//                            self.viewModel.openQRCodeScanner = true
-                        }) {
-                            Image("QRCodeIcon").resizable()
-                                .frame(width: 35, height: 35)
-                                .scaleEffect(0.5)
-                            
-                        }
-                },
-                    headerItem: {
-                        Text("balance_amounttosend".localized())
-                            .font(.system(size: 12))
-                            .foregroundColor(.white)
-                            .opacity(self.isSendingEnabled ? 1 : 0.4)
-                },
-                    trailingItem: {
-                        Button(action: {
-                            tracker.track(.tap(action: .showProfile), properties: [:])
-                            self.viewModel.showProfile = true
-                        }) {
-                            Image("settings")
-                                .renderingMode(.template)
-                                .foregroundColor(.white)
-                                .colorMultiply(.white)
-                                .opacity(0.6)
-                                .frame(width: 26, height: 26)
-                                .accessibility(label: Text("Your Settings".localized()))
-                                .padding()
-                        }
-                })
-                    .frame(height: 64)
-                
+                NavigationBarView()
                 // Navigation link for Profile Screen
                 NavigationLink(destination: LazyView (
                     ProfileScreen(isShown: self.$viewModel.showProfile)
@@ -338,16 +365,7 @@ struct Home: View {
                     EmptyView()
                 }.isDetailLink(false)
                 
-                
-                // Navigation Link for QR Code Screen
-//                NavigationLink(destination: LazyView (
-//                    QRCodeScanner()
-//                        .environmentObject(self.appEnvironment)
-//                ), isActive: $viewModel.openQRCodeScanner) {
-//                    EmptyView()
-//                }.isDetailLink(false)
-//
-                
+     
                 
                 SendZecView(zatoshi: self.$viewModel.sendZecAmountText)
                     .opacity(amountOpacity)
