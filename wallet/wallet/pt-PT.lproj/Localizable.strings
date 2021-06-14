@@ -1,0 +1,290 @@
+/*
+  Localizable.strings
+  wallet
+
+  Copyright Â© 2020 Francisco Gindre. All rights reserved.
+*/
+
+// ERRORS
+// Titles
+"Wallet Improperly Initialized" = "Carteira Incorretamente Inicializada";
+"Processor Error" = "Erro de Processador";
+"Connection Error" = "Erro de Conexão";
+"Failed to Send" = "Falha no Envio";
+"Oops Something happened" = "Oops Algo aconteceu";
+"Critical Error" = "Erro Crítico";
+
+// Messages
+"This wallet has not been initialized correctly! Perhaps an error occurred during install. If you just created a new wallet close the app and retry.\n\n If this is an existing wallet, it can be fixed with a reset. First, locate your backup seed phrase, then \"Nuke Wallet\" and reimport it." = "Esta carteira não foi inicializada corretamente! Talvez um erro tenha ocorrido durante a instalação. Se acabou de criar uma nova carteira feche a aplicação e volte a tentar.\n\n Se esta é uma carteira já existente, pode ser resolvido com uma redefinição. Primeiro, localize a cópia de segurança da frase semente, depois \"Destruir Carteira\" e reimporte-a.";
+"An error ocurred while syncing the blockchain. If the problem persists, back up your seed phrase and restore your wallet." = "Um erro ocurreu enquanto sincronizava a blockchain. Se o problema persistir, faça cópia de segurança da frase semente e restaure a sua carteira.";
+"We are having problems with the network connection." = "Estamos a ter problemas com a conexão de rede.";
+"We were unable to send your transaction. Your funds are safe, we just need to wait until the transaction expires before you can send them again." = "Não fomos capazes de enviar a sua transação. Os seus fundos estão a salvo, só precisamos de esperar que a transação expire antes que os possa enviar outra vez.";
+"There's an internal error. Probably nothing serious. If this error persists, back up your seed phrase and restore your wallet" = "Houve um erro interno. Provavelmente nada de grave. Se este erro persistir, faça cópia de segurança da frase semente e restaure a sua carteira";
+"If this error persists, back up your seed phrase and restore your wallet" = "Se este erro persistir, faça cópia de segurança da frase semente e restaure a sua carteira";
+
+// COMPONENTS:
+"button_back" = "Volte Atrás";
+"Paste" = "Colar";
+"balance_available" = "Disponível";
+"expecting " = "esperando";
+"Create new Wallet" = "Criar nova Carteira";
+"button_done" = "Feito";
+"button_backup" = "Fazer Cópia de Segurança à Carteira";
+"Press and hold\nto send ARRR" = "Pressione e segure\npara enviar ARRR";
+"Add Memo Here" = "Adicione Memorando Aqui";
+"Tap\nto send ARRR" = "Toque\npara enviar  ARRR";
+"Enter Shielded Address" = "Coloque Endereço Shielded";
+"Error" = "Erro";
+"an error ocurred" = "ocorreu um erro";
+"button_close" = "Fechar";
+"Pending confirmation" = "Confirmação pendente";
+"of 10 Confirmations" = "de 10 Confirmações";
+"button_share_address" = "Partilhar Endereço";
+
+// profile screen
+"NUKE WALLET" = "DESTRUIR CARTEIRA";
+"profile_screen" = "Utilizador Shielded\n";
+
+// WalletDetailsHeader
+"screen_wallethistory" = "Histórico da sua Carteira";
+"wallet_history_sent" = "Enviado";
+"wallet_history_received" = "Recebido";
+"Shielded address:" = "Endereço Shielded:";
+ //SendTransaction
+"send_fromshielded" = "da sua carteira shielded";
+"send_fromtransparent" = "da sua carteira transparent";
+"send_fromboth" = "de ambas as carteiras";
+"feedback_default" = "Digite Endereço Shielded de Pirate Chain ";
+"feedback_shieldedaddress" = "Este é um Endereço Shielded válido";
+"feedback_transparentaddress" = "Este é um Endereço Transparent válido";
+"feedback_addresscopied" = "Endereço Copiado!";
+"feedback_invalidaddress" = "Aviso, este endereço não é válido!";
+"feedback_sameaddress" = "Aviso, este parece ser o seu endereço!";
+"label_replyto" = "incluir resposta a";
+"send_onclipboard" = "Na área de transferência.";
+"send_lastused" = "Último usado";
+"send_unknown" = "Desconhecido";
+"label_memo" = "Memorando";
+"label_to" = "Para";
+"label_charactercount" = "%@ caractéres";
+"from %@" = "de %@";
+"You Have %@ sendable ARRR" = "Você tem %@ ARRR enviável";
+"%@ sendable ARRR. You don't have sufficient funds to cover the amount + Miner Fee of %@ ARRR" = "%@ ARRR enviável. Você não tem fundos suficientes para cobrir a quantia + Taxa de mineiro de %@ ARRR";
+"You don't have any sendable ARRR yet" = "Você ainda não tem ARRR enviável";
+"send_securityauth" = "Autenticar para enviar";
+"label_add_memo" = "Adicione Memorando (opcional)";
+
+//Sending
+"thing is that we really don't know what just went down, sorry!" = "Acontece que não fazemos ideia do que se passou, desculpe!";
+"send_sending" = "Enviando %@ ARRR para";
+"send_sent" = "Enviado!";
+"an error ocurred while submitting your transaction" = "um erro ocorreu enquanto submetia a sua transação";
+"label_unabletosend" = "Incapaz de enviar para";
+"button_seedetails" = "Ver Detalhes";
+
+//CreateNewWallet
+"Create New" = "Criar Nova";
+"Restore" = "Restaurar";
+
+//RestoreWallet
+"Enter your Seed Phrase" = "Digite a sua Frase Semente";
+"Make sure nobody is watching you!" = "Certifique-se que ninguém o está a ver!";
+"Wallet Birthday height" = "Altura do aniversário da carteira";
+"If you don't know it, leave it blank. First Sync will take longer." = "Se não souber, deixe em branco. A primeira sincronização vai demorar mais tempo.";
+"Proceed" = "Prosseguir";
+"Restore from Seed Phrase" = "Restaurar a partir da Frase Semente";
+"Your seed phrase is valid" = "A sua frase semente é válida";
+"Your seed phrase is invalid!" = "A sua frase semente é inválida!";
+
+//BackupWallet
+"feedback_walletbackupstatus" = "Necessita de fazer uma cópia de segurança à sua carteira."
+"balance_syncing" = "Sincronizando %@%%"; // chave não mapeada para que se  a busca da localização falhar a aplicação não trave
+"button_skip" = "Saltar";
+
+
+//VerifyBackup
+"Verify your backup." = "Verifique a sua cópia de segurança.";
+"Please fill out the missing seed words to verify your backup." = "Por favor preencha as palavras em falta da sua frase semente para verificar a sua cópia de segurança.";
+"You will need to enter all 24 seed words in order." = "Voçê vai precisar de colocar todas as 24 palavras da frase semente por ordem.";
+
+//SeedBackup
+"seed_birthday" = "Aniversário de Carteira";
+"title_backupseed" = "A sua cópia de segurança da semente";
+"copy_backupseed" = "Recomendamos um cópia de segurança em papel e um cofre de senha.";
+"button_copytoclipboard" = "Copiar para a área de transferência";
+
+
+//Home
+"There was an error creating your wallet. Please back it up and try again" = "Ocorreu um erro ao criar a sua carteira. Por favor faça uma cópia de segurança e tente outra vez";
+"Max Retry attempts (%@) have been reached" = "Máximo de Retentativas (%@) foi atingido";
+"Retry" = "Tentar outra vez";
+"button_send" = "Enviar";
+"balance_amounttosend" = "Coloque a quantia a enviar";
+"balance_nofunds" = "Não há fundos disponíveis";
+"button_wallethistory" = "Histórico Carteira";
+"Receive Funds" = "Receber Fundos";
+"Change PIN" = "Mudar PIN";
+
+//ReceiveFunds
+"QR Code for %@" = "Codigo QR para %@";
+"address_shielded" = "O seu Endereço Shielded";
+"receive_title" = "Receber ARRR";
+
+//ScanAddress
+"send_scanQR" = "Digitalize o endereço do destinatário";
+"scan_cameraunallowed" = "Não temos permissão para aceder á sua câmera";
+"scan_cameraunallowed2" = "Permitir acesso à câmera nas configurações do seu dispositivo";
+"scan_cameraunavaliable" = "Câmera Indisponível";
+"scan_invalidQR" = "Este código QR não contém um endereço válido de Pirate Chain!";
+
+//ShareScreen
+"Share Screen" = "Partilhar";
+
+//ProfileScreen
+"button_feedback" = "Enviar comentários";
+"button_applicationlogs" = "Ver Logs da Aplicação";
+"ECC Wallet" = "Carteira ECC";
+"profile_screen" = "Utilizador Shielded";
+"Send Feedback" = "Enviar comentários";
+"See Application Log" = "Ver Log da Aplicação";
+"Nighthawk Wallet" = "Carteira Pirate Chain";
+
+//FundsAtRisk
+"seed_remindertext" = "Lembre-se, com Pirate Chain VOÇÊ é o banco.Qualquer pessoa com a sua frase semente tem acesso à sua carteira.";
+"seed_remindertext2" = "Você deve fazer imediatamente uma cópia de segurança a isto uma vez que mais ninguém a pode restaurar por si.";
+"seed_reminder" = "Os seus fundos estão em risco!";
+"button_backup" = "Cópia de segurança";
+"button_skip" = "Saltar por agora";
+
+//NukeWarning
+
+
+"nuke_title" = "Voçê está prestes a DESTRUIR a sua carteira";
+"nuke_nukewarning" = "Lembre-se, com Pirate Chain VOÇÊ é o banco.Qualquer pessoa com a sua frase semente tem acesso á sua carteira";
+"nuke_nukewarning2" = "Certifique-se que fez cópia de segurança à sua carteira antes de prosseguir.";
+"nuke_nukewarning3" = "Se destruir a sua carteira sem fazer cópia de segurança à sua frase semente, não há forma de a recuperar";
+"nuke_nukeButton" = "DESTRUIR CARTEIRA";
+"nuke_backupbutton" = "Fazer Cópia de Segurança Agora!";
+"nuke_alerttitle" = "Apagar Carteira?";
+"nuke_alertmessage" = "Está prestes a destruir a sua carteira. Tem a certeza que quer prosseguir?";
+"nuke_alertcancel" = "Não tenho a certeza";
+"nuke_alertconfirm" = "DESTRUIR CARTEIRA!";
+
+//FeedBackForm
+"Feedback Sent!" = "Feedback Enviado!";
+"Thanks for your feedback!" = "Obrigado pelo seu feedback!";
+
+
+//InputPasscodeWithCustomPad
+"Enter New Passcode" = "Digite a nova senha";
+"Confirm Passcode" = "Confirme a nova senha";
+
+// Settings Screen
+
+"Endpoint" = "servidor lite";
+
+"My Pirate Chain Lite Server:" = "Meu Servidor Lite Pirate Chain :";
+"Invalid Lite Server Address, Reverting it to pirate chain address!" = "Endereço de Servidor Lite inválido, Revertendo para endereço Pirate Chain!";
+"Invalid Lite Server Port, Reverting it to pirate chain port!" = "Invalid Lite Server Port, Reverting it to pirate chain port!";
+"Powered By Meshbits Ltd Team" = "Powered By Meshbits Ltd Team";
+
+
+"An error occured" = "Ocorreu um erro";
+"dismiss" = "ignorar";
+"An error ocurred, please check your device logs" = "Ocorreu um erro, por favor verifique os logs do dispositivo";
+"An error ocurred, but we can't figure out what it is. Please check device logs for more details" = "Ocorreu um erro, mas não conseguimos perceber o que é. Por favor verifique os logs do dispositivo para mais detalhes";
+"LAST USED" = "ÚLTIMO USADO";
+"Zcash address in buffer!" = "endereço ARRR no buffer!";
+
+
+
+// Misc
+"Explore" = "Explorar";
+
+"from" = "de ";
+
+"block" = "bloco ";
+
+"with a" = "com a";
+
+"You Failed to send" = "Voçê falhou em enviar";
+
+"Total Spent" = "Total Gasto";
+
+"You Received" = "Voçê recebeu";
+"This is embarassing" = "Isto é embaraçoso";
+"you shouldn't be seeing this" = "voçe não devia estar a ver isto";
+"Authorization Failed!" = "Autorização falhada!";
+"It appears that you were not able to authenticate" = "parece que voçê não conseguiu autenticar";
+"Oops" = "Oops";
+"Transaction Detail" = "Detalhes da Transação";
+
+"Attempt to open transaction details in sending screen with no pending transaction in send flow" = "Tentativa de abrir os detalhes da transação no ecrã de envio sem nenhuma transação pendente no fluxo de envio";
+
+"Existing keys found!" = "Encontradas chaves existentes!";
+
+"it appears that this device already has keys stored on it. What do you want to do?" = "parece que este dispositivo já tem chaves guardadas nele. O que quer fazer?";
+
+"Restore existing keys" = "Restaurar chaves existentes";
+
+"Discard them and continue" = "Discartá-las e continuar";
+
+"Error Initializing Wallet" = "Erro ao inicializar carteira";
+
+"There was a problem initializing the wallet" = "Ocorreu um problema ao inicializar a carteira";
+
+"Could not restore wallet" = "Não foi possível restaurar carteira";
+
+"There's a problem restoring your wallet. Please verify your seed phrase and try again." = "Ocorreu um problema ao restaurar sua carteira. Por favor, verifique sua frase semente e tente novamente";
+
+"Problem Retrieving your seed" = "Problema ao recuperar sua semente";
+
+"We are unable to display your seed phrase. Please close the app and retry this operation" = "Não fomos capazes de mostrar sua frase semente. Feche o aplicativo e tente esta operação novamente";
+
+"We don't have permission to access your camera" = "Não temos permissão para aceder à sua câmera";
+
+"My ARRR Address \n" = "Meu Endereço ARRR  \n";
+
+"Enter an endpoint" = "Digite um Servidor Lite";
+
+"Pirate Chain Wallet" = "Carteira Pirate Chain";
+
+"DELETE WALLET" = "APAGAR CARTEIRA";
+
+"Please Rank Your Experience" = "Por Favor Classifique a sua Experiência";
+
+"We improve and iterate with YOUR feedback" = "Nós melhoramos e repetimos com SEU feedback";
+
+"Any details to share?" = "Alguns detalhes para compartilhar?";
+
+"My Experience was..." = "Minha experiência foi...";
+
+"Was your Balance Clear?" = "O seu saldo foi compensado?";
+
+"My balance was..." = "O meu Saldo...";
+
+"What feature would you like to see next?" = "Qual característica você gostaria de ver a seguir?";
+
+"I'd like..." = "Eu gostaria...";
+
+"Transaction Details" = "Detalhes da Transação";
+
+// Settings
+"Invalid Passcode, Please enter a valid passcode."  = "Senha inválida, digite uma senha válida." ;
+"Great, you have set a new passcode!" = "Ótimo, você definiu uma nova senha!";
+"Pirate Chain" = "Pirate Chain";
+"Enable Biometric Security" = "Ativar segurança biométrica";
+"Authenticate Biometric" = "Ative a autenticação biométrica para proteger a carteira.";
+
+
+// History
+"to your shielded wallet" = "para a sua carteira shielded";
+"While usually an acceptable risk, you will be possibly exposing your interest in this transaction id by visiting explorer.pirate.black" = "Embora seja geralmente um risco aceitável, você possivelmente estará expondo seu interesse neste id de transação visitando explorer.pirate.black";
+"Cancel" = "Cancelar";
+"View TX Details" = "Ver DetalhesTX ";
+"Leaving Pirate Chain Wallet" = "Saindo da Carteira Pirate Chain";
+"includes reply-to" = "inclui responder a";
+"to " = "para ";
+"failed!" = "falhou!";
+"Confirmed" = "Confirmado";
+"Pending confirmation" = "Confirmação pendente";

@@ -170,6 +170,10 @@ struct ProfileScreen: View {
                                                 updateLanguageAndResetApp(language: "pl")
                                                 print("Changed To Polish")
                                             },
+                                            .default(Text("Portuguese")) {
+                                                updateLanguageAndResetApp(language: "pt-PT")
+                                                print("Changed To Portuguese")
+                                            },
                                             .destructive(Text("Cancel")) {
                                                 print("cancel")
                                             }
@@ -344,16 +348,8 @@ struct ProfileScreen: View {
     
     func updateLanguageAndResetApp(language: String){
         Bundle.setLanguage(lang: language)
-        
-//        let storyboard = UIStoryboard(name: "LaunchScreen", bundle: nil)
-//
-//        return storyboard.instantiateInitialViewController()!
-        
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-//            NotificationCenter.default.post(name: NSNotification.Name("MoveToFirstViewLayout"), object: nil)
-//        }
     }
-//
+    
     func didEndEditingAddressTextField(){
         if anAddress.count == 0 {
             isDisplayAddressAlert = true
