@@ -22,6 +22,7 @@ class QRCodeScanAddressViewModel: ObservableObject {
     var shouldShowSwitchButton: Bool = true
     var showCloseButton: Bool = false
     @Published var showInvalidAddressMessage: Bool = false
+    @Published var showValidAddressMessage: Bool = false
     init(shouldShowSwitchButton: Bool, showCloseButton: Bool) {
         self.shouldShowSwitchButton = shouldShowSwitchButton
         self.showCloseButton = showCloseButton
@@ -42,6 +43,10 @@ class QRCodeScanAddressViewModel: ObservableObject {
                 self.showInvalidAddressMessage = true
                 return
             }
+            self.showInvalidAddressMessage = true
+            self.showValidAddressMessage = true
+            PasteboardAlertHelper.shared.copyToPasteBoard(value: address, notify: "feedback_addresscopied".localized())
+                self.scannerDelegate.publisher.send(address)
         }.store(in: &dispose)
     }
   
@@ -54,7 +59,7 @@ struct QRCodeScanner: View {
     @Binding var isScanAddressShown: Bool
     @State var wrongAddressScanned = false
     @State var torchEnabled: Bool = false
-
+    @Environment(\.presentationMode) var presentationMode:Binding<PresentationMode>
     var scanFrame: some View {
         Image("QRCodeScanFrame")
             .padding()
@@ -84,7 +89,7 @@ struct QRCodeScanner: View {
                 Spacer()
                 VStack {
                     scanFrame
-                    Text("scan_invalidQR".localized())
+                    Text(viewModel.showValidAddressMessage ? "Copied Valid Scanned Address to Clipboard" : "scan_invalidQR".localized())
                         .bold()
                         .foregroundColor(.white)
                         .opacity(self.wrongAddressScanned ? 1 : 0)
@@ -96,8 +101,14 @@ struct QRCodeScanner: View {
                             DeviceFeedbackHelper.vibrate()
                             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                                 self.wrongAddressScanned = false
-                            }
-                    }
+                        }
+                        }.onReceive(viewModel.$showValidAddressMessage) { (value) in
+                            guard value else { return }
+                            DeviceFeedbackHelper.vibrate()
+                               DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                   presentationMode.wrappedValue.dismiss()
+                               }
+                       }
                 }
                 Spacer()
             }
