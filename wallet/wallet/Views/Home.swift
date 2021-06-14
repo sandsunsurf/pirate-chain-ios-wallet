@@ -16,6 +16,7 @@ final class HomeViewModel: ObservableObject {
     var sendZecAmount: Double {
         zecAmountFormatter.number(from: sendZecAmountText)?.doubleValue ?? 0.0
     }
+    var diposables = Set<AnyCancellable>()
     @Published var sendZecAmountText: String = "0"
     @Published var showReceiveFunds: Bool
     @Published var openQRCodeScanner: Bool
@@ -53,7 +54,27 @@ final class HomeViewModel: ObservableObject {
             }
         ).store(in: &cancellable)
         
-        
+        NotificationCenter.default.publisher(for: .qrCodeScanned)
+                   .receive(on: DispatchQueue.main)
+                   .debounce(for: 1, scheduler: RunLoop.main)
+                   .sink(receiveCompletion: { (completion) in
+                       switch completion {
+                       case .failure(let error):
+                           logger.error("error scanning: \(error)")
+                           tracker.track(.error(severity: .noncritical), properties:  [ErrorSeverity.messageKey : "\(error)"])
+
+                       case .finished:
+                           logger.debug("finished scanning")
+                       }
+                   }) { (notification) in
+                       guard let address = notification.userInfo?["zAddress"] as? String else {
+                           return
+                       }
+                       self.openQRCodeScanner = false
+                       logger.debug("got address \(address)")
+                       
+               }
+               .store(in: &diposables)
     }
     
     func bindToEnvironmentEvents() {
@@ -178,10 +199,13 @@ final class HomeViewModel: ObservableObject {
         guard let value = self.zecAmountFormatter.string(for: zecAmount) else { return }
         self.sendZecAmountText = value
     }
+    
 }
+
 
 struct NavigationBarView: View {
     @EnvironmentObject var viewModel: HomeViewModel
+    @State var scanViewModel = QRCodeScanAddressViewModel(shouldShowSwitchButton: false, showCloseButton: false)
     @Environment(\.walletEnvironment) var appEnvironment: ZECCWalletEnvironment
     var isSendingEnabled: Bool {
         appEnvironment.synchronizer.status.value != .syncing && appEnvironment.synchronizer.verifiedBalance.value > 0
@@ -202,16 +226,37 @@ struct NavigationBarView: View {
                     
                 }
                 
+               NavigationLink(destination:  LazyView(
                 
-                           
-               NavigationLink(destination: LazyView(
-                   QRCodeScanner().environmentObject(ZECCWalletEnvironment.shared))
+                QRCodeScanner(
+                    viewModel: self.scanViewModel,
+                    cameraAccess: CameraAccessHelper.authorizationStatus,
+                    isScanAddressShown: self.$viewModel.openQRCodeScanner
+                ).environmentObject(ZECCWalletEnvironment.shared)
+                
+            )
                ) {
-                               
+
                 Image("QRCodeIcon").resizable()
                     .frame(width: 35, height: 35)
                     .scaleEffect(0.5)
                }
+                
+                
+               
+                           
+//               NavigationLink(destination: LazyView(
+//                                QRCodeScanner(codeTypes: [.qr], completion:  { result in
+//                                    if case let .success(code) = result {
+//                                        print(code)
+//                                    }
+//                                }).environmentObject(ZECCWalletEnvironment.shared)).navigationBarTitle(Text("Scan ARRR Code"), displayMode: .inline)
+//               ) {
+//
+//                Image("QRCodeIcon").resizable()
+//                    .frame(width: 35, height: 35)
+//                    .scaleEffect(0.5)
+//               }
                   
         },
             headerItem: {
