@@ -97,7 +97,7 @@
 "Your seed phrase is invalid!" = "A sua frase semente é inválida!";
 
 //BackupWallet
-"feedback_walletbackupstatus" = "Necessita de fazer uma cópia de segurança à sua carteira."
+"feedback_walletbackupstatus" = "Necessita de fazer uma cópia de segurança à sua carteira.";
 "balance_syncing" = "Sincronizando %@%%"; // chave não mapeada para que se  a busca da localização falhar a aplicação não trave
 "button_skip" = "Saltar";
 
