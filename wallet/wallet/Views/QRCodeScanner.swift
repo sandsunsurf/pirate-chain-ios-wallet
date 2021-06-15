@@ -38,7 +38,7 @@ class QRCodeScanAddressViewModel: ObservableObject {
                 logger.debug("finished")
             }
         }) { (address) in
-            print(address)
+
             guard ZECCWalletEnvironment.shared.isValidAddress(address) else {
                 self.showInvalidAddressMessage = true
                 return

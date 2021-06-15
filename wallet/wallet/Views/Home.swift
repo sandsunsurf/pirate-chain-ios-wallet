@@ -71,7 +71,7 @@ final class HomeViewModel: ObservableObject {
                            return
                        }
                        self.openQRCodeScanner = false
-                       logger.debug("got address \(address)")
+//                       logger.debug("got address \(address)")
                        
                }
                .store(in: &diposables)
@@ -518,6 +518,11 @@ struct Home: View {
             
             guard let aReplyAddress = url.host else {
                 logger.info("Invalid Reply Address, can't proceed")
+                return
+            }
+            
+            guard ZECCWalletEnvironment.shared.isValidAddress(aReplyAddress) else {
+                logger.info("Invalid Sheilded Address, can't proceed")
                 return
             }
 

@@ -326,7 +326,7 @@ extension ZECCWalletEnvironment {
     }
     
     func isValidAddress(_ address: String) -> Bool {
-        self.initializer.isValidShieldedAddress(address) || self.initializer.isValidTransparentAddress(address)
+        self.initializer.isValidShieldedAddress(address) // || self.initializer.isValidTransparentAddress(address)
     }
     func sufficientFundsToSend(amount: Double) -> Bool {
         return sufficientFunds(availableBalance: self.initializer.getVerifiedBalance(), zatoshiToSend: amount.toZatoshi())
