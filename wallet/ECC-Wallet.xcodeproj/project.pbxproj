@@ -234,8 +234,6 @@
 		290D800C2656D25D0057FE9B /* PirateLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290D800A2656D25C0057FE9B /* PirateLogo.swift */; };
 		2984530D265AF25700C2303C /* Bundle+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2984530C265AF25700C2303C /* Bundle+Localized.swift */; };
 		2984530E265AF25700C2303C /* Bundle+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2984530C265AF25700C2303C /* Bundle+Localized.swift */; };
-		29859378267941FC00F9AD85 /* PirateChainPaymentURI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29859372267941F000F9AD85 /* PirateChainPaymentURI.framework */; };
-		29859379267941FC00F9AD85 /* PirateChainPaymentURI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 29859372267941F000F9AD85 /* PirateChainPaymentURI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		299DD039266A7B0F00CD4A8E /* iCloudBackups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299DD038266A7B0F00CD4A8E /* iCloudBackups.swift */; };
 		299DD03A266A7B0F00CD4A8E /* iCloudBackups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299DD038266A7B0F00CD4A8E /* iCloudBackups.swift */; };
 		29FE782726738FF000C2ECA0 /* QRCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FE782626738FF000C2ECA0 /* QRCodeScanner.swift */; };
@@ -293,20 +291,6 @@
 			remoteInfo = "ECC-Wallet-no-logging";
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		2985937A267941FC00F9AD85 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				29859379267941FC00F9AD85 /* PirateChainPaymentURI.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		027E3A71136B5B4D796FE4D9 /* Pods-ECC-WalletTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ECC-WalletTests.debug.xcconfig"; path = "Target Support Files/Pods-ECC-WalletTests/Pods-ECC-WalletTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -462,6 +446,7 @@
 		299DD038266A7B0F00CD4A8E /* iCloudBackups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCloudBackups.swift; sourceTree = "<group>"; };
 		29D1459C46D96D9D3DF2A55C /* Pods-walletUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-walletUITests.debug.xcconfig"; path = "Target Support Files/Pods-walletUITests/Pods-walletUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		29FE782626738FF000C2ECA0 /* QRCodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanner.swift; sourceTree = "<group>"; };
+		29FF31D9267D30B500063B07 /* Pirate Wallet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Pirate Wallet.entitlements"; sourceTree = "<group>"; };
 		2E7FFE45D0C33A74C7344A5E /* Pods-walletTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-walletTests.release.xcconfig"; path = "Target Support Files/Pods-walletTests/Pods-walletTests.release.xcconfig"; sourceTree = "<group>"; };
 		36B81DA8FB2A74AD2728DEF5 /* Pods_ECC_WalletTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ECC_WalletTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4561814BA5B2134841DF75E7 /* Pods-ECC-Wallet-no-logging.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ECC-Wallet-no-logging.debug.xcconfig"; path = "Target Support Files/Pods-ECC-Wallet-no-logging/Pods-ECC-Wallet-no-logging.debug.xcconfig"; sourceTree = "<group>"; };
@@ -513,7 +498,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0DE96F2A4EC1243F7B668E2 /* Pods_ECC_Wallet_no_logging.framework in Frameworks */,
-				29859378267941FC00F9AD85 /* PirateChainPaymentURI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -602,6 +586,7 @@
 		0D1250F623B557E40014EE3A = {
 			isa = PBXGroup;
 			children = (
+				29FF31D9267D30B500063B07 /* Pirate Wallet.entitlements */,
 				0D12510123B557E40014EE3A /* wallet */,
 				0D12511823B557E60014EE3A /* walletTests */,
 				0D12512323B557E60014EE3A /* walletUITests */,
@@ -905,7 +890,6 @@
 				0DCDFFD724B6722B000F6999 /* Frameworks */,
 				0DCDFFD924B6722B000F6999 /* Resources */,
 				0DCDFFE224B6722B000F6999 /* [CP] Embed Pods Frameworks */,
-				2985937A267941FC00F9AD85 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1809,6 +1793,7 @@
 			baseConfigurationReference = 4561814BA5B2134841DF75E7 /* Pods-ECC-Wallet-no-logging.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Pirate Wallet.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1830,8 +1815,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.meshbits.piratewallet;
 				PRODUCT_NAME = "Pirate Wallet";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1840,6 +1826,7 @@
 			baseConfigurationReference = CA0B4D8E758BD88483D3B5EE /* Pods-ECC-Wallet-no-logging.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Pirate Wallet.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1860,8 +1847,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.meshbits.piratewallet;
 				PRODUCT_NAME = "Pirate Wallet";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
