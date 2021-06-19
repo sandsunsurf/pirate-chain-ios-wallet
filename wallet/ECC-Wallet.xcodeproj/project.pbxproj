@@ -232,10 +232,10 @@
 		290D80052656D2100057FE9B /* InputPasscodeWithCustomPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290D80032656D2100057FE9B /* InputPasscodeWithCustomPad.swift */; };
 		290D800B2656D25D0057FE9B /* PirateLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290D800A2656D25C0057FE9B /* PirateLogo.swift */; };
 		290D800C2656D25D0057FE9B /* PirateLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290D800A2656D25C0057FE9B /* PirateLogo.swift */; };
+		294D2397267E287000885528 /* PirateChainPaymentURI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29859372267941F000F9AD85 /* PirateChainPaymentURI.framework */; };
+		294D2398267E287000885528 /* PirateChainPaymentURI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 29859372267941F000F9AD85 /* PirateChainPaymentURI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2984530D265AF25700C2303C /* Bundle+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2984530C265AF25700C2303C /* Bundle+Localized.swift */; };
 		2984530E265AF25700C2303C /* Bundle+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2984530C265AF25700C2303C /* Bundle+Localized.swift */; };
-		29859378267941FC00F9AD85 /* PirateChainPaymentURI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29859372267941F000F9AD85 /* PirateChainPaymentURI.framework */; };
-		29859379267941FC00F9AD85 /* PirateChainPaymentURI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 29859372267941F000F9AD85 /* PirateChainPaymentURI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		299DD039266A7B0F00CD4A8E /* iCloudBackups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299DD038266A7B0F00CD4A8E /* iCloudBackups.swift */; };
 		299DD03A266A7B0F00CD4A8E /* iCloudBackups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299DD038266A7B0F00CD4A8E /* iCloudBackups.swift */; };
 		29FE782726738FF000C2ECA0 /* QRCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FE782626738FF000C2ECA0 /* QRCodeScanner.swift */; };
@@ -295,13 +295,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		2985937A267941FC00F9AD85 /* Embed Frameworks */ = {
+		294D2399267E287000885528 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				29859379267941FC00F9AD85 /* PirateChainPaymentURI.framework in Embed Frameworks */,
+				294D2398267E287000885528 /* PirateChainPaymentURI.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -513,7 +513,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0DE96F2A4EC1243F7B668E2 /* Pods_ECC_Wallet_no_logging.framework in Frameworks */,
-				29859378267941FC00F9AD85 /* PirateChainPaymentURI.framework in Frameworks */,
+				294D2397267E287000885528 /* PirateChainPaymentURI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -905,7 +905,7 @@
 				0DCDFFD724B6722B000F6999 /* Frameworks */,
 				0DCDFFD924B6722B000F6999 /* Resources */,
 				0DCDFFE224B6722B000F6999 /* [CP] Embed Pods Frameworks */,
-				2985937A267941FC00F9AD85 /* Embed Frameworks */,
+				294D2399267E287000885528 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

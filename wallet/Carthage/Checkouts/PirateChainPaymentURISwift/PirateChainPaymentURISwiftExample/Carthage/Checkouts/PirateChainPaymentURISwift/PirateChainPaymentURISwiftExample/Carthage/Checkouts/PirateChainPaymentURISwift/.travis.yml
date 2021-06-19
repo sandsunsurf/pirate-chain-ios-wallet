@@ -1,0 +1,5 @@
+language: objective-c
+osx_image: xcode8.3
+
+script:
+  - xcodebuild clean build test -project BitcoinPaymentURI.xcodeproj -scheme BitcoinPaymentURI -destination "platform=iOS Simulator,name=iPhone 7" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO

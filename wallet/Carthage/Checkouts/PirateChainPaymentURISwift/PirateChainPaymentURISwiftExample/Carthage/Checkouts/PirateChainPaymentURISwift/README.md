@@ -49,7 +49,7 @@ In case you want to open the deep link to our Pirate Chain Wallet:
 
 https://github.com/Meshbits/pirate-chain-ios-wallet
 
-Parse the URI `arrr://175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W?amount=50&label=Luke-Jr&message=Donation%20for%20project%20xyz`.
+Parse the URI `arrr**://**175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W?amount=50&label=Luke-Jr&message=Donation%20for%20project%20xyz`.
 
 ```Swift
    guard let pirateChainPaymentURI = PirateChainPaymentURI.parse("arrr://175kjasjtWpb8K1S7NmH4Zx6rewF9WQrcZv245Wsknjadnsadnk?message=Bought%20pizza&amount=0.67&label=Mr.ET") else {
@@ -62,7 +62,7 @@ Parse the URI `arrr://175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W?amount=50&label=Luke-Jr
         print(pirateChainPaymentURI.message)
 ```
 
-Generatig the following DeepLink URI which will directly open a pirate chain wallet `arrr://175kjasjtWpb8K1S7NmH4Zx6rewF9WQrcZv245Wsknjadnsadnk?message=Bought%20pizza&amount=0.67&label=Mr.ET`
+Generatig the following URI `arrr://175kjasjtWpb8K1S7NmH4Zx6rewF9WQrcZv245Wsknjadnsadnk?message=Bought%20pizza&amount=0.67&label=Mr.ET`
 
 ```Swift
      let pirateChainPaymentURI: PirateChainPaymentURI = PirateChainPaymentURI.init(build: {
@@ -70,21 +70,6 @@ Generatig the following DeepLink URI which will directly open a pirate chain wal
                     $0.amount = 0.67
                     $0.label = "Mr.ET"
                     $0.message = "Bought pizza"
-                    $0.isDeepLink = true
-                })
-
-        print(pirateChainPaymentURI.uri)
-```
-
-Generatig the following URI `arrr:175kjasjtWpb8K1S7NmH4Zx6rewF9WQrcZv245Wsknjadnsadnk?message=Bought%20pizza&amount=0.67&label=Mr.ET`
-
-```Swift
-     let pirateChainPaymentURI: PirateChainPaymentURI = PirateChainPaymentURI.init(build: {
-                    $0.address = "175kjasjtWpb8K1S7NmH4Zx6rewF9WQrcZv245Wsknjadnsadnk"
-                    $0.amount = 0.67
-                    $0.label = "Mr.ET"
-                    $0.message = "Bought pizza"
-                    $0.isDeepLink = false 
                 })
 
         print(pirateChainPaymentURI.uri)
