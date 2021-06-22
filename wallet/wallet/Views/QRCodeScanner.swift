@@ -246,6 +246,9 @@ struct QRCodeScanner: View {
                 self.image = image
                 self.scanQRCodeFromAnImage()
             }
+//            .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+//
+//            }
         }
     }
     

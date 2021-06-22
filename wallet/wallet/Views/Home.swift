@@ -493,9 +493,13 @@ struct Home: View {
         .onAppear {
             tracker.track(.screen(screen: .home), properties: [:])
         }.sheet(isPresented: $showPassCodeScreen){
+           
             InputPasscodeWithCustomPad(aTempPasscode:UserSettings.shared.savedPasscode ?? "",mScreenState: UserSettings.shared.savedPasscode == "" ? InputPasscodeWithCustomPad.ScreenStates.newPasscode : InputPasscodeWithCustomPad.ScreenStates.passcodeAlreadyExists).environmentObject(ZECCWalletEnvironment.shared).background(Color.black)
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+            
+            UIApplication.shared.windows[0].rootViewController?.dismiss(animated: false, completion: nil)
+
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 self.showPassCodeScreen = true
             }
