@@ -7,9 +7,7 @@
 //
 
 import SwiftUI
-
 import Combine
-import TinyQRScanner
 import AVFoundation
 import PirateChainPaymentURI
 extension Notification.Name {
@@ -39,41 +37,45 @@ class QRCodeScanAddressViewModel: ObservableObject {
                 logger.debug("finished")
             }
         }) { (address) in
-                
-            // If there is pirate chain payment URI
-            if let pirateChainPaymentURI = PirateChainPaymentURI.parse(address) {
-               
-                // Check if pirate chain payment address is not nil
-                guard let pirateChainAddress = pirateChainPaymentURI.address else {
-                    self.showInvalidAddressMessage = true
-                    return
-                }
-                
-                // Check if there is valid shielded pirate chain payment address
-                guard ZECCWalletEnvironment.shared.isValidAddress(pirateChainAddress) else {
-                    self.showInvalidAddressMessage = true
-                    return
-                }
-                
-                self.showInvalidAddressMessage = true
-                self.showValidAddressMessage = true
-                PasteboardAlertHelper.shared.copyToPasteBoard(value: address, notify: "feedback_addresscopied".localized())
-                    self.scannerDelegate.publisher.send(address)
-                
-            }else{
-                // If there is valid shielded address then proceed otherwise don't
-                guard ZECCWalletEnvironment.shared.isValidAddress(address) else {
-                    self.showInvalidAddressMessage = true
-                    return
-                }
-                
-                self.showInvalidAddressMessage = true
-                self.showValidAddressMessage = true
-                PasteboardAlertHelper.shared.copyToPasteBoard(value: address, notify: "feedback_addresscopied".localized())
-                    self.scannerDelegate.publisher.send(address)
-            }
-
+            self.parseAnAddress(address: address)
         }.store(in: &dispose)
+    }
+    
+    func parseAnAddress(address:String){
+        
+        // If there is pirate chain payment URI
+        if let pirateChainPaymentURI = PirateChainPaymentURI.parse(address) {
+           
+            // Check if pirate chain payment address is not nil
+            guard let pirateChainAddress = pirateChainPaymentURI.address else {
+                self.showInvalidAddressMessage = true
+                return
+            }
+            
+            // Check if there is valid shielded pirate chain payment address
+            guard ZECCWalletEnvironment.shared.isValidAddress(pirateChainAddress) else {
+                self.showInvalidAddressMessage = true
+                return
+            }
+            
+            self.showInvalidAddressMessage = true
+            self.showValidAddressMessage = true
+            PasteboardAlertHelper.shared.copyToPasteBoard(value: address, notify: "feedback_addresscopied".localized())
+//                self.scannerDelegate.publisher.send(address)
+            
+        }else{
+            // If there is valid shielded address then proceed otherwise don't
+            guard ZECCWalletEnvironment.shared.isValidAddress(address) else {
+                self.showInvalidAddressMessage = true
+                return
+            }
+            
+            self.showInvalidAddressMessage = true
+            self.showValidAddressMessage = true
+            PasteboardAlertHelper.shared.copyToPasteBoard(value: address, notify: "feedback_addresscopied".localized())
+//                self.scannerDelegate.publisher.send(address)
+        }
+
     }
   
 }
@@ -85,6 +87,9 @@ struct QRCodeScanner: View {
     @Binding var isScanAddressShown: Bool
     @State var wrongAddressScanned = false
     @State var torchEnabled: Bool = false
+    @State var image: UIImage?
+    @State var openImagePicker: Bool = false
+
     @Environment(\.presentationMode) var presentationMode:Binding<PresentationMode>
     var scanFrame: some View {
         Image("QRCodeScanFrame")
@@ -105,6 +110,26 @@ struct QRCodeScanner: View {
             }
         )
     }
+    
+    var galleryButton: AnyView {
+
+        return AnyView(
+            Button(action: {
+                self.openImagePicker.toggle()
+            }) {
+                Image("QRCodeIcon")
+                    .resizable()
+                    .renderingMode(.template)
+                    .foregroundColor(.white)
+                    .colorMultiply(.white)
+                    .frame(width: 26, height: 26)
+                    .padding()
+                
+            }
+        )
+    }
+    
+    
     
     var authorized: some View {
           ZStack {
@@ -183,11 +208,11 @@ struct QRCodeScanner: View {
         switch state {
         case .authorized, .undetermined:
 
-            let auth = authorized.navigationBarTitle("Scan QR Code".localized(), displayMode: .inline)
+            let auth = authorized.navigationBarTitle("Scan QR Code", displayMode: .inline)
             
             if viewModel.showCloseButton {
                 return AnyView(
-                    auth.navigationBarItems(leading: torchButton, trailing:  ZcashCloseButton(action: {
+                    auth.navigationBarItems(leading:torchButton, trailing:  ZcashCloseButton(action: {
                         tracker.track(.tap(action: .scanBack), properties: [:])
                             self.isScanAddressShown = false
                     }).frame(width: 30, height: 30))
@@ -195,7 +220,10 @@ struct QRCodeScanner: View {
             }
             return AnyView(
                 auth.navigationBarItems(
-                    trailing: torchButton
+                    trailing: HStack(spacing: 5, content: {
+                        torchButton
+                        galleryButton
+                    })
                 )
             )
         case .unauthorized:
@@ -203,6 +231,7 @@ struct QRCodeScanner: View {
         case .unavailable:
             return AnyView(restricted)
         }
+        
     }
     
     var body: some View {
@@ -212,6 +241,42 @@ struct QRCodeScanner: View {
         }
         .onAppear() {
             tracker.track(.screen(screen: .scan), properties: [:])
+        }.sheet(isPresented: $openImagePicker) {
+            QRCodeImagePicker(sourceType: .photoLibrary) { image in
+                self.image = image
+                self.scanQRCodeFromAnImage()
+            }
+        }
+    }
+    
+    func scanQRCodeFromAnImage(){
+
+        // Checking if it's a valid image
+
+        if let mSelectedImage = self.image {
+            
+            // Parsing QR Code from an image
+            
+            let ciDetectorObj:CIDetector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: [CIDetectorAccuracy:CIDetectorAccuracyHigh])!
+                                    
+            let ciImage:CIImage = CIImage(image:mSelectedImage)!
+                         
+            let featuresInCGIImage = ciDetectorObj.features(in: ciImage)
+            
+            var qrCodeAddress = ""
+                 
+            for feature in featuresInCGIImage as! [CIQRCodeFeature] {
+                qrCodeAddress += feature.messageString!
+            }
+            
+            if !qrCodeAddress.isEmpty {
+                viewModel.parseAnAddress(address: qrCodeAddress)
+            }
+         
+            self.image = nil
+            
+            viewModel.showInvalidAddressMessage = false
+
         }
     }
     

@@ -205,7 +205,6 @@ final class HomeViewModel: ObservableObject {
 
 struct NavigationBarView: View {
     @EnvironmentObject var viewModel: HomeViewModel
-    @State var scanViewModel = QRCodeScanAddressViewModel(shouldShowSwitchButton: false, showCloseButton: false)
     @Environment(\.walletEnvironment) var appEnvironment: ZECCWalletEnvironment
     var isSendingEnabled: Bool {
         appEnvironment.synchronizer.status.value != .syncing && appEnvironment.synchronizer.verifiedBalance.value > 0
@@ -229,7 +228,7 @@ struct NavigationBarView: View {
                NavigationLink(destination:  LazyView(
                 
                 QRCodeScanner(
-                    viewModel: self.scanViewModel,
+                    viewModel: QRCodeScanAddressViewModel(shouldShowSwitchButton: false, showCloseButton: false),
                     cameraAccess: CameraAccessHelper.authorizationStatus,
                     isScanAddressShown: self.$viewModel.openQRCodeScanner
                 ).environmentObject(ZECCWalletEnvironment.shared)
