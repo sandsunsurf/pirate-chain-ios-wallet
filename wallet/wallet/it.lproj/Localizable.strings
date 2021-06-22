@@ -157,3 +157,8 @@ Stai per distruggere il tuo Wallet. Sei sicuro di voler procedere?";
 "failed!" = "failed!";
 "Confirmed" = "Confirmed";
 "Pending confirmation" = "Pending confirmation";
+
+// QR Code Screen
+"Copied Valid Scanned Address to Clipboard" = "Copied Valid Scanned Address to Clipboard";
+
+"Scan QR Code" = "Scan QR Code";

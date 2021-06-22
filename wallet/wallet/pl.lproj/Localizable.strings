@@ -289,3 +289,8 @@
 "failed!" = "Nieudane!";
 "Confirmed" = "Potwierdzone";
 "Pending confirmation" = "Potwierdzenie w toku";
+
+// QR Code Screen
+"Copied Valid Scanned Address to Clipboard" = "Copied Valid Scanned Address to Clipboard";
+
+"Scan QR Code" = "Scan QR Code";

@@ -289,3 +289,8 @@
 "failed!" = "misslyckades!";
 "Confirmed" = "Bekräftad";
 "Pending confirmation" = "Väntar på bekräftelse";
+
+// QR Code Screen
+"Copied Valid Scanned Address to Clipboard" = "Copied Valid Scanned Address to Clipboard";
+
+"Scan QR Code" = "Scan QR Code";

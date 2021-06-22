@@ -115,7 +115,7 @@ struct QRCodeScanner: View {
                 Spacer()
                 VStack {
                     scanFrame
-                    Text(viewModel.showValidAddressMessage ? "Copied Valid Scanned Address to Clipboard" : "scan_invalidQR".localized())
+                    Text(viewModel.showValidAddressMessage ? "Copied Valid Scanned Address to Clipboard".localized() : "scan_invalidQR".localized())
                         .bold()
                         .foregroundColor(.white)
                         .opacity(self.wrongAddressScanned ? 1 : 0)
@@ -183,7 +183,7 @@ struct QRCodeScanner: View {
         switch state {
         case .authorized, .undetermined:
 
-            let auth = authorized.navigationBarTitle("Scan QR Code", displayMode: .inline)
+            let auth = authorized.navigationBarTitle("Scan QR Code".localized(), displayMode: .inline)
             
             if viewModel.showCloseButton {
                 return AnyView(

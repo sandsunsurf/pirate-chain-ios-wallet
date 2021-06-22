@@ -291,3 +291,8 @@
 "Pending confirmation" = "Ожидает подтверждения";
 
 
+
+// QR Code Screen
+"Copied Valid Scanned Address to Clipboard" = "Copied Valid Scanned Address to Clipboard";
+
+"Scan QR Code" = "Scan QR Code";

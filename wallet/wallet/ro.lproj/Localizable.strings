@@ -289,3 +289,8 @@
 "failed!" = "esuat!";
 "Confirmed" = "Confirmat";
 "Pending confirmation" = "Confirmare in asteptare";
+
+// QR Code Screen
+"Copied Valid Scanned Address to Clipboard" = "Copied Valid Scanned Address to Clipboard";
+
+"Scan QR Code" = "Scan QR Code";

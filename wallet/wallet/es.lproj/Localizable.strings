@@ -282,3 +282,8 @@
 "failed!" = "¡fallado!";
 "Confirmed" = "Confirmado";
 "Pending confirmation" = "Confirmación pendiente";
+
+// QR Code Screen
+"Copied Valid Scanned Address to Clipboard" = "Copied Valid Scanned Address to Clipboard";
+
+"Scan QR Code" = "Scan QR Code";
