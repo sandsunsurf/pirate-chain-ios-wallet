@@ -134,7 +134,11 @@ struct QRCodeScanner: View {
     var authorized: some View {
           ZStack {
             QRCodeScannerView(delegate: viewModel.scannerDelegate)
-                .edgesIgnoringSafeArea(.all)
+                .edgesIgnoringSafeArea(.all).onAppear {
+                    NotificationCenter.default.post(name: .resumeRecordingIfPaused, object: nil)
+                }.onDisappear {
+                    NotificationCenter.default.post(name: .pauseVideoRecording, object: nil)
+                }
             
             VStack {
                 Spacer()

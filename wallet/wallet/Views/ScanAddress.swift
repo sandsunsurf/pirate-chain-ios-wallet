@@ -8,7 +8,6 @@
 
 import SwiftUI
 import Combine
-import TinyQRScanner
 import AVFoundation
 extension Notification.Name {
     static let qrZaddressScanned = Notification.Name(rawValue: "qrZaddressScanned")

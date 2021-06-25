@@ -63,7 +63,6 @@ PODS:
     - SwiftNIOFoundationCompat (< 3, >= 2.27.0)
     - SwiftNIOTLS (< 3, >= 2.27.0)
   - SwiftProtobuf (1.17.0)
-  - TinyQRScanner (1.0.1)
   - ZcashLightClientKit (0.10.0):
     - gRPC-Swift (= 1.0.0-alpha.19)
     - SQLite.swift (~> 0.12.2)
@@ -75,7 +74,6 @@ DEPENDENCIES:
   - KeychainSwift (~> 19.0.0)
   - lottie-ios
   - MnemonicSwift (from `https://github.com/zcash-hackworks/MnemonicSwift.git`, branch `master`)
-  - TinyQRScanner
   - ZcashLightClientKit (from `https://github.com/Meshbits/ZcashLightClientKit`, branch `v10`)
   - zealous-logger (from `https://github.com/zcash-hackworks/zealous-logger`, branch `master`)
 
@@ -105,7 +103,6 @@ SPEC REPOS:
     - SwiftNIOTLS
     - SwiftNIOTransportServices
     - SwiftProtobuf
-    - TinyQRScanner
 
 EXTERNAL SOURCES:
   MnemonicSwift:
@@ -155,10 +152,9 @@ SPEC CHECKSUMS:
   SwiftNIOTLS: 3b943c5ec04773df1f88eb63cebb015df11071bb
   SwiftNIOTransportServices: eee29d06a617e6b37c534d8589ae27c31b119f81
   SwiftProtobuf: 9c85136c6ba74b0a1b84279dbf0f6db8efb714e0
-  TinyQRScanner: 4077088ff2e8d476af79e6035413648c2c7900ef
   ZcashLightClientKit: 0a1cfb2718771dc4a32c01b70f7f061c3037b441
   zealous-logger: 2f33820d7d7e723796dabc51d60942b51b9ab024
 
-PODFILE CHECKSUM: 541d3135029ab9d229c7f1151d1684f8cb6e48de
+PODFILE CHECKSUM: 2fb940372f15c00888764f569c36d7dd15e88df2
 
 COCOAPODS: 1.10.1

@@ -240,6 +240,8 @@
 		299DD03A266A7B0F00CD4A8E /* iCloudBackups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299DD038266A7B0F00CD4A8E /* iCloudBackups.swift */; };
 		29B4B67926824F85005113EA /* QRCodeImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4B67826824F85005113EA /* QRCodeImagePicker.swift */; };
 		29B4B67A26824F85005113EA /* QRCodeImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4B67826824F85005113EA /* QRCodeImagePicker.swift */; };
+		29F6502726860D23005E8D21 /* QRScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F6502626860D23005E8D21 /* QRScannerView.swift */; };
+		29F6502826860D23005E8D21 /* QRScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F6502626860D23005E8D21 /* QRScannerView.swift */; };
 		29FE782726738FF000C2ECA0 /* QRCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FE782626738FF000C2ECA0 /* QRCodeScanner.swift */; };
 		29FE782826738FF000C2ECA0 /* QRCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FE782626738FF000C2ECA0 /* QRCodeScanner.swift */; };
 		8D3F362524A40FCF0087687A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D3F362724A40FCF0087687A /* Localizable.strings */; };
@@ -464,6 +466,7 @@
 		299DD038266A7B0F00CD4A8E /* iCloudBackups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCloudBackups.swift; sourceTree = "<group>"; };
 		29B4B67826824F85005113EA /* QRCodeImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeImagePicker.swift; sourceTree = "<group>"; };
 		29D1459C46D96D9D3DF2A55C /* Pods-walletUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-walletUITests.debug.xcconfig"; path = "Target Support Files/Pods-walletUITests/Pods-walletUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		29F6502626860D23005E8D21 /* QRScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerView.swift; sourceTree = "<group>"; };
 		29FE782626738FF000C2ECA0 /* QRCodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanner.swift; sourceTree = "<group>"; };
 		2E7FFE45D0C33A74C7344A5E /* Pods-walletTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-walletTests.release.xcconfig"; path = "Target Support Files/Pods-walletTests/Pods-walletTests.release.xcconfig"; sourceTree = "<group>"; };
 		36B81DA8FB2A74AD2728DEF5 /* Pods_ECC_WalletTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ECC_WalletTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -544,8 +547,7 @@
 				0D100ED823BA8DE80089DB22 /* CreateNewWallet.swift */,
 				299DD038266A7B0F00CD4A8E /* iCloudBackups.swift */,
 				0D9E89BA23DA3A9900AFD118 /* RestoreWallet.swift */,
-				29FE782626738FF000C2ECA0 /* QRCodeScanner.swift */,
-				29B4B67826824F85005113EA /* QRCodeImagePicker.swift */,
+				29F6502526860D09005E8D21 /* QR Scanner */,
 				0D100EDF23BAAB170089DB22 /* BackupWallet.swift */,
 				0D100EE123BAB1B80089DB22 /* SeedBackup.swift */,
 				0D60F2EA23BE1B87006F5FAD /* Home.swift */,
@@ -807,6 +809,16 @@
 				A27DE1BA307BA79AF558DCBB /* Pods_ECC_WalletUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		29F6502526860D09005E8D21 /* QR Scanner */ = {
+			isa = PBXGroup;
+			children = (
+				29FE782626738FF000C2ECA0 /* QRCodeScanner.swift */,
+				29B4B67826824F85005113EA /* QRCodeImagePicker.swift */,
+				29F6502626860D23005E8D21 /* QRScannerView.swift */,
+			);
+			path = "QR Scanner";
 			sourceTree = "<group>";
 		};
 		EA66A8F666D2E80F5C4EC4F5 /* Pods */ = {
@@ -1250,6 +1262,7 @@
 				0D0AAE1124102380009CD8F9 /* SyncingButton.swift in Sources */,
 				0DD8B9B824B6898F0031FF42 /* EventLogger.swift in Sources */,
 				0D100EE223BAB1B80089DB22 /* SeedBackup.swift in Sources */,
+				29F6502726860D23005E8D21 /* QRScannerView.swift in Sources */,
 				0DE51DAE23BEB0E500709636 /* Fonts.swift in Sources */,
 				0DCD012324DE245300ED0113 /* ErrorHandling.swift in Sources */,
 				0DCF43BE23DF7229007E9B49 /* CombineSynchronizer.swift in Sources */,
@@ -1442,6 +1455,7 @@
 				0DF3075124DB31570080B0CF /* DeviceFeedbackHelper.swift in Sources */,
 				0DCDFFBD24B6722B000F6999 /* ZcashSeedPhraseGrid.swift in Sources */,
 				0DCDFFBE24B6722B000F6999 /* Sending.swift in Sources */,
+				29F6502826860D23005E8D21 /* QRScannerView.swift in Sources */,
 				0DCDFFBF24B6722B000F6999 /* String+Zcash.swift in Sources */,
 				0DBA1E1F24CB628B009C654E /* DisplayAddress.swift in Sources */,
 				0DCDFFC024B6722B000F6999 /* UIKit+Extensions.swift in Sources */,
