@@ -25,38 +25,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        
         #if targetEnvironment(simulator)
         if ProcessInfo.processInfo.environment["isTest"] != nil {
             return true
         }
+        #else
+
+//        BGTaskScheduler.shared.register(
+//            forTaskWithIdentifier: BackgroundTaskSyncronizing.backgroundAppRefreshTaskIdentifier,
+//          using: nil) { (task) in
+//            
+//            BackgroundTaskSyncronizing.default.handleBackgroundAppRefreshTask(task as! BGAppRefreshTask)
+//        }
+//        
+//        BGTaskScheduler.shared.register(
+//            forTaskWithIdentifier: BackgroundTaskSyncronizing.backgroundProcessingTaskIdentifier,
+//          using: nil) { (task) in
+//            BackgroundTaskSyncronizing.default.handleBackgroundProcessingTask(task as! BGProcessingTask)
+//        }
         #endif
-        // Override point for customization after application launch.
+        
         #if ENABLE_LOGGING
         Bugsnag.start(withApiKey: Constants.bugsnagApiKey)
         #endif
-        
-        BGTaskScheduler.shared.register(
-            forTaskWithIdentifier: BackgroundTaskSyncronizing.backgroundAppRefreshTaskIdentifier,
-          using: nil) { (task) in
-            
-            BackgroundTaskSyncronizing.default.handleBackgroundAppRefreshTask(task as! BGAppRefreshTask)
-        }
-        
-        BGTaskScheduler.shared.register(
-            forTaskWithIdentifier: BackgroundTaskSyncronizing.backgroundProcessingTaskIdentifier,
-          using: nil) { (task) in
-            BackgroundTaskSyncronizing.default.handleBackgroundProcessingTask(task as! BGProcessingTask)
-        }
-        
-        
-        let environment = ZECCWalletEnvironment.shared
-        switch environment.state {
-        case .initalized,
-             .synced:
-            try! environment.initialize()
-        default:
-            break
-        }
         
         return true
     }
