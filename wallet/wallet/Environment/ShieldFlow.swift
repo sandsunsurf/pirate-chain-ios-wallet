@@ -50,42 +50,60 @@ final class ShieldFlow: ShieldingPowers {
     
     func shield() {
         self.status.send(.shielding)
-        do {
-            let derivationTool = DerivationTool.default
-            let s = try SeedManager.default.exportPhrase()
-            let seed = try MnemonicSeedProvider.default.toSeed(mnemonic: s)
-            let keys = try derivationTool.deriveSpendingKeys(seed: seed, numberOfAccounts: 1)
-            guard let sk = keys.first else {
-                self.status.send(completion: .failure(KeyDerivationErrors.unableToDerive))
-                return }
-            let tsk = try derivationTool.deriveTransparentPrivateKey(seed: seed)
-            
-            self.synchronizer.shieldFunds(spendingKey: sk,
-                                          transparentSecretKey: tsk,
-                                          memo: "Shielding is Fun!",
-                                          from: 0)
-                .receive(on: DispatchQueue.main)
-                .sink { [weak self](completion) in
-                    switch completion {
-                    case .failure(let e):
-                        logger.error("failed to shield funds \(e.localizedDescription)")
-                        tracker.report(handledException: DeveloperFacingErrors.handledException(error: e))
-                        self?.status.send(completion: .failure(e))
-                    case .finished:
-                        self?.status.send(completion: .finished)
-                    }
-                } receiveValue: { [weak self](p) in
-                    logger.debug("shielded \(p)")
-                    self?.status.send(.ended)
+        
+        SaplingParameterDownloader.downloadParametersIfNeeded()
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .failure(let urlError):
+                    self.status.send(completion: .failure(urlError.code.asUserFacingError()))
+                    break
+                case .finished:
+                    break
                 }
-                .store(in: &cancellables)
+            }, receiveValue: { [weak self] result in
+                guard let self = self else {
+                    return
+                }
+                
+                do {
+                    let derivationTool = DerivationTool.default
+                    let s = try SeedManager.default.exportPhrase()
+                    let seed = try MnemonicSeedProvider.default.toSeed(mnemonic: s)
+                    let keys = try derivationTool.deriveSpendingKeys(seed: seed, numberOfAccounts: 1)
+                    guard let sk = keys.first else {
+                        self.status.send(completion: .failure(KeyDerivationErrors.unableToDerive))
+                        return }
+                    let tsk = try derivationTool.deriveTransparentPrivateKey(seed: seed)
+                    
+                    self.synchronizer.shieldFunds(spendingKey: sk,
+                                                  transparentSecretKey: tsk,
+                                                  memo: "Shielding is Fun!",
+                                                  from: 0)
+                        .receive(on: DispatchQueue.main)
+                        .sink { [weak self](completion) in
+                            switch completion {
+                            case .failure(let e):
+                                logger.error("failed to shield funds \(e.localizedDescription)")
+                                tracker.report(handledException: DeveloperFacingErrors.handledException(error: e))
+                                self?.status.send(completion: .failure(e))
+                            case .finished:
+                                self?.status.send(completion: .finished)
+                            }
+                        } receiveValue: { [weak self](p) in
+                            logger.debug("shielded \(p)")
+                            self?.status.send(.ended)
+                        }
+                        .store(in: &self.cancellables)
 
-        } catch {
-            self.status.send(completion: .failure(error))
-        }
+                } catch {
+                    self.status.send(completion: .failure(error))
+                }
+            })
+            .store(in: &cancellables)
     }
-
 }
+
 fileprivate struct ShieldFlowEnvironmentKey: EnvironmentKey {
     static let defaultValue: ShieldingPowers = ShieldFlow.current
 }
