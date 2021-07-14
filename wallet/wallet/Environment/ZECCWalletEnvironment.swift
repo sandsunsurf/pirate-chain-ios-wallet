@@ -28,7 +28,7 @@ final class ZECCWalletEnvironment: ObservableObject {
     
     @Published var state: WalletState
     
-    let endpoint = LightWalletEndpoint(address: ZcashSDK.isMainnet ? "mainnet.lightwalletd.com" : "testnet.lightwalletd.com", port: 9067, secure: true)
+    let endpoint = LightWalletEndpoint(address: "lightd.meshbits.io", port: 9067, secure: true)
 
     var dataDbURL: URL
     var cacheDbURL: URL
