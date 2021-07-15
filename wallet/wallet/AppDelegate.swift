@@ -7,32 +7,48 @@
 //
 
 import UIKit
+import BackgroundTasks
 
-#if targetEnvironment(simulator)
-var logger = SimpleLogger(logLevel: .debug, type: SimpleLogger.LoggerType.printerLog)
-#else
-var logger = SimpleLogger(logLevel: .debug)
-#endif
 
 #if ENABLE_LOGGING
+import Bugsnag
+import zealous_logger
 let tracker = MixPanelLogger(token: Constants.mixpanelProject)
+let logger = SimpleFileLogger(logsDirectory: try! URL.logsDirectory(), alsoPrint: true, level: .debug)
 #else
 let tracker = NullLogger()
+let logger = SimpleLogger(logLevel: .debug)
 #endif
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {  
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        let environment = ZECCWalletEnvironment.shared
-        switch environment.state {
-        case .initalized,
-             .synced:
-            try! environment.initialize()
-        default:
-            break
+        
+        
+        #if targetEnvironment(simulator)
+        if ProcessInfo.processInfo.environment["isTest"] != nil {
+            return true
         }
+        #else
+
+//        BGTaskScheduler.shared.register(
+//            forTaskWithIdentifier: BackgroundTaskSyncronizing.backgroundAppRefreshTaskIdentifier,
+//          using: nil) { (task) in
+//            
+//            BackgroundTaskSyncronizing.default.handleBackgroundAppRefreshTask(task as! BGAppRefreshTask)
+//        }
+//        
+//        BGTaskScheduler.shared.register(
+//            forTaskWithIdentifier: BackgroundTaskSyncronizing.backgroundProcessingTaskIdentifier,
+//          using: nil) { (task) in
+//            BackgroundTaskSyncronizing.default.handleBackgroundProcessingTask(task as! BGProcessingTask)
+//        }
+        #endif
+        
+        #if ENABLE_LOGGING
+        Bugsnag.start(withApiKey: Constants.bugsnagApiKey)
+        #endif
         
         return true
     }

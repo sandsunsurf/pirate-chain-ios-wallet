@@ -1,84 +1,98 @@
 PODS:
-  - CGRPCZlib (1.0.0-alpha.14)
-  - CNIOAtomics (2.18.0)
-  - CNIOBoringSSL (2.7.4)
-  - CNIOBoringSSLShims (2.7.4):
-    - CNIOBoringSSL (= 2.7.4)
-  - CNIODarwin (2.18.0)
-  - CNIOHTTPParser (2.18.0)
-  - CNIOLinux (2.18.0)
-  - CNIOSHA1 (2.18.0)
-  - gRPC-Swift (1.0.0-alpha.14):
-    - CGRPCZlib (= 1.0.0-alpha.14)
-    - Logging (< 2, >= 1.2.0)
-    - SwiftNIO (< 3, >= 2.18.0)
-    - SwiftNIOHTTP2 (< 2, >= 1.12.2)
-    - SwiftNIOSSL (< 3, >= 2.7.4)
-    - SwiftNIOTransportServices (< 2, >= 1.6.0)
-    - SwiftProtobuf (< 2, >= 1.9.0)
+  - Bugsnag (6.9.6)
+  - CGRPCZlib (1.0.0)
+  - CNIOAtomics (2.28.0)
+  - CNIOBoringSSL (2.12.0)
+  - CNIOBoringSSLShims (2.12.0):
+    - CNIOBoringSSL (= 2.12.0)
+  - CNIODarwin (2.28.0)
+  - CNIOHTTPParser (2.28.0)
+  - CNIOLinux (2.28.0)
+  - CNIOWindows (2.28.0)
+  - CocoaLumberjack/Core (3.7.2)
+  - CocoaLumberjack/Swift (3.7.2):
+    - CocoaLumberjack/Core
+  - CombineUrlSessionDownloader (1.0.0)
+  - gRPC-Swift (1.0.0):
+    - CGRPCZlib (= 1.0.0)
+    - Logging (< 2.0.0, >= 1.4.0)
+    - SwiftNIO (< 3.0.0, >= 2.22.0)
+    - SwiftNIOExtras (< 2.0.0, >= 1.4.0)
+    - SwiftNIOHTTP2 (< 2.0.0, >= 1.16.1)
+    - SwiftNIOSSL (< 3.0.0, >= 2.8.0)
+    - SwiftNIOTransportServices (< 2.0.0, >= 1.6.0)
+    - SwiftProtobuf (< 2.0.0, >= 1.9.0)
   - KeychainSwift (19.0.0)
-  - Logging (1.2.0)
-  - lottie-ios (3.1.6)
-  - Mixpanel-swift (2.7.4):
-    - Mixpanel-swift/Complete (= 2.7.4)
-  - Mixpanel-swift/Complete (2.7.4)
-  - MnemonicSwift (1.0.0)
+  - Logging (1.4.0)
+  - lottie-ios (3.2.3)
+  - Mixpanel-swift (2.10.2):
+    - Mixpanel-swift/Complete (= 2.10.2)
+  - Mixpanel-swift/Complete (2.10.2)
+  - MnemonicSwift (2.0.0)
   - SQLite.swift (0.12.2):
     - SQLite.swift/standard (= 0.12.2)
   - SQLite.swift/standard (0.12.2)
-  - SwiftNIO (2.18.0):
-    - CNIOAtomics (= 2.18.0)
-    - CNIODarwin (= 2.18.0)
-    - CNIOLinux (= 2.18.0)
-    - CNIOSHA1 (= 2.18.0)
-    - SwiftNIOConcurrencyHelpers (= 2.18.0)
-  - SwiftNIOConcurrencyHelpers (2.18.0):
-    - CNIOAtomics (= 2.18.0)
-  - SwiftNIOFoundationCompat (2.18.0):
-    - SwiftNIO (= 2.18.0)
-  - SwiftNIOHPACK (1.12.2):
-    - SwiftNIO (= 2.18.0)
-    - SwiftNIOConcurrencyHelpers (= 2.18.0)
-    - SwiftNIOHTTP1 (= 2.18.0)
-  - SwiftNIOHTTP1 (2.18.0):
-    - CNIOHTTPParser (= 2.18.0)
-    - SwiftNIO (= 2.18.0)
-    - SwiftNIOConcurrencyHelpers (= 2.18.0)
-  - SwiftNIOHTTP2 (1.12.2):
-    - SwiftNIO (= 2.18.0)
-    - SwiftNIOConcurrencyHelpers (= 2.18.0)
-    - SwiftNIOHPACK (= 1.12.2)
-    - SwiftNIOHTTP1 (= 2.18.0)
-    - SwiftNIOTLS (= 2.18.0)
-  - SwiftNIOSSL (2.7.4):
-    - CNIOBoringSSL (= 2.7.4)
-    - CNIOBoringSSLShims (= 2.7.4)
-    - SwiftNIO (= 2.18.0)
-    - SwiftNIOConcurrencyHelpers (= 2.18.0)
-    - SwiftNIOTLS (= 2.18.0)
-  - SwiftNIOTLS (2.18.0):
-    - SwiftNIO (= 2.18.0)
-  - SwiftNIOTransportServices (1.6.0):
-    - SwiftNIO (~> 2.0)
-    - SwiftNIOConcurrencyHelpers (~> 2.0)
-    - SwiftNIOFoundationCompat (~> 2.0)
-    - SwiftNIOTLS (~> 2.0)
-  - SwiftProtobuf (1.9.0)
-  - TinyQRScanner (1.0.0)
-  - ZcashLightClientKit (0.5.1):
-    - gRPC-Swift (~> 1.0.0-alpha.11)
+  - SwiftNIO (2.28.0):
+    - CNIODarwin (= 2.28.0)
+    - CNIOLinux (= 2.28.0)
+    - CNIOWindows (= 2.28.0)
+    - SwiftNIOConcurrencyHelpers (= 2.28.0)
+  - SwiftNIOConcurrencyHelpers (2.28.0):
+    - CNIOAtomics (= 2.28.0)
+  - SwiftNIOExtras (1.8.0):
+    - SwiftNIO (< 3, >= 2.9.0)
+  - SwiftNIOFoundationCompat (2.28.0):
+    - SwiftNIO (= 2.28.0)
+  - SwiftNIOHPACK (1.17.0):
+    - SwiftNIO (< 3, >= 2.27.0)
+    - SwiftNIOConcurrencyHelpers (< 3, >= 2.27.0)
+    - SwiftNIOHTTP1 (< 3, >= 2.27.0)
+  - SwiftNIOHTTP1 (2.28.0):
+    - CNIOHTTPParser (= 2.28.0)
+    - SwiftNIO (= 2.28.0)
+    - SwiftNIOConcurrencyHelpers (= 2.28.0)
+  - SwiftNIOHTTP2 (1.17.0):
+    - SwiftNIO (< 3, >= 2.27.0)
+    - SwiftNIOConcurrencyHelpers (< 3, >= 2.27.0)
+    - SwiftNIOHPACK (= 1.17.0)
+    - SwiftNIOHTTP1 (< 3, >= 2.27.0)
+    - SwiftNIOTLS (< 3, >= 2.27.0)
+  - SwiftNIOSSL (2.12.0):
+    - CNIOBoringSSL (= 2.12.0)
+    - CNIOBoringSSLShims (= 2.12.0)
+    - SwiftNIO (< 3, >= 2.15.0)
+    - SwiftNIOConcurrencyHelpers (< 3, >= 2.15.0)
+    - SwiftNIOTLS (< 3, >= 2.15.0)
+  - SwiftNIOTLS (2.28.0):
+    - SwiftNIO (= 2.28.0)
+  - SwiftNIOTransportServices (1.10.0):
+    - SwiftNIO (< 3, >= 2.27.0)
+    - SwiftNIOConcurrencyHelpers (< 3, >= 2.27.0)
+    - SwiftNIOFoundationCompat (< 3, >= 2.27.0)
+    - SwiftNIOTLS (< 3, >= 2.27.0)
+  - SwiftProtobuf (1.17.0)
+  - TinyQRScanner (1.0.1)
+  - ZcashLightClientKit (0.12.0-alpha.8):
+    - gRPC-Swift (= 1.0.0)
     - SQLite.swift (~> 0.12.2)
+  - zealous-logger (1.0.0):
+    - CocoaLumberjack/Swift (~> 3.7.0)
 
 DEPENDENCIES:
+  - Bugsnag
+  - CombineUrlSessionDownloader
+  - gRPC-Swift (= 1.0.0)
   - KeychainSwift (~> 19.0.0)
   - lottie-ios
   - Mixpanel-swift
-  - MnemonicSwift
+  - MnemonicSwift (from `https://github.com/zcash-hackworks/MnemonicSwift.git`, branch `master`)
   - TinyQRScanner
-  - ZcashLightClientKit
+  - ZcashLightClientKit (from `https://github.com/zcash/ZcashLightClientKit.git`, tag `0.12.0-alpha.8`)
+  - zealous-logger (from `https://github.com/zcash-hackworks/zealous-logger`, branch `master`)
 
 SPEC REPOS:
   trunk:
+    - Bugsnag
     - CGRPCZlib
     - CNIOAtomics
     - CNIOBoringSSL
@@ -86,16 +100,18 @@ SPEC REPOS:
     - CNIODarwin
     - CNIOHTTPParser
     - CNIOLinux
-    - CNIOSHA1
+    - CNIOWindows
+    - CocoaLumberjack
+    - CombineUrlSessionDownloader
     - gRPC-Swift
     - KeychainSwift
     - Logging
     - lottie-ios
     - Mixpanel-swift
-    - MnemonicSwift
     - SQLite.swift
     - SwiftNIO
     - SwiftNIOConcurrencyHelpers
+    - SwiftNIOExtras
     - SwiftNIOFoundationCompat
     - SwiftNIOHPACK
     - SwiftNIOHTTP1
@@ -105,37 +121,63 @@ SPEC REPOS:
     - SwiftNIOTransportServices
     - SwiftProtobuf
     - TinyQRScanner
-    - ZcashLightClientKit
+
+EXTERNAL SOURCES:
+  MnemonicSwift:
+    :branch: master
+    :git: https://github.com/zcash-hackworks/MnemonicSwift.git
+  ZcashLightClientKit:
+    :git: https://github.com/zcash/ZcashLightClientKit.git
+    :tag: 0.12.0-alpha.8
+  zealous-logger:
+    :branch: master
+    :git: https://github.com/zcash-hackworks/zealous-logger
+
+CHECKOUT OPTIONS:
+  MnemonicSwift:
+    :commit: 714cc6e2631ac322fc0067b2302358c1baad9275
+    :git: https://github.com/zcash-hackworks/MnemonicSwift.git
+  ZcashLightClientKit:
+    :git: https://github.com/zcash/ZcashLightClientKit.git
+    :tag: 0.12.0-alpha.8
+  zealous-logger:
+    :commit: c9f8d8d9f74a456094b9143616da3b4eba91ddcf
+    :git: https://github.com/zcash-hackworks/zealous-logger
 
 SPEC CHECKSUMS:
-  CGRPCZlib: 06247b0687f3a3edbfbfb204d53721c3ba262a34
-  CNIOAtomics: b6053043649c8b9afbf2560d9d64899d5d7ce368
-  CNIOBoringSSL: 21bbd36e5a68c9d2ea1aea7bfea10eea60d25a82
-  CNIOBoringSSLShims: e9e57b1fd0e060a25f2f3b0b944cc84dd272368f
-  CNIODarwin: 2e814fe13ee1b16a6d7603affbd95b3fbf1e65b1
-  CNIOHTTPParser: 215fe669981deb6b7e4533b0b42a01e5c165d8ac
-  CNIOLinux: 45e91eaba50bb850a48135aabbd7671625f15188
-  CNIOSHA1: f8f5b0c8cbd067c195d1b44ab237927765bd4914
-  gRPC-Swift: fb8ff0d8cdd5a020c170ba827f50c393ae31e307
+  Bugsnag: b618dad4cc733acfece329c466caf5fb918d3f2f
+  CGRPCZlib: b0c9d704a12fa667f1824ffff20688f191945989
+  CNIOAtomics: 7c3a151d54ae24b0160283ac93e3b06380ce6973
+  CNIOBoringSSL: 2433ef7bb7f34e0903f576771c3004b42a8c30df
+  CNIOBoringSSLShims: 97f8c084e74a2d2f7e3bfa1695e4a0c7e1e7ecc5
+  CNIODarwin: 1f2dbfef00b0f1dde67f1512d2ad27c51089e9de
+  CNIOHTTPParser: bd3b3557a2091cb5b24cbf1a676157804a563fda
+  CNIOLinux: 21957f4cd9b4efa7e0b835c41977f6f71647653c
+  CNIOWindows: 93ad715b3bb3da30e1843148fe40429de1ed1ae9
+  CocoaLumberjack: b7e05132ff94f6ae4dfa9d5bce9141893a21d9da
+  CombineUrlSessionDownloader: 48382df0efb182da6c1117b651d4daf0e8f09cb9
+  gRPC-Swift: 77154009a019e97f8c4bd8f2bb75fe9726801157
   KeychainSwift: a06190cf933ad46b1e0abc3d77d29c06331715c7
-  Logging: 7838d379d234d7e5ae1265fa02804a9084caf04c
-  lottie-ios: 85ce835dd8c53e02509f20729fc7d6a4e6645a0a
-  Mixpanel-swift: 0905361a691604eba85ae5b257329ca4833cd5f6
-  MnemonicSwift: d743ec3dcc1cdce706a1876dba0b6250ad1ef90d
+  Logging: beeb016c9c80cf77042d62e83495816847ef108b
+  lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
+  Mixpanel-swift: dc07ae05df9ff47c80542531f55e2120ec2a410a
+  MnemonicSwift: 36384fc6b2640d93df9fe9fb60a8da7957cec36d
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
-  SwiftNIO: c17d311e9006fc10c1d17fbc6a7a9cb21aa46368
-  SwiftNIOConcurrencyHelpers: 69762a04ed76d7254012e1f17787ee162d2cf764
-  SwiftNIOFoundationCompat: 9af7b2e265c4d55eb8599a515d63784c2691dc39
-  SwiftNIOHPACK: 871e4e893ecc1aeaf74435b73c13240f50d6853c
-  SwiftNIOHTTP1: 67eafb3f27c3aee867dc4c0ec947e2ab71f1e2ce
-  SwiftNIOHTTP2: c7ce23b714868de63dae083478b40da20d933e08
-  SwiftNIOSSL: 0f28ad98a39b4c625196c2c8f154a4fded66bd96
-  SwiftNIOTLS: 78c6d6798ea29f7eb0a4e1214a00bc8f07e7390c
-  SwiftNIOTransportServices: 775bcda101a0d921feb69d79b5884acfce0fc0f2
-  SwiftProtobuf: ecbec1be9036d15655f6b3443a1c4ea693c97932
-  TinyQRScanner: 9930c4514dc6f123f3b9d95fcedbc1f8c241c5eb
-  ZcashLightClientKit: d23fd0513acf929deb5b2a7ef803b03ceda7afb9
+  SwiftNIO: 3e69d2a1be36921d5676ad0aa148fe7c537a89fd
+  SwiftNIOConcurrencyHelpers: 68e0316a976c0d109373017a909b741cc82963d5
+  SwiftNIOExtras: aa561b71020cd6844f722cf4513fb176c577414d
+  SwiftNIOFoundationCompat: 54f7dc46a55b2ae635d25e05e0ce1ab3b96c5a5e
+  SwiftNIOHPACK: 7b780cf61fa41025042ca34a3918b651c3c9f655
+  SwiftNIOHTTP1: 604d76673dfaece86a7f23075c620bdca7f30362
+  SwiftNIOHTTP2: 57fc74b454df553028744b8e4cd0ab3a33911a2d
+  SwiftNIOSSL: 6a212ff5802c39cdee830c613501fcb414218427
+  SwiftNIOTLS: 3b943c5ec04773df1f88eb63cebb015df11071bb
+  SwiftNIOTransportServices: eee29d06a617e6b37c534d8589ae27c31b119f81
+  SwiftProtobuf: 9c85136c6ba74b0a1b84279dbf0f6db8efb714e0
+  TinyQRScanner: 4077088ff2e8d476af79e6035413648c2c7900ef
+  ZcashLightClientKit: 318d36b4e9f30b0487d151bf04c1b809392d738f
+  zealous-logger: 2f33820d7d7e723796dabc51d60942b51b9ab024
 
-PODFILE CHECKSUM: f13c6a43956c68cde06ad33ee9a1b06f7cd32f3f
+PODFILE CHECKSUM: 425c8295e3c2f9d7912aa80aeeed15baef646b8b
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.1

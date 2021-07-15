@@ -1,37 +1,52 @@
-platform :ios, '13.0'
+platform :ios, '14.1'
 use_frameworks!
 
 def base_pods
-  pod 'ZcashLightClientKit'
+  pod 'ZcashLightClientKit', :git => 'https://github.com/zcash/ZcashLightClientKit.git', :tag => '0.12.0-alpha.8'
+  #pod 'ZcashLightClientKit', :path => '../../ZcashLightClientKit'
+  pod 'gRPC-Swift', '= 1.0.0'
   pod 'KeychainSwift', '~> 19.0.0'
-  pod 'MnemonicSwift'
+  pod 'MnemonicSwift', :git => 'https://github.com/zcash-hackworks/MnemonicSwift.git', :branch => 'master'
   pod 'TinyQRScanner'
   pod 'lottie-ios'
+  pod 'CombineUrlSessionDownloader'
 end
 
 inhibit_all_warnings!
 
-target 'wallet-no-logging' do
+target 'ECC-Wallet-no-logging' do
   base_pods
 end
 
-target 'wallet' do 
+target 'ECC-Wallet' do 
   base_pods
   pod 'Mixpanel-swift'
-  target 'walletTests' do
-    inherit! :search_paths
-  end
- 
-  target 'walletUITests' do
-    inherit! :search_paths
-  end
+  pod 'Bugsnag'
+  pod 'zealous-logger', :git => 'https://github.com/zcash-hackworks/zealous-logger', :branch => 'master'
+  
 end
+
+target 'ECC-Wallet-Testnet' do
+  base_pods
+  pod 'Mixpanel-swift'
+  pod 'Bugsnag'
+  pod 'zealous-logger', :git => 'https://github.com/zcash-hackworks/zealous-logger', :branch => 'master'
+  
+end
+
+target 'ECC-WalletTests' do
+   base_pods
+  inherit! :search_paths
+end
+
+ target 'ECC-WalletUITests' do
+   inherit! :search_paths
+   
+ end
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
-
-
       if target.name == 'ZcashLightClientKit'
          config.build_settings['ZCASH_NETWORK_ENVIRONMENT'] = ENV["ZCASH_NETWORK_ENVIRONMENT"]
       end

@@ -52,7 +52,7 @@ struct AddressHelperView: View {
             }.eraseToAnyView()
         case .both(let clipboard, let lastUsed):
             return VStack(spacing: 0) {
-                AddressHelperViewSection(title: "COPIED TO CLIPBOARD") {
+                AddressHelperViewSection(title: "send_onclipboard".localized()) {
                     AddrezzHelperViewCell(address: clipboard, shielded: isValidZ(address: clipboard),selected: self.selection == Selection.clipboardSelection)
                 }
                 .onTapGesture {
@@ -68,7 +68,7 @@ struct AddressHelperView: View {
         
         case .clipboard(let address):
            return  VStack(spacing: 0) {
-            AddressHelperViewSection(title: "COPIED TO CLIPBOARD") {
+            AddressHelperViewSection(title: "send_onclipboard".localized()) {
                 AddrezzHelperViewCell(address: address, shielded: isValidZ(address: address),selected: self.selection == Selection.clipboardSelection)
                 }
             .onTapGesture {
@@ -161,15 +161,6 @@ struct AddressHelperView_Previews: PreviewProvider {
         Group {
             ZStack {
                 ZcashBackground()
-                //
-                //                AddressHelperViewSection(title: "COPIED TO CLIPBOARD") {
-                //                    AddrezzHelperViewCell(
-                //                        address: "ztestsapling1ctuamfer5xjnnrdr3xdazenljx0mu0gutcf9u9e74tr2d3jwjnt0qllzxaplu54hgc2tyjdc2p6",
-                //                        shielded: true,
-                //                        selected: false)
-                //                    }.listStyle(PlainListStyle())
-                //                    }.padding(0)
-                //                .background(Color.clear)
                 
                 AddressHelperView(selection: .constant(.none),mode: .both(clipboard: "ztestsapling1ctuamfer5xjnnrdr3xdazenljx0mu0gutcf9u9e74tr2d3jwjnt0qllzxaplu54hgc2tyjdc2p6", lastUsed: "tuamfer5xjnnrdr3xdazenljx0mu0gutcf9u9e74tr2d3jwjnt0qllzxaplu54hgc2tyjdc2p6"))
                 

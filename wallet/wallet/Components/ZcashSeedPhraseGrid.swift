@@ -16,7 +16,7 @@ struct ZcashSeedPhraseGrid: View {
     }
     
     var body: some View {
-        VStack(alignment: .center, spacing: 12) {
+        VStack(alignment: .center, spacing: 8) {
             ForEach(wordGrid.indices, id: \.self) { i in
                 HStack(alignment: .center, spacing: 6) {
                     ForEach(self.wordGrid[i].indices, id: \.self) { j in
@@ -33,7 +33,7 @@ struct ZcashSeedPhraseGrid_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             ZcashBackground()
-            ZcashSeedPhraseGrid(words: MnemonicSeedProvider.default.asWords(mnemonic: "kitchen renew wide common vague fold vacuum tilt amazing pear square gossip jewel month tree shock scan alpha just spot fluid toilet view dinner")!)
+            ZcashSeedPhraseGrid(words: try! MnemonicSeedProvider.default.asWords(mnemonic: "kitchen renew wide common vague fold vacuum tilt amazing pear square gossip jewel month tree shock scan alpha just spot fluid toilet view dinner"))
         }
     }
 }

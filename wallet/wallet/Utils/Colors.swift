@@ -13,6 +13,10 @@ extension Color {
     /// \#FFB900 Color(red: 1, green: 185.0/255.0, blue: 0)
     static let zYellow = Color(red: 1, green: 185.0/255.0, blue: 0)
     
+    /// Transparent things blue
+    /// \#4A90E2 Color(red:24/255, red: 144/255, blue: 226/255)
+    static let zTransparentBlue = Color(red: 24/255, green: 144/255, blue: 226/255)
+    
     /// \#FFD000 Color(red: 1, red: 0.82, blue: 0)
     static let zAmberGradient0 = Color(red: 1.0, green: 0.82, blue: 0.0)
     /// Color(red: 1.0, green:0.64, blue:0.0)
@@ -55,6 +59,8 @@ extension Color {
     /// \#A7A7A7 Color(red: 0.65, green: 0.65, blue: 0.65)
     static let zDarkGray3 = Color(red: 0.65, green: 0.65, blue: 0.65)
     
+    /// \#F7F7F7
+    static let zDudeItsAlmostWhite = Color(red: 247/255, green: 247/255, blue: 247/255)
    
     
     /// # Card colors
@@ -96,6 +102,19 @@ extension Color {
     /// #Hold Button
     /// \#979797  Color(red:0.59, green:0.59, blue:0.59)
     static let zHoldButtonGray = Color(red:0.59, green:0.59, blue:0.59)
+    
+    
+    /// Amount Breakdown Gray
+    
+    static let zLeastSignificantAmountGray = Color(red: 119/255, green: 119/255, blue: 119/255)
+    
+    static let zBalanceBreakdownGradient1 = Color(red: 42/255, green: 41/255, blue: 51/255)
+    
+    static let zBalanceBreakdownGradient2 = Color(red: 45/255, green: 45/255, blue: 51/255)
+    
+    static let zBalanceBreakdownItem0 = Color(red: 44/255, green: 44/255, blue: 52/255)
+    static let zBalanceBreakdownItem1 = Color(red: 134/255, green: 134/255, blue: 134/255, opacity: 0.081)
+    static let zBalanceBreakdownItem2 = Color(red: 0, green: 0, blue: 0, opacity: 0.081)
     
 }
 

@@ -39,17 +39,6 @@ final class SeedManager {
         return value
     }
     
-    func importSeed(_ seed: [UInt8]) throws {
-        guard keychain.get(Self.zECCWalletSeedKey) == nil else { throw SeedManagerError.alreadyImported }
-        keychain.set(Data(seed), forKey: Self.zECCWalletSeedKey)
-        
-    }
-    
-    func exportSeed() throws -> [UInt8] {
-        guard let seedData = keychain.getData(Self.zECCWalletSeedKey) else { throw SeedManagerError.uninitializedWallet }
-        return [UInt8](seedData)
-    }
-    
     func importPhrase(bip39 phrase: String) throws {
         guard keychain.get(Self.zECCWalletPhrase) == nil else { throw SeedManagerError.alreadyImported }
         keychain.set(phrase, forKey: Self.zECCWalletPhrase)
@@ -60,16 +49,8 @@ final class SeedManager {
         return seed
     }
     
-    func saveKeys(_ keys: [String]) {
-        keychain.set(keys.joined(separator: ";"), forKey: Self.zECCWalletKeys)
-    }
-    
-    func getKeys() -> [String]? {
-        keychain.get(Self.zECCWalletKeys)?.split(separator: ";").map{String($0)}
-    }
-    
     /**
-     
+     Use carefully: Deletes the seed phrase from the keychain
      */
     func nukePhrase() {
         keychain.delete(Self.zECCWalletPhrase)
@@ -105,11 +86,26 @@ final class SeedManager {
         nukeSeed()
         nukePhrase()
         nukeBirthday()
+        
+        // Fix: retrocompatibility with old wallets, previous to IVK Synchronizer updates 
+        for key in keychain.allKeys {
+            keychain.delete(key)
+        }
     }
-}
-
-extension SeedManager: SeedProvider {
-    func seed() -> [UInt8] {
-        (try? exportSeed()) ?? []
+    
+    var keysPresent: Bool {
+        do {
+            _ = try self.exportPhrase()
+            _ = try self.exportBirthday()
+        } catch SeedManagerError.uninitializedWallet {
+            return false
+        } catch {
+            tracker.track(.error(severity: .critical), properties: [
+                            ErrorSeverity.messageKey : "attempted to find if keys were present but failed",
+                            ErrorSeverity.underlyingError : error.localizedDescription])
+            logger.error("attempted to find if keys were present but failed: \(error.localizedDescription)")
+            return false
+        }
+        return true
     }
 }
