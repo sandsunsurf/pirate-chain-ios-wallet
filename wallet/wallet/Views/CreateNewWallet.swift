@@ -49,12 +49,12 @@ struct CreateNewWallet: View {
             ) {
               EmptyView()
             }
-            ZcashBackground()
+            ARRRBackground()
             
             VStack(alignment: .center, spacing: self.itemSpacing) {
                 Spacer()
                 
-                ZcashLogo(fillStyle: LinearGradient.amberGradient)
+                ARRRLogo(fillStyle: LinearGradient.amberGradient)
                 
                 Spacer()
                 Button(action: {

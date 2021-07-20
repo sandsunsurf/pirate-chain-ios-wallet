@@ -14,7 +14,7 @@ struct TheNoScreen: View {
    
     @ViewBuilder func theUnscreen() -> some View {
         ZStack(alignment: .center) {
-            ZcashBackground.darkSplashScreen
+            ARRRBackground.darkSplashScreen
             ARRRLogo(fillStyle: Color.black)
                 .frame(width: 167,
                        height: 167,
