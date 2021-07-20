@@ -35,6 +35,10 @@ extension Color {
     
     static let zBlackGradient2 = Color.black
     
+    static let zDarkGradient1 = Color.init(red: 0.13, green: 0.14, blue: 0.15)
+    
+    static let zDarkGradient2 = Color.init(red: 0.11, green: 0.12, blue: 0.14)
+    
     /// \#282828 Color(red: 0.17, green: 0.17, blue: 0.17)
     static let zGray = Color(red:0.16, green:0.16, blue:0.16)
     
