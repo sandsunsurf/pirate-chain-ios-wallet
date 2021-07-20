@@ -57,6 +57,49 @@ struct CreateNewWallet: View {
                 ARRRLogo(fillStyle: LinearGradient.amberGradient)
                 
                 Spacer()
+                
+                
+                
+                VStack(alignment: .center, spacing: 10.0, content: {
+                    
+                    ZStack {
+                        
+                        Image("buttonbackground").resizable().fixedSize().frame(width: 225.0, height:84).padding(10)
+                        
+                        Text("iCloud Backup").foregroundColor(Color.init(red: 132/255, green: 124/255, blue: 115/255))
+                            .frame(width: 225.0, height:84).padding(10)
+                            .cornerRadius(15)
+                            .font(.system(size: 16))
+                            .multilineTextAlignment(.center)
+                    }.frame(width: 225.0, height:84)
+                    
+                    NavigationLink(
+                        destination: RestoreWallet()
+                                        .environmentObject(self.appEnvironment),
+                                   tag: Destinations.restoreWallet,
+                                   selection: $destination
+                            
+                    ) {
+                        Button(action: {
+                            guard !ZECCWalletEnvironment.shared.credentialsAlreadyPresent() else {
+                                self.showError = .feedback(destination: .restoreWallet, cause: SeedManager.SeedManagerError.alreadyImported)
+                                return
+                            }
+                            self.destination = .restoreWallet
+                        }) {
+                            RecoveryWalletButtonView()
+                        }
+                    }
+                   
+                    
+                }).padding(50)
+                .background(Rectangle().fill(LinearGradient(gradient: Gradient(colors: [Color.init(red: 0.13, green: 0.14, blue: 0.15), Color.init(red: 0.11, green: 0.12, blue: 0.14)]), startPoint: .top, endPoint: .bottom)))
+                .cornerRadius(10)
+                .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
+                
+                
+                
+                
                 Button(action: {
                     do {
                         tracker.track(.tap(action: .landingBackupWallet), properties: [:])
@@ -73,46 +116,22 @@ struct CreateNewWallet: View {
                     }
 
                 }) {
-                    Text("Create New".localized())
-                      .font(.system(size: 20))
-                      .foregroundColor(Color.black)
-                      .zcashButtonBackground(shape: .roundedCorners(fillStyle: .gradient(gradient: LinearGradient.zButtonGradient)))
-                      
-                      .frame(height: self.buttonHeight)
+                    CreateWalletButtonView()
                 }
                 
                 
-                #if DEBUG
-                Button(action: {
-                    self.appEnvironment.nuke()
-                }) {
-                    Text("NUKE WALLET".localized())
-                        .foregroundColor(.red)
-                        .zcashButtonBackground(shape: .roundedCorners(fillStyle: .outline(color: .red, lineWidth: 1)))
-                        .frame(height: self.buttonHeight)
-                    
-                }
-                #endif
-                NavigationLink(
-                    destination: RestoreWallet()
-                                    .environmentObject(self.appEnvironment),
-                               tag: Destinations.restoreWallet,
-                               selection: $destination
-                        
-                ) {
-                    Button(action: {
-                        guard !ZECCWalletEnvironment.shared.credentialsAlreadyPresent() else {
-                            self.showError = .feedback(destination: .restoreWallet, cause: SeedManager.SeedManagerError.alreadyImported)
-                            return
-                        }
-                        self.destination = .restoreWallet
-                    }) {
-                        Text("Restore".localized())
-                            .foregroundColor(Color.zDarkGray3)
-                            .font(.system(size: 20))
-                            .frame(height: self.buttonHeight)
-                    }
-                }
+//                #if DEBUG
+//                Button(action: {
+//                    self.appEnvironment.nuke()
+//                }) {
+//                    Text("NUKE WALLET".localized())
+//                        .foregroundColor(.red)
+//                        .zcashButtonBackground(shape: .roundedCorners(fillStyle: .outline(color: .red, lineWidth: 1)))
+//                        .frame(height: self.buttonHeight)
+//
+//                }
+//                #endif
+               
             }
             .padding([.horizontal, .bottom], self.buttonPadding)
         }
@@ -213,3 +232,36 @@ struct CreateNewWallet_Previews: PreviewProvider {
 }
 
 extension CreateNewWallet.Destinations: Hashable {}
+
+
+struct CreateWalletButtonView : View {
+    var body: some View {
+        ZStack {
+            
+            Image("bluebuttonbackground").resizable().fixedSize().frame(width: 225.0, height:84).padding(10)
+            
+            Text("Create New Wallet").foregroundColor(Color.black)
+                .frame(width: 225.0, height:84).padding(10)
+                .cornerRadius(15)
+                .font(.system(size: 16))
+                .multilineTextAlignment(.center)
+        }.frame(width: 225.0, height:84)
+        
+    }
+}
+
+
+struct RecoveryWalletButtonView : View {
+    var body: some View {
+        ZStack {
+
+            Image("buttonbackground").resizable().fixedSize().frame(width: 225.0, height:84).padding(10)
+            
+            Text("Recovery Phase").foregroundColor(Color.init(red: 132/255, green: 124/255, blue: 115/255))
+                .frame(width: 225.0, height:84).padding(10)
+                .cornerRadius(15)
+                .font(.system(size: 16))
+                .multilineTextAlignment(.center)
+        }.frame(width: 225.0, height:84)
+    }
+}
