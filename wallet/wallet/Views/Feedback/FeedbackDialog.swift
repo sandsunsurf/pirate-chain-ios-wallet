@@ -34,6 +34,8 @@ struct ScreenOverlay<ForegroundContent: View>: ViewModifier {
         } else {
             content
         }
+        
+        return content
     }
 }
 

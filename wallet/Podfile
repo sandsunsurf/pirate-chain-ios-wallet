@@ -4,7 +4,7 @@ use_frameworks!
 def base_pods
   pod 'ZcashLightClientKit', :git => 'https://github.com/Meshbits/ZcashLightClientKit.git', :branch => 'v0.12.0-alpha.8'
   #pod 'ZcashLightClientKit', :path => '../../ZcashLightClientKit'
-  pod 'gRPC-Swift', '= 1.0.0'
+  pod 'gRPC-Swift', '~> 1.0.0'
   pod 'KeychainSwift', '~> 19.0.0'
   pod 'MnemonicSwift', :git => 'https://github.com/zcash-hackworks/MnemonicSwift.git', :branch => 'master'
   pod 'TinyQRScanner'
@@ -21,7 +21,7 @@ end
 target 'ECC-Wallet' do 
   base_pods
   pod 'Mixpanel-swift'
-  pod 'Bugsnag'
+#  pod 'Bugsnag'
   pod 'zealous-logger', :git => 'https://github.com/zcash-hackworks/zealous-logger', :branch => 'master'
   
 end
@@ -29,7 +29,7 @@ end
 target 'ECC-Wallet-Testnet' do
   base_pods
   pod 'Mixpanel-swift'
-  pod 'Bugsnag'
+#  pod 'Bugsnag'
   pod 'zealous-logger', :git => 'https://github.com/zcash-hackworks/zealous-logger', :branch => 'master'
   
 end

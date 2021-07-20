@@ -2158,7 +2158,7 @@
 				CURRENT_PROJECT_VERSION = 117;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"wallet/Preview Content\"";
-				DEVELOPMENT_TEAM = RLPRR8CPQG;
+				DEVELOPMENT_TEAM = 9TR5BMPZP3;
 				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "ECC-Wallet-no-logs-Info.plist";
@@ -2168,7 +2168,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.4.0;
-				PRODUCT_BUNDLE_IDENTIFIER = co.electriccoin.eccwallet;
+				PRODUCT_BUNDLE_IDENTIFIER = io.meshbits.piratewallet;
 				PRODUCT_NAME = "ECC-Wallet-no-logs";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

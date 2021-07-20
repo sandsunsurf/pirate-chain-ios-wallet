@@ -47,9 +47,9 @@ final class ZECCWalletEnvironment: ObservableObject {
             // are there any keys?
             let keysPresent = SeedManager.default.keysPresent
         
-            let dbFilesPresent = try dbFilesPresent()
+            let databaseFilesPresent = try dbFilesPresent()
             
-            switch (keysPresent,dbFilesPresent) {
+            switch (keysPresent,databaseFilesPresent) {
             case (false, false):
                 return .uninitialized
             case (false, true):
@@ -162,9 +162,9 @@ final class ZECCWalletEnvironment: ObservableObject {
             logger.error("could not nuke wallet: \(error)")
         }
         
-        if abortApplication {
-            abort()
-        }
+//        if abortApplication {
+//            abort()
+//        }
         
         
     }

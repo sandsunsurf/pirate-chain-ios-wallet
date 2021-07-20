@@ -1,5 +1,4 @@
 PODS:
-  - Bugsnag (6.10.2)
   - CGRPCZlib (1.0.0)
   - CNIOAtomics (2.30.0)
   - CNIOBoringSSL (2.14.0)
@@ -79,9 +78,8 @@ PODS:
     - CocoaLumberjack/Swift (~> 3.7.0)
 
 DEPENDENCIES:
-  - Bugsnag
   - CombineUrlSessionDownloader
-  - gRPC-Swift (= 1.0.0)
+  - gRPC-Swift (~> 1.0.0)
   - KeychainSwift (~> 19.0.0)
   - lottie-ios
   - Mixpanel-swift
@@ -92,7 +90,6 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - Bugsnag
     - CGRPCZlib
     - CNIOAtomics
     - CNIOBoringSSL
@@ -138,14 +135,13 @@ CHECKOUT OPTIONS:
     :commit: 714cc6e2631ac322fc0067b2302358c1baad9275
     :git: https://github.com/zcash-hackworks/MnemonicSwift.git
   ZcashLightClientKit:
-    :commit: 0588c0dec72d98bccae8a3dd3ce08d766e04b7a0
+    :commit: 24d6fa616562e76f2f673fc5721fc509da7a63f6
     :git: https://github.com/Meshbits/ZcashLightClientKit.git
   zealous-logger:
     :commit: c9f8d8d9f74a456094b9143616da3b4eba91ddcf
     :git: https://github.com/zcash-hackworks/zealous-logger
 
 SPEC CHECKSUMS:
-  Bugsnag: 748913b16f50f3345c97080a14410207860e2d7f
   CGRPCZlib: b0c9d704a12fa667f1824ffff20688f191945989
   CNIOAtomics: ab79c239d46f3a330eef44aa3f2f86a25dbba3c2
   CNIOBoringSSL: f3b67841fc3aefe1154f1b4232f4ac7a922d16dc
@@ -178,6 +174,6 @@ SPEC CHECKSUMS:
   ZcashLightClientKit: 98b74ede09b395f9f1505d6834ad0f85cbbb496b
   zealous-logger: 2f33820d7d7e723796dabc51d60942b51b9ab024
 
-PODFILE CHECKSUM: 3786bfca6b7d874af56feac479a573f78d973371
+PODFILE CHECKSUM: f6678f975f62f1557138320a7e83065a48f3da56
 
 COCOAPODS: 1.10.1

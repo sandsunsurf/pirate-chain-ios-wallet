@@ -11,7 +11,7 @@ import BackgroundTasks
 
 
 #if ENABLE_LOGGING
-import Bugsnag
+//import Bugsnag
 import zealous_logger
 let tracker = MixPanelLogger(token: Constants.mixpanelProject)
 let logger = SimpleFileLogger(logsDirectory: try! URL.logsDirectory(), alsoPrint: true, level: .debug)
@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #endif
         
         #if ENABLE_LOGGING
-        Bugsnag.start(withApiKey: Constants.bugsnagApiKey)
+//        Bugsnag.start(withApiKey: Constants.bugsnagApiKey)
         #endif
         
         return true

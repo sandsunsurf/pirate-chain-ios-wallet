@@ -230,7 +230,7 @@ struct Home: View {
                 
         case .validating:
             Text("Validating")
-                .font(.system(size: 15).italic())
+                .font(.system(size: 15)).italic()
                 .foregroundColor(.black)
                 .zcashButtonBackground(shape: .roundedCorners(fillStyle: .gradient(gradient: .zButtonGradient)))
         case .scanning(let scanProgress):
@@ -255,7 +255,7 @@ struct Home: View {
                 self.viewModel.retrySyncing()
             }, label: {
                 Text("Stopped")
-                    .font(.system(size: 15).italic())
+                    .font(.system(size: 15)).italic()
                     .foregroundColor(.black)
                     .zcashButtonBackground(shape: .roundedCorners(fillStyle: .solid(color: .zLightGray)))
             })
@@ -265,7 +265,7 @@ struct Home: View {
                 self.viewModel.retrySyncing()
             }, label: {
                 Text("Offline")
-                    .font(.system(size: 15).italic())
+                    .font(.system(size: 15)).italic()
                     .foregroundColor(.black)
                     .zcashButtonBackground(shape: .roundedCorners(fillStyle: .solid(color: .zLightGray)))
             })
