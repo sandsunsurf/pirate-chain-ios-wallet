@@ -54,23 +54,14 @@ struct CreateNewWallet: View {
             VStack(alignment: .center, spacing: self.itemSpacing) {
                 Spacer()
                 
-                ARRRLogo(fillStyle: LinearGradient.amberGradient)
+                ARRRLogo(fillStyle: LinearGradient.amberGradient).padding(.leading,20)
                 
                 Spacer()
-                
-                
                 
                 VStack(alignment: .center, spacing: 10.0, content: {
                     
                     ZStack {
-                        
-                        Image("buttonbackground").resizable().fixedSize().frame(width: 225.0, height:84).padding(10)
-                        
-                        Text("iCloud Backup").foregroundColor(Color.init(red: 132/255, green: 124/255, blue: 115/255))
-                            .frame(width: 225.0, height:84).padding(10)
-                            .cornerRadius(15)
-                            .font(.system(size: 16))
-                            .multilineTextAlignment(.center)
+                        RecoveryWalletButtonView(imageName: Binding.constant("buttonbackground"), title: Binding.constant("iCloud Backup"))
                     }.frame(width: 225.0, height:84)
                     
                     NavigationLink(
@@ -87,7 +78,7 @@ struct CreateNewWallet: View {
                             }
                             self.destination = .restoreWallet
                         }) {
-                            RecoveryWalletButtonView()
+                            RecoveryWalletButtonView(imageName: Binding.constant("buttonbackground"), title: Binding.constant("Recovery Phase"))
                         }
                     }
                    
@@ -96,9 +87,6 @@ struct CreateNewWallet: View {
                 .background(Rectangle().fill(LinearGradient(gradient: Gradient(colors: [Color.init(red: 0.13, green: 0.14, blue: 0.15), Color.init(red: 0.11, green: 0.12, blue: 0.14)]), startPoint: .top, endPoint: .bottom)))
                 .cornerRadius(10)
                 .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
-                
-                
-                
                 
                 Button(action: {
                     do {
@@ -252,12 +240,16 @@ struct CreateWalletButtonView : View {
 
 
 struct RecoveryWalletButtonView : View {
+    
+    @Binding var imageName: String
+    @Binding var title: String
+    
     var body: some View {
         ZStack {
 
-            Image("buttonbackground").resizable().fixedSize().frame(width: 225.0, height:84).padding(10)
+            Image(imageName).resizable().fixedSize().frame(width: 225.0, height:84).padding(10)
             
-            Text("Recovery Phase").foregroundColor(Color.init(red: 132/255, green: 124/255, blue: 115/255))
+            Text(title).foregroundColor(Color.init(red: 132/255, green: 124/255, blue: 115/255))
                 .frame(width: 225.0, height:84).padding(10)
                 .cornerRadius(15)
                 .font(.system(size: 16))
