@@ -45,13 +45,11 @@ struct PasscodeNumber: View {
                 updateLayout(isBackPressed: passcodeValue == "delete" ? true : false)
             }, label: {
                 ZStack {
-                    
+                    Image("passcodenumericbg")
+
                     if passcodeValue == "delete" {
                         Text("").foregroundColor(.white)
-                        Image("passcodenumericbg")
                         Image(systemName: "delete.left.fill").foregroundColor(.gray)
-                    }else{
-                        Image("passcodenumericbg")
                     }
                  
                     if passcodeValue != "delete" {
