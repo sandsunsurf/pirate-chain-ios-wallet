@@ -48,8 +48,9 @@ struct TheNoScreen: View {
         case .initalized,
              .syncing,
              .synced:
+
             Home().environmentObject(HomeViewModel())
-//            PasscodeScreen()
+            //            PasscodeScreen()
                 
         case .uninitialized:
             CreateNewWallet().environmentObject(appEnvironment)

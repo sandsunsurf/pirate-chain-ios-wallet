@@ -8,55 +8,13 @@
 
 import SwiftUI
 
-struct PasscodeScreen: View {
-    
-    @State var mStateOfPins = [false,false,false,false,false,false]
-    
-    var body: some View {
-        ZStack {
-            PasscodeBackgroundView()
-            VStack(alignment: .center, spacing: 10, content: {
-                PasscodeScreenTopImageView().padding(.leading,20).padding(.top,50)
-                
-                HStack(alignment: .center, spacing: 10, content: {
-                    
-                    ForEach(0 ..< mStateOfPins.count) { index in
-                        PasscodePinImageView(isSelected: Binding.constant(mStateOfPins[index]))
-                    }
-                }).padding(20)
 
-                PasscodeNumberView(mStateOfPins: $mStateOfPins)
-                                
-            })
-            
-        }
-    }
-}
-
-struct PasscodeNumber: View {
+public class PasscodeViewModel: ObservableObject{
     
-    @Binding var passcodeValue: String
+    @Published var mStateOfPins = [false,false,false,false,false,false]
     
-    @Binding var mStateOfPins :[Bool]
-    
-    var body: some View {
+    init() {
         
-            Button(action: {
-                updateLayout(isBackPressed: passcodeValue == "delete" ? true : false)
-            }, label: {
-                ZStack {
-                    Image("passcodenumericbg")
-
-                    if passcodeValue == "delete" {
-                        Text("").foregroundColor(.white)
-                        Image(systemName: "delete.left.fill").foregroundColor(.gray)
-                    }
-                 
-                    if passcodeValue != "delete" {
-                        Text(passcodeValue).foregroundColor(.gray).bold().fontWeight(.heavy).multilineTextAlignment(.center)
-                    }
-                }.padding(2)
-            })
     }
     
     func updateLayout(isBackPressed:Bool){
@@ -84,33 +42,86 @@ struct PasscodeNumber: View {
     }
 }
 
+struct PasscodeScreen: View {
+    
+   @ObservedObject var passcodeViewModel = PasscodeViewModel()
+    
+    var body: some View {
+        ZStack {
+            PasscodeBackgroundView()
+            VStack(alignment: .center, spacing: 10, content: {
+                PasscodeScreenTopImageView().padding(.leading,20).padding(.top,50)
+                
+                HStack(alignment: .center, spacing: 0, content: {
+                    
+                    ForEach(0 ..< passcodeViewModel.mStateOfPins.count) { index in
+                        PasscodePinImageView(isSelected: Binding.constant(passcodeViewModel.mStateOfPins[index]))
+                    }
+                }).padding(20)
+
+                PasscodeNumberView(passcodeViewModel: Binding.constant(passcodeViewModel))
+                                
+            })
+            
+        }
+    }
+}
+
+struct PasscodeNumber: View {
+    
+    @Binding var passcodeValue: String
+    
+    @Binding var passcodeViewModel: PasscodeViewModel
+    
+    var body: some View {
+        
+            Button(action: {
+                passcodeViewModel.updateLayout(isBackPressed: passcodeValue == "delete" ? true : false)
+            }, label: {
+                ZStack {
+                    Image("passcodenumericbg")
+
+                    if passcodeValue == "delete" {
+                        Text("").foregroundColor(.white)
+                        Image(systemName: "delete.left.fill").foregroundColor(.gray)
+                    }
+                 
+                    if passcodeValue != "delete" {
+                        Text(passcodeValue).foregroundColor(.gray).bold().fontWeight(.heavy).multilineTextAlignment(.center)
+                    }
+                }.padding(2)
+            })
+    }
+    
+}
+
 struct PasscodeNumpadRow: View {
     
     @Binding var startIndex : Int
     @Binding var endIndex : Int
-    @Binding var mStateOfPins :[Bool]
+    @Binding var passcodeViewModel: PasscodeViewModel
     
     var body: some View {
         HStack(alignment: .center, spacing: nil, content: {
             ForEach(startIndex ..< endIndex) { index in
-                PasscodeNumber(passcodeValue: Binding.constant(String(index)),mStateOfPins: $mStateOfPins)
+                PasscodeNumber(passcodeValue: Binding.constant(String(index)),passcodeViewModel: $passcodeViewModel)
             }
         })
     }
 }
 
 struct PasscodeNumberView : View {
-    @Binding var mStateOfPins :[Bool]
-    
+    @Binding var passcodeViewModel: PasscodeViewModel
     var body: some View {
         VStack {
-            PasscodeNumpadRow(startIndex: Binding.constant(1), endIndex: Binding.constant(4),mStateOfPins: $mStateOfPins)
-            PasscodeNumpadRow(startIndex: Binding.constant(4), endIndex: Binding.constant(7),mStateOfPins: $mStateOfPins)
-            PasscodeNumpadRow(startIndex: Binding.constant(7), endIndex: Binding.constant(10),mStateOfPins: $mStateOfPins)
+            PasscodeNumpadRow(startIndex: Binding.constant(1), endIndex: Binding.constant(4),passcodeViewModel: Binding.constant(passcodeViewModel))
+            PasscodeNumpadRow(startIndex: Binding.constant(4), endIndex: Binding.constant(7),passcodeViewModel: Binding.constant(passcodeViewModel))
+            PasscodeNumpadRow(startIndex: Binding.constant(7), endIndex: Binding.constant(10),passcodeViewModel: Binding.constant(passcodeViewModel))
             HStack(alignment: .center, spacing: nil, content: {
-                PasscodeNumber(passcodeValue: Binding.constant(""),mStateOfPins: $mStateOfPins).hidden()
-                PasscodeNumber(passcodeValue: Binding.constant("0"),mStateOfPins: $mStateOfPins)
-                PasscodeNumber(passcodeValue: Binding.constant("delete"),mStateOfPins: $mStateOfPins)
+                
+                PasscodeNumber(passcodeValue: Binding.constant(""),passcodeViewModel: $passcodeViewModel)
+                PasscodeNumber(passcodeValue: Binding.constant("0"),passcodeViewModel: $passcodeViewModel)
+                PasscodeNumber(passcodeValue: Binding.constant("delete"),passcodeViewModel: $passcodeViewModel)
             })
         }
     }
@@ -141,12 +152,12 @@ struct PasscodeScreenTopImageView : View {
         })
     }
 }
-
-struct PasscodeScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        PasscodeScreen()
-    }
-}
+//
+//struct PasscodeScreen_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PasscodeScreen()
+//    }
+//}
 
 
 //struct PasscodeScreen: View {
