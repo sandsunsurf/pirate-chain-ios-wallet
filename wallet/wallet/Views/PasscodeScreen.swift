@@ -129,7 +129,7 @@ struct PasscodeNumberView : View {
 
 struct PasscodeBackgroundView : View {
     var body: some View{
-        Rectangle().fill(LinearGradient(gradient: Gradient(colors: [Color.init(red: 0.13, green: 0.14, blue: 0.15), Color.init(red: 0.11, green: 0.12, blue: 0.14)]), startPoint: .top, endPoint: .bottom)).edgesIgnoringSafeArea(.all)
+        Rectangle().fill(LinearGradient(gradient: Gradient(colors: [Color.zDarkGradient1, Color.zDarkGradient2]), startPoint: .top, endPoint: .bottom)).edgesIgnoringSafeArea(.all)
     }
 }
 
