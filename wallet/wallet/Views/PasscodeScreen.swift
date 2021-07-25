@@ -11,9 +11,9 @@ import SwiftUI
 
 public class PasscodeViewModel: ObservableObject{
     
-    @Published var mStateOfPins = [false,false,false,false,false,false]
+    @Published var mStateOfPins: [Bool] = [false,false,false,false,false,false] // To change the color of pins
     
-    @Published var mPressedKeys = []
+    @Published var mPressedKeys: [Int] = [] // To keep the pressed content
     
     init() {
         
@@ -44,7 +44,7 @@ public class PasscodeViewModel: ObservableObject{
        var mCurrentSelectedIndex = -1
 
        for index in 0 ..< mStateOfPins.count {
-           if mStateOfPins[index] {
+        if mStateOfPins[index] {
                mCurrentSelectedIndex = index
            }
        }
@@ -69,11 +69,34 @@ struct PasscodeScreen: View {
     
    @ObservedObject var passcodeViewModel = PasscodeViewModel()
     
+    
+   enum ScreenStates {
+      case validatePasscode, newPasscode, confirmPasscode, passcodeAlreadyExists
+   }
+    
+   @State var mScreenState: ScreenStates?
+    
     var body: some View {
         ZStack {
             PasscodeBackgroundView()
+            
             VStack(alignment: .center, spacing: 10, content: {
-                PasscodeScreenTopImageView().padding(.leading,20).padding(.top,50)
+                
+                if mScreenState == ScreenStates.passcodeAlreadyExists{
+                    PasscodeScreenTopImageView().padding(.leading,20).padding(.top,50)
+                }else if mScreenState == ScreenStates.newPasscode{
+                    PasscodeScreenTitle(aTitle: "Change PIN".localized())
+                    Spacer()
+                    PasscodeScreenSubTitle(aSubTitle: "SET PIN".localized())
+                    PasscodeScreenDescription(aDescription: "Your PIN will be used to unlock your Pirate wallet and send money".localized(),size:Device.isLarge ? 18 : 12,padding:50)
+                    Spacer()
+                }else if mScreenState == ScreenStates.confirmPasscode{
+                    PasscodeScreenTitle(aTitle: "Change PIN".localized())
+                    Spacer()
+                    PasscodeScreenSubTitle(aSubTitle: "Re-Enter PIN".localized())
+                    PasscodeScreenDescription(aDescription: "Your PIN will be used to unlock your Pirate wallet and send money".localized(),size:Device.isLarge ? 18 : 12,padding:50)
+                    Spacer()
+                }
                 
                 HStack(alignment: .center, spacing: 0, content: {
                     
@@ -82,6 +105,8 @@ struct PasscodeScreen: View {
                     }
                 }).padding(20)
 
+                PasscodeScreenDescription(aDescription: "Remember your PIN. If you forget it, you won't be able to access your assets.".localized(),size:Device.isLarge ? 14 : 8,padding:90)
+                
                 PasscodeNumberView(passcodeViewModel: Binding.constant(passcodeViewModel))
                                 
             })
@@ -184,6 +209,48 @@ struct PasscodeScreenTopImageView : View {
         })
     }
 }
+
+struct PasscodeScreenTitle : View {
+    @State var aTitle: String
+    var body: some View {
+        HStack(alignment: .center, spacing: nil, content: {
+            Spacer()
+            Text(aTitle).foregroundColor(.gray).font(
+                .barlowRegular(size: Device.isLarge ? 28 : 18)
+            ).padding(.top,20)
+            Spacer()
+        })
+    }
+}
+
+struct PasscodeScreenSubTitle : View {
+    @State var aSubTitle: String
+    var body: some View {
+        HStack(alignment: .center, spacing: nil, content: {
+            Spacer()
+            Text(aSubTitle).foregroundColor(.white).font(
+                .barlowRegular(size: Device.isLarge ? 28 : 18)
+            )
+            Spacer()
+        })
+    }
+}
+
+struct PasscodeScreenDescription : View {
+    @State var aDescription: String
+    @State var size: CGFloat
+    @State var padding:CGFloat
+    var body: some View {
+        HStack(alignment: .center, spacing: nil, content: {
+            Spacer()
+            Text(aDescription).lineLimit(nil).foregroundColor(.white).font(
+                .barlowRegular(size: size)
+            ).padding(.leading,padding).padding(.trailing,padding).multilineTextAlignment(.center)
+            Spacer()
+        })
+    }
+}
+
 //
 //struct PasscodeScreen_Previews: PreviewProvider {
 //    static var previews: some View {
