@@ -19,6 +19,17 @@ class UserSettings {
         static let everShielded = "everShielded"
         static let rescanPendingFix = "rescanPendingFix"
         static let lastFeedbackDisplayedOnDate = "lastFeedbackDisplayedOnDate"
+        static let aPasscode = "aPasscode"
+    }
+    
+    
+    var aPasscode: String? {
+        get {
+            UserDefaults.standard.string(forKey: Keys.aPasscode)
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: Keys.aPasscode)
+        }
     }
     
     var lastUsedAddress: String? {

@@ -15,6 +15,12 @@ public class PasscodeViewModel: ObservableObject{
     
     @Published var mPressedKeys: [Int] = [] // To keep the pressed content
     
+    var aTempPasscode = ""
+        
+    var aTempConfirmPasscode = ""
+    
+    var aSavedPasscode = UserSettings.shared.aPasscode
+    
     init() {
         
     }
@@ -39,9 +45,28 @@ public class PasscodeViewModel: ObservableObject{
         }
         
         if mPressedKeys.count == 6 {
-            NotificationCenter.default.post(name: NSNotification.Name("UpdateLayout"), object: nil)
+            comparePasscodes()
         }
 
+    }
+    
+    func comparePasscodes(){
+        
+        if !aTempPasscode.isEmpty {
+            aTempConfirmPasscode = mPressedKeys.map{String($0)}.joined(separator: "")
+            if aTempPasscode == aTempConfirmPasscode {
+                UserSettings.shared.aPasscode = aTempPasscode
+                print("PASSCODE ARE SAME")
+            }else{
+                print("PASSCODE ARE NOT SAME")
+            }
+            
+        }else{
+            aTempPasscode = mPressedKeys.map{String($0)}.joined(separator: "")
+            NotificationCenter.default.post(name: NSNotification.Name("UpdateLayout"), object: nil)
+        }
+        
+        
     }
     
     func updateLayout(isBackPressed:Bool){
