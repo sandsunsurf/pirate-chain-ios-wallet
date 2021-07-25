@@ -37,6 +37,10 @@ public class PasscodeViewModel: ObservableObject{
             mPressedKeys.append(mCurrentSelectedNumber)
             
         }
+        
+        if mPressedKeys.count == 6 {
+            NotificationCenter.default.post(name: NSNotification.Name("UpdateLayout"), object: nil)
+        }
 
     }
     
@@ -111,6 +115,12 @@ struct PasscodeScreen: View {
                                 
             })
             
+        }.onAppear {
+            NotificationCenter.default.addObserver(forName: NSNotification.Name("UpdateLayout"), object: nil, queue: .main) { (_) in
+                mScreenState = ScreenStates.confirmPasscode
+                passcodeViewModel.mStateOfPins = passcodeViewModel.mStateOfPins.map { _ in false }
+                passcodeViewModel.mPressedKeys.removeAll()
+            }
         }
     }
 }
