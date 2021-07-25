@@ -13,8 +13,31 @@ public class PasscodeViewModel: ObservableObject{
     
     @Published var mStateOfPins = [false,false,false,false,false,false]
     
+    @Published var mPressedKeys = []
+    
     init() {
         
+    }
+    
+    func captureKeyPress(mKeyPressed:Int,isBackPressed:Bool){
+        
+        let mCurrentSelectedNumber = mKeyPressed
+        
+        if isBackPressed {
+            
+            if mPressedKeys.count > 0 {
+                mPressedKeys.removeLast()
+            }
+            
+            return
+        }
+        
+        if mPressedKeys.count < 6 {
+            
+            mPressedKeys.append(mCurrentSelectedNumber)
+            
+        }
+
     }
     
     func updateLayout(isBackPressed:Bool){
@@ -77,6 +100,13 @@ struct PasscodeNumber: View {
         
             Button(action: {
                 passcodeViewModel.updateLayout(isBackPressed: passcodeValue == "delete" ? true : false)
+                
+                if passcodeValue == "delete" {
+                    passcodeViewModel.captureKeyPress(mKeyPressed: -1, isBackPressed: true)
+                }else{
+                    passcodeViewModel.captureKeyPress(mKeyPressed: Int(passcodeValue)!, isBackPressed: false)
+                }
+
             }, label: {
                 ZStack {
                     Image("passcodenumericbg")
@@ -119,7 +149,7 @@ struct PasscodeNumberView : View {
             PasscodeNumpadRow(startIndex: Binding.constant(7), endIndex: Binding.constant(10),passcodeViewModel: Binding.constant(passcodeViewModel))
             HStack(alignment: .center, spacing: nil, content: {
                 
-                PasscodeNumber(passcodeValue: Binding.constant(""),passcodeViewModel: $passcodeViewModel)
+                PasscodeNumber(passcodeValue: Binding.constant(""),passcodeViewModel: $passcodeViewModel).hidden()
                 PasscodeNumber(passcodeValue: Binding.constant("0"),passcodeViewModel: $passcodeViewModel)
                 PasscodeNumber(passcodeValue: Binding.constant("delete"),passcodeViewModel: $passcodeViewModel)
             })
