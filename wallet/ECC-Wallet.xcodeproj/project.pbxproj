@@ -361,6 +361,9 @@
 		290BEF8126A73B5C00526EDA /* PasscodeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290BEF8026A73B5C00526EDA /* PasscodeScreen.swift */; };
 		290BEF8226A73B5C00526EDA /* PasscodeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290BEF8026A73B5C00526EDA /* PasscodeScreen.swift */; };
 		290BEF8326A73B5C00526EDA /* PasscodeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290BEF8026A73B5C00526EDA /* PasscodeScreen.swift */; };
+		2946090D26ADCEF200B0867F /* Barlow-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2946090C26ADCEF200B0867F /* Barlow-Regular.ttf */; };
+		2946090E26ADCEF200B0867F /* Barlow-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2946090C26ADCEF200B0867F /* Barlow-Regular.ttf */; };
+		2946090F26ADCEF200B0867F /* Barlow-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2946090C26ADCEF200B0867F /* Barlow-Regular.ttf */; };
 		298D50E326A726E000585699 /* ARRRLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298D50E226A726E000585699 /* ARRRLogo.swift */; };
 		298D50E426A726E000585699 /* ARRRLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298D50E226A726E000585699 /* ARRRLogo.swift */; };
 		298D50E526A726E000585699 /* ARRRLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298D50E226A726E000585699 /* ARRRLogo.swift */; };
@@ -565,6 +568,7 @@
 		0DFC7D4B254C7EB600E10595 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		18C69464FD3770D35A524106 /* Pods-wallet-no-logging.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wallet-no-logging.debug.xcconfig"; path = "Target Support Files/Pods-wallet-no-logging/Pods-wallet-no-logging.debug.xcconfig"; sourceTree = "<group>"; };
 		290BEF8026A73B5C00526EDA /* PasscodeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeScreen.swift; sourceTree = "<group>"; };
+		2946090C26ADCEF200B0867F /* Barlow-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-Regular.ttf"; sourceTree = "<group>"; };
 		298D50E226A726E000585699 /* ARRRLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARRRLogo.swift; sourceTree = "<group>"; };
 		298D510F26A728A800585699 /* ARRRBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARRRBackground.swift; sourceTree = "<group>"; };
 		29D1459C46D96D9D3DF2A55C /* Pods-walletUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-walletUITests.debug.xcconfig"; path = "Target Support Files/Pods-walletUITests/Pods-walletUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -764,6 +768,7 @@
 				0DC1430125C47880001D8E55 /* lottie_shield.json */,
 				0DF3075324DB4A440080B0CF /* lottie_success.json */,
 				0D12511023B557E60014EE3A /* Info.plist */,
+				2946090C26ADCEF200B0867F /* Barlow-Regular.ttf */,
 				0DE51DAB23BEB03C00709636 /* Zboto.otf */,
 				0D12510A23B557E60014EE3A /* Preview Content */,
 			);
@@ -1129,6 +1134,7 @@
 			files = (
 				0DC1430225C47880001D8E55 /* lottie_shield.json in Resources */,
 				0DF3075624DB4A440080B0CF /* lottie_success.json in Resources */,
+				2946090D26ADCEF200B0867F /* Barlow-Regular.ttf in Resources */,
 				0D4332862644A36F005B5B8E /* Assets.xcassets in Resources */,
 				0D12510F23B557E60014EE3A /* LaunchScreen.storyboard in Resources */,
 				0D2D5C1624CF3BD4001A58AD /* lottie_button_loading_new.json in Resources */,
@@ -1159,6 +1165,7 @@
 			files = (
 				0DC1430325C47880001D8E55 /* lottie_shield.json in Resources */,
 				0DF3075724DB4A440080B0CF /* lottie_success.json in Resources */,
+				2946090F26ADCEF200B0867F /* Barlow-Regular.ttf in Resources */,
 				0D4332872644A370005B5B8E /* Assets.xcassets in Resources */,
 				0DCDFFDB24B6722B000F6999 /* LaunchScreen.storyboard in Resources */,
 				0D2D5C1724CF3BD4001A58AD /* lottie_button_loading_new.json in Resources */,
@@ -1175,6 +1182,7 @@
 			files = (
 				0DE303B4263A158400CF877A /* lottie_shield.json in Resources */,
 				0DE303B5263A158400CF877A /* lottie_success.json in Resources */,
+				2946090E26ADCEF200B0867F /* Barlow-Regular.ttf in Resources */,
 				0D4332882644A38A005B5B8E /* Assets.xcassets in Resources */,
 				0DE303B6263A158400CF877A /* LaunchScreen.storyboard in Resources */,
 				0DE303B8263A158400CF877A /* lottie_button_loading_new.json in Resources */,

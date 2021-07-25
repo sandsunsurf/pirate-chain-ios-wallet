@@ -226,12 +226,12 @@ struct CreateWalletButtonView : View {
     var body: some View {
         ZStack {
             
-            Image("bluebuttonbackground").resizable().fixedSize().frame(width: 225.0, height:84).padding(10)
+            Image("bluebuttonbackground").resizable().fixedSize().frame(width: 225.0, height:84).padding(.top,5)
             
             Text("Create New Wallet").foregroundColor(Color.black)
-                .frame(width: 225.0, height:84).padding(10)
+                .frame(width: 225.0, height:84)
                 .cornerRadius(15)
-                .font(.system(size: 16))
+                .font(.barlowRegular(size: Device.isLarge ? 22 : 16))
                 .multilineTextAlignment(.center)
         }.frame(width: 225.0, height:84)
         
@@ -247,12 +247,12 @@ struct RecoveryWalletButtonView : View {
     var body: some View {
         ZStack {
 
-            Image(imageName).resizable().fixedSize().frame(width: 225.0, height:84).padding(10)
+            Image(imageName).resizable().fixedSize().frame(width: 225.0, height:84).padding(.top,5)
             
             Text(title).foregroundColor(Color.init(red: 132/255, green: 124/255, blue: 115/255))
                 .frame(width: 225.0, height:84).padding(10)
                 .cornerRadius(15)
-                .font(.system(size: 16))
+                .font(.barlowRegular(size: Device.isLarge ? 22 : 16))
                 .multilineTextAlignment(.center)
         }.frame(width: 225.0, height:84)
     }

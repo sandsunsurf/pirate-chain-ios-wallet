@@ -117,7 +117,9 @@ struct PasscodeNumber: View {
                     }
                  
                     if passcodeValue != "delete" {
-                        Text(passcodeValue).foregroundColor(.gray).bold().fontWeight(.heavy).multilineTextAlignment(.center)
+                        Text(passcodeValue).foregroundColor(.gray).bold().multilineTextAlignment(.center).font(
+                            .barlowRegular(size: Device.isLarge ? 32 : 24)
+                        )
                     }
                 }.padding(2)
             })

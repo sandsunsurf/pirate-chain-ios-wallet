@@ -36,6 +36,7 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>Zboto.otf</string>
+		<string>Barlow-Regular.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

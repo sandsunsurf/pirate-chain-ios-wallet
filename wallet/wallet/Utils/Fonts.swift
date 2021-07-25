@@ -12,4 +12,8 @@ extension Font {
     static func zoboto(size: CGFloat) -> Font {
         Font.custom("Zboto", size: size)
     }
+    
+    static func barlowRegular(size: CGFloat) -> Font {
+        Font.custom("Barlow-Regular", size: size)
+    }
 }
