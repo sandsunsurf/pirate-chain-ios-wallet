@@ -50,6 +50,10 @@ public class PasscodeViewModel: ObservableObject{
 
     }
     
+    func getTemporaryPasscode()->String {
+        return aTempPasscode
+    }
+    
     func comparePasscodes(){
         
         if !aTempPasscode.isEmpty {
@@ -113,6 +117,12 @@ struct PasscodeScreen: View {
                 
                 if mScreenState == ScreenStates.passcodeAlreadyExists{
                     PasscodeScreenTopImageView().padding(.leading,20).padding(.top,50)
+                }else if mScreenState == ScreenStates.validatePasscode{
+                    PasscodeScreenTitle(aTitle: "LOGIN PIN".localized())
+                    Spacer()
+                    PasscodeScreenSubTitle(aSubTitle: "Enter PIN".localized())
+                    PasscodeScreenDescription(aDescription: "Please enter your PIN to unlock your Pirate wallet and send money".localized(),size:Device.isLarge ? 18 : 12,padding:50)
+                    Spacer()
                 }else if mScreenState == ScreenStates.newPasscode{
                     PasscodeScreenTitle(aTitle: "Change PIN".localized())
                     Spacer()
@@ -142,9 +152,28 @@ struct PasscodeScreen: View {
             
         }.onAppear {
             NotificationCenter.default.addObserver(forName: NSNotification.Name("UpdateLayout"), object: nil, queue: .main) { (_) in
-                mScreenState = ScreenStates.confirmPasscode
-                passcodeViewModel.mStateOfPins = passcodeViewModel.mStateOfPins.map { _ in false }
-                passcodeViewModel.mPressedKeys.removeAll()
+                
+                if let aPasscode = UserSettings.shared.aPasscode, !aPasscode.isEmpty {
+                    
+                    let aTempPasscode = passcodeViewModel.getTemporaryPasscode()
+                    
+                    if !aTempPasscode.isEmpty && aTempPasscode == aPasscode{
+                        // BOTH ARE SAME GO TO HOME
+                        // OPEN HOME
+//                        Home().environmentObject(HomeViewModel())
+                        
+                        return
+                    }
+                }
+                
+                if mScreenState == ScreenStates.newPasscode {
+                    mScreenState = ScreenStates.confirmPasscode
+                    passcodeViewModel.mStateOfPins = passcodeViewModel.mStateOfPins.map { _ in false }
+                    passcodeViewModel.mPressedKeys.removeAll()
+                }else if mScreenState == ScreenStates.confirmPasscode {
+                    // Validate or reset the screen
+                    // OPEN HOME OR RESET
+                }
             }
         }
     }

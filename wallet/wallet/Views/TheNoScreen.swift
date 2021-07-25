@@ -50,8 +50,13 @@ struct TheNoScreen: View {
              .synced:
 
             Home().environmentObject(HomeViewModel())
-//            PasscodeScreen(passcodeViewModel: PasscodeViewModel(), mScreenState: .newPasscode) // if already exists then show confirm passcode option only
-                
+            
+//            if let aPasscode = UserSettings.shared.aPasscode, !aPasscode.isEmpty {
+//                PasscodeScreen(passcodeViewModel: PasscodeViewModel(), mScreenState: .validatePasscode)
+//            }else{
+//                PasscodeScreen(passcodeViewModel: PasscodeViewModel(), mScreenState: .newPasscode)
+//            }
+            
         case .uninitialized:
             CreateNewWallet().environmentObject(appEnvironment)
         
