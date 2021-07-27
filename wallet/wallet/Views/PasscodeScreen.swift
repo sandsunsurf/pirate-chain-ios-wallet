@@ -64,7 +64,7 @@ public class PasscodeViewModel: ObservableObject{
             }else{
                 print("PASSCODE ARE NOT SAME")
             }
-            
+            NotificationCenter.default.post(name: NSNotification.Name("UpdateLayout"), object: nil)
         }else{
             aTempPasscode = mPressedKeys.map{String($0)}.joined(separator: "")
             NotificationCenter.default.post(name: NSNotification.Name("UpdateLayout"), object: nil)
@@ -102,6 +102,7 @@ struct PasscodeScreen: View {
     
    @ObservedObject var passcodeViewModel = PasscodeViewModel()
     
+    @State var openHomeScreen = false;
     
    enum ScreenStates {
       case validatePasscode, newPasscode, confirmPasscode, passcodeAlreadyExists
@@ -150,6 +151,13 @@ struct PasscodeScreen: View {
                                 
             })
             
+            NavigationLink(destination:
+                            LazyView(
+                                    Home().environmentObject(HomeViewModel())
+            ), isActive: $openHomeScreen) {
+                EmptyView()
+            }
+            
         }.onAppear {
             NotificationCenter.default.addObserver(forName: NSNotification.Name("UpdateLayout"), object: nil, queue: .main) { (_) in
                 
@@ -160,7 +168,7 @@ struct PasscodeScreen: View {
                     if !aTempPasscode.isEmpty && aTempPasscode == aPasscode{
                         // BOTH ARE SAME GO TO HOME
                         // OPEN HOME
-//                        Home().environmentObject(HomeViewModel())
+                        openHomeScreen = true
                         
                         return
                     }
@@ -170,9 +178,6 @@ struct PasscodeScreen: View {
                     mScreenState = ScreenStates.confirmPasscode
                     passcodeViewModel.mStateOfPins = passcodeViewModel.mStateOfPins.map { _ in false }
                     passcodeViewModel.mPressedKeys.removeAll()
-                }else if mScreenState == ScreenStates.confirmPasscode {
-                    // Validate or reset the screen
-                    // OPEN HOME OR RESET
                 }
             }
         }

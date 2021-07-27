@@ -49,13 +49,13 @@ struct TheNoScreen: View {
              .syncing,
              .synced:
 
-            Home().environmentObject(HomeViewModel())
+//            Home().environmentObject(HomeViewModel())
             
-//            if let aPasscode = UserSettings.shared.aPasscode, !aPasscode.isEmpty {
-//                PasscodeScreen(passcodeViewModel: PasscodeViewModel(), mScreenState: .validatePasscode)
-//            }else{
-//                PasscodeScreen(passcodeViewModel: PasscodeViewModel(), mScreenState: .newPasscode)
-//            }
+            if let aPasscode = UserSettings.shared.aPasscode, !aPasscode.isEmpty {
+                PasscodeScreen(passcodeViewModel: PasscodeViewModel(), mScreenState: .validatePasscode)
+            }else{
+                PasscodeScreen(passcodeViewModel: PasscodeViewModel(), mScreenState: .newPasscode)
+            }
             
         case .uninitialized:
             CreateNewWallet().environmentObject(appEnvironment)
