@@ -200,6 +200,7 @@ struct Home: View {
     @State var feedbackRating: Int? = nil
     @State var isOverlayShown = false
     @State var transparentBalancePushed = false
+    @State var showPassCodeScreen = false
     
     @EnvironmentObject var viewModel: HomeViewModel
     @Environment(\.walletEnvironment) var appEnvironment: ZECCWalletEnvironment
@@ -471,6 +472,18 @@ struct Home: View {
             .padding([.bottom], 20)
           }
         }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+            
+            UIApplication.shared.windows[0].rootViewController?.dismiss(animated: false, completion: nil)
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                self.showPassCodeScreen = true
+            }
+        }.onReceive(NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) { _ in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                self.showPassCodeScreen = false
+            }
+        }
         .sheet(item: self.$viewModel.destination, onDismiss: nil) { item  in
             switch item {
             case .profile:
@@ -492,7 +505,10 @@ struct Home: View {
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarTitle("", displayMode: .inline)
-        .navigationBarHidden(true)
+        .navigationBarHidden(true)        
+        .sheet(isPresented: $showPassCodeScreen){
+            PasscodeScreen(passcodeViewModel: PasscodeViewModel(), mScreenState: .validatePasscode)
+        }
         .onAppear {
             tracker.track(.screen(screen: .home), properties: [:])
             tracker.track(.tap(action: .balanceDetail), properties: [:])
