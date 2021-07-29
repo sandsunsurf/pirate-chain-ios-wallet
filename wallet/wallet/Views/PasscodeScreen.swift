@@ -102,11 +102,13 @@ struct PasscodeScreen: View {
     
    @ObservedObject var passcodeViewModel = PasscodeViewModel()
     
-    @State var openHomeScreen = false;
+    @State var openHomeScreen = false
     
-   enum ScreenStates {
-      case validatePasscode, newPasscode, confirmPasscode, passcodeAlreadyExists
-   }
+    let dragGesture = DragGesture()
+    
+    enum ScreenStates {
+       case validatePasscode, newPasscode, confirmPasscode, passcodeAlreadyExists
+    }
     
    @State var mScreenState: ScreenStates?
     
@@ -158,7 +160,8 @@ struct PasscodeScreen: View {
                 EmptyView()
             }
             
-        }.onAppear {
+        }.highPriorityGesture(dragGesture)
+        .onAppear {
             NotificationCenter.default.addObserver(forName: NSNotification.Name("UpdateLayout"), object: nil, queue: .main) { (_) in
                 
                 if let aPasscode = UserSettings.shared.aPasscode, !aPasscode.isEmpty {
@@ -166,10 +169,11 @@ struct PasscodeScreen: View {
                     let aTempPasscode = passcodeViewModel.getTemporaryPasscode()
                     
                     if !aTempPasscode.isEmpty && aTempPasscode == aPasscode{
-                        // BOTH ARE SAME GO TO HOME
-                        // OPEN HOME
-                        openHomeScreen = true
                         
+                        UIApplication.shared.windows[0].rootViewController?.dismiss(animated: true, completion: nil)
+                        
+                        openHomeScreen = true
+
                         return
                     }
                 }
