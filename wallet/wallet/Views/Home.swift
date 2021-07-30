@@ -201,6 +201,7 @@ struct Home: View {
     @State var isOverlayShown = false
     @State var transparentBalancePushed = false
     @State var showPassCodeScreen = false
+    @State var openProfileScreen = false
     
     @EnvironmentObject var viewModel: HomeViewModel
     @Environment(\.walletEnvironment) var appEnvironment: ZECCWalletEnvironment
@@ -284,7 +285,7 @@ struct Home: View {
                     ), isActive: self.$sendingPushed
                 ) {
                     EmptyView()
-                }.isDetailLink(false)
+                }/*.isDetailLink(false)*/
                 
                 self.enterAddressButton
                     .onReceive(self.viewModel.$sendingPushed) { pushed in
@@ -379,18 +380,15 @@ struct Home: View {
                VStack(alignment: .center, spacing: 5) {
                 ZcashNavigationBar(
                     leadingItem: {
-                        Button(action: {
-                            self.viewModel.destination = .receiveFunds
-                            tracker.track(.tap(action: .receive), properties: [:])
-                        }) {
-                            Image("QRCodeIcon")
-                                .renderingMode(.original)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 24)
-                                .accessibility(label: Text("Receive Funds"))
-                            
-                        }
+                       NavigationLink(destination:ReceiveFunds(unifiedAddress: self.appEnvironment.synchronizer.unifiedAddress)
+                                        .environmentObject(self.appEnvironment), label:{
+                                            Image("QRCodeIcon")
+                                                .renderingMode(.original)
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(width: 24)
+                                                .accessibility(label: Text("Receive Funds"))
+                        } )
                 },
                     headerItem: {
                         Text("balance_amounttosend")
@@ -402,18 +400,17 @@ struct Home: View {
                             }
                 },
                     trailingItem: {
-                        Button(action: {
-                            tracker.track(.tap(action: .showProfile), properties: [:])
-                            self.viewModel.destination = .profile
-                        }) {
-                            Image("person_pin-24px")
-                                .renderingMode(.original)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .opacity(0.6)
-                                .accessibility(label: Text("Your Profile"))
-                                .frame(width: 24)
-                        }
+                        
+                        NavigationLink(destination:ProfileScreen()
+                                        .environmentObject(self.appEnvironment), label:{
+                                            Image("person_pin-24px")
+                                           .renderingMode(.original)
+                                           .resizable()
+                                           .aspectRatio(contentMode: .fit)
+                                           .opacity(0.6)
+                                           .accessibility(label: Text("Your Profile"))
+                                           .frame(width: 24)
+                        } )
                 })
                     .frame(height: 64)
                     .padding([.leading, .trailing], 16)
@@ -456,6 +453,7 @@ struct Home: View {
                 buttonFor(syncStatus: self.viewModel.syncStatus)
                     .frame(height: self.buttonHeight)
                     .padding(.horizontal, buttonPadding)
+              
                 
                 NavigationLink(
                     destination:
@@ -465,7 +463,7 @@ struct Home: View {
                         .navigationBarHidden(true))
                     ,isActive: self.$viewModel.showHistory) {
                     walletDetails
-                }.isDetailLink(false)
+                } /*.isDetailLink(false)*/
                     .opacity(viewModel.isSyncing ? 0.4 : 1.0)
                     .disabled(viewModel.isSyncing)
             }

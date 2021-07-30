@@ -184,7 +184,7 @@ struct PasscodeScreen: View {
                     passcodeViewModel.mPressedKeys.removeAll()
                 }
             }
-        }
+        }.navigationBarHidden(true)
     }
 }
 

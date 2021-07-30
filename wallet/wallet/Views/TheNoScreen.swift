@@ -51,11 +51,13 @@ struct TheNoScreen: View {
 
 //            Home().environmentObject(HomeViewModel())
             
-            if let aPasscode = UserSettings.shared.aPasscode, !aPasscode.isEmpty {
-                PasscodeScreen(passcodeViewModel: PasscodeViewModel(), mScreenState: .validatePasscode)
-            }else{
-                PasscodeScreen(passcodeViewModel: PasscodeViewModel(), mScreenState: .newPasscode)
-            }
+            NavigationView {
+                if let aPasscode = UserSettings.shared.aPasscode, !aPasscode.isEmpty {
+                    PasscodeScreen(passcodeViewModel: PasscodeViewModel(), mScreenState: .validatePasscode)
+                }else{
+                    PasscodeScreen(passcodeViewModel: PasscodeViewModel(), mScreenState: .newPasscode)
+                }
+            }.navigationViewStyle(StackNavigationViewStyle())
             
         case .uninitialized:
             CreateNewWallet().environmentObject(appEnvironment)
