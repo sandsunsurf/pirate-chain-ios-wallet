@@ -65,8 +65,8 @@ struct CreateNewWallet: View {
                     }.frame(width: 225.0, height:84)
                     
                     NavigationLink(
-                        destination: RestoreWallet()
-                                        .environmentObject(self.appEnvironment),
+                        destination: RestorePhraseScreen().environmentObject(self.appEnvironment)/*RestoreWallet()
+                                        .environmentObject(self.appEnvironment)*/,
                                    tag: Destinations.restoreWallet,
                                    selection: $destination
                             

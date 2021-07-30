@@ -300,8 +300,7 @@ struct Home: View {
             }
         }
     }
-    
-    
+       
     var isSyncing: Bool {
         appEnvironment.synchronizer.syncStatus.value.isSyncing
     }
