@@ -18,7 +18,7 @@ struct RestorePhraseScreen: View {
                
                 VStack(alignment: .center) {
                     
-                    RestoreScreenTitleAndSubtitle()
+                    RestoreScreenTitleAndSubtitle(aTitle: "Enter Recovery Phrase", aSubtitle: "Please enter your recovery phrase to unlink the wallet from your device", aTitlesize: Device.isLarge ? 28 : 18, aSubTitleSize: Device.isLarge ? 18 : 12, padding: 50)
                     
                 }
             }
@@ -45,15 +45,19 @@ struct RestorePhraseScreen: View {
 
 
 struct RestoreScreenTitleAndSubtitle : View {
-
+    @State var aTitle: String
+    @State var aSubtitle: String
+    @State var aTitlesize: CGFloat
+    @State var aSubTitleSize: CGFloat
+    @State var padding:CGFloat
     var body: some View {
         VStack(alignment: .center, spacing: 10, content: {
-            Text("Enter Recovery Phrase").foregroundColor(.white).font(
-                .barlowRegular(size: Device.isLarge ? 28 : 18)
-            ).padding(.top,20)
-            Text("Please enter your recovery phrase to unlink the wallet from your device").lineLimit(nil).foregroundColor(.white).font(
-                .barlowRegular(size: Device.isLarge ? 18 : 12)
-            ).padding(.leading,50).padding(.trailing,50).multilineTextAlignment(.center)
+            Text(aTitle).foregroundColor(.white).font(
+                .barlowRegular(size: aTitlesize)
+            ).padding(.top,padding)
+            Text(aSubtitle).lineLimit(nil).foregroundColor(.white).font(
+                .barlowRegular(size: aSubTitleSize)
+            ).padding(.leading,padding).padding(.trailing,padding).multilineTextAlignment(.center)
 
         })
     }
