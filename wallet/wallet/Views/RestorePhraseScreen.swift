@@ -7,27 +7,138 @@
 //
 
 import SwiftUI
+import Combine
+import ZcashLightClientKit
 
 struct RestorePhraseScreen: View {
+    
     @EnvironmentObject var appEnvironment: ZECCWalletEnvironment
     @Environment(\.presentationMode) var presentationMode
+    @State var seedPhrase: String = ""
+    @State var walletBirthDay: String = ""
+    @State var showError = false
+    @State var proceed: Bool = false
+    
+    var seedPhraseSubtitle: some View {
+        if seedPhrase.isEmpty {
+            return Text.subtitle(text: "Make sure nobody is watching you!".localized()).font(.barlowRegular(size: Device.isLarge ? 18 : 12))
+        }
+        
+        do {
+           try MnemonicSeedProvider.default.isValid(mnemonic: seedPhrase)
+           return Text.subtitle(text: "Your seed phrase is valid").font(.barlowRegular(size: Device.isLarge ? 18 : 12))
+        } catch {
+            return Text.subtitle(text: "Your seed phrase is invalid!").font(.barlowRegular(size: Device.isLarge ? 18 : 12))
+                .foregroundColor(.red)
+                .bold()
+        }
+    }
+    
+    var centerBody: some View {
+            ZStack {
+                             
+                VStack(spacing: 40) {
+                    
+                    ZcashTextField(
+                        title: "Enter your Seed Phrase".localized(),
+                        subtitleView: AnyView(
+                            seedPhraseSubtitle
+                        ),
+                        keyboardType: UIKeyboardType.alphabet,
+                        binding: $seedPhrase,
+                        onEditingChanged: { _ in },
+                        onCommit: {}
+                    ).font(.barlowRegular(size: Device.isLarge ? 20 : 14))
+                    .multilineTextAlignment(.leading)
+                    
+                    ZcashTextField(
+                        title: "Wallet Birthday height".localized(),
+                        subtitleView: AnyView(
+                            Text.subtitle(text: "If you don't know it, leave it blank. First Sync will take longer.".localized()).font(.barlowRegular(size: Device.isLarge ? 18 : 12))
+                        ),
+                        keyboardType: UIKeyboardType.decimalPad,
+                        binding: $walletBirthDay,
+                        onEditingChanged: { _ in },
+                        onCommit: {}
+                    ).font(.barlowRegular(size: Device.isLarge ? 20 : 14))
+                    .multilineTextAlignment(.leading)
+                    
+                    Spacer()
+                    Button(action: {
+                        do {
+                            try self.importSeed()
+                            try self.importBirthday()
+                            try self.appEnvironment.initialize()
+                        } catch {
+                            logger.error("\(error)")
+                            tracker.track(.error(severity: .critical), properties: [
+                                ErrorSeverity.underlyingError : "\(error)"])
+                            self.showError = true
+                            return
+                        }
+                        tracker.track(.tap(action: .walletImport), properties: [:])
+                        self.proceed = true
+                    }) {
+                        ZStack {
+                            Image("bluebuttonbackground").resizable().fixedSize().frame(width: 225.0, height:84).padding(.top,5)
+                            
+                            Text("Proceed").foregroundColor(Color.black)
+                                .frame(width: 225.0, height:84)
+                                .cornerRadius(15)
+                                .font(.barlowRegular(size: Device.isLarge ? 22 : 16))
+                                .multilineTextAlignment(.center)
+                        }.frame(width: 225.0, height:84)
+                    }
+                    .disabled(disableProceed)
+                    .opacity(disableProceed ? 0.4 : 1.0)
+                    .frame(height: 58)
+                }
+                .padding([.horizontal,.top, .bottom], 30)
+            }.onTapGesture {
+                UIApplication.shared.endEditing()
+            }
+            .alert(isPresented: $showError) {
+                Alert(title: Text("Could not restore wallet"),
+                      message: Text("There's a problem restoring your wallet. Please verify your seed phrase and try again."),
+                      dismissButton: .default(Text("button_close")))
+            }
+            .onAppear {
+                tracker.track(.screen(screen: .restore), properties: [:])
+            }
+
+    }
+    
+    init() {
+            UINavigationBar.appearance().titleTextAttributes = [.font : Font.custom("Barlow-Regular", size: Device.isLarge ? 26 : 18)]
+    }
+    
     var body: some View {
-        NavigationView {
+//        NavigationView {
             ZStack{
                 ARRRBackground()
                
-                VStack(alignment: .center) {
-                    
-                    RestoreScreenTitleAndSubtitle(aTitle: "Enter Recovery Phrase", aSubtitle: "Please enter your recovery phrase to unlink the wallet from your device", aTitlesize: Device.isLarge ? 28 : 18, aSubTitleSize: Device.isLarge ? 18 : 12, padding: 50)
+                VStack(alignment: .center,spacing: 40) {
+                    Spacer()
+                    VStack(alignment: .center,spacing: 40) {
+                        Spacer()
+                        centerBody
+                        Spacer()
+                    }
                     
                 }
-            }
-            .background(NavigationConfigurator { nc in
-                nc.interactivePopGestureRecognizer?.isEnabled = true
-             }).edgesIgnoringSafeArea(.all)
-            .navigationBarHidden(true)
-        }
+                
+                NavigationLink(destination:
+                                LazyView(
+                                        Home().environmentObject(HomeViewModel())
+                ), isActive: $proceed) {
+                    EmptyView()
+                }
+                  
+                
+            }.edgesIgnoringSafeArea(.all)
+//        }
         .navigationBarBackButtonHidden(true)
+        .navigationBarTitle (Text("Recovery Phrase"), displayMode: .inline).multilineTextAlignment(.center)
         .navigationBarItems(leading:  Button(action: {
             presentationMode.wrappedValue.dismiss()
         }) {
@@ -41,25 +152,53 @@ struct RestorePhraseScreen: View {
             }.padding(.leading,-20).padding(.top,10)
         })
     }
-}
-
-
-struct RestoreScreenTitleAndSubtitle : View {
-    @State var aTitle: String
-    @State var aSubtitle: String
-    @State var aTitlesize: CGFloat
-    @State var aSubTitleSize: CGFloat
-    @State var padding:CGFloat
-    var body: some View {
-        VStack(alignment: .center, spacing: 10, content: {
-            Text(aTitle).foregroundColor(.white).font(
-                .barlowRegular(size: aTitlesize)
-            ).padding(.top,padding)
-            Text(aSubtitle).lineLimit(nil).foregroundColor(.white).font(
-                .barlowRegular(size: aSubTitleSize)
-            ).padding(.leading,padding).padding(.trailing,padding).multilineTextAlignment(.center)
-
-        })
+    
+    var isValidBirthday: Bool {
+        validateBirthday(walletBirthDay)
+    }
+    
+    var isValidSeed: Bool {
+        validateSeed(seedPhrase)
+    }
+    
+    func validateBirthday(_ birthday: String) -> Bool {
+        
+        guard !birthday.isEmpty else {
+            return true
+        }
+        
+        guard let b = BlockHeight(birthday) else {
+            return false
+        }
+        
+        return b >= ZcashSDK.SAPLING_ACTIVATION_HEIGHT
+    }
+    
+    func validateSeed(_ seed: String) -> Bool {
+        do {
+            try MnemonicSeedProvider.default.isValid(mnemonic: seed)
+            return true
+        } catch {
+            return false
+        }
+    }
+    
+    func importBirthday() throws {
+        let b = BlockHeight(self.walletBirthDay.trimmingCharacters(in: .whitespacesAndNewlines)) ?? ZcashSDK.SAPLING_ACTIVATION_HEIGHT
+        try SeedManager.default.importBirthday(b)
+    }
+    
+    func importSeed() throws {
+        let trimmedSeedPhrase = seedPhrase.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmedSeedPhrase.isEmpty else {
+            throw WalletError.createFailed(underlying: MnemonicError.invalidSeed)
+        }
+        
+        try SeedManager.default.importPhrase(bip39: trimmedSeedPhrase)
+    }
+    
+    var disableProceed: Bool {
+        !isValidSeed || !isValidBirthday
     }
 }
 

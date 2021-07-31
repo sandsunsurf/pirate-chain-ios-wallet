@@ -65,7 +65,7 @@ struct ZcashTextField: View {
                 accessoryView
                     .frame(width: 25, height: 25)
             }.overlay(
-                Baseline().stroke(Color.zAmberGradient2,lineWidth: 2)
+                Baseline().stroke(Color.white,lineWidth: 2)
             )
             .font(.footnote)
             subtitleView
