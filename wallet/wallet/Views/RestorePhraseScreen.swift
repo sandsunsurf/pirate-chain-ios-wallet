@@ -49,7 +49,7 @@ struct RestorePhraseScreen: View {
                         onEditingChanged: { _ in },
                         onCommit: {}
                     ).font(.barlowRegular(size: Device.isLarge ? 20 : 14))
-                    .multilineTextAlignment(.leading)
+                    .multilineTextAlignment(.leading).padding(.top,100)
                     
                     ZcashTextField(
                         title: "Wallet Birthday height".localized(),
@@ -63,7 +63,6 @@ struct RestorePhraseScreen: View {
                     ).font(.barlowRegular(size: Device.isLarge ? 20 : 14))
                     .multilineTextAlignment(.leading)
                     
-                    Spacer()
                     Button(action: {
                         do {
                             try self.importSeed()
@@ -92,6 +91,8 @@ struct RestorePhraseScreen: View {
                     .disabled(disableProceed)
                     .opacity(disableProceed ? 0.4 : 1.0)
                     .frame(height: 58)
+                    
+                    Spacer()
                 }
                 .padding([.horizontal,.top, .bottom], 30)
             }.onTapGesture {
@@ -117,16 +118,9 @@ struct RestorePhraseScreen: View {
             ZStack{
                 ARRRBackground()
                
-                VStack(alignment: .center,spacing: 40) {
-                    Spacer()
-                    VStack(alignment: .center,spacing: 40) {
-                        Spacer()
-                        centerBody
-                        Spacer()
-                    }
-                    
+                VStack(alignment: .center) {
+                    centerBody
                 }
-                
                 NavigationLink(destination:
                                 LazyView(
                                         Home().environmentObject(HomeViewModel())
@@ -138,7 +132,8 @@ struct RestorePhraseScreen: View {
             }.edgesIgnoringSafeArea(.all)
 //        }
         .navigationBarBackButtonHidden(true)
-        .navigationBarTitle (Text("Recovery Phrase"), displayMode: .inline).multilineTextAlignment(.center)
+        .navigationTitle("Recovery Phrase")
+            .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(leading:  Button(action: {
             presentationMode.wrappedValue.dismiss()
         }) {
