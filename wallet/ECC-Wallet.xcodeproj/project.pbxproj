@@ -370,6 +370,9 @@
 		298D511026A728A800585699 /* ARRRBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298D510F26A728A800585699 /* ARRRBackground.swift */; };
 		298D511126A728A800585699 /* ARRRBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298D510F26A728A800585699 /* ARRRBackground.swift */; };
 		298D511226A728A800585699 /* ARRRBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298D510F26A728A800585699 /* ARRRBackground.swift */; };
+		29B4E2D226B58D61008BB304 /* IntroWelcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4E2D126B58D61008BB304 /* IntroWelcome.swift */; };
+		29B4E2D326B58D61008BB304 /* IntroWelcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4E2D126B58D61008BB304 /* IntroWelcome.swift */; };
+		29B4E2D426B58D61008BB304 /* IntroWelcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4E2D126B58D61008BB304 /* IntroWelcome.swift */; };
 		29EA113426B492CC00601FDD /* RestorePhraseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EA113326B492CC00601FDD /* RestorePhraseScreen.swift */; };
 		29EA113526B492CC00601FDD /* RestorePhraseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EA113326B492CC00601FDD /* RestorePhraseScreen.swift */; };
 		29EA113626B492CC00601FDD /* RestorePhraseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EA113326B492CC00601FDD /* RestorePhraseScreen.swift */; };
@@ -574,6 +577,7 @@
 		2946090C26ADCEF200B0867F /* Barlow-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-Regular.ttf"; sourceTree = "<group>"; };
 		298D50E226A726E000585699 /* ARRRLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARRRLogo.swift; sourceTree = "<group>"; };
 		298D510F26A728A800585699 /* ARRRBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARRRBackground.swift; sourceTree = "<group>"; };
+		29B4E2D126B58D61008BB304 /* IntroWelcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroWelcome.swift; sourceTree = "<group>"; };
 		29D1459C46D96D9D3DF2A55C /* Pods-walletUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-walletUITests.debug.xcconfig"; path = "Target Support Files/Pods-walletUITests/Pods-walletUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		29EA113326B492CC00601FDD /* RestorePhraseScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePhraseScreen.swift; sourceTree = "<group>"; };
 		2CA18E68C36455A44147853A /* Pods-ECC-Wallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ECC-Wallet.debug.xcconfig"; path = "Target Support Files/Pods-ECC-Wallet/Pods-ECC-Wallet.debug.xcconfig"; sourceTree = "<group>"; };
@@ -659,6 +663,7 @@
 		0D100ED323BA75870089DB22 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				29B4E2D026B58D2E008BB304 /* IntroTutorial */,
 				0D0565D224EC89C200B6AAE8 /* TransactionDetails */,
 				0D2D5C1B24CF8259001A58AD /* Unified Send Flow */,
 				0D9C203B23D77D2E006F1510 /* Wallet Details */,
@@ -946,6 +951,14 @@
 				A082D4B4F5F771D6BAABE094 /* Pods_ECC_Wallet_Testnet.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		29B4E2D026B58D2E008BB304 /* IntroTutorial */ = {
+			isa = PBXGroup;
+			children = (
+				29B4E2D126B58D61008BB304 /* IntroWelcome.swift */,
+			);
+			path = IntroTutorial;
 			sourceTree = "<group>";
 		};
 		EA66A8F666D2E80F5C4EC4F5 /* Pods */ = {
@@ -1565,6 +1578,7 @@
 				0D89FF4624ED9E2C008E79DD /* Date+Zcash.swift in Sources */,
 				0DBAA0912419A77500B08BC7 /* NukeWarning.swift in Sources */,
 				0D67489425C1CC3B00BE59C4 /* ShieldFlow.swift in Sources */,
+				29B4E2D226B58D61008BB304 /* IntroWelcome.swift in Sources */,
 				0DF26E2124D1F75300F32978 /* ZcashMemoTextField.swift in Sources */,
 				0D41AF9F23FCAA4700EE4FC0 /* TextView.swift in Sources */,
 				0D1C2F27240DAFE9001AA427 /* ZcashSeedPhraseGrid.swift in Sources */,
@@ -1646,6 +1660,7 @@
 				0DCDFF9924B6722B000F6999 /* SeedBackup.swift in Sources */,
 				0DCDFF9A24B6722B000F6999 /* Fonts.swift in Sources */,
 				0DACBB35264980630085F1CD /* OhMyScreen.swift in Sources */,
+				29B4E2D426B58D61008BB304 /* IntroWelcome.swift in Sources */,
 				0DCDFF9B24B6722B000F6999 /* CombineSynchronizer.swift in Sources */,
 				0DCDFF9C24B6722B000F6999 /* SendZecView.swift in Sources */,
 				0DCDFF9D24B6722B000F6999 /* ProfileScreen.swift in Sources */,
@@ -1820,6 +1835,7 @@
 				0DE30387263A158400CF877A /* Date+Zcash.swift in Sources */,
 				0DE30388263A158400CF877A /* NukeWarning.swift in Sources */,
 				0DE30389263A158400CF877A /* ShieldFlow.swift in Sources */,
+				29B4E2D326B58D61008BB304 /* IntroWelcome.swift in Sources */,
 				0DE3038A263A158400CF877A /* ZcashMemoTextField.swift in Sources */,
 				0DE3038B263A158400CF877A /* TextView.swift in Sources */,
 				0DE3038C263A158400CF877A /* ZcashSeedPhraseGrid.swift in Sources */,
