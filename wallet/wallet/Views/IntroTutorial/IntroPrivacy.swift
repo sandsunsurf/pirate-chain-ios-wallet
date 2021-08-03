@@ -1,26 +1,25 @@
 //
-//  IntroWelcome.swift
+//  IntroPrivacy.swift
 //  ECC-Wallet
 //
-//  Created by Lokesh Sehgal on 31/07/21.
+//  Created by Lokesh Sehgal on 03/08/21.
 //  Copyright © 2021 Francisco Gindre. All rights reserved.
 //
 
 import SwiftUI
 
-struct IntroWelcome: View {
+struct IntroPrivacy: View {
     @EnvironmentObject var appEnvironment: ZECCWalletEnvironment
     @Environment(\.presentationMode) var presentationMode
     @State var isViewVisible = false
-    @State var openNextIntroScreen = false
     var body: some View {
-         NavigationView
-         {
+//         NavigationView
+//         {
             ZStack{
                 ARRRBackground()
                 
                         VStack(alignment: .center, content: {
-                            Text("Welcome to Pirate Wallet").padding(.trailing,120).padding(.leading,120).foregroundColor(.white).multilineTextAlignment(.center).lineLimit(nil).font(.barlowRegular(size: Device.isLarge ? 36 : 28))
+                            Text("Privacy! \nnot Piracy").padding(.trailing,120).padding(.leading,120).foregroundColor(.white).multilineTextAlignment(.center).lineLimit(nil).font(.barlowRegular(size: Device.isLarge ? 36 : 28))
                             Text("Reliable, fast & Secure").padding(.trailing,80).padding(.leading,80).foregroundColor(.gray).multilineTextAlignment(.center).foregroundColor(.gray).padding(.top,10).font(.barlowRegular(size: Device.isLarge ? 16 : 10))
                             ZStack{
                                 Image("backgroundglow")
@@ -48,20 +47,7 @@ struct IntroWelcome: View {
 
                                 })
                             }
-                            
-                            
-                            NavigationLink(
-                                destination: IntroPrivacy().environmentObject(self.appEnvironment),
-                                           isActive: $openNextIntroScreen
-                            ) {
-                                Button(action: {
-                                    openNextIntroScreen = true
-                                }) {
-                                    GetStartedButtonView(aTitle: "Get Started")
-                                }
-                            }
-                            
-                            
+                            GetStartedButtonView(aTitle: "Continue")
                         })
 
                     }.edgesIgnoringSafeArea(.all)
@@ -78,31 +64,13 @@ struct IntroWelcome: View {
                         }
                     }.padding(.leading,-20).padding(.top,10)
                 })
-         }.navigationBarHidden(true)
+//         }.navigationBarHidden(true)
         
     }
 }
 
-struct GetStartedButtonView : View {
-    
-    @State var aTitle = ""
-    var body: some View {
-        ZStack {
-            
-            Image("bluebuttonbackground").resizable().fixedSize().frame(width: 225.0, height:84).padding(.top,5)
-            
-            Text(aTitle).foregroundColor(Color.black)
-                .frame(width: 225.0, height:84)
-                .cornerRadius(15)
-                .font(.barlowRegular(size: Device.isLarge ? 22 : 16))
-                .multilineTextAlignment(.center)
-        }.frame(width: 225.0, height:84)
-        
-    }
-}
-
-struct IntroWelcome_Previews: PreviewProvider {
+struct IntroPrivacy_Previews: PreviewProvider {
     static var previews: some View {
-        IntroWelcome()
+        IntroPrivacy()
     }
 }

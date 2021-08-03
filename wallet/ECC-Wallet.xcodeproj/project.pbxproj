@@ -364,6 +364,9 @@
 		2946090D26ADCEF200B0867F /* Barlow-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2946090C26ADCEF200B0867F /* Barlow-Regular.ttf */; };
 		2946090E26ADCEF200B0867F /* Barlow-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2946090C26ADCEF200B0867F /* Barlow-Regular.ttf */; };
 		2946090F26ADCEF200B0867F /* Barlow-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2946090C26ADCEF200B0867F /* Barlow-Regular.ttf */; };
+		29515DCC26B9885900DC5B92 /* IntroPrivacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29515DCB26B9885900DC5B92 /* IntroPrivacy.swift */; };
+		29515DCD26B9885900DC5B92 /* IntroPrivacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29515DCB26B9885900DC5B92 /* IntroPrivacy.swift */; };
+		29515DCE26B9885900DC5B92 /* IntroPrivacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29515DCB26B9885900DC5B92 /* IntroPrivacy.swift */; };
 		298D50E326A726E000585699 /* ARRRLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298D50E226A726E000585699 /* ARRRLogo.swift */; };
 		298D50E426A726E000585699 /* ARRRLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298D50E226A726E000585699 /* ARRRLogo.swift */; };
 		298D50E526A726E000585699 /* ARRRLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298D50E226A726E000585699 /* ARRRLogo.swift */; };
@@ -575,6 +578,7 @@
 		18C69464FD3770D35A524106 /* Pods-wallet-no-logging.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wallet-no-logging.debug.xcconfig"; path = "Target Support Files/Pods-wallet-no-logging/Pods-wallet-no-logging.debug.xcconfig"; sourceTree = "<group>"; };
 		290BEF8026A73B5C00526EDA /* PasscodeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeScreen.swift; sourceTree = "<group>"; };
 		2946090C26ADCEF200B0867F /* Barlow-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-Regular.ttf"; sourceTree = "<group>"; };
+		29515DCB26B9885900DC5B92 /* IntroPrivacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroPrivacy.swift; sourceTree = "<group>"; };
 		298D50E226A726E000585699 /* ARRRLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARRRLogo.swift; sourceTree = "<group>"; };
 		298D510F26A728A800585699 /* ARRRBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARRRBackground.swift; sourceTree = "<group>"; };
 		29B4E2D126B58D61008BB304 /* IntroWelcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroWelcome.swift; sourceTree = "<group>"; };
@@ -957,6 +961,7 @@
 			isa = PBXGroup;
 			children = (
 				29B4E2D126B58D61008BB304 /* IntroWelcome.swift */,
+				29515DCB26B9885900DC5B92 /* IntroPrivacy.swift */,
 			);
 			path = IntroTutorial;
 			sourceTree = "<group>";
@@ -1612,6 +1617,7 @@
 				0D5E9B072637197A00D98569 /* ReadableBalance.swift in Sources */,
 				0D82F326261279EC0058B05D /* LogfileUtils.swift in Sources */,
 				0D100ED923BA8DE80089DB22 /* CreateNewWallet.swift in Sources */,
+				29515DCC26B9885900DC5B92 /* IntroPrivacy.swift in Sources */,
 				0D5E4AA72527B440001CB335 /* BackgroundTasks.swift in Sources */,
 				0D2D5C2324CF8AB2001A58AD /* ZcashNavigationBar.swift in Sources */,
 				0DC37D7324D37D7D00ACFE12 /* AddressHelperView.swift in Sources */,
@@ -1671,6 +1677,7 @@
 				0DCDFFA024B6722B000F6999 /* ZcashTextField.swift in Sources */,
 				0DCDFFA124B6722B000F6999 /* String+localized.swift in Sources */,
 				0DCDFFA224B6722B000F6999 /* Colors.swift in Sources */,
+				29515DCE26B9885900DC5B92 /* IntroPrivacy.swift in Sources */,
 				0DCDFFA324B6722B000F6999 /* KeyPad.swift in Sources */,
 				0DCDFFA424B6722B000F6999 /* ZcashTapToSendButton.swift in Sources */,
 				0DF26E2224D1F75300F32978 /* ZcashMemoTextField.swift in Sources */,
@@ -1869,6 +1876,7 @@
 				0DE303A6263A158400CF877A /* ReadableBalance.swift in Sources */,
 				0DE303A7263A158400CF877A /* LogfileUtils.swift in Sources */,
 				0DE303A8263A158400CF877A /* CreateNewWallet.swift in Sources */,
+				29515DCD26B9885900DC5B92 /* IntroPrivacy.swift in Sources */,
 				0DE303A9263A158400CF877A /* BackgroundTasks.swift in Sources */,
 				0DE303AA263A158400CF877A /* ZcashNavigationBar.swift in Sources */,
 				0DE303AB263A158400CF877A /* AddressHelperView.swift in Sources */,
