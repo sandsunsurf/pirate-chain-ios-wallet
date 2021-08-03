@@ -35,6 +35,7 @@ struct CreateNewWallet: View {
     let itemSpacing: CGFloat = 24
     let buttonPadding: CGFloat = 24
     let buttonHeight: CGFloat = 50
+    @State var openCreateNewWalletFlow = false
     var body: some View {
 
         ZStack {
@@ -88,23 +89,18 @@ struct CreateNewWallet: View {
                 .cornerRadius(10)
                 .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
                 
-                Button(action: {
-                    do {
-                        tracker.track(.tap(action: .landingBackupWallet), properties: [:])
-                        try self.appEnvironment.createNewWallet()
-                        self.destination = Destinations.createNew
-                    } catch WalletError.createFailed(let e) {
-                        if case SeedManager.SeedManagerError.alreadyImported = e {
-                            self.showError = AlertType.feedback(destination: .createNew, cause: e)
-                        } else {
-                            fail(WalletError.createFailed(underlying: e))
-                        }
-                    } catch {
-                        fail(error)
+                
+                NavigationLink(
+                    destination: IntroWelcome().environmentObject(self.appEnvironment),
+                               isActive: $openCreateNewWalletFlow
+                        
+                ) {
+                    Button(action: {
+//                      createNewWalletFlow()
+                        openCreateNewWalletFlow = true
+                    }) {
+                        CreateWalletButtonView()
                     }
-
-                }) {
-                    CreateWalletButtonView()
                 }
                 
                 
@@ -142,6 +138,22 @@ struct CreateNewWallet: View {
                 }
 
             }
+        }
+    }
+    
+    func createNewWalletFlow(){
+        do {
+            tracker.track(.tap(action: .landingBackupWallet), properties: [:])
+            try self.appEnvironment.createNewWallet()
+            self.destination = Destinations.createNew
+        } catch WalletError.createFailed(let e) {
+            if case SeedManager.SeedManagerError.alreadyImported = e {
+                self.showError = AlertType.feedback(destination: .createNew, cause: e)
+            } else {
+                fail(WalletError.createFailed(underlying: e))
+            }
+        } catch {
+            fail(error)
         }
     }
     

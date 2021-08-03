@@ -19,27 +19,27 @@ struct IntroWelcome: View {
                 ARRRBackground()
                 
                         VStack(alignment: .center, content: {
-                            Text("Welcome to Pirate Wallet").font(.title).padding(.trailing,80).padding(.leading,80).foregroundColor(.white).multilineTextAlignment(.center)
-                            Text("Reliable, fast & Secure").padding(.trailing,80).padding(.leading,80).foregroundColor(.white).multilineTextAlignment(.center).foregroundColor(.gray).padding(.top,20)
+                            Text("Welcome to Pirate Wallet").padding(.trailing,120).padding(.leading,120).foregroundColor(.white).multilineTextAlignment(.center).lineLimit(nil).font(.barlowRegular(size: Device.isLarge ? 36 : 28))
+                            Text("Reliable, fast & Secure").padding(.trailing,80).padding(.leading,80).foregroundColor(.gray).multilineTextAlignment(.center).foregroundColor(.gray).padding(.top,10).font(.barlowRegular(size: Device.isLarge ? 16 : 10))
                             ZStack{
                                 Image("backgroundglow")
                                     .padding(.trailing,80).padding(.leading,80)
                                 
                                 HStack(alignment: .center, spacing: -30, content: {
 
-                                    withAnimation(Animation.linear(duration: 4).delay(4).repeatForever(autoreverses: true)){
+                                    withAnimation(Animation.linear(duration: 3).delay(3).repeatForever(autoreverses: true)){
                                         Image("skullcoin")
                                             .offset(y: isViewVisible ? 40:0)
-                                            .animation(Animation.linear(duration: 4).delay(4).repeatForever(autoreverses: true), value: isViewVisible)
+                                            .animation(Animation.linear(duration: 3).delay(3).repeatForever(autoreverses: true), value: isViewVisible)
                                     }
                                     
                                     Image("coin").padding(.top,50)
                                         .rotationEffect(Angle(degrees: isViewVisible ? -40 : 0))
 //                                        .transition(.move(edge: .top))
-                                        .animation(Animation.linear(duration: 4).delay(4).repeatForever(autoreverses: true), value: isViewVisible)
+                                        .animation(Animation.linear(duration: 3).delay(3).repeatForever(autoreverses: true), value: isViewVisible)
                                         .onAppear {
                                         withAnimation(.linear){
-                                            DispatchQueue.main.asyncAfter(deadline:.now()+4){
+                                            DispatchQueue.main.asyncAfter(deadline:.now()+2){
                                                 isViewVisible = true
                                             }
                                         }
@@ -52,7 +52,7 @@ struct IntroWelcome: View {
 
                     }.edgesIgnoringSafeArea(.all)
                 .navigationBarBackButtonHidden(true)
-                .navigationTitle("Recovery Phrase")
+                .navigationTitle("")
                     .navigationBarTitleDisplayMode(.inline)
                 .navigationBarItems(leading:  Button(action: {
                     presentationMode.wrappedValue.dismiss()
@@ -64,13 +64,8 @@ struct IntroWelcome: View {
                         }
                     }.padding(.leading,-20).padding(.top,10)
                 })
-         }.onAppear(){
-//            withAnimation(.spring(response: 1, dampingFraction: 1, blendDuration: 1)){
-//                DispatchQueue.main.asyncAfter(deadline:.now()+2){
-//                    isViewVisible = true
-//                }
-//            }
-         }
+         }.navigationBarHidden(true)
+        
     }
 }
 
@@ -83,6 +78,7 @@ struct GetStartedButtonView : View {
             Text("Get Started").foregroundColor(Color.black)
                 .frame(width: 225.0, height:84)
                 .cornerRadius(15)
+                .font(.barlowRegular(size: Device.isLarge ? 22 : 16))
                 .multilineTextAlignment(.center)
         }.frame(width: 225.0, height:84)
         
