@@ -12,6 +12,7 @@ struct IntroPrivacy: View {
     @EnvironmentObject var appEnvironment: ZECCWalletEnvironment
     @Environment(\.presentationMode) var presentationMode
     @State var isViewVisible = false
+    @State var openPincodeScreem = false
     var body: some View {
 //         NavigationView
 //         {
@@ -47,7 +48,18 @@ struct IntroPrivacy: View {
 
                                 })
                             }
-                            GetStartedButtonView(aTitle: "Continue")
+                            
+                            
+                            NavigationLink(
+                                destination: PasscodeScreen(passcodeViewModel: PasscodeViewModel(), mScreenState: .newPasscode, isNewWallet: true).environmentObject(self.appEnvironment),
+                                           isActive: $openPincodeScreem
+                            ) {
+                                Button(action: {
+                                    openPincodeScreem = true
+                                }) {
+                                    GetStartedButtonView(aTitle: "Continue")
+                                }
+                            }
                         })
 
                     }.edgesIgnoringSafeArea(.all)

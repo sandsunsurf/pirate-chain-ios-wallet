@@ -112,6 +112,8 @@ struct PasscodeScreen: View {
     
    @State var mScreenState: ScreenStates?
     
+    @State var isNewWallet = false
+    
     var body: some View {
         ZStack {
             PasscodeBackgroundView()
@@ -164,17 +166,24 @@ struct PasscodeScreen: View {
         .onAppear {
             NotificationCenter.default.addObserver(forName: NSNotification.Name("UpdateLayout"), object: nil, queue: .main) { (_) in
                 
-                if let aPasscode = UserSettings.shared.aPasscode, !aPasscode.isEmpty {
+                if let aPasscode = UserSettings.shared.aPasscode, !aPasscode.isEmpty{
                     
                     let aTempPasscode = passcodeViewModel.getTemporaryPasscode()
                     
                     if !aTempPasscode.isEmpty && aTempPasscode == aPasscode{
                         
-                        UIApplication.shared.windows[0].rootViewController?.dismiss(animated: true, completion: nil)
-                        
-                        openHomeScreen = true
+                        if isNewWallet {
+                            // New Wallet flow
+                            
+                            return
+                        }else{
 
-                        return
+                            UIApplication.shared.windows[0].rootViewController?.dismiss(animated: true, completion: nil)
+                            
+                            openHomeScreen = true
+
+                            return
+                        }
                     }
                 }
                 
@@ -212,9 +221,7 @@ struct PasscodeNumber: View {
                     if passcodeValue == "delete" {
                         Text("").foregroundColor(.white)
                         Image(systemName: "delete.left.fill").foregroundColor(.gray)
-                    }
-                 
-                    if passcodeValue != "delete" {
+                    }else {
                         Text(passcodeValue).foregroundColor(.gray).bold().multilineTextAlignment(.center).font(
                             .barlowRegular(size: Device.isLarge ? 32 : 24)
                         )
