@@ -112,7 +112,7 @@ struct PasscodeScreen: View {
     
    @State var mScreenState: ScreenStates?
     
-    @State var isNewWallet = false
+   @State var isNewWallet = false
     
     var body: some View {
         ZStack {

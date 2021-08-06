@@ -123,7 +123,7 @@ struct RestorePhraseScreen: View {
                 }
                 NavigationLink(destination:
                                 LazyView(
-                                        Home().environmentObject(HomeViewModel())
+                                        PasscodeScreen(passcodeViewModel: PasscodeViewModel(), mScreenState: .newPasscode)
                 ), isActive: $proceed) {
                     EmptyView()
                 }
