@@ -63,7 +63,7 @@ struct CreateNewWallet: View {
                     
                     ZStack {
                         RecoveryWalletButtonView(imageName: Binding.constant("buttonbackground"), title: Binding.constant("iCloud Backup"))
-                    }.frame(width: 225.0, height:84)
+                    }.frame(width: 225.0, height:84).hidden()
                     
                     NavigationLink(
                         destination: RestorePhraseScreen().environmentObject(self.appEnvironment)/*RestoreWallet()
@@ -84,10 +84,12 @@ struct CreateNewWallet: View {
                     }
                    
                     
-                }).padding(50)
-                .background(Rectangle().fill(LinearGradient(gradient: Gradient(colors: [Color.init(red: 0.13, green: 0.14, blue: 0.15), Color.init(red: 0.11, green: 0.12, blue: 0.14)]), startPoint: .top, endPoint: .bottom)))
-                .cornerRadius(10)
-                .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
+                })
+                // This was the bordered background
+//                .padding(50)
+//                .background(Rectangle().fill(LinearGradient(gradient: Gradient(colors: [Color.init(red: 0.13, green: 0.14, blue: 0.15), Color.init(red: 0.11, green: 0.12, blue: 0.14)]), startPoint: .top, endPoint: .bottom)))
+//                .cornerRadius(10)
+//                .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
                 
                 
                 NavigationLink(
