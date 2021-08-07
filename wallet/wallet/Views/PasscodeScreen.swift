@@ -193,7 +193,7 @@ struct PasscodeScreen: View {
             
             NavigationLink(destination:
                             LazyView(
-                                    Home().environmentObject(HomeViewModel())
+                                HomeTabView()
             ), isActive: $openHomeScreen) {
                 EmptyView()
             }

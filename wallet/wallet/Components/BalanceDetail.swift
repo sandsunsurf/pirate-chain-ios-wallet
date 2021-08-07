@@ -22,8 +22,10 @@ struct BalanceDetail: View {
     var available: some View {
         Text(format(zec: availableZec) + " \(zec) ")
             .foregroundColor(.zLightGray)
+            .font(.barlowRegular(size: Device.isLarge ? 18 : 10))
         + Text("balance_available")
             .foregroundColor(Color.zAmberGradient1)
+            .font(.barlowRegular(size: Device.isLarge ? 18 : 10))
             + Text(transparentFundsAvailable ? "†" : "")
                 .foregroundColor(.zTransparentBlue)
                 .font(.footnote)
@@ -78,7 +80,7 @@ struct BalanceDetail: View {
     
     var zec: String {
         if ZcashSDK.isMainnet {
-            return "ZEC"
+            return "ARRR"
         } else {
             return "TAZ"
         }

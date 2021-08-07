@@ -22,6 +22,7 @@ struct SendZecView: View {
             .foregroundColor(.white)
             .font(
                 .custom("Zboto", size: Device.isLarge ? 72 : 52)
+                
             )
         }
     }

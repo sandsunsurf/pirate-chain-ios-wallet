@@ -215,7 +215,7 @@ struct Home: View {
             }, label: {
                 Text("Error")
                     .foregroundColor(.red)
-                    .zcashButtonBackground(shape: .roundedCorners(fillStyle: .outline(color: .red, lineWidth: 2)))
+                    .zcashButtonBackground(shape: .roundedCorners(fillStyle: .outline(color: .red, lineWidth: 2))).font(.barlowRegular(size: Device.isLarge ? 22 : 14))
             })
                 
                 
@@ -227,29 +227,29 @@ struct Home: View {
         case .downloading(let progress):
             SyncingButton(animationType: .frameProgress(startFrame: 0, endFrame: 100, progress: 1.0, loop: true)) {
                 Text("Downloading \(Int(progress.progress * 100))%")
-                    .foregroundColor(.white)
+                    .foregroundColor(.white).font(.barlowRegular(size: Device.isLarge ? 22 : 14))
             }
                 
         case .validating:
             Text("Validating")
                 .font(.system(size: 15)).italic()
                 .foregroundColor(.black)
-                .zcashButtonBackground(shape: .roundedCorners(fillStyle: .gradient(gradient: .zButtonGradient)))
+                .zcashButtonBackground(shape: .roundedCorners(fillStyle: .gradient(gradient: .zButtonGradient))).font(.barlowRegular(size: Device.isLarge ? 22 : 14))
         case .scanning(let scanProgress):
             SyncingButton(animationType: .frameProgress(startFrame: 101, endFrame: 187,  progress: scanProgress.progress, loop: false)) {
                 Text("Scanning \(Int(scanProgress.progress * 100 ))%")
-                    .foregroundColor(.white)
+                    .foregroundColor(.white).font(.barlowRegular(size: Device.isLarge ? 22 : 14))
             }
         case .enhancing(let enhanceProgress):
             SyncingButton(animationType: .circularLoop) {
                 Text("Enhancing \(enhanceProgress.enhancedTransactions) of \(enhanceProgress.totalTransactions)")
-                    .foregroundColor(.white)
+                    .foregroundColor(.white).font(.barlowRegular(size: Device.isLarge ? 22 : 14))
             }
                
         case .fetching:
             SyncingButton(animationType: .circularLoop) {
                 Text("Fetching")
-                    .foregroundColor(.white)
+                    .foregroundColor(.white).font(.barlowRegular(size: Device.isLarge ? 22 : 14))
             }
             
         case .stopped:
@@ -259,7 +259,7 @@ struct Home: View {
                 Text("Stopped")
                     .font(.system(size: 15)).italic()
                     .foregroundColor(.black)
-                    .zcashButtonBackground(shape: .roundedCorners(fillStyle: .solid(color: .zLightGray)))
+                    .zcashButtonBackground(shape: .roundedCorners(fillStyle: .solid(color: .zLightGray))).font(.barlowRegular(size: Device.isLarge ? 22 : 14))
             })
             
         case .disconnected:
@@ -269,7 +269,7 @@ struct Home: View {
                 Text("Offline")
                     .font(.system(size: 15)).italic()
                     .foregroundColor(.black)
-                    .zcashButtonBackground(shape: .roundedCorners(fillStyle: .solid(color: .zLightGray)))
+                    .zcashButtonBackground(shape: .roundedCorners(fillStyle: .solid(color: .zLightGray))).font(.barlowRegular(size: Device.isLarge ? 22 : 14))
             })
         case .synced:
             ZStack {
@@ -329,6 +329,7 @@ struct Home: View {
             Text("button_send")
                 .foregroundColor(.black)
                 .zcashButtonBackground(shape: .roundedCorners(fillStyle: .solid(color: Color.zYellow)))
+                .font(.barlowRegular(size: Device.isLarge ? 22 : 14))
         }
     }
     
@@ -356,7 +357,7 @@ struct Home: View {
         }, label: {
             Text("button_wallethistory")
                 .foregroundColor(.white)
-                .font(.body)
+                .font(.barlowRegular(size: Device.isLarge ? 16 : 10))
                 .opacity(0.6)
                 .frame(height: 48)
         })
@@ -368,11 +369,11 @@ struct Home: View {
     
     var body: some View {
         ZStack {
-            
+            ARRRBackground()
             if self.isSendingEnabled {
                 ZcashBackground(showGradient: self.isSendingEnabled)
             } else {
-                Color.black
+                ARRRBackground()
                     .edgesIgnoringSafeArea(.all)
             }
             GeometryReader { geo in

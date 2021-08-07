@@ -361,6 +361,9 @@
 		290BEF8126A73B5C00526EDA /* PasscodeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290BEF8026A73B5C00526EDA /* PasscodeScreen.swift */; };
 		290BEF8226A73B5C00526EDA /* PasscodeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290BEF8026A73B5C00526EDA /* PasscodeScreen.swift */; };
 		290BEF8326A73B5C00526EDA /* PasscodeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290BEF8026A73B5C00526EDA /* PasscodeScreen.swift */; };
+		2924CF6D26BE99AF003E5C3B /* HomeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2924CF6C26BE99AE003E5C3B /* HomeTabView.swift */; };
+		2924CF6E26BE99AF003E5C3B /* HomeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2924CF6C26BE99AE003E5C3B /* HomeTabView.swift */; };
+		2924CF6F26BE99AF003E5C3B /* HomeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2924CF6C26BE99AE003E5C3B /* HomeTabView.swift */; };
 		2946090D26ADCEF200B0867F /* Barlow-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2946090C26ADCEF200B0867F /* Barlow-Regular.ttf */; };
 		2946090E26ADCEF200B0867F /* Barlow-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2946090C26ADCEF200B0867F /* Barlow-Regular.ttf */; };
 		2946090F26ADCEF200B0867F /* Barlow-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2946090C26ADCEF200B0867F /* Barlow-Regular.ttf */; };
@@ -577,6 +580,7 @@
 		0DFC7D4B254C7EB600E10595 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		18C69464FD3770D35A524106 /* Pods-wallet-no-logging.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wallet-no-logging.debug.xcconfig"; path = "Target Support Files/Pods-wallet-no-logging/Pods-wallet-no-logging.debug.xcconfig"; sourceTree = "<group>"; };
 		290BEF8026A73B5C00526EDA /* PasscodeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeScreen.swift; sourceTree = "<group>"; };
+		2924CF6C26BE99AE003E5C3B /* HomeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabView.swift; sourceTree = "<group>"; };
 		2946090C26ADCEF200B0867F /* Barlow-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-Regular.ttf"; sourceTree = "<group>"; };
 		29515DCB26B9885900DC5B92 /* IntroPrivacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroPrivacy.swift; sourceTree = "<group>"; };
 		298D50E226A726E000585699 /* ARRRLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARRRLogo.swift; sourceTree = "<group>"; };
@@ -691,6 +695,7 @@
 				0DB826212645E9C100CEA2B6 /* TheNoScreen.swift */,
 				0DACBB32264980620085F1CD /* OhMyScreen.swift */,
 				290BEF8026A73B5C00526EDA /* PasscodeScreen.swift */,
+				2924CF6C26BE99AE003E5C3B /* HomeTabView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1587,6 +1592,7 @@
 				0DF26E2124D1F75300F32978 /* ZcashMemoTextField.swift in Sources */,
 				0D41AF9F23FCAA4700EE4FC0 /* TextView.swift in Sources */,
 				0D1C2F27240DAFE9001AA427 /* ZcashSeedPhraseGrid.swift in Sources */,
+				2924CF6D26BE99AF003E5C3B /* HomeTabView.swift in Sources */,
 				290BEF8126A73B5C00526EDA /* PasscodeScreen.swift in Sources */,
 				0D0565DB24EC89C200B6AAE8 /* LittleViews.swift in Sources */,
 				0D421AFA23C66B7500E5E55E /* Sending.swift in Sources */,
@@ -1752,6 +1758,7 @@
 				0DCDFFCC24B6722B000F6999 /* Ring.swift in Sources */,
 				298D511226A728A800585699 /* ARRRBackground.swift in Sources */,
 				0DCDFFCD24B6722B000F6999 /* QRCodeScannerView.swift in Sources */,
+				2924CF6F26BE99AF003E5C3B /* HomeTabView.swift in Sources */,
 				0DCDFFCE24B6722B000F6999 /* SceneDelegate.swift in Sources */,
 				0D562FD5257841FD00E843DD /* MemoUtils.swift in Sources */,
 				0DCDFFCF24B6722B000F6999 /* QRCodeContainer.swift in Sources */,
@@ -1846,6 +1853,7 @@
 				0DE3038A263A158400CF877A /* ZcashMemoTextField.swift in Sources */,
 				0DE3038B263A158400CF877A /* TextView.swift in Sources */,
 				0DE3038C263A158400CF877A /* ZcashSeedPhraseGrid.swift in Sources */,
+				2924CF6E26BE99AF003E5C3B /* HomeTabView.swift in Sources */,
 				290BEF8226A73B5C00526EDA /* PasscodeScreen.swift in Sources */,
 				0DE3038D263A158400CF877A /* LittleViews.swift in Sources */,
 				0DE3038E263A158400CF877A /* Sending.swift in Sources */,

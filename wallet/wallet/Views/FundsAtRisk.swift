@@ -46,7 +46,8 @@ struct FundsAtRisk: View {
                 }.isDetailLink(false)
                 
                 NavigationLink(destination: LazyView(
-                                Home().environmentObject(HomeViewModel())
+                    HomeTabView()
+//                                Home().environmentObject(HomeViewModel())
                     )) {
                     Text("button_skip".localized())
                         .foregroundColor(Color.zDarkGray3)
