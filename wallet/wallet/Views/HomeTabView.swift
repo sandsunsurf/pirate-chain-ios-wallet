@@ -28,14 +28,16 @@ struct HomeTabView: View {
                         Text("Wallet").font(.barlowRegular(size: 10))
                     }
              
-                Text("History")
-                    .font(.system(size: 30, weight: .bold, design: .rounded))
+                LazyView(WalletDetails(isActive: Binding.constant(true))
+                .environmentObject(WalletDetailsViewModel())
+                .navigationBarTitle(Text(""), displayMode: .inline)
+                .navigationBarHidden(true))
                     .tabItem {
                         Image("historyicon").renderingMode(.template)
                         Text("History").font(.barlowRegular(size: 10))
                     }
              
-                Text("Settings")
+                Text("Settings Layout TBD").font(.barlowRegular(size: 20))
                     .font(.system(size: 30, weight: .bold, design: .rounded))
                     .tabItem {
                         Image("settingsicon").renderingMode(.template)

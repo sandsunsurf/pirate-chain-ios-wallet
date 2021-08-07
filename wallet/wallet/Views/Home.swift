@@ -455,17 +455,17 @@ struct Home: View {
                     .padding(.horizontal, buttonPadding)
               
                 
-                NavigationLink(
-                    destination:
-                        LazyView(WalletDetails(isActive: self.$viewModel.showHistory)
-                        .environmentObject(WalletDetailsViewModel())
-                        .navigationBarTitle(Text(""), displayMode: .inline)
-                        .navigationBarHidden(true))
-                    ,isActive: self.$viewModel.showHistory) {
-                    walletDetails
-                } /*.isDetailLink(false)*/
-                    .opacity(viewModel.isSyncing ? 0.4 : 1.0)
-                    .disabled(viewModel.isSyncing)
+//                NavigationLink(
+//                    destination:
+//                        LazyView(WalletDetails(isActive: self.$viewModel.showHistory)
+//                        .environmentObject(WalletDetailsViewModel())
+//                        .navigationBarTitle(Text(""), displayMode: .inline)
+//                        .navigationBarHidden(true))
+//                    ,isActive: self.$viewModel.showHistory) {
+//                    walletDetails
+//                } /*.isDetailLink(false)*/
+//                    .opacity(viewModel.isSyncing ? 0.4 : 1.0)
+//                    .disabled(viewModel.isSyncing)
             }
             .padding([.bottom], 20)
           }

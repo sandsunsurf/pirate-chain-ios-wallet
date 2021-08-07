@@ -17,17 +17,18 @@ struct ReceiveFunds: View {
         NavigationView {
             
             ZStack {
-                ZcashBackground()
+                ARRRBackground()
                 VStack(alignment: .center, spacing: 10, content: {
                     TabSelector(tabs: [
                         (Text("Shielded")
                             .font(.system(size: 18))
                             .frame(maxWidth: .infinity, idealHeight: 48)
-                         ,.zYellow),
-                        (Text("Transparent")
-                            .font(.system(size: 18))
-                            .frame(maxWidth: .infinity, minHeight: 48, idealHeight: 48)
-                         ,.zTransparentBlue)
+                         ,.zYellow)
+//                          ,
+//                        (Text("Transparent")
+//                            .font(.system(size: 18))
+//                            .frame(maxWidth: .infinity, minHeight: 48, idealHeight: 48)
+//                         ,.zTransparentBlue)
                             
                     ], selectedTabIndex: $selectedTab)
                     .padding([.horizontal], 16)
@@ -63,10 +64,10 @@ struct ReceiveFunds: View {
             .navigationBarTitle(Text("receive_title"),
                                 displayMode: .inline)
             .navigationBarHidden(false)
-            .navigationBarItems(trailing: ZcashCloseButton(action: {
-                tracker.track(.tap(action: .receiveBack), properties: [:])
-                presentationMode.wrappedValue.dismiss()
-                }).frame(width: 30, height: 30))
+//            .navigationBarItems(trailing: ZcashCloseButton(action: {
+//                tracker.track(.tap(action: .receiveBack), properties: [:])
+//                presentationMode.wrappedValue.dismiss()
+//                }).frame(width: 30, height: 30))
         }
     }
 }

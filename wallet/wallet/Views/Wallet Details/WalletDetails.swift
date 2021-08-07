@@ -83,12 +83,12 @@ struct WalletDetails: View {
             VStack(alignment: .center) {
                 ZcashNavigationBar(
                     leadingItem: {
-                        Button(action: {
-                            presentationMode.wrappedValue.dismiss()
-                        }) {
-                            Image("Back")
-                                .renderingMode(.original)
-                        }
+//                        Button(action: {
+//                            presentationMode.wrappedValue.dismiss()
+//                        }) {
+//                            Image("Back")
+//                                .renderingMode(.original)
+//                        }
                         
                     },
                    headerItem: {
