@@ -33,17 +33,18 @@ struct ActionableMessage: View {
         HStack {
             Text(message)
             .foregroundColor(.white)
-            Spacer()
+                .multilineTextAlignment(.center)
+                .font(.barlowRegular(size: Device.isLarge ? 22 : 16))
             actionView
-            
+                
         }
         .padding()
         .cornerRadius(cornerRadius)
-        .background(Color.zDarkGray2)
-        .overlay(
-            RoundedRectangle(cornerRadius: cornerRadius)
-                .stroke(Color.zGray, lineWidth: 1)
-        )
+//        .background(Color.zDarkGray2)
+//        .overlay(
+//            RoundedRectangle(cornerRadius: cornerRadius)
+//                .stroke(Color.zGray, lineWidth: 1)
+//        )
     }
 }
 

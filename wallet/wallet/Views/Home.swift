@@ -392,7 +392,7 @@ struct Home: View {
                 },
                     headerItem: {
                         Text("balance_amounttosend")
-                            .font(.system(size: 14))
+                            .font(.barlowRegular(size: Device.isLarge ? 20 : 14))
                             .foregroundColor(.white)
                             .opacity(self.isSendingEnabled ? 1 : 0.4)
                             .onLongPressGesture {
