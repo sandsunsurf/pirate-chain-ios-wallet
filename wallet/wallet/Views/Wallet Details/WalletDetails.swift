@@ -79,7 +79,7 @@ struct WalletDetails: View {
     var body: some View {
         
         ZStack {
-            ZcashBackground()
+            ARRRBackground()
             VStack(alignment: .center) {
                 ZcashNavigationBar(
                     leadingItem: {

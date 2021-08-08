@@ -37,7 +37,7 @@ struct HomeTabView: View {
                         Text("History").font(.barlowRegular(size: 10))
                     }
              
-                Text("Settings Layout TBD").font(.barlowRegular(size: 20))
+                SettingsScreen().navigationBarHidden(true)
                     .font(.system(size: 30, weight: .bold, design: .rounded))
                     .tabItem {
                         Image("settingsicon").renderingMode(.template)
