@@ -20,10 +20,10 @@ struct SettingsScreen: View {
                 
                 VStack(alignment: .center, spacing: 10) {
                     Spacer(minLength: 5)
-                    Text("Settings").font(.barlowRegular(size: 22)).multilineTextAlignment(.center).foregroundColor(.white)                    
+                    Text("Settings").font(.barlowRegular(size: 22)).multilineTextAlignment(.center).foregroundColor(.white)
                     Spacer(minLength: 5)
                     List {
-                               Section(header: SettingsSectionHeaderView(aTitle: "General")
+                               Section(header: SettingsSectionHeaderView(aTitle: "General").textCase(nil)
                                 .listRowInsets(EdgeInsets(
                                    top: 0,
                                    leading: 0,
@@ -37,21 +37,19 @@ struct SettingsScreen: View {
                                    }.listRowBackground(Color.green)
                                }
 
-                               Section(header: SettingsSectionHeaderView(aTitle: "Security")) {
+                               Section(header: SettingsSectionHeaderView(aTitle: "Security").textCase(nil)) {
                                    ForEach(securitySection, id: \.self) { string in
                                              SettingsRow(aTitle:string)
                                     }.listRowBackground(Color.green)
                                }
                         
-                                Section(header: SettingsSectionHeaderView(aTitle: "Manage Wallet")){
+                                Section(header: SettingsSectionHeaderView(aTitle: "Manage Wallet").textCase(nil)){
                                     ForEach(walletSection, id: \.self) { string in
                                               SettingsRow(aTitle:string)
                                      }.listRowBackground(Color.green)
                                 }
                         
-                    }.background(Color.init(red: 0.13, green: 0.14, blue: 0.15))
-                        .listStyle(.insetGrouped)
-                        
+                    }.listStyle(.insetGrouped)                        
                 }
                 
             }
@@ -65,7 +63,7 @@ struct SettingsSectionHeaderView : View {
     var body: some View {
         
         ZStack {
-            Text(aTitle).font(.barlowRegular(size: 18)).foregroundColor(Color.init(red: 107.0/255.0, green: 110.0/255.0, blue: 118.0/255.0))
+            Text(aTitle).font(.barlowRegular(size: 20)).foregroundColor(Color.zSettingsSectionHeader)
         }
     }
 }
@@ -77,7 +75,7 @@ struct SettingsRow: View {
         
         ZStack {
             Text(aTitle).font(.barlowRegular(size: 16)).foregroundColor(.white)
-        }.listRowBackground(Color.init(red: 25.0/255.0, green: 28.0/255.0, blue: 29.0/255.0))
+        }.listRowBackground(Color.zSettingsRowBackground)
     }
 }
 

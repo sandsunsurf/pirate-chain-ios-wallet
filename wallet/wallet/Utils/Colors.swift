@@ -120,6 +120,11 @@ extension Color {
     static let zBalanceBreakdownItem1 = Color(red: 134/255, green: 134/255, blue: 134/255, opacity: 0.081)
     static let zBalanceBreakdownItem2 = Color(red: 0, green: 0, blue: 0, opacity: 0.081)
     
+    
+    /// Settings screen colors
+    static let zSettingsSectionHeader = Color.init(red: 107.0/255.0, green: 110.0/255.0, blue: 118.0/255.0)
+    static let zSettingsRowBackground = Color.init(red: 25.0/255.0, green: 28.0/255.0, blue: 29.0/255.0)
+    
 }
 
 extension Gradient {
