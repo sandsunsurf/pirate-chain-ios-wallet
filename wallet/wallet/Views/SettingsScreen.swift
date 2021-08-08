@@ -9,16 +9,21 @@
 import SwiftUI
 
 struct SettingsScreen: View {
+    
+    var generalSection = ["Language", "Notifications"]
+    var securitySection = ["Face ID", "Recovery Phrase","Change PIN", "Unlink Device"]
+    var walletSection = ["Private Server Config", "Privacy Policy","Terms & Conditions", "Support"]
+    
     var body: some View {
             ZStack{
                 ARRRBackground().edgesIgnoringSafeArea(.all)
                 
                 VStack(alignment: .center, spacing: 10) {
                     Spacer(minLength: 5)
-                    Text("Settings").font(.barlowRegular(size: 22)).multilineTextAlignment(.center).foregroundColor(.white)
+                    Text("Settings").font(.barlowRegular(size: 22)).multilineTextAlignment(.center).foregroundColor(.white)                    
                     Spacer(minLength: 5)
                     List {
-                               Section(header: Text("General").font(.barlowRegular(size: 18)).foregroundColor(Color.init(red: 107.0/255.0, green: 110.0/255.0, blue: 118.0/255.0))
+                               Section(header: SettingsSectionHeaderView(aTitle: "General")
                                 .listRowInsets(EdgeInsets(
                                    top: 0,
                                    leading: 0,
@@ -26,22 +31,22 @@ struct SettingsScreen: View {
                                    trailing: 0))
                                )
                               {
-                                   Text("Language").font(.barlowRegular(size: 16))
-                                   Text("Notifications").font(.barlowRegular(size: 16))
+                                  
+                                  ForEach(generalSection, id: \.self) { string in
+                                            SettingsRow(aTitle:string)
+                                   }.listRowBackground(Color.green)
                                }
 
-                               Section(header: Text("Security").font(.barlowRegular(size: 18)).foregroundColor(Color.init(red: 107.0/255.0, green: 110.0/255.0, blue: 118.0/255.0))) {
-                                   Text("Face ID").font(.barlowRegular(size: 16))
-                                   Text("Recovery Phrase").font(.barlowRegular(size: 16))
-                                   Text("Change PIN").font(.barlowRegular(size: 16))
-                                   Text("Unlink Device").font(.barlowRegular(size: 16))
+                               Section(header: SettingsSectionHeaderView(aTitle: "Security")) {
+                                   ForEach(securitySection, id: \.self) { string in
+                                             SettingsRow(aTitle:string)
+                                    }.listRowBackground(Color.green)
                                }
                         
-                                Section(header: Text("Manage Wallet").font(.barlowRegular(size: 18)).foregroundColor(Color.init(red: 107.0/255.0, green: 110.0/255.0, blue: 118.0/255.0))) {
-                                    Text("Private Server Config").font(.barlowRegular(size: 16))
-                                    Text("Privacy Policy").font(.barlowRegular(size: 16))
-                                    Text("Terms & Conditions").font(.barlowRegular(size: 16))
-                                    Text("Support").font(.barlowRegular(size: 16))
+                                Section(header: SettingsSectionHeaderView(aTitle: "Manage Wallet")){
+                                    ForEach(walletSection, id: \.self) { string in
+                                              SettingsRow(aTitle:string)
+                                     }.listRowBackground(Color.green)
                                 }
                         
                     }.background(Color.init(red: 0.13, green: 0.14, blue: 0.15))
@@ -52,6 +57,30 @@ struct SettingsScreen: View {
             }
     }
 }
+
+
+struct SettingsSectionHeaderView : View {
+    @State var aTitle: String = ""
+    
+    var body: some View {
+        
+        ZStack {
+            Text(aTitle).font(.barlowRegular(size: 18)).foregroundColor(Color.init(red: 107.0/255.0, green: 110.0/255.0, blue: 118.0/255.0))
+        }
+    }
+}
+
+struct SettingsRow: View {
+    @State var aTitle: String = ""
+    
+    var body: some View {
+        
+        ZStack {
+            Text(aTitle).font(.barlowRegular(size: 16)).foregroundColor(.white)
+        }.listRowBackground(Color.init(red: 25.0/255.0, green: 28.0/255.0, blue: 29.0/255.0))
+    }
+}
+
 
 struct SettingsScreen_Previews: PreviewProvider {
     static var previews: some View {
