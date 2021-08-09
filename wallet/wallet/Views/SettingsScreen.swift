@@ -12,7 +12,8 @@ struct SettingsScreen: View {
     
     var generalSection = ["Language", "Notifications"]
     var securitySection = ["Face ID", "Recovery Phrase","Change PIN", "Unlink Device"]
-    var walletSection = ["Private Server Config", "Privacy Policy","Terms & Conditions", "Support"]
+    var walletSection = ["Private Server Config","iCloud backup"]
+    var aboutSection = ["Privacy Policy","Terms & Conditions", "Support"]
     
     var body: some View {
             ZStack{
@@ -34,22 +35,28 @@ struct SettingsScreen: View {
                                   
                                   ForEach(generalSection, id: \.self) { string in
                                             SettingsRow(aTitle:string)
-                                   }.listRowBackground(Color.green)
+                                   }
                                }
 
                                Section(header: SettingsSectionHeaderView(aTitle: "Security").textCase(nil)) {
                                    ForEach(securitySection, id: \.self) { string in
                                              SettingsRow(aTitle:string)
-                                    }.listRowBackground(Color.green)
+                                    }
                                }
                         
                                 Section(header: SettingsSectionHeaderView(aTitle: "Manage Wallet").textCase(nil)){
                                     ForEach(walletSection, id: \.self) { string in
                                               SettingsRow(aTitle:string)
-                                     }.listRowBackground(Color.green)
+                                     }
                                 }
                         
-                    }.listStyle(.insetGrouped)                        
+                                Section(header: SettingsSectionHeaderView(aTitle: "About").textCase(nil)){
+                                    ForEach(aboutSection, id: \.self) { string in
+                                              SettingsRow(aTitle:string)
+                                     }
+                                }
+                        
+                    }.listStyle(.insetGrouped)
                 }
                 
             }
