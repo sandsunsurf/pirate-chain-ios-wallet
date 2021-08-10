@@ -56,7 +56,8 @@ struct SettingsScreen: View {
                                      }
                                 }
                         
-                    }.listStyle(.insetGrouped)
+                    }.listStyle(InsetGroupedListStyle())
+                    
                 }
                 
             }
