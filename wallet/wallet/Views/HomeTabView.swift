@@ -37,7 +37,7 @@ struct HomeTabView: View {
                         Text("History").font(.barlowRegular(size: 10))
                     }
              
-                SettingsScreen().navigationBarHidden(true)
+                SettingsScreen().environmentObject(self.appEnvironment).navigationBarHidden(true)
                     .font(.system(size: 30, weight: .bold, design: .rounded))
                     .tabItem {
                         Image("settingsicon").renderingMode(.template)
