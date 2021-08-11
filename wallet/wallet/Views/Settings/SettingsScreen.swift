@@ -99,8 +99,8 @@ struct SettingsScreen: View {
                 }
                 
                 NavigationLink(
-                    destination: Text("Open Detail screen of recovery"),
-                               tag: SettingsDestination.openRecoveryPhrase,
+                    destination: NotificationScreen(),
+                               tag: SettingsDestination.openNotifications,
                                selection: $destination
                         
                 ) {
