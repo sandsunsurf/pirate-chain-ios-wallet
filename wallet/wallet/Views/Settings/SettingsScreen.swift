@@ -59,6 +59,7 @@ struct SettingsScreen: View {
                         
                     ScrollView {
 
+                        SettingsSectionHeaderView(aTitle:"General")
                         VStack {
                             ForEach(generalSection, id: \.id) { settingsRowData in
                                 VStack {
@@ -77,7 +78,7 @@ struct SettingsScreen: View {
                         }
                         .modifier(SettingsSectionBackgroundModifier())
                         
-                        
+                        SettingsSectionHeaderView(aTitle:"Security")
                         VStack {
                             ForEach(securitySection, id: \.id) { settingsRowData in
                                 VStack {
@@ -96,6 +97,7 @@ struct SettingsScreen: View {
                         }
                         .modifier(SettingsSectionBackgroundModifier())
                         
+                        SettingsSectionHeaderView(aTitle:"Manage Wallet")
                         VStack {
                             ForEach(walletSection, id: \.id) { settingsRowData in
                                 VStack {
@@ -113,6 +115,7 @@ struct SettingsScreen: View {
                         }
                         .modifier(SettingsSectionBackgroundModifier())
                         
+                        SettingsSectionHeaderView(aTitle:"About")
                         VStack {
                             ForEach(aboutSection, id: \.id) { settingsRowData in
                                 VStack {
@@ -152,7 +155,11 @@ struct SettingsSectionHeaderView : View {
     var body: some View {
         
         ZStack {
+            
             Text(aTitle).font(.barlowRegular(size: 20)).foregroundColor(Color.zSettingsSectionHeader)
+                            .frame(width: 230, height: 22,alignment: .leading)
+                            .foregroundColor(Color.white)
+                .padding(.trailing, 150)
         }
     }
 }
