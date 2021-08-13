@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -370,6 +370,7 @@
 		2946090D26ADCEF200B0867F /* Barlow-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2946090C26ADCEF200B0867F /* Barlow-Regular.ttf */; };
 		2946090E26ADCEF200B0867F /* Barlow-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2946090C26ADCEF200B0867F /* Barlow-Regular.ttf */; };
 		2946090F26ADCEF200B0867F /* Barlow-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2946090C26ADCEF200B0867F /* Barlow-Regular.ttf */; };
+		29491D6626C5613500BBF144 /* Neumorphic in Frameworks */ = {isa = PBXBuildFile; productRef = 29491D6526C5613500BBF144 /* Neumorphic */; };
 		29515DCC26B9885900DC5B92 /* IntroPrivacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29515DCB26B9885900DC5B92 /* IntroPrivacy.swift */; };
 		29515DCD26B9885900DC5B92 /* IntroPrivacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29515DCB26B9885900DC5B92 /* IntroPrivacy.swift */; };
 		29515DCE26B9885900DC5B92 /* IntroPrivacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29515DCB26B9885900DC5B92 /* IntroPrivacy.swift */; };
@@ -650,6 +651,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29491D6626C5613500BBF144 /* Neumorphic in Frameworks */,
 				D0DE96F2A4EC1243F7B668E2 /* Pods_ECC_Wallet_no_logging.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1098,6 +1100,9 @@
 			dependencies = (
 			);
 			name = "ECC-Wallet-no-logging";
+			packageProductDependencies = (
+				29491D6526C5613500BBF144 /* Neumorphic */,
+			);
 			productName = wallet;
 			productReference = 0DCDFFE624B6722B000F6999 /* ECC-Wallet-no-logs.app */;
 			productType = "com.apple.product-type.application";
@@ -1160,6 +1165,9 @@
 				ko,
 			);
 			mainGroup = 0D1250F623B557E40014EE3A;
+			packageReferences = (
+				29491D6426C5613500BBF144 /* XCRemoteSwiftPackageReference "neumorphic" */,
+			);
 			productRefGroup = 0D12510023B557E40014EE3A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -2412,6 +2420,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		29491D6426C5613500BBF144 /* XCRemoteSwiftPackageReference "neumorphic" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/costachung/neumorphic/";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		29491D6526C5613500BBF144 /* Neumorphic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29491D6426C5613500BBF144 /* XCRemoteSwiftPackageReference "neumorphic" */;
+			productName = Neumorphic;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0D1250F723B557E40014EE3A /* Project object */;
 }
