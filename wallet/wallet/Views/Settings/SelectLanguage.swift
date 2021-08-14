@@ -48,25 +48,55 @@ struct SelectLanguage: View {
                     Spacer(minLength: 50)
                     
                     Button {
-                        NotificationCenter.default.post(name: NSNotification.Name("DismissSettings"), object: nil)
+                        dismissBottomSheet()
                     } label: {
                         BlueButtonView(aTitle: "Cancel")
                     }
 
                 }
-                .background(Color.init(red: 33.0/255.0, green: 36.0/255.0, blue: 38.0/255.0))
+                .background(Color.screenBgColor)
       
                 .onTapGesture {
-                    // Selection
+
+                    switch(mSelectedSettingsRowData?.id){
+                        case 0:
+                            updateLanguageAndResetApp(language: "en")
+                        break
+                        case 1:
+                            updateLanguageAndResetApp(language: "es")
+                        break
+                        case 2:
+                            updateLanguageAndResetApp(language: "ru")
+                        break
+
+                        default:
+                        print("None \(mSelectedSettingsRowData?.id)")
+                    }
+                    
                 }
-                
-               
-                
-                
             }
-           
+        }
+    }
+    
+    func dismissBottomSheet(){
+        NotificationCenter.default.post(name: NSNotification.Name("DismissSettings"), object: nil)
+    }
+    
+    func updateLanguageAndResetApp(language: String){
+          Bundle.setLanguage(lang: language)
+         dismissBottomSheet()
+    }
+}
+
+extension String {
+    func localized(lang:String) -> String? {
+        if let path = Bundle.main.path(forResource: lang, ofType: "lproj") {
+            if let bundle = Bundle(path: path) {
+                return NSLocalizedString(self, tableName: nil, bundle: bundle, value: "", comment: "")
+            }
         }
 
+        return nil;
     }
 }
 

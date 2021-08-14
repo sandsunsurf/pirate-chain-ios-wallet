@@ -8,11 +8,12 @@
 import Foundation
 
 extension String {
-    public func localized() -> String {
-        return NSLocalizedString(self, comment:"")
+  
+    func localized() -> String {
+          return NSLocalizedString(self, tableName: nil, bundle: Bundle.localizedBundle(), value: "", comment: "")
     }
-    
-    public func localized(with arguments: CVarArg...) -> String {
-        return String(format:NSLocalizedString(self, comment: ""), arguments)
+
+    func localizeWithFormat(arguments: CVarArg...) -> String{
+          return String(format: self.localized(), arguments: arguments)
     }
 }

@@ -103,7 +103,7 @@ struct SettingsScreen: View {
                         }
                         .modifier(SettingsSectionBackgroundModifier())
                     }
-                    .background(Color.init(red: 33.0/255.0, green: 36.0/255.0, blue: 38.0/255.0))
+                    .background(Color.screenBgColor)
           
                     .onTapGesture {
                         self.destination = SettingsDestination(rawValue: self.mSelectedSettingsRowData?.id ?? 0)

@@ -138,6 +138,8 @@ extension Color {
     static let lightShadow = Color.init(red: 0.26, green: 0.27, blue: 0.3)
     static let depthRoundedRectColor = Color.init(red: 29.0/255.0, green: 32.0/255.0, blue: 34.0/255.0)
     static let textTitleColor = Color.init(red: 0.59, green: 0.61, blue: 0.63)
+    
+    static let screenBgColor = Color.init(red: 33.0/255.0, green: 36.0/255.0, blue: 38.0/255.0)
 }
 
 extension Gradient {
