@@ -78,15 +78,7 @@ struct RestorePhraseScreen: View {
                         tracker.track(.tap(action: .walletImport), properties: [:])
                         self.proceed = true
                     }) {
-                        ZStack {
-                            Image("bluebuttonbackground").resizable().fixedSize().frame(width: 225.0, height:84).padding(.top,5)
-                            
-                            Text("Proceed").foregroundColor(Color.black)
-                                .frame(width: 225.0, height:84)
-                                .cornerRadius(15)
-                                .font(.barlowRegular(size: Device.isLarge ? 22 : 16))
-                                .multilineTextAlignment(.center)
-                        }.frame(width: 225.0, height:84)
+                        BlueButtonView(aTitle: "Proceed")
                     }
                     .disabled(disableProceed)
                     .opacity(disableProceed ? 0.4 : 1.0)

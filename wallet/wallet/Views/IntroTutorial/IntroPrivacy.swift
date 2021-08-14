@@ -58,7 +58,7 @@ struct IntroPrivacy: View {
                                 Button(action: {
                                     openPincodeScreem = true
                                 }) {
-                                    GetStartedButtonView(aTitle: "Continue")
+                                    BlueButtonView(aTitle: "Continue")
                                 }
                             }
                         })

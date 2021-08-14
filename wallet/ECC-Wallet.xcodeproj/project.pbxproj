@@ -389,6 +389,9 @@
 		29EA113426B492CC00601FDD /* RestorePhraseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EA113326B492CC00601FDD /* RestorePhraseScreen.swift */; };
 		29EA113526B492CC00601FDD /* RestorePhraseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EA113326B492CC00601FDD /* RestorePhraseScreen.swift */; };
 		29EA113626B492CC00601FDD /* RestorePhraseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EA113326B492CC00601FDD /* RestorePhraseScreen.swift */; };
+		29F066A026C8028C00637E97 /* SelectLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F0669F26C8028C00637E97 /* SelectLanguage.swift */; };
+		29F066A126C8028C00637E97 /* SelectLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F0669F26C8028C00637E97 /* SelectLanguage.swift */; };
+		29F066A226C8028C00637E97 /* SelectLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F0669F26C8028C00637E97 /* SelectLanguage.swift */; };
 		89F246E202A9ECE2F5FD8547 /* Pods_ECC_Wallet_Testnet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A082D4B4F5F771D6BAABE094 /* Pods_ECC_Wallet_Testnet.framework */; };
 		8D3F362524A40FCF0087687A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D3F362724A40FCF0087687A /* Localizable.strings */; };
 		8D73959024A40E6C00936DE3 /* String+localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D73958F24A40E6C00936DE3 /* String+localized.swift */; };
@@ -597,6 +600,7 @@
 		29B4E2D126B58D61008BB304 /* IntroWelcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroWelcome.swift; sourceTree = "<group>"; };
 		29D1459C46D96D9D3DF2A55C /* Pods-walletUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-walletUITests.debug.xcconfig"; path = "Target Support Files/Pods-walletUITests/Pods-walletUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		29EA113326B492CC00601FDD /* RestorePhraseScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePhraseScreen.swift; sourceTree = "<group>"; };
+		29F0669F26C8028C00637E97 /* SelectLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLanguage.swift; sourceTree = "<group>"; };
 		2CA18E68C36455A44147853A /* Pods-ECC-Wallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ECC-Wallet.debug.xcconfig"; path = "Target Support Files/Pods-ECC-Wallet/Pods-ECC-Wallet.debug.xcconfig"; sourceTree = "<group>"; };
 		2E7FFE45D0C33A74C7344A5E /* Pods-walletTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-walletTests.release.xcconfig"; path = "Target Support Files/Pods-walletTests/Pods-walletTests.release.xcconfig"; sourceTree = "<group>"; };
 		36B81DA8FB2A74AD2728DEF5 /* Pods_ECC_WalletTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ECC_WalletTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -978,6 +982,7 @@
 			children = (
 				29207FD926BFCDD500E9C4E4 /* SettingsScreen.swift */,
 				29A5651826C4250A00ECC367 /* NotificationScreen.swift */,
+				29F0669F26C8028C00637E97 /* SelectLanguage.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1612,6 +1617,7 @@
 				0DC0847924BE583400F498A5 /* RateComponent.swift in Sources */,
 				0DFC0CF323C8EA1C0009DD7E /* ZcashCloseButton.swift in Sources */,
 				0DC0847724BE57BE00F498A5 /* FeedbackForm.swift in Sources */,
+				29F066A026C8028C00637E97 /* SelectLanguage.swift in Sources */,
 				0D89FF4624ED9E2C008E79DD /* Date+Zcash.swift in Sources */,
 				0DBAA0912419A77500B08BC7 /* NukeWarning.swift in Sources */,
 				0D67489425C1CC3B00BE59C4 /* ShieldFlow.swift in Sources */,
@@ -1775,6 +1781,7 @@
 				0DC37D7424D37D7D00ACFE12 /* AddressHelperView.swift in Sources */,
 				0D2D5C1A24CF8031001A58AD /* ZcashActionableTextField.swift in Sources */,
 				0DD1C2CE24F04D470042C1E4 /* BlockExplorerUrlHandling.swift in Sources */,
+				29F066A226C8028C00637E97 /* SelectLanguage.swift in Sources */,
 				0DCDFFC624B6722B000F6999 /* SimpleLogger.swift in Sources */,
 				0DCDFFC724B6722B000F6999 /* BackupWallet.swift in Sources */,
 				0D89FF4724ED9E2C008E79DD /* Date+Zcash.swift in Sources */,
@@ -1877,6 +1884,7 @@
 				0DE30384263A158400CF877A /* RateComponent.swift in Sources */,
 				0DE30385263A158400CF877A /* ZcashCloseButton.swift in Sources */,
 				0DE30386263A158400CF877A /* FeedbackForm.swift in Sources */,
+				29F066A126C8028C00637E97 /* SelectLanguage.swift in Sources */,
 				0DE30387263A158400CF877A /* Date+Zcash.swift in Sources */,
 				0DE30388263A158400CF877A /* NukeWarning.swift in Sources */,
 				0DE30389263A158400CF877A /* ShieldFlow.swift in Sources */,

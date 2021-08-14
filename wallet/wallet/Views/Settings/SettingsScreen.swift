@@ -8,6 +8,7 @@
 
 import SwiftUI
 import Neumorphic
+import BottomSheet
 
 struct SettingsRowData : Equatable {
     var id: Int
@@ -46,6 +47,8 @@ struct SettingsScreen: View {
     @Environment(\.walletEnvironment) var appEnvironment: ZECCWalletEnvironment
     
     @State var destination: SettingsDestination?
+    
+    @State var openLanguageScreen = false
     
     @State var mSelectedSettingsRowData: SettingsRowData?
     
@@ -104,8 +107,18 @@ struct SettingsScreen: View {
           
                     .onTapGesture {
                         self.destination = SettingsDestination(rawValue: self.mSelectedSettingsRowData?.id ?? 0)
+                        
+                        if self.destination == SettingsDestination.openLanguage {
+                            openLanguageScreen.toggle()
+                        }
                     }
                 }
+            }.bottomSheet(isPresented: $openLanguageScreen,
+                          height: 500,
+                          topBarHeight: 0,
+                          topBarCornerRadius: 80,
+                          showTopIndicator: true) {
+                SelectLanguage()
             }
     }
     

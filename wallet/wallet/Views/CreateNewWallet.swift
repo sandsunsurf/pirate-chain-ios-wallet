@@ -101,7 +101,7 @@ struct CreateNewWallet: View {
 //                      createNewWalletFlow()
                         openCreateNewWalletFlow = true
                     }) {
-                        CreateWalletButtonView()
+                        BlueButtonView(aTitle: "Create New Wallet")
                     }
                 }
                 
@@ -236,13 +236,16 @@ struct CreateNewWallet_Previews: PreviewProvider {
 extension CreateNewWallet.Destinations: Hashable {}
 
 
-struct CreateWalletButtonView : View {
+struct BlueButtonView : View {
+    
+    @State var aTitle: String = ""
+    
     var body: some View {
         ZStack {
             
             Image("bluebuttonbackground").resizable().fixedSize().frame(width: 225.0, height:84).padding(.top,5)
             
-            Text("Create New Wallet").foregroundColor(Color.black)
+            Text(aTitle).foregroundColor(Color.black)
                 .frame(width: 225.0, height:84)
                 .cornerRadius(15)
                 .font(.barlowRegular(size: Device.isLarge ? 22 : 16))

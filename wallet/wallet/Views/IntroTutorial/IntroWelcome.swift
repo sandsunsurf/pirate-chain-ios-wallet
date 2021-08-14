@@ -57,7 +57,7 @@ struct IntroWelcome: View {
                                 Button(action: {
                                     openNextIntroScreen = true
                                 }) {
-                                    GetStartedButtonView(aTitle: "Get Started")
+                                    BlueButtonView(aTitle: "Get Started")
                                 }
                             }
                             
@@ -79,24 +79,6 @@ struct IntroWelcome: View {
                     }.padding(.leading,-20).padding(.top,10)
                 })
          }.navigationBarHidden(true)
-        
-    }
-}
-
-struct GetStartedButtonView : View {
-    
-    @State var aTitle = ""
-    var body: some View {
-        ZStack {
-            
-            Image("bluebuttonbackground").resizable().fixedSize().frame(width: 225.0, height:84).padding(.top,5)
-            
-            Text(aTitle).foregroundColor(Color.black)
-                .frame(width: 225.0, height:84)
-                .cornerRadius(15)
-                .font(.barlowRegular(size: Device.isLarge ? 22 : 16))
-                .multilineTextAlignment(.center)
-        }.frame(width: 225.0, height:84)
         
     }
 }

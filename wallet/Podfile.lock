@@ -1,4 +1,5 @@
 PODS:
+  - BottomSheet (1.0.6)
   - CGRPCZlib (1.0.0)
   - CNIOAtomics (2.30.0)
   - CNIOBoringSSL (2.14.0)
@@ -78,6 +79,7 @@ PODS:
     - CocoaLumberjack/Swift (~> 3.7.0)
 
 DEPENDENCIES:
+  - BottomSheet (from `https://github.com/weitieda/bottom-sheet.git`)
   - CombineUrlSessionDownloader
   - gRPC-Swift (~> 1.0.0)
   - KeychainSwift (~> 19.0.0)
@@ -120,6 +122,8 @@ SPEC REPOS:
     - TinyQRScanner
 
 EXTERNAL SOURCES:
+  BottomSheet:
+    :git: https://github.com/weitieda/bottom-sheet.git
   MnemonicSwift:
     :branch: master
     :git: https://github.com/zcash-hackworks/MnemonicSwift.git
@@ -131,6 +135,9 @@ EXTERNAL SOURCES:
     :git: https://github.com/zcash-hackworks/zealous-logger
 
 CHECKOUT OPTIONS:
+  BottomSheet:
+    :commit: 98e2ae0b47875faef28e181cf968b9645f7678af
+    :git: https://github.com/weitieda/bottom-sheet.git
   MnemonicSwift:
     :commit: 714cc6e2631ac322fc0067b2302358c1baad9275
     :git: https://github.com/zcash-hackworks/MnemonicSwift.git
@@ -142,6 +149,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/zcash-hackworks/zealous-logger
 
 SPEC CHECKSUMS:
+  BottomSheet: 0a164143e34470cc332db0ce4e55d6da202d7ac6
   CGRPCZlib: b0c9d704a12fa667f1824ffff20688f191945989
   CNIOAtomics: ab79c239d46f3a330eef44aa3f2f86a25dbba3c2
   CNIOBoringSSL: f3b67841fc3aefe1154f1b4232f4ac7a922d16dc
@@ -174,6 +182,6 @@ SPEC CHECKSUMS:
   ZcashLightClientKit: 98b74ede09b395f9f1505d6834ad0f85cbbb496b
   zealous-logger: 2f33820d7d7e723796dabc51d60942b51b9ab024
 
-PODFILE CHECKSUM: f6678f975f62f1557138320a7e83065a48f3da56
+PODFILE CHECKSUM: 63a248351352ab006b42c038982cb972537f1cb4
 
 COCOAPODS: 1.10.2
