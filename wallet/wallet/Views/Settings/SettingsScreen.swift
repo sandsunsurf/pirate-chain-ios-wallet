@@ -116,9 +116,13 @@ struct SettingsScreen: View {
             }.bottomSheet(isPresented: $openLanguageScreen,
                           height: 500,
                           topBarHeight: 0,
-                          topBarCornerRadius: 80,
+                          topBarCornerRadius: 20,
                           showTopIndicator: true) {
                 SelectLanguage()
+            }.onAppear(){
+                NotificationCenter.default.addObserver(forName: NSNotification.Name("DismissSettings"), object: nil, queue: .main) { (_) in
+                    openLanguageScreen.toggle()
+                }
             }
     }
     

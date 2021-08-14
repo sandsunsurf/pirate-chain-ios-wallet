@@ -107,6 +107,12 @@ extension Color {
     /// \#979797  Color(red:0.59, green:0.59, blue:0.59)
     static let zHoldButtonGray = Color(red:0.59, green:0.59, blue:0.59)
     
+    // Home tab view colors
+    
+    static let arrrBarTintColor = Color.init(red: 0.13, green: 0.14, blue: 0.15)
+    
+    static let arrrBarAccentColor = Color.init(red: 194.0/255.0, green: 136.0/255.0, blue: 101.0/255.0)
+    
     
     /// Amount Breakdown Gray
     

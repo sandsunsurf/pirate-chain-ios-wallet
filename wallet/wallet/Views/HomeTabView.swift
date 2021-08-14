@@ -13,7 +13,7 @@ struct HomeTabView: View {
     
     init() {
             UITabBar.appearance().isTranslucent = false
-            UITabBar.appearance().barTintColor = UIColor.init(Color.init(red: 0.13, green: 0.14, blue: 0.15))
+            UITabBar.appearance().barTintColor = UIColor.init(Color.arrrBarTintColor)
         }
   
     var body: some View {
@@ -43,7 +43,7 @@ struct HomeTabView: View {
                         Image("settingsicon").renderingMode(.template)
                         Text("Settings").font(.barlowRegular(size: 10))
                     }
-            }.accentColor(Color.init(red: 194.0/255.0, green: 136.0/255.0, blue: 101.0/255.0))
+            }.accentColor(Color.arrrBarAccentColor)
         }
     }
 }
