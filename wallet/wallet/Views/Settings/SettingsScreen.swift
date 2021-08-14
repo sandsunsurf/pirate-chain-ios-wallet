@@ -66,6 +66,10 @@ struct SettingsScreen: View {
                         VStack {
                             ForEach(generalSection, id: \.id) { settingsRowData in
                                     SettingsRow(mCurrentRowData: settingsRowData, mSelectedSettingsRowData: $mSelectedSettingsRowData, noLineAfter:1)
+                                    .onTapGesture {
+                                        self.mSelectedSettingsRowData = settingsRowData
+                                        openRespectiveScreenBasisSelection()
+                                    }
                             }
                             
                         }
@@ -78,8 +82,16 @@ struct SettingsScreen: View {
                                     
                                     if (settingsRowData.id == 2){
                                         SettingsRowWithToggle(mCurrentRowData: settingsRowData, mSelectedSettingsRowData: $mSelectedSettingsRowData)
+                                            .onTapGesture {
+                                                self.mSelectedSettingsRowData = settingsRowData
+                                                openRespectiveScreenBasisSelection()
+                                            }
                                     }else{
                                         SettingsRow(mCurrentRowData: settingsRowData, mSelectedSettingsRowData: $mSelectedSettingsRowData, noLineAfter:5)
+                                            .onTapGesture {
+                                                self.mSelectedSettingsRowData = settingsRowData
+                                                openRespectiveScreenBasisSelection()
+                                            }
                                     }
                                 }
                             }
@@ -90,6 +102,10 @@ struct SettingsScreen: View {
                         VStack {
                             ForEach(walletSection, id: \.id) { settingsRowData in
                                 SettingsRow(mCurrentRowData: settingsRowData, mSelectedSettingsRowData: $mSelectedSettingsRowData, noLineAfter:7)
+                                    .onTapGesture {
+                                        self.mSelectedSettingsRowData = settingsRowData
+                                        openRespectiveScreenBasisSelection()
+                                    }
                             }
                             
                         }
@@ -99,19 +115,16 @@ struct SettingsScreen: View {
                         VStack {
                             ForEach(aboutSection, id: \.id) { settingsRowData in
                                SettingsRow(mCurrentRowData: settingsRowData, mSelectedSettingsRowData: $mSelectedSettingsRowData, noLineAfter:10)
+                                .onTapGesture {
+                                    self.mSelectedSettingsRowData = settingsRowData
+                                    openRespectiveScreenBasisSelection()
+                                }
                             }
                         }
                         .modifier(SettingsSectionBackgroundModifier())
                     }
                     .background(Color.screenBgColor)
           
-                    .onTapGesture {
-                        self.destination = SettingsDestination(rawValue: self.mSelectedSettingsRowData?.id ?? 0)
-                        
-                        if self.destination == SettingsDestination.openLanguage {
-                            openLanguageScreen.toggle()
-                        }
-                    }
                 }
             }.bottomSheet(isPresented: $openLanguageScreen,
                           height: 500,
@@ -124,6 +137,14 @@ struct SettingsScreen: View {
                     openLanguageScreen.toggle()
                 }
             }
+    }
+    
+    func openRespectiveScreenBasisSelection(){
+        self.destination = SettingsDestination(rawValue: self.mSelectedSettingsRowData?.id ?? 0)
+        
+        if self.destination == SettingsDestination.openLanguage {
+            openLanguageScreen.toggle()
+        }
     }
     
 }
@@ -168,8 +189,6 @@ struct SettingsRow: View {
             if mCurrentRowData.id < noLineAfter {
                 Color.gray.frame(height:CGFloat(1) / UIScreen.main.scale)
             }
-        }.onTapGesture {
-            self.mSelectedSettingsRowData = self.mCurrentRowData
         }
     }
 }
@@ -198,8 +217,6 @@ struct SettingsRowWithToggle: View {
 
             Color.gray.frame(height:CGFloat(1) / UIScreen.main.scale)
             
-        }.onTapGesture {
-            self.mSelectedSettingsRowData = self.mCurrentRowData
         }
     }
 }
