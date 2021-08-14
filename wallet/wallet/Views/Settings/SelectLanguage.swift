@@ -19,6 +19,9 @@ struct SelectLanguage: View {
     
     @Environment(\.presentationMode) var presentationMode
     
+    
+    @Environment(\.walletEnvironment) var appEnvironment: ZECCWalletEnvironment
+    
     var allLanguages = [CheckBoxRowData(id:0,title:"English",isSelected: true),
                         CheckBoxRowData(id:1,title:"Spanish  (Español)",isSelected: false),
                         CheckBoxRowData(id:2,title:"Russian  (pусский)",isSelected: false)]
@@ -39,7 +42,10 @@ struct SelectLanguage: View {
 
                     VStack {
                         ForEach(allLanguages, id: \.id) { settingsRowData in
-                            SettingsRowWithCheckbox(mCurrentRowData: settingsRowData, mSelectedCheckBoxRowData: $mSelectedSettingsRowData, noLineAfter:2, isSelected: settingsRowData.isSelected)
+                            SettingsRowWithCheckbox(mCurrentRowData: settingsRowData, mSelectedCheckBoxRowData: $mSelectedSettingsRowData, noLineAfter:2, isSelected: settingsRowData.isSelected).onTapGesture {
+                                self.mSelectedSettingsRowData = settingsRowData
+                                changeLanguage()
+                            }
                         }
                         
                     }
@@ -56,26 +62,29 @@ struct SelectLanguage: View {
                 }
                 .background(Color.screenBgColor)
       
-                .onTapGesture {
-
-                    switch(mSelectedSettingsRowData?.id){
-                        case 0:
-                            updateLanguageAndResetApp(language: "en")
-                        break
-                        case 1:
-                            updateLanguageAndResetApp(language: "es")
-                        break
-                        case 2:
-                            updateLanguageAndResetApp(language: "ru")
-                        break
-
-                        default:
-                        print("None \(mSelectedSettingsRowData?.id)")
-                    }
-                    
-                }
             }
         }
+    }
+    
+    func changeLanguage(){
+
+        switch(mSelectedSettingsRowData?.id){
+            case 0:
+                updateLanguageAndResetApp(language: "en")
+            break
+            case 1:
+                updateLanguageAndResetApp(language: "es")
+            break
+            case 2:
+                updateLanguageAndResetApp(language: "ru")
+            break
+
+            default:
+            print("None")
+        }
+        
+        dismissBottomSheet()
+
     }
     
     func dismissBottomSheet(){
@@ -84,7 +93,6 @@ struct SelectLanguage: View {
     
     func updateLanguageAndResetApp(language: String){
           Bundle.setLanguage(lang: language)
-         dismissBottomSheet()
     }
 }
 
@@ -127,8 +135,6 @@ struct SettingsRowWithCheckbox: View {
             if mCurrentRowData.id < noLineAfter {
                 Color.gray.frame(height:CGFloat(1) / UIScreen.main.scale)
             }
-        }.onTapGesture {
-            self.mSelectedCheckBoxRowData = self.mCurrentRowData
         }
     }
 }
