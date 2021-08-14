@@ -62,17 +62,7 @@ struct SettingsScreen: View {
                         SettingsSectionHeaderView(aTitle:"General")
                         VStack {
                             ForEach(generalSection, id: \.id) { settingsRowData in
-                                VStack {
-                                    Text(settingsRowData.title).font(.barlowRegular(size: 16)).foregroundColor(.white)
-                                                    .frame(width: 230, height: 22,alignment: .leading)
-                                                    .foregroundColor(Color.white)
-                                        .padding(.trailing, 100)
-                                        .padding()
-                                    
-                                    if settingsRowData.id < 1 {
-                                        Color.gray.frame(height:CGFloat(1) / UIScreen.main.scale)
-                                    }
-                                }
+                                SettingsRow(mCurrentRowData: settingsRowData, mSelectedSettingsRowData: $mSelectedSettingsRowData, noLineAfter:1)
                             }
                             
                         }
@@ -82,15 +72,7 @@ struct SettingsScreen: View {
                         VStack {
                             ForEach(securitySection, id: \.id) { settingsRowData in
                                 VStack {
-                                    Text(settingsRowData.title).font(.barlowRegular(size: 16)).foregroundColor(.white)
-                                                    .frame(width: 230, height: 22,alignment: .leading)
-                                                    .foregroundColor(Color.white)
-                                        .padding(.trailing, 100)
-                                        .padding()
-                                    
-                                    if settingsRowData.id < 5 {
-                                        Color.gray.frame(height:CGFloat(1) / UIScreen.main.scale)
-                                    }
+                                    SettingsRow(mCurrentRowData: settingsRowData, mSelectedSettingsRowData: $mSelectedSettingsRowData, noLineAfter:5)
                                 }
                             }
                             
@@ -100,16 +82,7 @@ struct SettingsScreen: View {
                         SettingsSectionHeaderView(aTitle:"Manage Wallet")
                         VStack {
                             ForEach(walletSection, id: \.id) { settingsRowData in
-                                VStack {
-                                    Text(settingsRowData.title).font(.barlowRegular(size: 16)).foregroundColor(.white)
-                                                    .frame(width: 230, height: 22,alignment: .leading)
-                                                    .foregroundColor(Color.white)
-                                        .padding(.trailing, 100)
-                                        .padding()
-                                    if settingsRowData.id < 7 {
-                                        Color.gray.frame(height:CGFloat(1) / UIScreen.main.scale)
-                                    }
-                                }
+                                SettingsRow(mCurrentRowData: settingsRowData, mSelectedSettingsRowData: $mSelectedSettingsRowData, noLineAfter:7)
                             }
                             
                         }
@@ -118,18 +91,8 @@ struct SettingsScreen: View {
                         SettingsSectionHeaderView(aTitle:"About")
                         VStack {
                             ForEach(aboutSection, id: \.id) { settingsRowData in
-                                VStack {
-                                    Text(settingsRowData.title).font(.barlowRegular(size: 16)).foregroundColor(.white)
-                                                    .frame(width: 230, height: 22,alignment: .leading)
-                                                    .foregroundColor(Color.white)
-                                        .padding(.trailing, 100)
-                                        .padding()
-                                    if settingsRowData.id < 10 {
-                                        Color.gray.frame(height:CGFloat(1) / UIScreen.main.scale)
-                                    }
-                                }
+                               SettingsRow(mCurrentRowData: settingsRowData, mSelectedSettingsRowData: $mSelectedSettingsRowData, noLineAfter:10)
                             }
-                            
                         }
                         .modifier(SettingsSectionBackgroundModifier())
                     }
@@ -139,9 +102,6 @@ struct SettingsScreen: View {
                         self.destination = SettingsDestination(rawValue: self.mSelectedSettingsRowData?.id ?? 0)
                     }
                 }
-            }.onAppear() {
-//                UITableView.appearance().backgroundColor = UIColor.init(Color.init(red: 25.0/255.0, green: 28.0/255.0, blue: 29.0/255.0))
-                
             }
     }
     
@@ -167,16 +127,27 @@ struct SettingsSectionHeaderView : View {
 struct SettingsRow: View {
 
     var mCurrentRowData:SettingsRowData
-
+   
     @Binding var mSelectedSettingsRowData: SettingsRowData?
-        
+    
+    var noLineAfter = 0
+
     var body: some View {
-        
-        ZStack {
-            Text(mCurrentRowData.title).font(.barlowRegular(size: 16)).foregroundColor(.white)
-            Color.clear
-                       .ignoresSafeArea()
-        }.listRowBackground(Color.zSettingsRowBackground).onTapGesture {
+//
+        VStack {
+            HStack{
+                Text(mCurrentRowData.title).font(.barlowRegular(size: 16)).foregroundColor(Color.init(red: 0.59, green: 0.61, blue: 0.63))
+                                .frame(width: 230, height: 22,alignment: .leading)
+                                .foregroundColor(Color.white)
+                    .padding(.trailing, 80)
+                    .padding()
+                
+                Image("arrow_right").resizable().frame(width: 20, height: 20, alignment: .trailing)
+            }
+            if mCurrentRowData.id < noLineAfter {
+                Color.gray.frame(height:CGFloat(1) / UIScreen.main.scale)
+            }
+        }.onTapGesture {
             self.mSelectedSettingsRowData = self.mCurrentRowData
         }
     }
