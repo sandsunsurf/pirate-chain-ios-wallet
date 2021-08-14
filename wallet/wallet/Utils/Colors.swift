@@ -124,7 +124,14 @@ extension Color {
     /// Settings screen colors
     static let zSettingsSectionHeader = Color.init(red: 107.0/255.0, green: 110.0/255.0, blue: 118.0/255.0)
     static let zSettingsRowBackground = Color.init(red: 25.0/255.0, green: 28.0/255.0, blue: 29.0/255.0)
-    
+    static let onColor = Color.init(red: 12.0/255.0, green: 38.0/255.0, blue: 48.0/255.0)
+    static let offColor = Color.init(red: 27.0/255.0, green: 30.0/255.0, blue: 32.0/255.0)
+    static let thumbOnColor = Color.init(red: 120.0/255.0, green: 176.0/255.0, blue: 193.0/255.0)
+    static let thumbOffColor = Color.init(red: 83.0/255.0, green: 94.0/255.0, blue: 97.0/255.0)
+    static let darkShadow = Color.init(red: 0.06, green: 0.07, blue: 0.07)
+    static let lightShadow = Color.init(red: 0.26, green: 0.27, blue: 0.3)
+    static let depthRoundedRectColor = Color.init(red: 29.0/255.0, green: 32.0/255.0, blue: 34.0/255.0)
+    static let textTitleColor = Color.init(red: 0.59, green: 0.61, blue: 0.63)
 }
 
 extension Gradient {

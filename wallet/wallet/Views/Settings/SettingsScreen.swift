@@ -62,7 +62,7 @@ struct SettingsScreen: View {
                         SettingsSectionHeaderView(aTitle:"General")
                         VStack {
                             ForEach(generalSection, id: \.id) { settingsRowData in
-                                SettingsRow(mCurrentRowData: settingsRowData, mSelectedSettingsRowData: $mSelectedSettingsRowData, noLineAfter:1)
+                                    SettingsRow(mCurrentRowData: settingsRowData, mSelectedSettingsRowData: $mSelectedSettingsRowData, noLineAfter:1)
                             }
                             
                         }
@@ -72,10 +72,14 @@ struct SettingsScreen: View {
                         VStack {
                             ForEach(securitySection, id: \.id) { settingsRowData in
                                 VStack {
-                                    SettingsRow(mCurrentRowData: settingsRowData, mSelectedSettingsRowData: $mSelectedSettingsRowData, noLineAfter:5)
+                                    
+                                    if (settingsRowData.id == 2){
+                                        SettingsRowWithToggle(mCurrentRowData: settingsRowData, mSelectedSettingsRowData: $mSelectedSettingsRowData)
+                                    }else{
+                                        SettingsRow(mCurrentRowData: settingsRowData, mSelectedSettingsRowData: $mSelectedSettingsRowData, noLineAfter:5)
+                                    }
                                 }
                             }
-                            
                         }
                         .modifier(SettingsSectionBackgroundModifier())
                         
@@ -136,7 +140,7 @@ struct SettingsRow: View {
 //
         VStack {
             HStack{
-                Text(mCurrentRowData.title).font(.barlowRegular(size: 16)).foregroundColor(Color.init(red: 0.59, green: 0.61, blue: 0.63))
+                Text(mCurrentRowData.title).font(.barlowRegular(size: 16)).foregroundColor(Color.textTitleColor)
                                 .frame(width: 230, height: 22,alignment: .leading)
                                 .foregroundColor(Color.white)
                     .padding(.trailing, 80)
@@ -153,6 +157,63 @@ struct SettingsRow: View {
     }
 }
 
+struct SettingsRowWithToggle: View {
+
+    var mCurrentRowData:SettingsRowData
+   
+    @Binding var mSelectedSettingsRowData: SettingsRowData?
+    
+    @State var isFaceIdEnabled = true
+
+    var body: some View {
+
+        VStack {
+            HStack{
+                Text(mCurrentRowData.title).font(.barlowRegular(size: 16)).foregroundColor(Color.textTitleColor)
+                                .frame(width: 200, height: 22,alignment: .leading)
+                                .foregroundColor(Color.white)
+                    .padding()
+                
+                
+                Toggle("", isOn: $isFaceIdEnabled)
+                    .toggleStyle(ColoredToggleStyle()).labelsHidden()
+            }
+
+            Color.gray.frame(height:CGFloat(1) / UIScreen.main.scale)
+            
+        }.onTapGesture {
+            self.mSelectedSettingsRowData = self.mCurrentRowData
+        }
+    }
+}
+
+
+struct ColoredToggleStyle: ToggleStyle {
+    var onColor = Color.onColor
+    var offColor = Color.offColor
+    var thumbOnColor = Color.thumbOnColor
+    var thumbOffColor = Color.thumbOffColor
+    
+    func makeBody(configuration: Self.Configuration) -> some View {
+        HStack {
+            configuration.label
+            Spacer()
+            RoundedRectangle(cornerRadius: 16, style: .circular)
+                .fill(configuration.isOn ? onColor : offColor)
+                .frame(width: 40, height: 29)
+                .overlay(
+                    Circle()
+                        .fill(configuration.isOn ? thumbOnColor : thumbOffColor)
+                        .shadow(radius: 1, x: 0, y: 1)
+                        .padding(1.5)
+                        .offset(x: configuration.isOn ? 10 : -10))
+                .animation(Animation.easeInOut(duration: 0.2))
+                .onTapGesture { configuration.isOn.toggle() }
+        }
+        .font(.title)
+        .padding(.horizontal)
+    }
+}
 
 struct SettingsScreen_Previews: PreviewProvider {
     static var previews: some View {
@@ -169,8 +230,8 @@ struct SettingsSectionBackgroundModifier: ViewModifier {
                 .padding()
                 .frame(maxWidth: .infinity)
                 .background(
-                    RoundedRectangle(cornerRadius: 30).fill(Color.init(red: 29.0/255.0, green: 32.0/255.0, blue: 34.0/255.0))
-                        .softInnerShadow(RoundedRectangle(cornerRadius: 30), darkShadow: Color.init(red: 0.06, green: 0.07, blue: 0.07), lightShadow: Color.init(red: 0.26, green: 0.27, blue: 0.3), spread: 0.05, radius: 2))
+                    RoundedRectangle(cornerRadius: 30).fill(Color.depthRoundedRectColor)
+                        .softInnerShadow(RoundedRectangle(cornerRadius: 30), darkShadow: Color.darkShadow, lightShadow: Color.lightShadow, spread: 0.05, radius: 2))
                 .padding()
             }
 }
