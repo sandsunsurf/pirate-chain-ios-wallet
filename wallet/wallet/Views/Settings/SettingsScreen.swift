@@ -132,7 +132,14 @@ struct SettingsScreen: View {
                     destination: UnlinkDevice().environmentObject(self.appEnvironment),
                                tag: SettingsDestination.openUnlinkDevice,
                                selection: $destination
-                        
+                ) {
+                   EmptyView()
+                }
+                
+                NavigationLink(
+                    destination: PrivateServerConfig().environmentObject(self.appEnvironment),
+                               tag: SettingsDestination.openPrivateServerConfig,
+                               selection: $destination
                 ) {
                    EmptyView()
                 }

@@ -374,6 +374,9 @@
 		29515DCC26B9885900DC5B92 /* IntroPrivacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29515DCB26B9885900DC5B92 /* IntroPrivacy.swift */; };
 		29515DCD26B9885900DC5B92 /* IntroPrivacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29515DCB26B9885900DC5B92 /* IntroPrivacy.swift */; };
 		29515DCE26B9885900DC5B92 /* IntroPrivacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29515DCB26B9885900DC5B92 /* IntroPrivacy.swift */; };
+		2963F33326C946FE0008CD34 /* PrivateServerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963F33226C946FE0008CD34 /* PrivateServerConfig.swift */; };
+		2963F33426C946FE0008CD34 /* PrivateServerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963F33226C946FE0008CD34 /* PrivateServerConfig.swift */; };
+		2963F33526C946FE0008CD34 /* PrivateServerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963F33226C946FE0008CD34 /* PrivateServerConfig.swift */; };
 		298D50E326A726E000585699 /* ARRRLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298D50E226A726E000585699 /* ARRRLogo.swift */; };
 		298D50E426A726E000585699 /* ARRRLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298D50E226A726E000585699 /* ARRRLogo.swift */; };
 		298D50E526A726E000585699 /* ARRRLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298D50E226A726E000585699 /* ARRRLogo.swift */; };
@@ -600,6 +603,7 @@
 		2924CF6C26BE99AE003E5C3B /* HomeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabView.swift; sourceTree = "<group>"; };
 		2946090C26ADCEF200B0867F /* Barlow-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-Regular.ttf"; sourceTree = "<group>"; };
 		29515DCB26B9885900DC5B92 /* IntroPrivacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroPrivacy.swift; sourceTree = "<group>"; };
+		2963F33226C946FE0008CD34 /* PrivateServerConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateServerConfig.swift; sourceTree = "<group>"; };
 		298D50E226A726E000585699 /* ARRRLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARRRLogo.swift; sourceTree = "<group>"; };
 		298D510F26A728A800585699 /* ARRRBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARRRBackground.swift; sourceTree = "<group>"; };
 		29A5651826C4250A00ECC367 /* NotificationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScreen.swift; sourceTree = "<group>"; };
@@ -993,6 +997,7 @@
 				29D4F90C26C9388C00360E40 /* UnlinkDevice.swift */,
 				29A5651826C4250A00ECC367 /* NotificationScreen.swift */,
 				29F0669F26C8028C00637E97 /* SelectLanguage.swift */,
+				2963F33226C946FE0008CD34 /* PrivateServerConfig.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1573,6 +1578,7 @@
 				0DD1C2D024F051EE0042C1E4 /* Foundation+Zcash.swift in Sources */,
 				29F066A426C810F900637E97 /* Bundle+Localized.swift in Sources */,
 				0DD1C2CD24F04D470042C1E4 /* BlockExplorerUrlHandling.swift in Sources */,
+				2963F33326C946FE0008CD34 /* PrivateServerConfig.swift in Sources */,
 				0D100EDB23BA91F70089DB22 /* ZcashButton.swift in Sources */,
 				0D4B91DA24CA390B00A0E024 /* KeyboardAdaptive.swift in Sources */,
 				0D27C4A923C4C4640044B48E /* ZcashTextField.swift in Sources */,
@@ -1786,6 +1792,7 @@
 				0DCDFFC024B6722B000F6999 /* UIKit+Extensions.swift in Sources */,
 				0DCDFFC124B6722B000F6999 /* ZcashButtonBackground.swift in Sources */,
 				0DCDFFC224B6722B000F6999 /* ReceiveFunds.swift in Sources */,
+				2963F33526C946FE0008CD34 /* PrivateServerConfig.swift in Sources */,
 				0D82F32B261284060058B05D /* Alerts.swift in Sources */,
 				0D5E4AA82527B440001CB335 /* BackgroundTasks.swift in Sources */,
 				0DCDFFC324B6722B000F6999 /* RestoreWallet.swift in Sources */,
@@ -1844,6 +1851,7 @@
 				0DE30353263A158400CF877A /* Foundation+Zcash.swift in Sources */,
 				29F066A526C810F900637E97 /* Bundle+Localized.swift in Sources */,
 				0DE30354263A158400CF877A /* BlockExplorerUrlHandling.swift in Sources */,
+				2963F33426C946FE0008CD34 /* PrivateServerConfig.swift in Sources */,
 				0DE30355263A158400CF877A /* ZcashButton.swift in Sources */,
 				0DE30356263A158400CF877A /* KeyboardAdaptive.swift in Sources */,
 				0DE30358263A158400CF877A /* ZcashTextField.swift in Sources */,
