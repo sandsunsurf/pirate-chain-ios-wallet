@@ -386,6 +386,9 @@
 		29B4E2D226B58D61008BB304 /* IntroWelcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4E2D126B58D61008BB304 /* IntroWelcome.swift */; };
 		29B4E2D326B58D61008BB304 /* IntroWelcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4E2D126B58D61008BB304 /* IntroWelcome.swift */; };
 		29B4E2D426B58D61008BB304 /* IntroWelcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4E2D126B58D61008BB304 /* IntroWelcome.swift */; };
+		29D4F90D26C9388C00360E40 /* UnlinkDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4F90C26C9388C00360E40 /* UnlinkDevice.swift */; };
+		29D4F90E26C9388C00360E40 /* UnlinkDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4F90C26C9388C00360E40 /* UnlinkDevice.swift */; };
+		29D4F90F26C9388C00360E40 /* UnlinkDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4F90C26C9388C00360E40 /* UnlinkDevice.swift */; };
 		29EA113426B492CC00601FDD /* RestorePhraseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EA113326B492CC00601FDD /* RestorePhraseScreen.swift */; };
 		29EA113526B492CC00601FDD /* RestorePhraseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EA113326B492CC00601FDD /* RestorePhraseScreen.swift */; };
 		29EA113626B492CC00601FDD /* RestorePhraseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EA113326B492CC00601FDD /* RestorePhraseScreen.swift */; };
@@ -602,6 +605,7 @@
 		29A5651826C4250A00ECC367 /* NotificationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScreen.swift; sourceTree = "<group>"; };
 		29B4E2D126B58D61008BB304 /* IntroWelcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroWelcome.swift; sourceTree = "<group>"; };
 		29D1459C46D96D9D3DF2A55C /* Pods-walletUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-walletUITests.debug.xcconfig"; path = "Target Support Files/Pods-walletUITests/Pods-walletUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		29D4F90C26C9388C00360E40 /* UnlinkDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlinkDevice.swift; sourceTree = "<group>"; };
 		29EA113326B492CC00601FDD /* RestorePhraseScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePhraseScreen.swift; sourceTree = "<group>"; };
 		29F0669F26C8028C00637E97 /* SelectLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLanguage.swift; sourceTree = "<group>"; };
 		29F066A326C810F900637E97 /* Bundle+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Localized.swift"; sourceTree = "<group>"; };
@@ -986,6 +990,7 @@
 			isa = PBXGroup;
 			children = (
 				29207FD926BFCDD500E9C4E4 /* SettingsScreen.swift */,
+				29D4F90C26C9388C00360E40 /* UnlinkDevice.swift */,
 				29A5651826C4250A00ECC367 /* NotificationScreen.swift */,
 				29F0669F26C8028C00637E97 /* SelectLanguage.swift */,
 			);
@@ -1631,6 +1636,7 @@
 				0DF26E2124D1F75300F32978 /* ZcashMemoTextField.swift in Sources */,
 				0D41AF9F23FCAA4700EE4FC0 /* TextView.swift in Sources */,
 				0D1C2F27240DAFE9001AA427 /* ZcashSeedPhraseGrid.swift in Sources */,
+				29D4F90D26C9388C00360E40 /* UnlinkDevice.swift in Sources */,
 				2924CF6D26BE99AF003E5C3B /* HomeTabView.swift in Sources */,
 				290BEF8126A73B5C00526EDA /* PasscodeScreen.swift in Sources */,
 				0D0565DB24EC89C200B6AAE8 /* LittleViews.swift in Sources */,
@@ -1732,6 +1738,7 @@
 				0D67489525C1CC3B00BE59C4 /* ShieldFlow.swift in Sources */,
 				0DCDFFA624B6722B000F6999 /* BalanceUtils.swift in Sources */,
 				290BEF8326A73B5C00526EDA /* PasscodeScreen.swift in Sources */,
+				29D4F90F26C9388C00360E40 /* UnlinkDevice.swift in Sources */,
 				0DB826242645E9C100CEA2B6 /* TheNoScreen.swift in Sources */,
 				0D64DF5225DC0E7F00669906 /* UserSettings.swift in Sources */,
 				0DF26E2B24D2208A00F32978 /* AuthenticationHelper.swift in Sources */,
@@ -1900,6 +1907,7 @@
 				0DE3038A263A158400CF877A /* ZcashMemoTextField.swift in Sources */,
 				0DE3038B263A158400CF877A /* TextView.swift in Sources */,
 				0DE3038C263A158400CF877A /* ZcashSeedPhraseGrid.swift in Sources */,
+				29D4F90E26C9388C00360E40 /* UnlinkDevice.swift in Sources */,
 				2924CF6E26BE99AF003E5C3B /* HomeTabView.swift in Sources */,
 				290BEF8226A73B5C00526EDA /* PasscodeScreen.swift in Sources */,
 				0DE3038D263A158400CF877A /* LittleViews.swift in Sources */,

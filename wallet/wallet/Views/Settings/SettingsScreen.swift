@@ -22,11 +22,12 @@ enum SettingsDestination: Int {
     case handleFaceId = 2
     case openRecoveryPhrase = 3
     case openChangePIN = 4
-    case openPrivateServerConfig = 5
-    case openiCloudBackup = 6
-    case openPrivacyPolicy = 7
-    case openTermsAndConditions = 8
-    case openSupport = 9
+    case openUnlinkDevice = 5
+    case openPrivateServerConfig = 6
+    case openiCloudBackup = 7
+    case openPrivacyPolicy = 8
+    case openTermsAndConditions = 9
+    case openSupport = 10
 }
 
 
@@ -126,6 +127,16 @@ struct SettingsScreen: View {
                     .background(Color.screenBgColor)
           
                 }
+                
+                NavigationLink(
+                    destination: UnlinkDevice().environmentObject(self.appEnvironment),
+                               tag: SettingsDestination.openUnlinkDevice,
+                               selection: $destination
+                        
+                ) {
+                   EmptyView()
+                }
+                
             }.bottomSheet(isPresented: $openLanguageScreen,
                           height: 500,
                           topBarHeight: 0,
@@ -142,9 +153,16 @@ struct SettingsScreen: View {
     func openRespectiveScreenBasisSelection(){
         self.destination = SettingsDestination(rawValue: self.mSelectedSettingsRowData?.id ?? 0)
         
-        if self.destination == SettingsDestination.openLanguage {
-            openLanguageScreen.toggle()
+        
+        switch(self.mSelectedSettingsRowData?.id){
+            case SettingsDestination.openLanguage.rawValue:
+                openLanguageScreen.toggle()
+            break
+           
+            default:
+                print("Something else is tapped")
         }
+        
     }
     
 }
