@@ -20,17 +20,15 @@ struct PrivateServerConfig: View {
              
             ARRRBackground()
           
-            VStack(alignment: .center, spacing: 10){
+            VStack(alignment: .center, spacing: 5){
 
                 Spacer(minLength: 10)
                 
-                 VStack(alignment: .center, spacing: 10) {
-                     Text("Private Server Config").font(.barlowRegular(size: 20)).multilineTextAlignment(.center).foregroundColor(.white)
-                 }
+                Text("Private Server Config").foregroundColor(.gray).font(.barlowRegular(size: 20)).multilineTextAlignment(.center).foregroundColor(.white)
                 
                 VStack(alignment: .leading, spacing: 10) {
                      HStack {
-                         Text("Auto Config").font(.barlowRegular(size: 14)).multilineTextAlignment(.center).foregroundColor(.white)
+                         Text("Auto Config").foregroundColor(.gray).font(.barlowRegular(size: 14)).multilineTextAlignment(.center).foregroundColor(.white)
                          
                          Toggle("", isOn: $isAutoConfigEnabled)
                              .toggleStyle(ColoredToggleStyle()).labelsHidden()
@@ -49,7 +47,6 @@ struct PrivateServerConfig: View {
                  .modifier(BackgroundPlaceholderModifier())
                  
                
-                 Spacer()
             }
             
         }.edgesIgnoringSafeArea(.all)
