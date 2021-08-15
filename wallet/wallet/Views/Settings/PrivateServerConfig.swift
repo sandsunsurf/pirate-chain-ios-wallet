@@ -9,16 +9,49 @@
 import SwiftUI
 
 struct PrivateServerConfig: View {
+    @State private var lightServerString: String = ""
+    @State private var lightPortString: String = ""
     @EnvironmentObject var appEnvironment: ZECCWalletEnvironment
     @Environment(\.presentationMode) var presentationMode
+    @State var isAutoConfigEnabled = true
 
     var body: some View {
         ZStack{
-                ARRRBackground()
-            VStack(alignment: .center, spacing: 10) {
-                Spacer(minLength: 5)
-                Text("Private Server Config").font(.barlowRegular(size: 20)).multilineTextAlignment(.center).foregroundColor(.white)
+             
+            ARRRBackground()
+          
+            VStack(alignment: .center, spacing: 10){
+
+                Spacer(minLength: 10)
+                
+                 VStack(alignment: .center, spacing: 10) {
+                     Text("Private Server Config").font(.barlowRegular(size: 20)).multilineTextAlignment(.center).foregroundColor(.white)
+                 }
+                
+                VStack(alignment: .leading, spacing: 10) {
+                     HStack {
+                         Text("Auto Config").font(.barlowRegular(size: 14)).multilineTextAlignment(.center).foregroundColor(.white)
+                         
+                         Toggle("", isOn: $isAutoConfigEnabled)
+                             .toggleStyle(ColoredToggleStyle()).labelsHidden()
+                     }
+                     Divider().foregroundColor(.white).frame(height:2).padding()
+                     
+                     VStack(alignment: .leading, spacing: nil, content: {
+                         Text("Chain lite server ").font(.barlowRegular(size: 14)).foregroundColor(.gray).multilineTextAlignment(.leading)
+                         TextField("lightd.meshbits.io", text: $lightServerString).font(.barlowRegular(size: 14))
+                         .modifier(BackgroundPlaceholderModifier())
+                         Text("Port ").foregroundColor(.gray).multilineTextAlignment(.leading).font(.barlowRegular(size: 14))
+                         TextField("9067", text: $lightPortString).font(.barlowRegular(size: 14))
+                         .modifier(BackgroundPlaceholderModifier())
+                     }).modifier(ForegroundPlaceholderModifier())
+                 }
+                 .modifier(BackgroundPlaceholderModifier())
+                 
+               
+                 Spacer()
             }
+            
         }.edgesIgnoringSafeArea(.all)
         .navigationBarBackButtonHidden(true)
         .navigationTitle("").navigationBarTitleDisplayMode(.inline)
@@ -40,5 +73,38 @@ struct PrivateServerConfig: View {
 struct PrivateServerConfig_Previews: PreviewProvider {
     static var previews: some View {
         PrivateServerConfig()
+    }
+}
+
+
+struct BackgroundPlaceholderModifier: ViewModifier {
+
+var backgroundColor = Color(.systemBackground)
+
+func body(content: Content) -> some View {
+    content
+        .padding()
+        .frame(maxWidth: .infinity)
+        .background(
+            RoundedRectangle(cornerRadius: 12).fill(Color.init(red: 29.0/255.0, green: 32.0/255.0, blue: 34.0/255.0))
+                .softInnerShadow(RoundedRectangle(cornerRadius: 12), darkShadow: Color.init(red: 0.06, green: 0.07, blue: 0.07), lightShadow: Color.init(red: 0.26, green: 0.27, blue: 0.3), spread: 0.05, radius: 2))
+        .padding()
+    }
+}
+
+
+
+struct ForegroundPlaceholderModifier: ViewModifier {
+
+var backgroundColor = Color(.systemBackground)
+
+func body(content: Content) -> some View {
+    content
+        .padding()
+        .frame(maxWidth: .infinity)
+        .background(
+            RoundedRectangle(cornerRadius: 12).fill(Color.init(red: 29.0/255.0, green: 32.0/255.0, blue: 34.0/255.0))
+                .softInnerShadow(RoundedRectangle(cornerRadius: 12), darkShadow: Color.init(red: 0.26, green: 0.27, blue: 0.3), lightShadow: Color.init(red: 0.06, green: 0.07, blue: 0.07), spread: 0.05, radius: 2))
+        .padding()
     }
 }
