@@ -134,7 +134,7 @@ struct SettingsScreen: View {
                 SelectLanguage().environmentObject(appEnvironment)
             }.onAppear(){
                 NotificationCenter.default.addObserver(forName: NSNotification.Name("DismissSettings"), object: nil, queue: .main) { (_) in
-                    openLanguageScreen.toggle()
+                    openLanguageScreen = false
                 }
             }
     }

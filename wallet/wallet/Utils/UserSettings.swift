@@ -22,6 +22,7 @@ class UserSettings {
         static let aPasscode = "aPasscode"
         static let aBiometricInAppStatus = "aBiometricInAppStatus"
         static let aBiometricEnabled = "aBiometricEnabled"
+        static let aLanguageSelectionIndex = "aLanguageSelectionIndex"
     }
     
     
@@ -91,4 +92,14 @@ class UserSettings {
              UserDefaults.standard.setValue(newValue, forKey: Keys.aBiometricEnabled)
          }
      }
+    
+    var languageSelectionIndex: Int  {
+        get {
+            UserDefaults.standard.integer(forKey: Keys.aLanguageSelectionIndex)
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: Keys.aLanguageSelectionIndex)
+        }
+    }
+    
 }

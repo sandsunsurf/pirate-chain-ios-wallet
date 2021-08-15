@@ -15,16 +15,35 @@ struct CheckBoxRowData : Equatable {
     var isSelected: Bool
 }
 
+
+
+class SelectLanguageViewModel: ObservableObject {
+    
+    @Published var allLanguages = [CheckBoxRowData(id:0,title:"English",isSelected: true),
+                        CheckBoxRowData(id:1,title:"Spanish  (Español)",isSelected: false),
+                        CheckBoxRowData(id:2,title:"Russian  (pусский)",isSelected: false)]
+    
+    init() {
+        updateLanguagesStatus()
+    }
+    
+    func updateLanguagesStatus(){
+        for var checkBoxData in allLanguages {
+            if checkBoxData.id == UserSettings.shared.languageSelectionIndex {
+                checkBoxData.isSelected = true
+            }else{
+                checkBoxData.isSelected = false
+            }
+        }
+    }
+}
+
+
 struct SelectLanguage: View {
     
     @Environment(\.presentationMode) var presentationMode
     
-    
-    @Environment(\.walletEnvironment) var appEnvironment: ZECCWalletEnvironment
-    
-    var allLanguages = [CheckBoxRowData(id:0,title:"English",isSelected: true),
-                        CheckBoxRowData(id:1,title:"Spanish  (Español)",isSelected: false),
-                        CheckBoxRowData(id:2,title:"Russian  (pусский)",isSelected: false)]
+    @ObservedObject var languageViewModel: SelectLanguageViewModel = SelectLanguageViewModel()
     
     @State var mSelectedSettingsRowData: CheckBoxRowData?
     
@@ -41,10 +60,13 @@ struct SelectLanguage: View {
                 ScrollView {
 
                     VStack {
-                        ForEach(allLanguages, id: \.id) { settingsRowData in
-                            SettingsRowWithCheckbox(mCurrentRowData: settingsRowData, mSelectedCheckBoxRowData: $mSelectedSettingsRowData, noLineAfter:2, isSelected: settingsRowData.isSelected).onTapGesture {
-                                self.mSelectedSettingsRowData = settingsRowData
-                                changeLanguage()
+                        ForEach(languageViewModel.allLanguages, id: \.id) { settingsRowData in
+                            
+                            SettingsRowWithCheckbox(mCurrentRowData: settingsRowData, mSelectedCheckBoxRowData: $mSelectedSettingsRowData, noLineAfter:2, isSelected: settingsRowData.isSelected)
+                                .onTapGesture {
+                                    self.mSelectedSettingsRowData = settingsRowData
+                                    changeLanguage()
+                                    self.languageViewModel.updateLanguagesStatus()
                             }
                         }
                         
@@ -82,6 +104,8 @@ struct SelectLanguage: View {
             default:
             print("None")
         }
+        
+        UserSettings.shared.languageSelectionIndex = mSelectedSettingsRowData?.id ?? 0
         
         dismissBottomSheet()
 
@@ -122,14 +146,16 @@ struct SettingsRowWithCheckbox: View {
 
         VStack {
             HStack{
+                
                 Text(mCurrentRowData.title).font(.barlowRegular(size: 16))
                                 .frame(width: 230, height: 22,alignment: .leading)
-                    .foregroundColor(isSelected ? Color.arrrBarAccentColor : Color.textTitleColor)
-                    .padding(.trailing, isSelected ? 60 : 80)
+                    .multilineTextAlignment(.leading)
+                    .foregroundColor(isCurrentIndexSelected() ? Color.arrrBarAccentColor : Color.textTitleColor)
+                    .padding(.trailing, isCurrentIndexSelected() ? 60 : 80)
                     .padding()
                 
-                if isSelected {
-                    Image(systemName: "checkmark").resizable().frame(width: 10, height: 10, alignment: .trailing).foregroundColor(isSelected ? Color.arrrBarAccentColor : Color.textTitleColor)
+                if isCurrentIndexSelected() {
+                    Image(systemName: "checkmark").resizable().frame(width: 10, height: 10, alignment: .trailing).foregroundColor(isCurrentIndexSelected() ? Color.arrrBarAccentColor : Color.textTitleColor)
                 }
             }
             if mCurrentRowData.id < noLineAfter {
@@ -137,10 +163,14 @@ struct SettingsRowWithCheckbox: View {
             }
         }
     }
+    
+    func isCurrentIndexSelected() -> Bool{
+        return UserSettings.shared.languageSelectionIndex == mCurrentRowData.id ? true : false
+    }
 }
 
 struct SelectLanguage_Previews: PreviewProvider {
     static var previews: some View {
-        SelectLanguage()
+        SelectLanguage(languageViewModel: SelectLanguageViewModel())
     }
 }
