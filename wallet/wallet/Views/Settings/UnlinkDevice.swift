@@ -41,7 +41,11 @@ struct UnlinkDevice: View {
                                         action: {
                                             UserSettings.shared.removeAllSettings()
                                             self.appEnvironment.nuke(abortApplication: true)
-                                            presentationMode.wrappedValue.dismiss()
+//                                            presentationMode.wrappedValue.dismiss()
+                                            ZECCWalletEnvironment.shared.state = .uninitialized
+                                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                                  NotificationCenter.default.post(name: NSNotification.Name("MoveToFirstViewLayout"), object: nil)
+                                            }
                                       }
                                     )
                                 )

@@ -18,10 +18,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
-        // Create the SwiftUI view that provides the window contents.
+        addSwiftLayout(scene: scene)
         
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("MoveToFirstViewLayout"), object: nil, queue: .main) { (_) in            
+            self.addSwiftLayout(scene: scene)
+        }
+    }
     
-        // Use a UIHostingController as window root view controller.
+    func addSwiftLayout(scene: UIScene){
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             
