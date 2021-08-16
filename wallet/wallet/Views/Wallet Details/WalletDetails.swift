@@ -24,12 +24,15 @@ class WalletDetailsViewModel: ObservableObject {
         unsubscribeFromSynchonizerEvents()
     }
 
+    func getSortedItems()-> [DetailModel]{
+        return self.items.sorted(by: { $0.date > $1.date })
+    }
     
     func subscribeToSynchonizerEvents() {
         ZECCWalletEnvironment.shared.synchronizer.walletDetailsBuffer
             .receive(on: RunLoop.main)
             .sink(receiveValue: { [weak self] (d) in
-                self?.items = d
+                self?.items = DetailModel.mockDetails // Replace it with d = original records of transactions
             })
             .store(in: &synchronizerEvents)
         
@@ -111,7 +114,7 @@ struct WalletDetails: View {
 //                        .listRowBackground(Color.zDarkGray2)
 //                        .frame(height: 100)
 //                        .padding([.trailing], 24)
-                    ForEach(self.viewModel.items, id: \.id) { row in
+                    ForEach(self.viewModel.getSortedItems(), id: \.id) { row in
                        
                         Button(action: {
                             self.selectedModel = row
@@ -199,7 +202,7 @@ extension DetailModel {
                         id: "bb032",
                         zAddress: "Ztestsapling1ctuamfer5xjnnrdr3xdazenljx0mu0gutcf9u9e74tr2d3jwjnt0qllzxaplu54hgc2tyjdc2p6",
                         date: Date(),
-                        zecAmount: 2.0,
+                        zecAmount: 4.0,
                         status: .received,
                         subtitle: "Received 11/16/19 4:12pm"
                         
@@ -221,3 +224,4 @@ extension DetailModel {
         return items
     }
 }
+

@@ -47,19 +47,7 @@ struct DetailCard: View {
  
     var model: DetailModel
     var backgroundColor: Color = .black
-    
-    var shieldImage: AnyView {
         
-        let view = model.shielded ? AnyView(Image("ic_shieldtick").renderingMode(.original)) : AnyView(EmptyView())
-        switch model.status {
-        case .paid(let success):
-            return success ? view : AnyView(EmptyView())
-        default:
-            return view
-        }
-        
-    }
-    
     var zecAmount: some View {
         let amount = model.zecAmount.toZecAmount()
         var text = ((model.zecAmount > 0 && model.zecAmount >= 0.001) ? "+ " : "") + ((model.zecAmount < 0.001 && model.zecAmount > 0) ? "< 0.001" : amount)
@@ -70,7 +58,7 @@ struct DetailCard: View {
             color = success ? Color.zNegativeZecAmount : Color.zLightGray2
             opacity = success ? 1 : 0.6
             
-            text = success ? text : "(\(text) ZEC)"
+            text = success ? text : "(\(text) ARRR)"
             
         default:
             break
@@ -88,14 +76,12 @@ struct DetailCard: View {
         ZStack {
             backgroundColor
             HStack {
-                StatusLine(status: model.status)
-                    .frame(width: 3.0)
-                    .padding(.vertical, 8)
+                Image.statusImage(for: model.status).resizable().frame(width: 20, height: 20, alignment: .center)
 
                 VStack(alignment: .leading){
                     HStack {
-                        shieldImage
-                        Text(model.title)
+//                        Text(model.title)
+                        Text(model.date.aFormattedDate)
                             .truncationMode(.tail)
                             .lineLimit(1)
                             .foregroundColor(.white)
@@ -119,34 +105,21 @@ struct DetailCard: View {
     
 }
 
-struct StatusLine: View {
-    var status: DetailModel.Status = .paid(success: true)
+extension Image {
+    static func statusImage(for cardType: DetailModel.Status) -> Image {
+        var imageName = "gray_shield"
+        switch cardType {
     
-    var opacity: Double {
-        var _opacity = Double(1)
-        switch status {
         case .paid(let success):
-            if !success {
-                _opacity = 0.6
-            }
-        default:
-            break
+            imageName = success ? "senticon" : "gray_shield"
+        case .received:
+            imageName = "receiveicon"
         }
-        return _opacity
-    }
-    
-    var body: some View {
-        GeometryReader { geometry in
-            
-            Capsule(style: .circular)
-                .size(geometry.size)
-                .fill(
-                    LinearGradient.gradient(for: self.status)
-                )
-                .opacity(self.opacity)
-        }
+        
+        return Image(imageName)
     }
 }
+
 
 extension LinearGradient {
     static func gradient(for cardType: DetailModel.Status) -> LinearGradient {
@@ -279,3 +252,11 @@ extension DetailModel {
     }
 }
     
+
+extension Date {
+    var aFormattedDate: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM dd"
+        return dateFormatter.string(from: self)
+    }
+}
