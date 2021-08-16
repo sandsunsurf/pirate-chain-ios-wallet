@@ -80,33 +80,37 @@ struct WalletDetails: View {
         
         ZStack {
             ARRRBackground()
-            VStack(alignment: .center) {
+            VStack(alignment: .center, spacing: 20) {
+                
+                VStack(alignment: .center, spacing: 10) {
+                    Text("Wallet History").font(.barlowRegular(size: 25)).multilineTextAlignment(.center).foregroundColor(.gray)
+                }
+                
                 ZcashNavigationBar(
                     leadingItem: {
-//                        Button(action: {
-//                            presentationMode.wrappedValue.dismiss()
-//                        }) {
-//                            Image("Back")
-//                                .renderingMode(.original)
-//                        }
-                        
+
                     },
                    headerItem: {
-                        BalanceDetail(
-                            availableZec: appEnvironment.synchronizer.verifiedBalance.value,
-                            status: status)
-                            
-                    },
+                    if appEnvironment.synchronizer.synchronizer.getShieldedBalance() > 0 {
+                        BalanceDetailView(
+                                availableZec: appEnvironment.synchronizer.verifiedBalance.value,
+                                status: status)
+                                
+                    }
+                    else {
+                        ActionableMessage(message: "balance_nofunds".localized())
+                    }
+                   },
                    trailingItem: { EmptyView() }
                 )
                 .padding(.horizontal, 10)
                 
 
                 List {
-                    WalletDetailsHeader(zAddress: zAddress)
-                        .listRowBackground(Color.zDarkGray2)
-                        .frame(height: 100)
-                        .padding([.trailing], 24)
+//                    WalletDetailsHeader(zAddress: zAddress)
+//                        .listRowBackground(Color.zDarkGray2)
+//                        .frame(height: 100)
+//                        .padding([.trailing], 24)
                     ForEach(self.viewModel.items, id: \.id) { row in
                        
                         Button(action: {

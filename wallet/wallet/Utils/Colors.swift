@@ -140,6 +140,10 @@ extension Color {
     static let textTitleColor = Color.init(red: 0.59, green: 0.61, blue: 0.63)
     
     static let screenBgColor = Color.init(red: 33.0/255.0, green: 36.0/255.0, blue: 38.0/255.0)
+    
+    // Wallet Screen Color
+    
+    static let zARRRTextColor = Color.init(red: 218.0/255.0, green: 183.0/255.0, blue: 114.0/255.0)
 }
 
 extension Gradient {

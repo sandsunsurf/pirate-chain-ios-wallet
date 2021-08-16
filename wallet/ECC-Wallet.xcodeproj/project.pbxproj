@@ -361,6 +361,9 @@
 		290BEF8126A73B5C00526EDA /* PasscodeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290BEF8026A73B5C00526EDA /* PasscodeScreen.swift */; };
 		290BEF8226A73B5C00526EDA /* PasscodeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290BEF8026A73B5C00526EDA /* PasscodeScreen.swift */; };
 		290BEF8326A73B5C00526EDA /* PasscodeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290BEF8026A73B5C00526EDA /* PasscodeScreen.swift */; };
+		290F6DAC26CAB4D800EA2CA7 /* BalanceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290F6DAB26CAB4D800EA2CA7 /* BalanceDetailView.swift */; };
+		290F6DAD26CAB4D800EA2CA7 /* BalanceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290F6DAB26CAB4D800EA2CA7 /* BalanceDetailView.swift */; };
+		290F6DAE26CAB4D800EA2CA7 /* BalanceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290F6DAB26CAB4D800EA2CA7 /* BalanceDetailView.swift */; };
 		29207FDA26BFCDD500E9C4E4 /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29207FD926BFCDD500E9C4E4 /* SettingsScreen.swift */; };
 		29207FDB26BFCDD500E9C4E4 /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29207FD926BFCDD500E9C4E4 /* SettingsScreen.swift */; };
 		29207FDC26BFCDD500E9C4E4 /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29207FD926BFCDD500E9C4E4 /* SettingsScreen.swift */; };
@@ -599,6 +602,7 @@
 		0DFC7D4B254C7EB600E10595 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		18C69464FD3770D35A524106 /* Pods-wallet-no-logging.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wallet-no-logging.debug.xcconfig"; path = "Target Support Files/Pods-wallet-no-logging/Pods-wallet-no-logging.debug.xcconfig"; sourceTree = "<group>"; };
 		290BEF8026A73B5C00526EDA /* PasscodeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeScreen.swift; sourceTree = "<group>"; };
+		290F6DAB26CAB4D800EA2CA7 /* BalanceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceDetailView.swift; sourceTree = "<group>"; };
 		29207FD926BFCDD500E9C4E4 /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
 		2924CF6C26BE99AE003E5C3B /* HomeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabView.swift; sourceTree = "<group>"; };
 		2946090C26ADCEF200B0867F /* Barlow-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-Regular.ttf"; sourceTree = "<group>"; };
@@ -974,6 +978,7 @@
 				0DF26E2624D1F88100F32978 /* Baseline.swift */,
 				0D9D4E2E26336C0E007FD969 /* TabSelector.swift */,
 				0D5E9B0C263748E400D98569 /* BalanceBreakdown.swift */,
+				290F6DAB26CAB4D800EA2CA7 /* BalanceDetailView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1579,6 +1584,7 @@
 				29F066A426C810F900637E97 /* Bundle+Localized.swift in Sources */,
 				0DD1C2CD24F04D470042C1E4 /* BlockExplorerUrlHandling.swift in Sources */,
 				2963F33326C946FE0008CD34 /* PrivateServerConfig.swift in Sources */,
+				290F6DAC26CAB4D800EA2CA7 /* BalanceDetailView.swift in Sources */,
 				0D100EDB23BA91F70089DB22 /* ZcashButton.swift in Sources */,
 				0D4B91DA24CA390B00A0E024 /* KeyboardAdaptive.swift in Sources */,
 				0D27C4A923C4C4640044B48E /* ZcashTextField.swift in Sources */,
@@ -1818,6 +1824,7 @@
 				0DCDFFCD24B6722B000F6999 /* QRCodeScannerView.swift in Sources */,
 				2924CF6F26BE99AF003E5C3B /* HomeTabView.swift in Sources */,
 				0DCDFFCE24B6722B000F6999 /* SceneDelegate.swift in Sources */,
+				290F6DAE26CAB4D800EA2CA7 /* BalanceDetailView.swift in Sources */,
 				0D562FD5257841FD00E843DD /* MemoUtils.swift in Sources */,
 				0DCDFFCF24B6722B000F6999 /* QRCodeContainer.swift in Sources */,
 				0DCDFFD024B6722B000F6999 /* TransactionDetail.swift in Sources */,
@@ -1852,6 +1859,7 @@
 				29F066A526C810F900637E97 /* Bundle+Localized.swift in Sources */,
 				0DE30354263A158400CF877A /* BlockExplorerUrlHandling.swift in Sources */,
 				2963F33426C946FE0008CD34 /* PrivateServerConfig.swift in Sources */,
+				290F6DAD26CAB4D800EA2CA7 /* BalanceDetailView.swift in Sources */,
 				0DE30355263A158400CF877A /* ZcashButton.swift in Sources */,
 				0DE30356263A158400CF877A /* KeyboardAdaptive.swift in Sources */,
 				0DE30358263A158400CF877A /* ZcashTextField.swift in Sources */,
