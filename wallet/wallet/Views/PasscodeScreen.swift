@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+import LocalAuthentication
 
 public class PasscodeViewModel: ObservableObject{
     
@@ -96,6 +97,7 @@ public class PasscodeViewModel: ObservableObject{
            
        }
     }
+    
 }
 
 struct PasscodeScreen: View {
@@ -123,6 +125,9 @@ struct PasscodeScreen: View {
     }
     
     @EnvironmentObject var appEnvironment: ZECCWalletEnvironment
+    
+    @Environment(\.presentationMode) var presentationMode:Binding<PresentationMode>
+      
     @State var error: UserFacingErrors?
     @State var showError: AlertType?
     @State var destination: Destinations?
@@ -199,6 +204,7 @@ struct PasscodeScreen: View {
             }
             
         }.highPriorityGesture(dragGesture)
+        .onAppear(perform: authenticate)
         .onAppear {
             NotificationCenter.default.addObserver(forName: NSNotification.Name("UpdateLayout"), object: nil, queue: .main) { (_) in
                 
@@ -229,7 +235,20 @@ struct PasscodeScreen: View {
                     passcodeViewModel.mPressedKeys.removeAll()
                 }
             }
-        }.navigationBarHidden(true)
+        }
+        .onReceive(AuthenticationHelper.authenticationPublisher) { (output) in
+                   switch output {
+                   case .failed(_), .userFailed:
+                       print("SOME ERROR OCCURRED")
+                   case .success:
+                       print("SUCCESS")
+                       self.presentationMode.wrappedValue.dismiss()
+                   case .userDeclined:
+                       print("DECLINED")
+                       break
+                   }
+       }
+        .navigationBarHidden(true)
             .alert(item: self.$showError) { (alertType) -> Alert in
                 switch alertType {
                 case .error(let cause):
@@ -329,6 +348,12 @@ struct PasscodeScreen: View {
                      message: Text(mapToUserFacingError(ZECCWalletEnvironment.mapError(error: e)).message),
                      dismissButton: .default(Text("button_close")))
         
+    }
+    
+    func authenticate() {
+        if UserSettings.shared.biometricInAppStatus && mScreenState == .validatePasscode{
+            AuthenticationHelper.authenticate(with: "Authenticate Biometric".localized())
+        }
     }
 }
 

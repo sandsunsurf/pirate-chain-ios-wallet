@@ -5,7 +5,6 @@
 //  Created by Francisco Gindre on 1/23/20.
 //  Copyright © 2020 Francisco Gindre. All rights reserved.
 //
-
 import Foundation
 import KeychainSwift
 import ZcashLightClientKit
@@ -24,117 +23,87 @@ final class SeedManager {
     private static let aRRRLightWalletEndpoint = "aRRRLightWalletEndpoint"
     private static let aRRRLightWalletPort = "aRRRLightWalletPort"
     
-    private let cloudkitKeyValueStore = NSUbiquitousKeyValueStore.default
+    
+    private let keychain = KeychainSwift()
     
     func importBirthday(_ height: BlockHeight) throws {
-        
-        guard cloudkitKeyValueStore.string(forKey: Self.zECCWalletBirthday) == nil else {
+        guard keychain.get(Self.zECCWalletBirthday) == nil else {
             throw SeedManagerError.alreadyImported
         }
-        
-        cloudkitKeyValueStore.set(String(height), forKey: Self.zECCWalletBirthday)
-
-        cloudkitKeyValueStore.synchronize()
+        keychain.set(String(height), forKey: Self.zECCWalletBirthday)
     }
     
-    
     func exportBirthday() throws -> BlockHeight {
-        
-        guard let birthday = cloudkitKeyValueStore.string(forKey: Self.zECCWalletBirthday),
-              let value = BlockHeight(birthday) else {
-            throw SeedManagerError.uninitializedWallet
+        guard let birthday = keychain.get(Self.zECCWalletBirthday),
+            let value = BlockHeight(birthday) else {
+                throw SeedManagerError.uninitializedWallet
         }
-        
         return value
     }
     
-  
     func importPhrase(bip39 phrase: String) throws {
-        
-        guard cloudkitKeyValueStore.string(forKey: Self.zECCWalletPhrase) == nil else {
-            throw SeedManagerError.alreadyImported
-        }
-        
-        cloudkitKeyValueStore.set(phrase, forKey: Self.zECCWalletPhrase)
-
-        cloudkitKeyValueStore.synchronize()
+        guard keychain.get(Self.zECCWalletPhrase) == nil else { throw SeedManagerError.alreadyImported }
+        keychain.set(phrase, forKey: Self.zECCWalletPhrase)
     }
     
     func exportPhrase() throws -> String {
-          guard let seed = cloudkitKeyValueStore.string(forKey: Self.zECCWalletPhrase) else { throw SeedManagerError.uninitializedWallet }
-          return seed
+        guard let seed = keychain.get(Self.zECCWalletPhrase) else { throw SeedManagerError.uninitializedWallet }
+        return seed
     }
+    
     
     func importLightWalletEndpoint(address: String) {
-          guard cloudkitKeyValueStore.string(forKey: Self.aRRRLightWalletEndpoint) == nil else {
-             
-              cloudkitKeyValueStore.set(address, forKey: Self.aRRRLightWalletEndpoint)
-
-              cloudkitKeyValueStore.synchronize()
-
-              return
-          }
-          
-          cloudkitKeyValueStore.set(ZECCWalletEnvironment.defaultLightWalletEndpoint, forKey: Self.aRRRLightWalletEndpoint)
-
-          cloudkitKeyValueStore.synchronize()
-
-
+        guard keychain.get(Self.aRRRLightWalletEndpoint) == nil
+        else {
+            keychain.set(address, forKey: Self.aRRRLightWalletEndpoint)
+            return
+        }
+        keychain.set(ZECCWalletEnvironment.defaultLightWalletEndpoint, forKey: Self.aRRRLightWalletEndpoint)
     }
-    
-    
+
     func exportLightWalletEndpoint() -> String {
-        guard let address = cloudkitKeyValueStore.string(forKey: Self.aRRRLightWalletEndpoint) else
+        guard let address = keychain.get(Self.aRRRLightWalletEndpoint) else
         {
             return ZECCWalletEnvironment.defaultLightWalletEndpoint
         }
         return address
     }
     
-    
-    func importLightWalletPort(port: String) {
-        guard cloudkitKeyValueStore.string(forKey: Self.aRRRLightWalletPort) == nil else {
-            cloudkitKeyValueStore.set(port, forKey: Self.aRRRLightWalletPort)
-            cloudkitKeyValueStore.synchronize()
+    func importLightWalletPort(port: Int) {
+        guard keychain.get(Self.aRRRLightWalletPort) == nil
+        else {
+            keychain.set(String.init(format: "%d", port), forKey: Self.aRRRLightWalletPort)
             return
         }
-        
-        cloudkitKeyValueStore.set(String.init(format: "%d", ZECCWalletEnvironment.defaultLightWalletPort), forKey: Self.aRRRLightWalletPort)
-        cloudkitKeyValueStore.synchronize()
-        
-    }
-    
-    
-    func exportLightWalletPort() -> String {
-        guard let port = cloudkitKeyValueStore.string(forKey: Self.aRRRLightWalletPort) else
-        {
-            return String.init(format: "%d", ZECCWalletEnvironment.defaultLightWalletPort)
-        }
-        return port
+        keychain.set(String.init(format: "%d", ZECCWalletEnvironment.defaultLightWalletPort), forKey: Self.aRRRLightWalletPort)
     }
 
-    
+    func exportLightWalletPort() -> Int {
+        guard let port = keychain.get(Self.aRRRLightWalletPort) else
+        {
+            return ZECCWalletEnvironment.defaultLightWalletPort
+        }
+        return Int(port) ?? ZECCWalletEnvironment.defaultLightWalletPort
+    }
+        
     /**
      Use carefully: Deletes the seed phrase from the keychain
      */
     func nukePhrase() {
-        cloudkitKeyValueStore.removeObject(forKey: Self.zECCWalletPhrase)
-        cloudkitKeyValueStore.synchronize()
+        keychain.delete(Self.zECCWalletPhrase)
     }
     /**
         Use carefully: Deletes the keys from the keychain
      */
     func nukeKeys() {
-       cloudkitKeyValueStore.removeObject(forKey: Self.zECCWalletKeys)
-       cloudkitKeyValueStore.synchronize()
+        keychain.delete(Self.zECCWalletKeys)
     }
 
     /**
        Use carefully: Deletes the seed from the keychain.
      */
     func nukeSeed() {
-       cloudkitKeyValueStore.removeObject(forKey: Self.zECCWalletSeedKey)
-       cloudkitKeyValueStore.synchronize()
+        keychain.delete(Self.zECCWalletSeedKey)
     }
     
     /**
@@ -142,8 +111,7 @@ final class SeedManager {
      */
     
     func nukeBirthday() {
-        cloudkitKeyValueStore.removeObject(forKey: Self.zECCWalletBirthday)
-        cloudkitKeyValueStore.synchronize()
+        keychain.delete(Self.zECCWalletBirthday)
     }
     
     
@@ -156,10 +124,12 @@ final class SeedManager {
         nukePhrase()
         nukeBirthday()
         
-        // Fix: retrocompatibility with old wallets, previous to IVK Synchronizer updates 
-//        for key in keychain.allKeys {
-//            keychain.delete(key)
-//        }
+        // Fix: retrocompatibility with old wallets, previous to IVK Synchronizer updates
+        for key in keychain.allKeys {
+            keychain.delete(key)
+        }
+        
+        UserSettings.shared.removeAllSettings()
     }
     
     var keysPresent: Bool {

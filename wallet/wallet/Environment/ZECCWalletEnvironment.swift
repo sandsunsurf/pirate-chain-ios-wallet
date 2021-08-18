@@ -26,7 +26,7 @@ final class ZECCWalletEnvironment: ObservableObject {
     static var shared: ZECCWalletEnvironment = try! ZECCWalletEnvironment() // app can't live without this existing.
     static let memoLengthLimit: Int = 512
     static let defaultLightWalletEndpoint = "lightd.pirate.black"
-    static let defaultLightWalletPort = 9067
+    static let defaultLightWalletPort: Int = 443
        
     @Published var state: WalletState
     
@@ -115,7 +115,7 @@ final class ZECCWalletEnvironment: ObservableObject {
             try SeedManager.default.importBirthday(birthday.height)
             try SeedManager.default.importPhrase(bip39: randomPhrase)
             SeedManager.default.importLightWalletEndpoint(address: ZECCWalletEnvironment.defaultLightWalletEndpoint)
-            SeedManager.default.importLightWalletPort(port: String.init(format: "%d", ZECCWalletEnvironment.defaultLightWalletPort))
+            SeedManager.default.importLightWalletPort(port: ZECCWalletEnvironment.defaultLightWalletPort)
             try self.initialize()
         
         } catch {

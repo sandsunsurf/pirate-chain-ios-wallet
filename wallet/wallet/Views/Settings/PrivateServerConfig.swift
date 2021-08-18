@@ -10,7 +10,7 @@ import SwiftUI
 
 struct PrivateServerConfig: View {
     @State private var lightServerString: String = SeedManager.default.exportLightWalletEndpoint()
-    @State private var lightPortString: String = SeedManager.default.exportLightWalletPort()
+    @State private var lightPortString: String = String.init(format:"%d",SeedManager.default.exportLightWalletPort())
     @EnvironmentObject var appEnvironment: ZECCWalletEnvironment
     @Environment(\.presentationMode) var presentationMode
     @State var isAutoConfigEnabled = true
@@ -76,7 +76,39 @@ struct PrivateServerConfig: View {
                 
             }.padding(.top, 100)
             
-        }.edgesIgnoringSafeArea(.all)
+        }
+        .onTapGesture {
+                       
+               if isUserEditingPort {
+                   isUserEditingPort = false
+                   self.didEndEditingPortTextField()
+               }
+               
+               if isUserEditingAddress {
+                   isUserEditingAddress = false
+                   self.didEndEditingAddressTextField()
+               }
+               
+               UIApplication.shared.endEditing()
+
+        }
+        .alert(isPresented: self.$isDisplayAddressAlert, content: { () -> Alert in
+                       Alert(title: Text("".localized()),
+                             message: Text("Invalid Lite Server Address, Reverting it to pirate chain address!".localized()),
+                             dismissButton: .default(Text("button_close".localized()),action: {
+                               lightServerString = ZECCWalletEnvironment.defaultLightWalletEndpoint
+                               SeedManager.default.importLightWalletEndpoint(address: lightServerString)
+                         }))
+                   })
+                   .alert(isPresented: self.$isDisplayPortAlert, content: { () -> Alert in
+                       Alert(title: Text("".localized()),
+                             message: Text("Invalid Lite Server Port, Reverting it to pirate chain port!".localized()),
+                             dismissButton: .default(Text("button_close".localized()),action: {
+                               lightPortString = String.init(format: "%d", ZECCWalletEnvironment.defaultLightWalletPort)
+                               SeedManager.default.importLightWalletPort(port: Int(lightPortString) ?? ZECCWalletEnvironment.defaultLightWalletPort)
+                         }))
+           })
+        .edgesIgnoringSafeArea(.all)
         .navigationBarBackButtonHidden(true)
         .navigationTitle("").navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(leading:  Button(action: {
@@ -107,7 +139,7 @@ struct PrivateServerConfig: View {
                isDisplayPortAlert = true
         }else{
                // save port
-               SeedManager.default.importLightWalletPort(port: lightPortString)
+            SeedManager.default.importLightWalletPort(port: Int(lightPortString) ?? ZECCWalletEnvironment.defaultLightWalletPort)
         }
        }
 }

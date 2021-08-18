@@ -248,7 +248,7 @@ struct SettingsRowWithToggle: View {
    
     @Binding var mSelectedSettingsRowData: SettingsRowData?
     
-    @State var isFaceIdEnabled = true
+    @State var isFaceIdEnabled = UserSettings.shared.biometricInAppStatus
 
     var body: some View {
 
@@ -261,7 +261,10 @@ struct SettingsRowWithToggle: View {
                 
                 
                 Toggle("", isOn: $isFaceIdEnabled)
-                    .toggleStyle(ColoredToggleStyle()).labelsHidden()
+                    .toggleStyle(ColoredToggleStyle()).labelsHidden().onTapGesture {
+                        isFaceIdEnabled = false
+                        UserSettings.shared.biometricInAppStatus.toggle()
+                    }
             }
 
             Color.gray.frame(height:CGFloat(1) / UIScreen.main.scale)
