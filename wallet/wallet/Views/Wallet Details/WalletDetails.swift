@@ -191,9 +191,9 @@ extension DetailModel {
                         id: "bb031",
                         zAddress: "Ztestsapling1ctuamfer5xjnnrdr3xdazenljx0mu0gutcf9u9e74tr2d3jwjnt0qllzxaplu54hgc2tyjdc2p6",
                         date: Date(),
-                        zecAmount: -12.345,
+                        zecAmount: -2.345,
                         status: .paid(success: true),
-                        subtitle: "1 of 10 confirmations"
+                        subtitle: "Sent 11/18/19 4:12pm"
                         
                     ),
                     
@@ -201,21 +201,21 @@ extension DetailModel {
                     DetailModel(
                         id: "bb032",
                         zAddress: "Ztestsapling1ctuamfer5xjnnrdr3xdazenljx0mu0gutcf9u9e74tr2d3jwjnt0qllzxaplu54hgc2tyjdc2p6",
-                        date: Date(),
-                        zecAmount: 4.0,
+                        date: Calendar.current.date(byAdding: .day, value: -1, to: Date())!,
+                        zecAmount: 0.011,
                         status: .received,
-                        subtitle: "Received 11/16/19 4:12pm"
+                        subtitle: "Received 11/18/19 4:12pm"
                         
                     ),
                     
-                    
+
                     DetailModel(
                         id: "bb033",
                         zAddress: "Ztestsapling1ctuamfer5xjnnrdr3xdazenljx0mu0gutcf9u9e74tr2d3jwjnt0qllzxaplu54hgc2tyjdc2p6",
-                        date: Date(),
-                        zecAmount: 2.0,
+                        date: Calendar.current.date(byAdding: .day, value: -2, to: Date())!,
+                        zecAmount: 0.002,
                         status: .paid(success: false),
-                        subtitle: "Received 11/16/19 4:12pm"
+                        subtitle: "Sent 11/18/19 4:12pm"
                     )
                     
                 ]

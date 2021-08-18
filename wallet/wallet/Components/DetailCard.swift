@@ -50,15 +50,15 @@ struct DetailCard: View {
         
     var zecAmount: some View {
         let amount = model.zecAmount.toZecAmount()
-        var text = ((model.zecAmount > 0 && model.zecAmount >= 0.001) ? "+ " : "") + ((model.zecAmount < 0.001 && model.zecAmount > 0) ? "< 0.001" : amount)
-        var color = Color.zPositiveZecAmount
+        var text = ((model.zecAmount > 0 && model.zecAmount >= 0.001) ? "+" : "") + ((model.zecAmount < 0.001 && model.zecAmount > 0) ? "< 0.001" : amount)
+        var color = Color.zARRRReceivedColor
         var opacity = Double(1)
         switch model.status {
         case .paid(let success):
-            color = success ? Color.zNegativeZecAmount : Color.zLightGray2
+            color = Color.zARRRSentColor //success ? Color.zARRRSentColor : Color.zLightGray2
             opacity = success ? 1 : 0.6
             
-            text = success ? text : "(\(text) ARRR)"
+//            text = success ? text : "(\(text) ARRR)"
             
         default:
             break
@@ -68,7 +68,7 @@ struct DetailCard: View {
         return
             Text(text)
                 .foregroundColor(color)
-                .opacity(opacity)
+                .opacity(opacity).font(.barlowRegular(size: 18))
             
     }
     
@@ -88,9 +88,9 @@ struct DetailCard: View {
                             .layoutPriority(0.5)
 
                     }
-                    Text(model.subtitle)
+                    Text(String.transactionSubTitle(for: model))
                         .font(.body)
-                        .foregroundColor(.zLightGray2)
+                        .foregroundColor(.zARRRSubtitleColor)
                         .opacity(0.6)
                 }
                 .padding(.vertical, 8)
@@ -117,6 +117,23 @@ extension Image {
         }
         
         return Image(imageName)
+    }
+}
+
+extension String {
+    static func transactionSubTitle(for model: DetailModel) -> String {
+        var transactionSubTitle = "Pending"
+        switch model.status {
+    
+        case .paid(let success):
+            transactionSubTitle = (success ? "sent via " : "sent via ") + (model.zAddress ?? "NA") // TODO: need to check what should we show in case a transaction is sent but is in pending state
+        case .received:
+            transactionSubTitle = "received via "
+        }
+        
+        transactionSubTitle = transactionSubTitle + (model.zAddress ?? "NA")
+        
+        return transactionSubTitle
     }
 }
 
