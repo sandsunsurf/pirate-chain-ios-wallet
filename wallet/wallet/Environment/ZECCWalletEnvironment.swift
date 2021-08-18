@@ -25,10 +25,13 @@ final class ZECCWalletEnvironment: ObservableObject {
     static let genericErrorMessage = "An error ocurred, please check your device logs"
     static var shared: ZECCWalletEnvironment = try! ZECCWalletEnvironment() // app can't live without this existing.
     static let memoLengthLimit: Int = 512
-    
+    static let defaultLightWalletEndpoint = "lightd.pirate.black"
+    static let defaultLightWalletPort = 9067
+       
     @Published var state: WalletState
     
-    let endpoint = LightWalletEndpoint(address: "lightd.pirate.black", port: 443, secure: true)
+    let endpoint = LightWalletEndpoint(address: SeedManager.default.exportLightWalletEndpoint(), port: Int(SeedManager.default.exportLightWalletPort()) ?? defaultLightWalletPort, secure: true)
+
     var dataDbURL: URL
     var cacheDbURL: URL
     var pendingDbURL: URL
@@ -111,6 +114,8 @@ final class ZECCWalletEnvironment: ObservableObject {
             
             try SeedManager.default.importBirthday(birthday.height)
             try SeedManager.default.importPhrase(bip39: randomPhrase)
+            SeedManager.default.importLightWalletEndpoint(address: ZECCWalletEnvironment.defaultLightWalletEndpoint)
+            SeedManager.default.importLightWalletPort(port: String.init(format: "%d", ZECCWalletEnvironment.defaultLightWalletPort))
             try self.initialize()
         
         } catch {

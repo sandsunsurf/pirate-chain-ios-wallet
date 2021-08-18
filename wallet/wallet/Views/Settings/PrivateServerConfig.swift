@@ -9,11 +9,24 @@
 import SwiftUI
 
 struct PrivateServerConfig: View {
-    @State private var lightServerString: String = ""
-    @State private var lightPortString: String = ""
+    @State private var lightServerString: String = SeedManager.default.exportLightWalletEndpoint()
+    @State private var lightPortString: String = SeedManager.default.exportLightWalletPort()
     @EnvironmentObject var appEnvironment: ZECCWalletEnvironment
     @Environment(\.presentationMode) var presentationMode
     @State var isAutoConfigEnabled = true
+    @State var isDisplayAddressAlert = false
+    @State var isDisplayPortAlert = false
+    @State var isUserEditingPort = false
+    @State var isUserEditingAddress = false
+
+    
+    var isHighlightedAddress: Bool {
+        lightServerString.count > 0
+    }
+    
+    var isHighlightedPort: Bool {
+        lightPortString.count > 0
+    }
 
     var body: some View {
         ZStack{
@@ -35,11 +48,25 @@ struct PrivateServerConfig: View {
                      
                      VStack(alignment: .leading, spacing: nil, content: {
                          Text("Chain lite server ").font(.barlowRegular(size: 14)).foregroundColor(.gray).multilineTextAlignment(.leading)
-                         TextField("lightd.meshbits.io", text: $lightServerString).font(.barlowRegular(size: 14))
-                         .modifier(BackgroundPlaceholderModifier())
-                         Text("Port ").foregroundColor(.gray).multilineTextAlignment(.leading).font(.barlowRegular(size: 14))
-                         TextField("9067", text: $lightPortString).font(.barlowRegular(size: 14))
-                         .modifier(BackgroundPlaceholderModifier())
+                        
+                        TextField("".localized(), text: $lightServerString, onEditingChanged: { (changed) in
+                                isUserEditingAddress = true
+                        }) {
+                            isUserEditingAddress = false
+                            self.didEndEditingAddressTextField()
+                        }.font(.barlowRegular(size: 14))
+                        .modifier(BackgroundPlaceholderModifier())
+                        
+                       Text("Port ").foregroundColor(.gray).multilineTextAlignment(.leading).font(.barlowRegular(size: 14))
+                                     
+                       TextField("".localized(), text: $lightPortString, onEditingChanged: { (changed) in
+                           isUserEditingPort = true
+                       }) {
+                           isUserEditingPort = false
+                           self.didEndEditingPortTextField()
+                       }.font(.barlowRegular(size: 14))
+                       .modifier(BackgroundPlaceholderModifier())
+                                                
                      }).modifier(ForegroundPlaceholderModifier())
                  }
                  .modifier(BackgroundPlaceholderModifier())
@@ -65,6 +92,24 @@ struct PrivateServerConfig: View {
             }.padding(.leading,-20).padding(.top,10)
         })
     }
+    
+    
+       func didEndEditingAddressTextField(){
+           if lightServerString.count == 0 {
+               isDisplayAddressAlert = true
+           }else{
+               SeedManager.default.importLightWalletEndpoint(address: lightServerString)
+           }
+       }
+       
+       func didEndEditingPortTextField(){
+        if lightPortString.count == 0 {
+               isDisplayPortAlert = true
+        }else{
+               // save port
+               SeedManager.default.importLightWalletPort(port: lightPortString)
+        }
+       }
 }
 
 struct PrivateServerConfig_Previews: PreviewProvider {
