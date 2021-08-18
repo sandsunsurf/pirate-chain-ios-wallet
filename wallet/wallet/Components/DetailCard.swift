@@ -15,9 +15,9 @@ struct DetailModel: Identifiable {
         case received
     }
     var id: String
-    var zAddress: String?
+    var arrrAddress: String?
     var date: Date
-    var zecAmount: Double
+    var arrrAmount: Double
     var status: Status
     var shielded: Bool = true
     var memo: String? = nil
@@ -27,9 +27,9 @@ struct DetailModel: Identifiable {
 
         switch status {
         case .paid(let success):
-            return success ? "You paid \(zAddress?.shortZaddress ?? "Unknown")" : "Unsent Transaction"
+            return success ? "You paid \(arrrAddress?.shortARRRaddress ?? "Unknown")" : "Unsent Transaction"
         case .received:
-            return "\(zAddress?.shortZaddress ?? "Unknown") paid you"
+            return "\(arrrAddress?.shortARRRaddress ?? "Unknown") paid you"
         }
     }
     
@@ -49,8 +49,8 @@ struct DetailCard: View {
     var backgroundColor: Color = .black
         
     var zecAmount: some View {
-        let amount = model.zecAmount.toZecAmount()
-        var text = ((model.zecAmount > 0 && model.zecAmount >= 0.001) ? "+" : "") + ((model.zecAmount < 0.001 && model.zecAmount > 0) ? "< 0.001" : amount)
+        let amount = model.arrrAmount.toZecAmount()
+        var text = ((model.arrrAmount > 0 && model.arrrAmount >= 0.001) ? "+" : "") + ((model.arrrAmount < 0.001 && model.arrrAmount > 0) ? "< 0.001" : amount)
         var color = Color.zARRRReceivedColor
         var opacity = Double(1)
         switch model.status {
@@ -126,12 +126,12 @@ extension String {
         switch model.status {
     
         case .paid(let success):
-            transactionSubTitle = (success ? "sent via " : "sent via ") + (model.zAddress ?? "NA") // TODO: need to check what should we show in case a transaction is sent but is in pending state
+            transactionSubTitle = (success ? "sent via " : "sent via ") + (model.arrrAddress ?? "NA") // TODO: need to check what should we show in case a transaction is sent but is in pending state
         case .received:
             transactionSubTitle = "received via "
         }
         
-        transactionSubTitle = transactionSubTitle + (model.zAddress ?? "NA")
+        transactionSubTitle = transactionSubTitle + (model.arrrAddress ?? "NA")
         
         return transactionSubTitle
     }
@@ -163,9 +163,9 @@ struct DetailRow_Previews: PreviewProvider {
                 DetailCard(model:
                     DetailModel(
                         id: "bb031",
-                            zAddress: "Ztestsapling1ctuamfer5xjnnrdr3xdazenljx0mu0gutcf9u9e74tr2d3jwjnt0qllzxaplu54hgc2tyjdc2p6",
+                            arrrAddress: "Ztestsapling1ctuamfer5xjnnrdr3xdazenljx0mu0gutcf9u9e74tr2d3jwjnt0qllzxaplu54hgc2tyjdc2p6",
                             date: Date(),
-                            zecAmount: -12.345,
+                            arrrAmount: -12.345,
                             status: .paid(success: true),
                             subtitle: "1 of 10 confirmations"
                             )
@@ -176,9 +176,9 @@ struct DetailRow_Previews: PreviewProvider {
             DetailCard(model:
             DetailModel(
                 id: "bb032",
-                    zAddress: "Ztestsapling1ctuamfer5xjnnrdr3xdazenljx0mu0gutcf9u9e74tr2d3jwjnt0qllzxaplu54hgc2tyjdc2p6",
+                    arrrAddress: "Ztestsapling1ctuamfer5xjnnrdr3xdazenljx0mu0gutcf9u9e74tr2d3jwjnt0qllzxaplu54hgc2tyjdc2p6",
                     date: Date(),
-                    zecAmount: 2.0,
+                    arrrAmount: 2.0,
                     status: .received,
                     subtitle: "Received 11/16/19 4:12pm"
                     )
@@ -187,9 +187,9 @@ struct DetailRow_Previews: PreviewProvider {
             DetailCard(model:
             DetailModel(
                 id: "bb033",
-                    zAddress: "Ztestsapling1ctuamfer5xjnnrdr3xdazenljx0mu0gutcf9u9e74tr2d3jwjnt0qllzxaplu54hgc2tyjdc2p6",
+                    arrrAddress: "Ztestsapling1ctuamfer5xjnnrdr3xdazenljx0mu0gutcf9u9e74tr2d3jwjnt0qllzxaplu54hgc2tyjdc2p6",
                     date: Date(),
-                    zecAmount: 2.0,
+                    arrrAmount: 2.0,
                     status: .paid(success: false),
                     subtitle: "Received 11/16/19 4:12pm"
                     )
@@ -215,8 +215,8 @@ extension DetailModel {
         self.shielded = confirmedTransaction.toAddress?.isValidShieldedAddress ?? true
         self.status = sent ? .paid(success: confirmedTransaction.minedHeight > 0) : .received
         self.subtitle = sent ? "wallet_history_sent".localized() + " \(self.date.transactionDetail)" : "Received".localized() + " \(self.date.transactionDetail)"
-        self.zAddress = confirmedTransaction.toAddress
-        self.zecAmount = (sent ? -Int64(confirmedTransaction.value) : Int64(confirmedTransaction.value)).asHumanReadableZecBalance()
+        self.arrrAddress = confirmedTransaction.toAddress
+        self.arrrAmount = (sent ? -Int64(confirmedTransaction.value) : Int64(confirmedTransaction.value)).asHumanReadableZecBalance()
         if let memo = confirmedTransaction.memo {
             self.memo = memo.asZcashTransactionMemo()
         }
@@ -236,8 +236,8 @@ extension DetailModel {
                                              minedHeight: pendingTransaction.minedHeight,
                                              date: self.date.transactionDetail,
                                              latestBlockHeight: latestBlockHeight)
-        self.zAddress = pendingTransaction.toAddress
-        self.zecAmount = -Int64(pendingTransaction.value).asHumanReadableZecBalance()
+        self.arrrAddress = pendingTransaction.toAddress
+        self.arrrAmount = -Int64(pendingTransaction.value).asHumanReadableZecBalance()
         if let memo = pendingTransaction.memo {
             self.memo = memo.asZcashTransactionMemo()
         }

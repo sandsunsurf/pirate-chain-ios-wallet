@@ -26,7 +26,7 @@ extension String {
     /**
      This only shows an abbreviated and redacted version of the Z addr for UI purposes only
      */
-    var shortZaddress: String? {
+    var shortARRRaddress: String? {
         guard isValidAddress else { return nil }
         return String(self[self.startIndex ..< self.index(self.startIndex, offsetBy: 8)])
             + "..."

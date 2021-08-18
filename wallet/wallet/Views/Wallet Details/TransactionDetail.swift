@@ -35,7 +35,7 @@ struct TransactionDetailsOLD: View {
             VStack {
                
                 ScrollView([.vertical], showsIndicators: false) {
-                    SendZecView(zatoshi: .constant(model.zecAmount.toZecAmount()))
+                    SendZecView(zatoshi: .constant(model.arrrAmount.toZecAmount()))
                     Text(status).foregroundColor(.white)
                         .font(.largeTitle)
                     Spacer()
@@ -47,7 +47,7 @@ struct TransactionDetailsOLD: View {
                         DetailCell(title: "Date:".localized(), description: model.date.description)
                         DetailCell(title: "Shielded:".localized(), description: model.shielded ? "🛡" : "❌")
                         DetailCell(title: "Memo:".localized(), description: model.memo ?? "No memo" , action: self.copyToClipBoard)
-                        DetailCell(title: "Address:".localized(), description: model.zAddress ?? "", action: self.copyToClipBoard).opacity( model.zAddress != nil ? 1.0 : 0)
+                        DetailCell(title: "Address:".localized(), description: model.arrrAddress ?? "", action: self.copyToClipBoard).opacity( model.arrrAddress != nil ? 1.0 : 0)
                         
                     }
                     Spacer()
@@ -89,9 +89,9 @@ struct TransactionDetailsOLD_Previews: PreviewProvider {
         return TransactionDetailsOLD(model:
             DetailModel(
                 id: "bb031",
-                zAddress: "Ztestsapling1ctuamfer5xjnnrdr3xdazenljx0mu0gutcf9u9e74tr2d3jwjnt0qllzxaplu54hgc2tyjdc2p6",
+                arrrAddress: "Ztestsapling1ctuamfer5xjnnrdr3xdazenljx0mu0gutcf9u9e74tr2d3jwjnt0qllzxaplu54hgc2tyjdc2p6",
                 date: Date(),
-                zecAmount: -12.345,
+                arrrAmount: -12.345,
                 status: .paid(success: true),
                 subtitle: "1 of 10 confirmations"
                 

@@ -22,8 +22,6 @@ struct PrivateServerConfig: View {
           
             VStack(alignment: .center, spacing: 5){
 
-                Spacer(minLength: 10)
-                
                 Text("Private Server Config").foregroundColor(.gray).font(.barlowRegular(size: 20)).multilineTextAlignment(.center).foregroundColor(.white)
                 
                 VStack(alignment: .leading, spacing: 10) {
@@ -47,7 +45,9 @@ struct PrivateServerConfig: View {
                  .modifier(BackgroundPlaceholderModifier())
                  
                
-            }
+                Spacer(minLength: 10)
+                
+            }.padding(.top, 100)
             
         }.edgesIgnoringSafeArea(.all)
         .navigationBarBackButtonHidden(true)

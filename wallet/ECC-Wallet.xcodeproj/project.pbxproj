@@ -395,6 +395,10 @@
 		29D4F90D26C9388C00360E40 /* UnlinkDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4F90C26C9388C00360E40 /* UnlinkDevice.swift */; };
 		29D4F90E26C9388C00360E40 /* UnlinkDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4F90C26C9388C00360E40 /* UnlinkDevice.swift */; };
 		29D4F90F26C9388C00360E40 /* UnlinkDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4F90C26C9388C00360E40 /* UnlinkDevice.swift */; };
+		29DDA37426CCF95C0041406B /* OpenInAppBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DDA37326CCF95C0041406B /* OpenInAppBrowser.swift */; };
+		29DDA37526CCF95C0041406B /* OpenInAppBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DDA37326CCF95C0041406B /* OpenInAppBrowser.swift */; };
+		29DDA37626CCF95C0041406B /* OpenInAppBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DDA37326CCF95C0041406B /* OpenInAppBrowser.swift */; };
+		29DDA37926CCFA6A0041406B /* WKView in Frameworks */ = {isa = PBXBuildFile; productRef = 29DDA37826CCFA6A0041406B /* WKView */; };
 		29EA113426B492CC00601FDD /* RestorePhraseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EA113326B492CC00601FDD /* RestorePhraseScreen.swift */; };
 		29EA113526B492CC00601FDD /* RestorePhraseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EA113326B492CC00601FDD /* RestorePhraseScreen.swift */; };
 		29EA113626B492CC00601FDD /* RestorePhraseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EA113326B492CC00601FDD /* RestorePhraseScreen.swift */; };
@@ -614,6 +618,7 @@
 		29B4E2D126B58D61008BB304 /* IntroWelcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroWelcome.swift; sourceTree = "<group>"; };
 		29D1459C46D96D9D3DF2A55C /* Pods-walletUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-walletUITests.debug.xcconfig"; path = "Target Support Files/Pods-walletUITests/Pods-walletUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		29D4F90C26C9388C00360E40 /* UnlinkDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlinkDevice.swift; sourceTree = "<group>"; };
+		29DDA37326CCF95C0041406B /* OpenInAppBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenInAppBrowser.swift; sourceTree = "<group>"; };
 		29EA113326B492CC00601FDD /* RestorePhraseScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePhraseScreen.swift; sourceTree = "<group>"; };
 		29F0669F26C8028C00637E97 /* SelectLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLanguage.swift; sourceTree = "<group>"; };
 		29F066A326C810F900637E97 /* Bundle+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Localized.swift"; sourceTree = "<group>"; };
@@ -673,6 +678,7 @@
 			files = (
 				29491D6626C5613500BBF144 /* Neumorphic in Frameworks */,
 				D0DE96F2A4EC1243F7B668E2 /* Pods_ECC_Wallet_no_logging.framework in Frameworks */,
+				29DDA37926CCFA6A0041406B /* WKView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1003,6 +1009,7 @@
 				29A5651826C4250A00ECC367 /* NotificationScreen.swift */,
 				29F0669F26C8028C00637E97 /* SelectLanguage.swift */,
 				2963F33226C946FE0008CD34 /* PrivateServerConfig.swift */,
+				29DDA37326CCF95C0041406B /* OpenInAppBrowser.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1127,6 +1134,7 @@
 			name = "ECC-Wallet-no-logging";
 			packageProductDependencies = (
 				29491D6526C5613500BBF144 /* Neumorphic */,
+				29DDA37826CCFA6A0041406B /* WKView */,
 			);
 			productName = wallet;
 			productReference = 0DCDFFE624B6722B000F6999 /* ECC-Wallet-no-logs.app */;
@@ -1192,6 +1200,7 @@
 			mainGroup = 0D1250F623B557E40014EE3A;
 			packageReferences = (
 				29491D6426C5613500BBF144 /* XCRemoteSwiftPackageReference "neumorphic" */,
+				29DDA37726CCFA6A0041406B /* XCRemoteSwiftPackageReference "WKView" */,
 			);
 			productRefGroup = 0D12510023B557E40014EE3A /* Products */;
 			projectDirPath = "";
@@ -1622,6 +1631,7 @@
 				0DF210FF23F4733000C31B08 /* zECC+SwiftUI.swift in Sources */,
 				0D100ED523BA75EE0089DB22 /* ZcashLogo.swift in Sources */,
 				0D81D0AF261FA12C003ECF47 /* FeedbackDialog.swift in Sources */,
+				29DDA37426CCF95C0041406B /* OpenInAppBrowser.swift in Sources */,
 				0D5E9B0A2637424C00D98569 /* WalletBalanceBreakdown.swift in Sources */,
 				0D9D4E2F26336C0E007FD969 /* TabSelector.swift in Sources */,
 				0D4C100723C542D800CD2854 /* ZcashCheckCircle.swift in Sources */,
@@ -1809,6 +1819,7 @@
 				0D2D5C1A24CF8031001A58AD /* ZcashActionableTextField.swift in Sources */,
 				0DD1C2CE24F04D470042C1E4 /* BlockExplorerUrlHandling.swift in Sources */,
 				29F066A226C8028C00637E97 /* SelectLanguage.swift in Sources */,
+				29DDA37626CCF95C0041406B /* OpenInAppBrowser.swift in Sources */,
 				0DCDFFC624B6722B000F6999 /* SimpleLogger.swift in Sources */,
 				0DCDFFC724B6722B000F6999 /* BackupWallet.swift in Sources */,
 				0D89FF4724ED9E2C008E79DD /* Date+Zcash.swift in Sources */,
@@ -1897,6 +1908,7 @@
 				0DE30373263A158400CF877A /* zECC+SwiftUI.swift in Sources */,
 				0DE30374263A158400CF877A /* ZcashLogo.swift in Sources */,
 				0DE30375263A158400CF877A /* FeedbackDialog.swift in Sources */,
+				29DDA37526CCF95C0041406B /* OpenInAppBrowser.swift in Sources */,
 				0DE30376263A158400CF877A /* WalletBalanceBreakdown.swift in Sources */,
 				0DE30377263A158400CF877A /* TabSelector.swift in Sources */,
 				0DE30378263A158400CF877A /* ZcashCheckCircle.swift in Sources */,
@@ -2470,6 +2482,14 @@
 				minimumVersion = 2.0.5;
 			};
 		};
+		29DDA37726CCFA6A0041406B /* XCRemoteSwiftPackageReference "WKView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rebeloper/WKView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.6;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -2477,6 +2497,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 29491D6426C5613500BBF144 /* XCRemoteSwiftPackageReference "neumorphic" */;
 			productName = Neumorphic;
+		};
+		29DDA37826CCFA6A0041406B /* WKView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29DDA37726CCFA6A0041406B /* XCRemoteSwiftPackageReference "WKView" */;
+			productName = WKView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

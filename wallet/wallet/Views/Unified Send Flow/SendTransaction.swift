@@ -71,7 +71,7 @@ struct SendTransaction: View {
         
         if let clipboard = UIPasteboard.general.string,
             ZECCWalletEnvironment.shared.isValidAddress(clipboard),
-            clipboard.shortZaddress != nil {
+            clipboard.shortARRRaddress != nil {
                 
             if let lastUsed = UserSettings.shared.lastUsedAddress {
                 return AddressHelperView(selection: $addressHelperSelection, mode: .both(clipboard: clipboard, lastUsed: lastUsed)).eraseToAnyView()

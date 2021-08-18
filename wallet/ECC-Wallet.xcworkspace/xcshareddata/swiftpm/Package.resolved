@@ -9,6 +9,15 @@
           "revision": "3fa56e844a5e375ff3d38e3c770886bcc949f6f5",
           "version": "2.0.5"
         }
+      },
+      {
+        "package": "WKView",
+        "repositoryURL": "https://github.com/rebeloper/WKView.git",
+        "state": {
+          "branch": null,
+          "revision": "b9314678cf946e8c02ae1dcaf4e07d6c9dd7712c",
+          "version": "0.1.6"
+        }
       }
     ]
   },

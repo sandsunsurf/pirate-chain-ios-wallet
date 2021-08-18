@@ -144,6 +144,30 @@ struct SettingsScreen: View {
                    EmptyView()
                 }
                 
+                NavigationLink(
+                    destination: OpenInAppBrowser(aURLString: "privacyURL".localized()).environmentObject(self.appEnvironment),
+                               tag: SettingsDestination.openPrivacyPolicy,
+                               selection: $destination
+                ) {
+                   EmptyView()
+                }
+                
+                NavigationLink(
+                    destination: OpenInAppBrowser(aURLString: "termsURL".localized()).environmentObject(self.appEnvironment),
+                               tag: SettingsDestination.openTermsAndConditions,
+                               selection: $destination
+                ) {
+                   EmptyView()
+                }
+                
+                NavigationLink(
+                    destination: OpenInAppBrowser(aURLString: "supportURL".localized()).environmentObject(self.appEnvironment),
+                               tag: SettingsDestination.openSupport,
+                               selection: $destination
+                ) {
+                   EmptyView()
+                }
+                
             }.bottomSheet(isPresented: $openLanguageScreen,
                           height: 500,
                           topBarHeight: 0,
