@@ -242,7 +242,7 @@ struct PasscodeScreen: View {
                        print("SOME ERROR OCCURRED")
                    case .success:
                        print("SUCCESS")
-                       self.presentationMode.wrappedValue.dismiss()
+                        openHomeScreen = true
                    case .userDeclined:
                        print("DECLINED")
                        break
