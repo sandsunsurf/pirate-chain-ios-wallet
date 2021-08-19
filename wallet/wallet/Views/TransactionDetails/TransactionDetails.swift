@@ -87,6 +87,7 @@ struct TransactionDetails: View {
         }
         .navigationBarTitle("", displayMode: .inline)
         .navigationBarHidden(true)
+        .background(ARRRBackground().edgesIgnoringSafeArea(.all))
     }
 }
 

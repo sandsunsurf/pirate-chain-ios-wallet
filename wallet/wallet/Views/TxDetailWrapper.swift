@@ -22,12 +22,11 @@ struct TxDetailsWrapper: View {
                     }, headerItem: {
                         HStack{
                             Text("Transaction Details")
-                                .font(.title)
-                                .foregroundColor(.white)
+                                .font(.barlowRegular(size: 20)).foregroundColor(Color.zSettingsSectionHeader)
                                 .frame(alignment: Alignment.center)
                         }
                     }, trailingItem: {
-                        ZcashCloseButton(action: {
+                        ARRRCloseButton(action: {
                             presentationMode.wrappedValue.dismiss()
                             }).frame(width: 30, height: 30)
                     })

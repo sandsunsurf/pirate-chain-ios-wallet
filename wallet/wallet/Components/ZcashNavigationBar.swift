@@ -62,7 +62,7 @@ struct ZcashNavigationBarModifier<LeadingContent: View, HeadingContent: View, Tr
     
     func body(content: Content) -> some View {
         ZStack {
-            ZcashBackground()
+            ARRRBackground()
             VStack {
                 ZcashNavigationBar(leadingItem: { leadingItem },
                                    headerItem: { headerItem },
