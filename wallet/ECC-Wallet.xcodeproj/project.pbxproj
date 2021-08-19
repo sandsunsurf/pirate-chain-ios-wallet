@@ -373,6 +373,9 @@
 		2931F36F26CEDD4200F68099 /* ARRRCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2931F36E26CEDD4200F68099 /* ARRRCloseButton.swift */; };
 		2931F37026CEDD4200F68099 /* ARRRCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2931F36E26CEDD4200F68099 /* ARRRCloseButton.swift */; };
 		2931F37126CEDD4200F68099 /* ARRRCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2931F36E26CEDD4200F68099 /* ARRRCloseButton.swift */; };
+		2932002D26CEF2A30016D2E2 /* TransactionDetailsTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2932002C26CEF2A30016D2E2 /* TransactionDetailsTitle.swift */; };
+		2932002E26CEF2A30016D2E2 /* TransactionDetailsTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2932002C26CEF2A30016D2E2 /* TransactionDetailsTitle.swift */; };
+		2932002F26CEF2A30016D2E2 /* TransactionDetailsTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2932002C26CEF2A30016D2E2 /* TransactionDetailsTitle.swift */; };
 		2946090D26ADCEF200B0867F /* Barlow-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2946090C26ADCEF200B0867F /* Barlow-Regular.ttf */; };
 		2946090E26ADCEF200B0867F /* Barlow-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2946090C26ADCEF200B0867F /* Barlow-Regular.ttf */; };
 		2946090F26ADCEF200B0867F /* Barlow-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2946090C26ADCEF200B0867F /* Barlow-Regular.ttf */; };
@@ -613,6 +616,7 @@
 		29207FD926BFCDD500E9C4E4 /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
 		2924CF6C26BE99AE003E5C3B /* HomeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabView.swift; sourceTree = "<group>"; };
 		2931F36E26CEDD4200F68099 /* ARRRCloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARRRCloseButton.swift; sourceTree = "<group>"; };
+		2932002C26CEF2A30016D2E2 /* TransactionDetailsTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailsTitle.swift; sourceTree = "<group>"; };
 		2946090C26ADCEF200B0867F /* Barlow-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-Regular.ttf"; sourceTree = "<group>"; };
 		29515DCB26B9885900DC5B92 /* IntroPrivacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroPrivacy.swift; sourceTree = "<group>"; };
 		2963F33226C946FE0008CD34 /* PrivateServerConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateServerConfig.swift; sourceTree = "<group>"; };
@@ -990,6 +994,7 @@
 				0D5E9B0C263748E400D98569 /* BalanceBreakdown.swift */,
 				290F6DAB26CAB4D800EA2CA7 /* BalanceDetailView.swift */,
 				2931F36E26CEDD4200F68099 /* ARRRCloseButton.swift */,
+				2932002C26CEF2A30016D2E2 /* TransactionDetailsTitle.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1649,6 +1654,7 @@
 				0D2D5C1924CF8031001A58AD /* ZcashActionableTextField.swift in Sources */,
 				0DFC0CF123C7787F0009DD7E /* ZcashHoldToSendButton.swift in Sources */,
 				298D511026A728A800585699 /* ARRRBackground.swift in Sources */,
+				2932002D26CEF2A30016D2E2 /* TransactionDetailsTitle.swift in Sources */,
 				0D9C203F23D7827F006F1510 /* WalletDetailsHeader.swift in Sources */,
 				0D562FD4257841FD00E843DD /* MemoUtils.swift in Sources */,
 				0D0AAE0F2410237A009CD8F9 /* LottieAnimation.swift in Sources */,
@@ -1817,6 +1823,7 @@
 				0DCDFFC224B6722B000F6999 /* ReceiveFunds.swift in Sources */,
 				2963F33526C946FE0008CD34 /* PrivateServerConfig.swift in Sources */,
 				0D82F32B261284060058B05D /* Alerts.swift in Sources */,
+				2932002F26CEF2A30016D2E2 /* TransactionDetailsTitle.swift in Sources */,
 				0D5E4AA82527B440001CB335 /* BackgroundTasks.swift in Sources */,
 				0DCDFFC324B6722B000F6999 /* RestoreWallet.swift in Sources */,
 				0DCDFFC424B6722B000F6999 /* NavigationConfigurator.swift in Sources */,
@@ -1928,6 +1935,7 @@
 				0DE3037F263A158400CF877A /* ZcashActionableTextField.swift in Sources */,
 				0DE30380263A158400CF877A /* ZcashHoldToSendButton.swift in Sources */,
 				298D511126A728A800585699 /* ARRRBackground.swift in Sources */,
+				2932002E26CEF2A30016D2E2 /* TransactionDetailsTitle.swift in Sources */,
 				0DE30381263A158400CF877A /* WalletDetailsHeader.swift in Sources */,
 				0DE30382263A158400CF877A /* MemoUtils.swift in Sources */,
 				0DE30383263A158400CF877A /* LottieAnimation.swift in Sources */,

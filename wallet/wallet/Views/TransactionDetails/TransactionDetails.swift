@@ -47,19 +47,16 @@ struct TransactionDetails: View {
             VStack(spacing: 30) {
                 VStack {
                     
-                    // TODO FONT CHANGES
-                    BalanceDetailView(
-                        availableZec: detail.arrrAmount,
-                        status: BalanceStatus.available(showCaption: false))
+                    TransactionDetailsTitle(
+                        availableZec: detail.arrrAmount,status:detail.status)
                     
-                    
-                    HeaderFooterFactory.header(for: detail)
-                    SubwayPathBuilder.buildSubway(detail: detail, expandMemo: self.$expandMemo)
-                        .padding(.leading, 32)
-                        .onReceive(PasteboardAlertHelper.shared.publisher) { (p) in
-                            self.alertItem = .copiedItem(item: p)
-                        }
-                    HeaderFooterFactory.footer(for: detail)
+//                    HeaderFooterFactory.header(for: detail)
+//                    SubwayPathBuilder.buildSubway(detail: detail, expandMemo: self.$expandMemo)
+//                        .padding(.leading, 32)
+//                        .onReceive(PasteboardAlertHelper.shared.publisher) { (p) in
+//                            self.alertItem = .copiedItem(item: p)
+//                        }
+//                    HeaderFooterFactory.footer(for: detail)
                     
                 }
                 

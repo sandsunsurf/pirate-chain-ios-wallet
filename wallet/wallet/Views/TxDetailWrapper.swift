@@ -22,7 +22,7 @@ struct TxDetailsWrapper: View {
                     }, headerItem: {
                         HStack{
                             Text("Transaction Details")
-                                .font(.barlowRegular(size: 20)).foregroundColor(Color.zSettingsSectionHeader)
+                                .font(.barlowRegular(size: 26)).foregroundColor(Color.zSettingsSectionHeader)
                                 .frame(alignment: Alignment.center)
                         }
                     }, trailingItem: {
