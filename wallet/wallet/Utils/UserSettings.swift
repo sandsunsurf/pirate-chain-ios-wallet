@@ -84,7 +84,7 @@ class UserSettings {
          }
      }
      
-     var biometricEnableStatus: Bool  {
+     var isBiometricDisabled: Bool  {
          get {
              UserDefaults.standard.bool(forKey: Keys.aBiometricEnabled)
          }

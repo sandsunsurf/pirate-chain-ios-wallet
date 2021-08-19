@@ -9,6 +9,7 @@
 import SwiftUI
 import Neumorphic
 import BottomSheet
+import LocalAuthentication
 
 struct SettingsRowData : Equatable {
     var id: Int
@@ -178,6 +179,25 @@ struct SettingsScreen: View {
                 NotificationCenter.default.addObserver(forName: NSNotification.Name("DismissSettings"), object: nil, queue: .main) { (_) in
                     openLanguageScreen = false
                 }
+            }.onReceive(AuthenticationHelper.authenticationPublisher) { (output) in
+                switch output {
+                case .failed(_), .userFailed:
+                    print("SOME ERROR OCCURRED")
+                    UserSettings.shared.biometricInAppStatus = false
+                    UserSettings.shared.isBiometricDisabled = true
+                    NotificationCenter.default.post(name: NSNotification.Name("BioMetricStatusUpdated"), object: nil)
+
+                case .success:
+                    print("SUCCESS AND SHOW SOME ALERT HERE")
+                    UserSettings.shared.isBiometricDisabled = false
+                case .userDeclined:
+                    print("DECLINED AND SHOW SOME ALERT HERE")
+                    UserSettings.shared.biometricInAppStatus = false
+                    UserSettings.shared.isBiometricDisabled = true
+                    NotificationCenter.default.post(name: NSNotification.Name("BioMetricStatusUpdated"), object: nil)
+
+                    break
+                }
             }
     }
     
@@ -249,7 +269,11 @@ struct SettingsRowWithToggle: View {
     @Binding var mSelectedSettingsRowData: SettingsRowData?
     
     @State var isFaceIdEnabled = UserSettings.shared.biometricInAppStatus
-
+    
+    @State var isDisableBioMetric = false // Disable on simulator
+    
+    @State var isPermissionDenied = false // Disable on simulator
+    
     var body: some View {
 
         VStack {
@@ -262,15 +286,65 @@ struct SettingsRowWithToggle: View {
                 
                 Toggle("", isOn: $isFaceIdEnabled)
                     .onChange(of: isFaceIdEnabled, perform: { isEnabled in
-                        UserSettings.shared.biometricInAppStatus = isFaceIdEnabled
+                        
+                            UserSettings.shared.biometricInAppStatus = isEnabled
+                            isFaceIdEnabled = isEnabled
+
+                            if (isFaceIdEnabled){
+                                
+                                if !UserSettings.shared.isBiometricDisabled {
+                                    initiateLocalAuthenticationFlow()
+                                }else{
+                                    isFaceIdEnabled = false
+                                    isPermissionDenied  = true
+                                }
+                                
+                                
+                            }else{
+                                isFaceIdEnabled = false
+                                isPermissionDenied  = true
+                            }
+                        
                     })
                     .toggleStyle(ColoredToggleStyle()).labelsHidden()
+                    .disabled(isDisableBioMetric)
+                    .onAppear(){
+                                #if targetEnvironment(simulator)
+                                isDisableBioMetric = true
+                                #endif
+                        
+                        
+                                NotificationCenter.default.addObserver(forName: NSNotification.Name("BioMetricStatusUpdated"), object: nil, queue: .main) { (_) in
+                                    
+                                    if !UserSettings.shared.isBiometricDisabled {
+                                        initiateLocalAuthenticationFlow()
+                                    }else{
+                                        isFaceIdEnabled = false
+                                        isPermissionDenied  = true
+                                    }
+                                }
+                    }
             }
-
+            .alert(isPresented: $isPermissionDenied) {
+                Alert(title: Text("Permission Denied"), message: Text("Please enable the Face ID permission in the settings."), dismissButton: .default(Text("Ok")))
+            }
+            
             Color.gray.frame(height:CGFloat(1) / UIScreen.main.scale)
             
         }
     }
+    
+    func initiateLocalAuthenticationFlow(){
+        if UserSettings.shared.biometricInAppStatus {
+                       authenticate()
+        }
+    }
+    
+    func authenticate() {
+         if UserSettings.shared.biometricInAppStatus {
+             AuthenticationHelper.authenticate(with: "Authenticate Biometric".localized())
+         }
+     }
 }
 
 

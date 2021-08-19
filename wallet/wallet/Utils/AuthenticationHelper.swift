@@ -83,7 +83,7 @@ class AuthenticationHelper {
             
             switch authError.code {
             case .biometryNotAvailable, .biometryNotEnrolled:
-                authenticationPublisher.send(.success)
+                authenticationPublisher.send(.failed(error: .authError(localAuthError: authError)))
             default:
                 authenticationPublisher.send(.failed(error: .generalError(message: authError.localizedDescription)))
             }

@@ -240,13 +240,23 @@ struct PasscodeScreen: View {
                    switch output {
                    case .failed(_), .userFailed:
                        print("SOME ERROR OCCURRED")
+                        UserSettings.shared.biometricInAppStatus = false
+                        UserSettings.shared.isBiometricDisabled = true
+                        NotificationCenter.default.post(name: NSNotification.Name("BioMetricStatusUpdated"), object: nil)
+
                    case .success:
                        print("SUCCESS")
+                        UserSettings.shared.isBiometricDisabled = false
                         openHomeScreen = true
                    case .userDeclined:
                        print("DECLINED")
+                        UserSettings.shared.biometricInAppStatus = false
+                        UserSettings.shared.isBiometricDisabled = true
+                        NotificationCenter.default.post(name: NSNotification.Name("BioMetricStatusUpdated"), object: nil)
                        break
                    }
+            
+
        }
         .navigationBarHidden(true)
             .alert(item: self.$showError) { (alertType) -> Alert in
