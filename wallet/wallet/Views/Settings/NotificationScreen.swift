@@ -23,21 +23,19 @@ struct NotificationScreen: View {
             
             VStack(alignment: .center, spacing: 10) {
                 Spacer(minLength: 5)
-                List {
-                           Section(header: SettingsSectionHeaderView(aTitle: "").textCase(nil))
-                          {
-                              
-                              ForEach(generalSection, id: \.id) { settingsRowData in
-                                
-                                SettingsRow(mCurrentRowData: settingsRowData, mSelectedSettingsRowData: self.$mSelectedSettingsRowData)
-                               
-                               }
-                           }
-
+                ScrollView {
+                    VStack {
+                        ForEach(generalSection, id: \.id) { settingsRowData in
+                            NotificationsRowWithToggle(mCurrentRowData: settingsRowData, mSelectedSettingsRowData: $mSelectedSettingsRowData, noLineAfter:1)
+                                .onTapGesture {
+                                    self.mSelectedSettingsRowData = settingsRowData
+                                }
+                        }
+                        
+                    }
+                    .modifier(SettingsSectionBackgroundModifier())
                     
-                }.listStyle(InsetGroupedListStyle())
-                .onTapGesture {
-//                    self.mSelectedSettingsRowData?.id is the selected ID
+                    
                 }
             }
            
@@ -65,4 +63,54 @@ struct NotificationScreen_Previews: PreviewProvider {
     static var previews: some View {
         NotificationScreen()
     }
+}
+
+
+
+struct NotificationsRowWithToggle: View {
+
+    var mCurrentRowData:SettingsRowData
+   
+    @Binding var mSelectedSettingsRowData: SettingsRowData?
+    
+    @State var isToggleEnabled = true
+    
+    var noLineAfter = 0
+    
+    var body: some View {
+
+        VStack {
+            HStack{
+                Text(mCurrentRowData.title).font(.barlowRegular(size: 16)).foregroundColor(Color.textTitleColor)
+                                .frame(width: 200, height: 22,alignment: .leading)
+                                .foregroundColor(Color.white)
+                    .padding()
+                
+                
+                Toggle("", isOn: $isToggleEnabled)
+                    .onChange(of: isToggleEnabled, perform: { isEnabled in
+                        
+                        
+                    })
+                    .toggleStyle(ColoredToggleStyle()).labelsHidden()
+            }
+            
+            if mCurrentRowData.id < noLineAfter {
+                Color.gray.frame(height:CGFloat(1) / UIScreen.main.scale)
+            }
+            
+        }
+    }
+    
+    func initiateLocalAuthenticationFlow(){
+        if UserSettings.shared.biometricInAppStatus {
+                       authenticate()
+        }
+    }
+    
+    func authenticate() {
+         if UserSettings.shared.biometricInAppStatus {
+             AuthenticationHelper.authenticate(with: "Authenticate Biometric".localized())
+         }
+     }
 }

@@ -146,6 +146,14 @@ struct SettingsScreen: View {
                 }
                 
                 NavigationLink(
+                    destination: NotificationScreen().environmentObject(self.appEnvironment),
+                               tag: SettingsDestination.openNotifications,
+                               selection: $destination
+                ) {
+                   EmptyView()
+                }
+                
+                NavigationLink(
                     destination: OpenInAppBrowser(aURLString: "privacyURL".localized()).environmentObject(self.appEnvironment),
                                tag: SettingsDestination.openPrivacyPolicy,
                                selection: $destination
