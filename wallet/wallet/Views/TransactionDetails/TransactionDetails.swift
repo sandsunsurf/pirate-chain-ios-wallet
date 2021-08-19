@@ -46,9 +46,13 @@ struct TransactionDetails: View {
         ScrollView {
             VStack(spacing: 30) {
                 VStack {
-                    DateAndHeight(date: detail.date,
-                                  formatterBlock: formatDateDetail,
-                                  height: detail.minedHeight)
+                    
+                    // TODO FONT CHANGES
+                    BalanceDetailView(
+                        availableZec: detail.arrrAmount,
+                        status: BalanceStatus.available(showCaption: false))
+                    
+                    
                     HeaderFooterFactory.header(for: detail)
                     SubwayPathBuilder.buildSubway(detail: detail, expandMemo: self.$expandMemo)
                         .padding(.leading, 32)
