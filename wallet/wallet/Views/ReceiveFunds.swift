@@ -64,10 +64,10 @@ struct ReceiveFunds: View {
             .navigationBarTitle(Text("receive_title"),
                                 displayMode: .inline)
             .navigationBarHidden(false)
-//            .navigationBarItems(trailing: ZcashCloseButton(action: {
-//                tracker.track(.tap(action: .receiveBack), properties: [:])
-//                presentationMode.wrappedValue.dismiss()
-//                }).frame(width: 30, height: 30))
+            .navigationBarItems(trailing: ZcashCloseButton(action: {
+                tracker.track(.tap(action: .receiveBack), properties: [:])
+                presentationMode.wrappedValue.dismiss()
+                }).frame(width: 30, height: 30))
         }
     }
 }

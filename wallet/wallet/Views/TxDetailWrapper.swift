@@ -14,7 +14,7 @@ struct TxDetailsWrapper: View {
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
         ZStack {
-            ZcashBackground()
+            ARRRBackground().edgesIgnoringSafeArea(.all)
             VStack(alignment: .center, spacing: 0) {
                 TransactionDetails(detail: row)
                     .zcashNavigationBar(leadingItem: {

@@ -401,16 +401,16 @@ struct Home: View {
                 },
                     trailingItem: {
                         
-                        NavigationLink(destination:ProfileScreen()
-                                        .environmentObject(self.appEnvironment), label:{
-                                            Image("person_pin-24px")
-                                           .renderingMode(.original)
-                                           .resizable()
-                                           .aspectRatio(contentMode: .fit)
-                                           .opacity(0.6)
-                                           .accessibility(label: Text("Your Profile"))
-                                           .frame(width: 24)
-                        } )
+//                        NavigationLink(destination:ProfileScreen()
+//                                        .environmentObject(self.appEnvironment), label:{
+//                                            Image("person_pin-24px")
+//                                           .renderingMode(.original)
+//                                           .resizable()
+//                                           .aspectRatio(contentMode: .fit)
+//                                           .opacity(0.6)
+//                                           .accessibility(label: Text("Your Profile"))
+//                                           .frame(width: 24)
+//                        } )
                 })
                     .frame(height: 64)
                     .padding([.leading, .trailing], 16)
