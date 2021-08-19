@@ -46,7 +46,7 @@ extension DetailModel: Equatable {
 struct DetailCard: View {
  
     var model: DetailModel
-    var backgroundColor: Color = .black
+    var backgroundColor: Color = Color.init(red: 0.13, green: 0.14, blue: 0.15)
         
     var zecAmount: some View {
         let amount = model.arrrAmount.toZecAmount()

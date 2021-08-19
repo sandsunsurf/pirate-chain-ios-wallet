@@ -16,6 +16,16 @@ class WalletDetailsViewModel: ObservableObject {
     var balance: Double = 0
     private var synchronizerEvents = Set<AnyCancellable>()
     private var internalEvents = Set<AnyCancellable>()
+    @State var showMockData = true // Change it to false = I have used it for mock data testing
+    
+    var groupedByDate: [Date: [DetailModel]] {
+        Dictionary(grouping: self.items, by: {$0.date})
+    }
+    
+    var headers: [Date] {
+        groupedByDate.map({ $0.key }).sorted().reversed()
+    }
+
     init(){
         subscribeToSynchonizerEvents()
     }
@@ -32,7 +42,7 @@ class WalletDetailsViewModel: ObservableObject {
         ZECCWalletEnvironment.shared.synchronizer.walletDetailsBuffer
             .receive(on: RunLoop.main)
             .sink(receiveValue: { [weak self] (d) in
-                self?.items = DetailModel.mockDetails // Replace it with d = original records of transactions
+                self?.items = self!.showMockData ? DetailModel.mockDetails : d
             })
             .store(in: &synchronizerEvents)
         
@@ -79,6 +89,13 @@ struct WalletDetails: View {
         viewModel.balanceStatus
     }
     
+    func converDateToString(headerDate:Date) -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.doesRelativeDateFormatting = true
+        return dateFormatter.string(from: headerDate)
+    }
+    
     var body: some View {
         
         ZStack {
@@ -110,25 +127,27 @@ struct WalletDetails: View {
                 
 
                 List {
-//                    WalletDetailsHeader(zAddress: zAddress)
-//                        .listRowBackground(Color.zDarkGray2)
-//                        .frame(height: 100)
-//                        .padding([.trailing], 24)
-                    ForEach(self.viewModel.getSortedItems(), id: \.id) { row in
-                       
-                        Button(action: {
-                            self.selectedModel = row
-                        }) {
-                            DetailCard(model: row, backgroundColor: .zDarkGray2)
-                        }
-                        .listRowBackground(Color.zDarkGray2)
-                        .frame(height: 69)
-                        .padding(.horizontal, 16)
-                        .cornerRadius(0)
-                        .border(Color.zGray, width: 1)
-                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                            
+                    
+                    ForEach(self.viewModel.headers, id: \.self) { header in
+                     
+                       Section(header: Text(converDateToString(headerDate: header))) {
+                            ForEach(self.viewModel.groupedByDate[header]!) { row in
+                                Button(action: {
+                                    self.selectedModel = row
+                                }) {
+                                    DetailCard(model: row, backgroundColor: .zDarkGray2)
+                                }
+                                .listRowBackground(Color.zDarkGray2)
+                                .frame(height: 69)
+                                .padding(.horizontal, 16)
+                                .cornerRadius(0)
+                                .border(Color.zGray, width: 1)
+                                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                                  
+                           }
+                       }
                     }
+                    
                 }
                 .listStyle(PlainListStyle())
                 .cornerRadius(20)
@@ -216,8 +235,48 @@ extension DetailModel {
                         arrrAmount: 0.002,
                         status: .paid(success: false),
                         subtitle: "Sent 11/18/19 4:12pm"
-                    )
+                    ),
+
+                    DetailModel(
+                        id: "bb034",
+                        arrrAddress: "Ztestsapling1ctuamfer5xjnnrdr3xdazenljx0mu0gutcf9u9e74tr2d3jwjnt0qllzxaplu54hgc2tyjdc2p6",
+                        date: Date(),
+                        arrrAmount: -1.345,
+                        status: .paid(success: true),
+                        subtitle: "Sent 11/15/19 3:12pm"
+                        
+                    ),
                     
+                    
+                    DetailModel(
+                        id: "bb035",
+                        arrrAddress: "Ztestsapling1ctuamfer5xjnnrdr3xdazenljx0mu0gutcf9u9e74tr2d3jwjnt0qllzxaplu54hgc2tyjdc2p6",
+                        date: Calendar.current.date(byAdding: .day, value: -4, to: Date())!,
+                        arrrAmount: 0.022,
+                        status: .received,
+                        subtitle: "Received 11/18/20 4:12pm"
+                        
+                    ),
+                    
+
+                    DetailModel(
+                        id: "bb036",
+                        arrrAddress: "Ztestsapling1ctuamfer5xjnnrdr3xdazenljx0mu0gutcf9u9e74tr2d3jwjnt0qllzxaplu54hgc2tyjdc2p6",
+                        date: Calendar.current.date(byAdding: .day, value: -5, to: Date())!,
+                        arrrAmount: 0.012,
+                        status: .paid(success: false),
+                        subtitle: "Sent 12/18/19 4:12pm"
+                    ),
+                    
+                    
+                    DetailModel(
+                        id: "bb036",
+                        arrrAddress: "Ztestsapling1ctuamfer5xjnnrdr3xdazenljx0mu0gutcf9u9e74tr2d3jwjnt0qllzxaplu54hgc2tyjdc2p6",
+                        date: Calendar.current.date(byAdding: .day, value: -5, to: Date())!,
+                        arrrAmount: 0.012,
+                        status: .paid(success: false),
+                        subtitle: "Sent 12/18/19 4:12pm"
+                    )
                 ]
             )
         
