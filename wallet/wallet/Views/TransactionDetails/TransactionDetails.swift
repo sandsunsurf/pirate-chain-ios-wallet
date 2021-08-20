@@ -9,14 +9,14 @@
 import SwiftUI
 import ZcashLightClientKit
 struct TransactionDetails: View {
-    
+
     enum Alerts {
         case explorerNotice
         case copiedItem(item: PasteboardItemModel)
     }
     var detail: DetailModel
     @State var expandMemo = false
-    
+    @Environment(\.presentationMode) var presentationMode
     @State var alertItem: Alerts?
     var exploreButton: some View {
         Button(action: {
@@ -41,6 +41,14 @@ struct TransactionDetails: View {
         )
     }
     
+    func converDateToString(aDate:Date) -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.doesRelativeDateFormatting = true
+        return dateFormatter.string(from: aDate)
+    }
+    
+    
     var body: some View {
         
         ScrollView {
@@ -49,6 +57,44 @@ struct TransactionDetails: View {
                     
                     TransactionDetailsTitle(
                         availableZec: detail.arrrAmount,status:detail.status)
+                    
+                    VStack(alignment: .center, spacing: 10) {
+                        Spacer(minLength: 5)
+                        ScrollView {
+                            VStack {
+
+                                if let fullAddr = detail.arrrAddress, let toAddr = fullAddr.shortARRRaddress {
+                                    TransactionRow(mTitle: "From: " + toAddr, showLine: true, isYellowColor: false)
+                                }else{
+                                    TransactionRow(mTitle: "From: " + (detail.arrrAddress ?? "NA"), showLine: true,isYellowColor: false)
+                                }
+                                
+                                TransactionRowTitleSubtitle(mTitle: converDateToString(aDate: detail.date), mSubTitle: ("Processing fee: " + "\(detail.defaultFee)" + " ARRR"), showLine: true)
+                                
+                                TransactionRowTitleSubtitle(mTitle: "Memo", mSubTitle: (detail.memo ?? "-"), showLine: true)
+                                
+                                if detail.success {
+                                    let latestHeight = ZECCWalletEnvironment.shared.synchronizer.syncBlockHeight.value
+                                    TransactionRow(mTitle: detail.makeStatusText(latestHeight: latestHeight), showLine: false,isYellowColor: true)
+                                } else {
+                                    TransactionRow(mTitle: "Confirmed", showLine: false,isYellowColor: true)
+                                }
+                                
+
+                            }
+                            .modifier(SettingsSectionBackgroundModifier())
+                            
+                        }
+                        
+                        Spacer()
+                        Spacer()
+                        Button {
+                            presentationMode.wrappedValue.dismiss()
+                        } label: {
+                            BlueButtonView(aTitle: "Explore")
+                        }
+
+                    }
                     
 //                    HeaderFooterFactory.header(for: detail)
 //                    SubwayPathBuilder.buildSubway(detail: detail, expandMemo: self.$expandMemo)
@@ -287,5 +333,72 @@ extension TransactionDetails.Alerts: Identifiable {
         default:
             return 2
         }
+    }
+}
+
+
+
+struct TransactionRow: View {
+    
+    var mTitle:String
+    
+    var showLine = false
+    
+    var isYellowColor = false
+    
+    var body: some View {
+
+        VStack {
+            HStack{
+                Text(mTitle).font(.barlowRegular(size: 22)).foregroundColor(isYellowColor ? Color.zARRRTextColor : Color.textTitleColor)
+                                .frame(height: 22,alignment: .leading)
+                                .foregroundColor(Color.white)
+                    .multilineTextAlignment(.leading)
+                    .truncationMode(.middle)
+                    .padding(10)
+                Spacer()
+                Spacer()
+            }
+            
+            if showLine {
+                Color.gray.frame(height:CGFloat(1) / UIScreen.main.scale).padding(10)
+            }
+        }
+    }
+}
+
+struct TransactionRowTitleSubtitle: View {
+    
+    var mTitle:String
+    
+    var mSubTitle:String
+    
+    var showLine = false
+    
+    var body: some View {
+
+        VStack {
+            HStack{
+                Text(mTitle).font(.barlowRegular(size: 18)).foregroundColor(Color.white)
+                                .frame(height: 22,alignment: .leading)
+                    .multilineTextAlignment(.leading)
+                    .truncationMode(.middle)
+                Spacer()
+                Spacer()
+            }
+            
+            HStack{
+                Text(mSubTitle).font(.barlowRegular(size: 14)).foregroundColor(Color.textTitleColor)
+                                .frame(height: 22,alignment: .leading)
+                    .multilineTextAlignment(.leading)
+                    .truncationMode(.middle)
+                Spacer()
+                Spacer()
+            }
+            
+            if showLine {
+                Color.gray.frame(height:CGFloat(1) / UIScreen.main.scale)
+            }
+        }.padding(10)
     }
 }

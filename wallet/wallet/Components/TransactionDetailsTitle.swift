@@ -16,7 +16,7 @@ struct TransactionDetailsTitle: View {
     var status: DetailModel.Status
     
     var available: some View {
-        Text(format(zec: availableZec))
+        Text(format(zec: availableZec < 0 ? -availableZec : availableZec))
             .foregroundColor(.white)
             .font(.barlowRegular(size: Device.isLarge ? 44 : 35))
        + Text(" \(arrr) ")
@@ -37,6 +37,16 @@ struct TransactionDetailsTitle: View {
             return "You Received"
         }
     }
+    
+    var anImage: String {
+
+        switch status {
+        case .paid:
+            return "wallet_history_sent"
+        case .received:
+            return "wallet_history_receive"
+        }
+    }
        
     var body: some View {
         VStack(alignment: .leading) {
@@ -52,6 +62,8 @@ struct TransactionDetailsTitle: View {
                 Text("")
                      .font(.barlowRegular(size: Device.isLarge ? 16 : 9))
                     .foregroundColor(.gray).multilineTextAlignment(.trailing)
+                
+                Image(anImage).resizable().frame(width:60,height:60).multilineTextAlignment(.trailing)
             }
            
         }
