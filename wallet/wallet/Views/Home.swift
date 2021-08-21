@@ -202,9 +202,33 @@ struct Home: View {
     @State var transparentBalancePushed = false
     @State var showPassCodeScreen = false
     @State var openProfileScreen = false
-    
     @EnvironmentObject var viewModel: HomeViewModel
     @Environment(\.walletEnvironment) var appEnvironment: ZECCWalletEnvironment
+    
+    var aTitleStatus: String {
+        switch self.viewModel.syncStatus {
+            case .error:
+                return ""
+            case .unprepared:
+                return ""
+            case .downloading(let progress):
+                return "Sync \(Int(progress.progress * 100))%"
+            case .validating:
+                return "Validating"
+            case .scanning(let scanProgress):
+                return "Scan \(Int(scanProgress.progress * 100))%"
+            case .enhancing(let enhanceProgress):
+                return "Enhance \(enhanceProgress.enhancedTransactions) of \(enhanceProgress.totalTransactions)"
+            case .fetching:
+                return "Fetching"
+            case .stopped:
+                return "Stopped"
+            case .disconnected:
+                return "Offline"
+            case .synced:
+                return "Synced 100%"
+        }
+    }
     
     
     @ViewBuilder func buttonFor(syncStatus: SyncStatus) -> some View {
@@ -369,73 +393,53 @@ struct Home: View {
     
     var body: some View {
         ZStack {
-            ARRRBackground()
-            if self.isSendingEnabled {
-                ZcashBackground(showGradient: self.isSendingEnabled)
-            } else {
-                ARRRBackground()
-                    .edgesIgnoringSafeArea(.all)
-            }
+            ARRRBackground().edgesIgnoringSafeArea(.all)
+            
             GeometryReader { geo in
                VStack(alignment: .center, spacing: 5) {
+                
                 ZcashNavigationBar(
                     leadingItem: {
-                       NavigationLink(destination:ReceiveFunds(unifiedAddress: self.appEnvironment.synchronizer.unifiedAddress)
-                                        .environmentObject(self.appEnvironment), label:{
-                                            Image("QRCodeIcon")
-                                                .renderingMode(.original)
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                                .frame(width: 24)
-                                                .accessibility(label: Text("Receive Funds"))
-                        } )
-                },
-                    headerItem: {
-                        Text("balance_amounttosend")
-                            .font(.barlowRegular(size: Device.isLarge ? 20 : 14))
-                            .foregroundColor(.white)
-                            .opacity(self.isSendingEnabled ? 1 : 0.4)
-                            .onLongPressGesture {
-                                self.viewModel.setAmount(self.viewModel.shieldedBalance.verified)
-                            }
-                },
-                    trailingItem: {
+
+                    },
+                   headerItem: {
+                    if appEnvironment.synchronizer.synchronizer.getShieldedBalance() > 0 {
                         
-//                        NavigationLink(destination:ProfileScreen()
-//                                        .environmentObject(self.appEnvironment), label:{
-//                                            Image("person_pin-24px")
-//                                           .renderingMode(.original)
-//                                           .resizable()
-//                                           .aspectRatio(contentMode: .fit)
-//                                           .opacity(0.6)
-//                                           .accessibility(label: Text("Your Profile"))
-//                                           .frame(width: 24)
-//                        } )
-                })
-                    .frame(height: 64)
-                    .padding([.leading, .trailing], 16)
-                    .padding([.top], geo.safeAreaInsets.top-10)
+                        BalanceViewHome(availableZec: appEnvironment.synchronizer.verifiedBalance.value, status: appEnvironment.balanceStatus, aTitleStatus: aTitleStatus)
+                        
+                    }
+                    else {
+                        ActionableMessage(message: "balance_nofunds".localized())
+                    }
+                   },
+                   trailingItem: { EmptyView() }
+                )
+                .padding(.horizontal, 10)
+                .frame(height: 64)
+                .padding([.leading, .trailing], 16)
+                .padding([.top], geo.safeAreaInsets.top-10)
                 
-                SendZecView(zatoshi: self.$viewModel.sendZecAmountText)
-                    .opacity(amountOpacity)
-                    .scaledToFit()
-                if self.isSyncing {
-                    self.balanceView(
-                        shieldedBalance: self.viewModel.shieldedBalance,
-                        transparentBalance: self.viewModel.transparentBalance)
-                        .padding([.horizontal], self.buttonPadding)
-                } else {
-                    NavigationLink(
-                        destination: WalletBalanceBreakdown()
-                                        .environmentObject(WalletBalanceBreakdownViewModel()),
-                        isActive: $transparentBalancePushed,
-                        label: {
-                            self.balanceView(
-                                shieldedBalance: self.viewModel.shieldedBalance,
-                                transparentBalance: self.viewModel.transparentBalance)
-                                .padding([.horizontal], self.buttonPadding)
-                        })
-                }
+//                SendZecView(zatoshi: self.$viewModel.sendZecAmountText)
+//                    .opacity(amountOpacity)
+//                    .scaledToFit()
+//
+//                if self.isSyncing {
+//                    self.balanceView(
+//                        shieldedBalance: self.viewModel.shieldedBalance,
+//                        transparentBalance: self.viewModel.transparentBalance)
+//                        .padding([.horizontal], self.buttonPadding)
+//                } else {
+//                    NavigationLink(
+//                        destination: WalletBalanceBreakdown()
+//                                        .environmentObject(WalletBalanceBreakdownViewModel()),
+//                        isActive: $transparentBalancePushed,
+//                        label: {
+//                            self.balanceView(
+//                                shieldedBalance: self.viewModel.shieldedBalance,
+//                                transparentBalance: self.viewModel.transparentBalance)
+//                                .padding([.horizontal], self.buttonPadding)
+//                        })
+//                }
                 
                 Spacer()
                 
