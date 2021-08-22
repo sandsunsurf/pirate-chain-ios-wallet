@@ -18,6 +18,7 @@ struct TransactionDetails: View {
     @State var expandMemo = false
     @Environment(\.presentationMode) var presentationMode
     @State var alertItem: Alerts?
+    @State var openExploreScreen = false
     var exploreButton: some View {
         Button(action: {
             self.alertItem = .explorerNotice
@@ -88,12 +89,20 @@ struct TransactionDetails: View {
                         
                         Spacer()
                         Spacer()
+                        
                         Button {
-                            presentationMode.wrappedValue.dismiss()
+                            openExploreScreen = true
                         } label: {
                             BlueButtonView(aTitle: "Explore")
                         }
 
+                        
+//                        NavigationLink(destination:OpenInAppBrowser(aURLString: UrlHandler.blockExplorerURLMainnet(for: detail.id)!.absoluteString)
+//                            ,isActive: $openExploreScreen
+//                        ) {
+//                            EmptyView()
+//                        }.isDetailLink(false)
+//
                     }
                     
 //                    HeaderFooterFactory.header(for: detail)

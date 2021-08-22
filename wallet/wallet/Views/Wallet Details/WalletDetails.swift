@@ -16,7 +16,7 @@ class WalletDetailsViewModel: ObservableObject {
     var balance: Double = 0
     private var synchronizerEvents = Set<AnyCancellable>()
     private var internalEvents = Set<AnyCancellable>()
-    @State var showMockData = true // Change it to false = I have used it for mock data testing
+    @State var showMockData = false // Change it to false = I have used it for mock data testing
     
     var groupedByDate: [Date: [DetailModel]] {
         Dictionary(grouping: self.items, by: {$0.date})

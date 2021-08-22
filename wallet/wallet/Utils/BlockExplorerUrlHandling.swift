@@ -27,9 +27,9 @@ class UrlHandler {
     
     static func blockExplorerURLMainnet(for txId: String) -> URL? {
         var urlComponents = URLComponents()
-        urlComponents.host = "blockchair.com"
+        urlComponents.host = "explorer.pirate.black"
         urlComponents.scheme = "https"
-        urlComponents.path = "/zcash/transaction"
+        urlComponents.path = "/tx"
         
         return urlComponents.url?.appendingPathComponent(txId)
     }

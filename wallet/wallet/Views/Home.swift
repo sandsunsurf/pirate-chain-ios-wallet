@@ -212,7 +212,7 @@ struct Home: View {
             case .unprepared:
                 return ""
             case .downloading(let progress):
-                return "Sync \(Int(progress.progress * 100))%"
+                return "Downloading \(Int(progress.progress * 100))%"
             case .validating:
                 return "Validating"
             case .scanning(let scanProgress):
