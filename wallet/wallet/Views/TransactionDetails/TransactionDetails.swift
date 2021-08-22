@@ -115,9 +115,9 @@ struct TransactionDetails: View {
                     
                 }
                 
-                if detail.isMined {
-                    exploreButton
-                }
+//                if detail.isMined {
+//                    exploreButton
+//                }
             }
             .padding()
         }
