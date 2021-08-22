@@ -13,7 +13,7 @@ struct PrivateServerConfig: View {
     @State private var lightPortString: String = String.init(format:"%d",SeedManager.default.exportLightWalletPort())
     @EnvironmentObject var appEnvironment: ZECCWalletEnvironment
     @Environment(\.presentationMode) var presentationMode
-    @State var isAutoConfigEnabled = true
+    @State var isAutoConfigEnabled = UserSettings.shared.isAutoConfigurationOn
     @State var isDisplayAddressAlert = false
     @State var isDisplayPortAlert = false
     @State var isUserEditingPort = false
@@ -42,7 +42,18 @@ struct PrivateServerConfig: View {
                          Text("Auto Config").foregroundColor(.gray).font(.barlowRegular(size: 14)).multilineTextAlignment(.center).foregroundColor(.white)
                          
                          Toggle("", isOn: $isAutoConfigEnabled)
-                             .toggleStyle(ColoredToggleStyle()).labelsHidden()
+                            .toggleStyle(ColoredToggleStyle()).labelsHidden().onChange(of: isAutoConfigEnabled, perform: { isEnabled  in
+                                UserSettings.shared.isAutoConfigurationOn = isEnabled
+                                
+                                if (isEnabled){
+                                    lightPortString = String.init(format:"%d",ZECCWalletEnvironment.defaultLightWalletPort)
+                                    lightServerString = ZECCWalletEnvironment.defaultLightWalletEndpoint
+                                    
+                                    SeedManager.default.importLightWalletEndpoint(address: lightServerString)
+                                    SeedManager.default.importLightWalletPort(port: ZECCWalletEnvironment.defaultLightWalletPort)
+                                }
+                                
+                            })
                      }
                      Divider().foregroundColor(.white).frame(height:2).padding()
                      
@@ -55,6 +66,7 @@ struct PrivateServerConfig: View {
                             isUserEditingAddress = false
                             self.didEndEditingAddressTextField()
                         }.font(.barlowRegular(size: 14))
+                        .disabled(isAutoConfigEnabled)
                         .modifier(BackgroundPlaceholderModifier())
                         
                        Text("Port ").foregroundColor(.gray).multilineTextAlignment(.leading).font(.barlowRegular(size: 14))
@@ -65,6 +77,7 @@ struct PrivateServerConfig: View {
                            isUserEditingPort = false
                            self.didEndEditingPortTextField()
                        }.font(.barlowRegular(size: 14))
+                       .disabled(isAutoConfigEnabled)
                        .modifier(BackgroundPlaceholderModifier())
                                                 
                      }).modifier(ForegroundPlaceholderModifier())

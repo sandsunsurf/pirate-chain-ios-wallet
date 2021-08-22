@@ -23,6 +23,7 @@ class UserSettings {
         static let aBiometricInAppStatus = "aBiometricInAppStatus"
         static let aBiometricEnabled = "aBiometricEnabled"
         static let aLanguageSelectionIndex = "aLanguageSelectionIndex"
+        static let isAutoConfigurationOn = "isAutoConfigurationOn"
     }
     
     
@@ -101,6 +102,17 @@ class UserSettings {
             UserDefaults.standard.setValue(newValue, forKey: Keys.aLanguageSelectionIndex)
         }
     }
+    
+    
+    var isAutoConfigurationOn: Bool  {
+        get {
+            UserDefaults.standard.bool(forKey: Keys.isAutoConfigurationOn)
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: Keys.isAutoConfigurationOn)
+        }
+    }
+    
     
     func removeAllSettings() {
         let defaults = UserDefaults.standard
