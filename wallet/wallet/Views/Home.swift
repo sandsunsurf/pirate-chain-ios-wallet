@@ -403,14 +403,14 @@ struct Home: View {
 
                     },
                    headerItem: {
-                    if appEnvironment.synchronizer.synchronizer.getShieldedBalance() > 0 {
+//                    if appEnvironment.synchronizer.synchronizer.getShieldedBalance() > 0 {
                         
                         BalanceViewHome(availableZec: appEnvironment.synchronizer.verifiedBalance.value, status: appEnvironment.balanceStatus, aTitleStatus: aTitleStatus)
                         
-                    }
-                    else {
-                        ActionableMessage(message: "balance_nofunds".localized())
-                    }
+//                    }
+//                    else {
+//                        ActionableMessage(message: "balance_nofunds".localized())
+//                    }
                    },
                    trailingItem: { EmptyView() }
                 )
