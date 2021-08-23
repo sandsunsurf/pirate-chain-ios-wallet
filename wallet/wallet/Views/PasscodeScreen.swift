@@ -142,6 +142,8 @@ struct PasscodeScreen: View {
     
    @State var isNewWallet = false
     
+    @State var isAuthenticatedFlowInitiated = false
+    
     var body: some View {
         ZStack {
             
@@ -199,6 +201,7 @@ struct PasscodeScreen: View {
             NavigationLink(destination:
                             LazyView(
                                 HomeTabView()
+                                //.environmentObject(appEnvironment)
             ), isActive: $openHomeScreen) {
                 EmptyView()
             }
@@ -246,7 +249,6 @@ struct PasscodeScreen: View {
                    switch output {
                    case .failed(_), .userFailed:
                        print("SOME ERROR OCCURRED")
-                        UserSettings.shared.biometricInAppStatus = false
                         UserSettings.shared.isBiometricDisabled = true
                         NotificationCenter.default.post(name: NSNotification.Name("BioMetricStatusUpdated"), object: nil)
 
@@ -255,6 +257,7 @@ struct PasscodeScreen: View {
                         UserSettings.shared.biometricInAppStatus = true
                         UserSettings.shared.isBiometricDisabled = false
                         openHomeScreen = true
+                        NotificationCenter.default.post(name: NSNotification.Name("DismissPasscodeScreenifVisible"), object: nil)
                    case .userDeclined:
                        print("DECLINED")
                         UserSettings.shared.biometricInAppStatus = false
@@ -368,8 +371,12 @@ struct PasscodeScreen: View {
     }
     
     func authenticate() {
-        if UserSettings.shared.biometricInAppStatus && mScreenState != .newPasscode{
+        if UserSettings.shared.biometricInAppStatus && mScreenState != .newPasscode && !isAuthenticatedFlowInitiated{
+            isAuthenticatedFlowInitiated = true
             AuthenticationHelper.authenticate(with: "Authenticate Biometric".localized())
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                isAuthenticatedFlowInitiated = false
+            }
         }
     }
 }

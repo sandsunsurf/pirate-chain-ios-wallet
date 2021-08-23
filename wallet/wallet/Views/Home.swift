@@ -472,10 +472,22 @@ struct Home: View {
                 Spacer()
                 
                 HStack(alignment: .center, spacing: 2, content: {
-                    SendRecieveButtonView(title: "Receive")
-                   
-                    SendRecieveButtonView(title: "Send")
-                
+                    
+                    Button {
+                        // Receive tapped
+                    } label: {
+                        SendRecieveButtonView(title: "Receive")
+                    }
+                    
+                    
+                    Button {
+                        // Send tapped
+                    } label: {
+                        SendRecieveButtonView(title: "Send")
+                    }
+                    
+                    
+
                 })
                 .frame(maxWidth:.infinity)
                 .padding()

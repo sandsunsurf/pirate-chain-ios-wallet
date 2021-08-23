@@ -123,6 +123,7 @@ struct SeedBackup: View {
                     NavigationLink(destination:
                                     LazyView(
                                         HomeTabView()
+                                        //.environmentObject(appEnvironment)
 //                                        Home().environmentObject(HomeViewModel())
                                     )) {
                         Text("button_done")

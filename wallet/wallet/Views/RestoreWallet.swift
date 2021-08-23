@@ -83,7 +83,7 @@ struct RestoreWallet: View {
         ZStack {
             NavigationLink(destination:
                             LazyView(
-                                HomeTabView()
+                                HomeTabView() //.environmentObject(appEnvironment)
 //                                    Home().environmentObject(HomeViewModel())
             ), isActive: $proceed) {
                 EmptyView()

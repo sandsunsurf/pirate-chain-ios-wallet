@@ -44,6 +44,12 @@ struct HomeTabView: View {
                         Text("Settings").font(.barlowRegular(size: 10))
                     }
             }.accentColor(Color.arrrBarAccentColor)
+            .onAppear(){
+                       
+                NotificationCenter.default.addObserver(forName: NSNotification.Name("DismissPasscodeScreenifVisible"), object: nil, queue: .main) { (_) in
+                    UIApplication.shared.windows[0].rootViewController?.dismiss(animated: false, completion: nil)
+                }
+            }
         }
     }
 }

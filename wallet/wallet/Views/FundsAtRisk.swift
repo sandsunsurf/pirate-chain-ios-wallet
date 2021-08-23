@@ -47,6 +47,7 @@ struct FundsAtRisk: View {
                 
                 NavigationLink(destination: LazyView(
                     HomeTabView()
+                    //.environmentObject(appEnvironment)
 //                                Home().environmentObject(HomeViewModel())
                     )) {
                     Text("button_skip".localized())
