@@ -69,7 +69,7 @@ struct TransactionDetails: View {
                                     TransactionRow(mTitle: "From: " + (detail.arrrAddress ?? "NA"), showLine: true,isYellowColor: false)
                                 }
                                 
-                                TransactionRowTitleSubtitle(mTitle: converDateToString(aDate: detail.date), mSubTitle: ("Processing fee: " + "\(detail.defaultFee)" + " ARRR"), showLine: true)
+                                TransactionRowTitleSubtitle(mTitle: converDateToString(aDate: detail.date), mSubTitle: ("Processing fee: " + "\(detail.defaultFee.asHumanReadableZecBalance().toZecAmount())" + " ARRR"), showLine: true)
                                 
                                 TransactionRowTitleSubtitle(mTitle: "Memo", mSubTitle: (detail.memo ?? "-"), showLine: true)
                                 

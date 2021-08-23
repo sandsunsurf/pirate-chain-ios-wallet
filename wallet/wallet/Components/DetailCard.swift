@@ -90,6 +90,7 @@ struct DetailCard: View {
                     }
                     Text(String.transactionSubTitle(for: model))
                         .font(.body)
+                        .truncationMode(.tail)
                         .foregroundColor(.zARRRSubtitleColor)
                         .opacity(0.6)
                 }
