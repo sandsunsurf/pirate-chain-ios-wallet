@@ -391,6 +391,23 @@ struct Home: View {
         self.isSendingEnabled ? self.viewModel.sendZecAmount > 0 ? 1.0 : 0.6 : 0.3
     }
     
+    struct SendRecieveButtonView : View {
+        
+        @State var title: String
+        
+        var body: some View {
+            ZStack {
+                Text(title).foregroundColor(.gray).bold().multilineTextAlignment(.center).font(
+                    .barlowRegular(size: Device.isLarge ? 22 : 15)
+                ).modifier(ForegroundPlaceholderModifierHomeButtons())
+                .padding([.bottom],8).foregroundColor(Color.init(red: 132/255, green: 124/255, blue: 115/255))
+                .cornerRadius(30)
+                .background(Image("buttonbackground").resizable())
+            }
+        }
+    }
+
+    
     var body: some View {
         ZStack {
             ARRRBackground().edgesIgnoringSafeArea(.all)
@@ -454,9 +471,18 @@ struct Home: View {
                 
                 Spacer()
                 
-                buttonFor(syncStatus: self.viewModel.syncStatus)
-                    .frame(height: self.buttonHeight)
-                    .padding(.horizontal, buttonPadding)
+                HStack(alignment: .center, spacing: 2, content: {
+                    SendRecieveButtonView(title: "Receive")
+                   
+                    SendRecieveButtonView(title: "Send")
+                
+                })
+                .frame(maxWidth:.infinity)
+                .padding()
+                
+//                buttonFor(syncStatus: self.viewModel.syncStatus)
+//                    .frame(height: self.buttonHeight)
+//                    .padding(.horizontal, buttonPadding)
               
                 
 //                NavigationLink(

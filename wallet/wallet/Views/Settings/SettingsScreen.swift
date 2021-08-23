@@ -34,13 +34,13 @@ enum SettingsDestination: Int {
 
 struct SettingsScreen: View {
     
-    var generalSection = [SettingsRowData(id:0,title:"Language")]//,
-//                          SettingsRowData(id:1,title:"Notifications")]
+    var generalSection = [SettingsRowData(id:0,title:"Language"),SettingsRowData(id:6,title:"Private Server Config")]//,
+//                          SettingsRowData(id:1,title:"Notifications")] // Moved private server config here
     var securitySection = [SettingsRowData(id:2,title:"Face ID"),
                            SettingsRowData(id:3,title:"Recovery Phrase"),
                            SettingsRowData(id:4,title:"Change PIN"),
                            SettingsRowData(id:5,title:"Unlink Device")]
-    var walletSection = [SettingsRowData(id:6,title:"Private Server Config")] //,
+//    var walletSection = [SettingsRowData(id:6,title:"Private Server Config")] //,
 //                         SettingsRowData(id:7,title:"iCloud backup")]
     var aboutSection = [SettingsRowData(id:8,title:"Privacy Policy"),
                         SettingsRowData(id:9,title:"Terms & Conditions"),
@@ -67,7 +67,7 @@ struct SettingsScreen: View {
                         SettingsSectionHeaderView(aTitle:"General")
                         VStack {
                             ForEach(generalSection, id: \.id) { settingsRowData in
-                                    SettingsRow(mCurrentRowData: settingsRowData, mSelectedSettingsRowData: $mSelectedSettingsRowData, noLineAfter:0)
+                                    SettingsRow(mCurrentRowData: settingsRowData, mSelectedSettingsRowData: $mSelectedSettingsRowData, noLineAfter:1)
                                     .onTapGesture {
                                         self.mSelectedSettingsRowData = settingsRowData
                                         openRespectiveScreenBasisSelection()
@@ -100,18 +100,20 @@ struct SettingsScreen: View {
                         }
                         .modifier(SettingsSectionBackgroundModifier())
                         
-                        SettingsSectionHeaderView(aTitle:"Manage Wallet")
-                        VStack {
-                            ForEach(walletSection, id: \.id) { settingsRowData in
-                                SettingsRow(mCurrentRowData: settingsRowData, mSelectedSettingsRowData: $mSelectedSettingsRowData, noLineAfter:0)
-                                    .onTapGesture {
-                                        self.mSelectedSettingsRowData = settingsRowData
-                                        openRespectiveScreenBasisSelection()
-                                    }
-                            }
-                            
-                        }
-                        .modifier(SettingsSectionBackgroundModifier())
+                        
+                        // Commented out this section for a while
+//                        SettingsSectionHeaderView(aTitle:"Manage Wallet")
+//                        VStack {
+//                            ForEach(walletSection, id: \.id) { settingsRowData in
+//                                SettingsRow(mCurrentRowData: settingsRowData, mSelectedSettingsRowData: $mSelectedSettingsRowData, noLineAfter:0)
+//                                    .onTapGesture {
+//                                        self.mSelectedSettingsRowData = settingsRowData
+//                                        openRespectiveScreenBasisSelection()
+//                                    }
+//                            }
+//
+//                        }
+//                        .modifier(SettingsSectionBackgroundModifier())
                         
                         SettingsSectionHeaderView(aTitle:"About")
                         VStack {

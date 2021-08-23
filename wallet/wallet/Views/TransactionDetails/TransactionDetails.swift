@@ -18,7 +18,6 @@ struct TransactionDetails: View {
     @State var expandMemo = false
     @Environment(\.presentationMode) var presentationMode
     @State var alertItem: Alerts?
-    @State var openExploreScreen = false
     var exploreButton: some View {
         Button(action: {
             self.alertItem = .explorerNotice
@@ -90,19 +89,14 @@ struct TransactionDetails: View {
                         Spacer()
                         Spacer()
                         
-                        Button {
-                            openExploreScreen = true
-                        } label: {
-                            BlueButtonView(aTitle: "Explore")
+                        if detail.isMined {// If it is mined or confirmed then only show explore button
+                                Button {
+                                    self.alertItem = .explorerNotice
+                                } label: {
+                                    BlueButtonView(aTitle: "Explore")
+                                }
                         }
 
-                        
-//                        NavigationLink(destination:OpenInAppBrowser(aURLString: UrlHandler.blockExplorerURLMainnet(for: detail.id)!.absoluteString)
-//                            ,isActive: $openExploreScreen
-//                        ) {
-//                            EmptyView()
-//                        }.isDetailLink(false)
-//
                     }
                     
 //                    HeaderFooterFactory.header(for: detail)
@@ -129,7 +123,7 @@ struct TransactionDetails: View {
                 return PasteboardAlertHelper.alert(for: p)
             case .explorerNotice:
                 return Alert(title: Text("You are exiting your wallet"),
-                             message: Text("While usually an acceptable risk, you will possibly exposing your behavior and interest in this transaction by going online. OH NOES! What will you do?"),
+                             message: Text("While usually an acceptable risk, you are possibly exposing your behavior and interest in this transaction by going online. OH NO! What will you do?"),
                              primaryButton: .cancel(Text("NEVERMIND")),
                              secondaryButton: .default(Text("SEE TX ONLINE"), action: {
                                 
