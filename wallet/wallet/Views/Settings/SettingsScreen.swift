@@ -199,6 +199,7 @@ struct SettingsScreen: View {
 
                 case .success:
                     print("SUCCESS AND SHOW SOME ALERT HERE")
+                    UserSettings.shared.biometricInAppStatus = true
                     UserSettings.shared.isBiometricDisabled = false
                 case .userDeclined:
                     print("DECLINED AND SHOW SOME ALERT HERE")
@@ -302,13 +303,7 @@ struct SettingsRowWithToggle: View {
 
                             if (isFaceIdEnabled){
                                 
-                                if !UserSettings.shared.isBiometricDisabled {
-                                    initiateLocalAuthenticationFlow()
-                                }else{
-                                    isFaceIdEnabled = false
-                                    isPermissionDenied  = true
-                                }
-                                
+                                initiateLocalAuthenticationFlow()
                                 
                             }else{
                                 isFaceIdEnabled = false

@@ -203,7 +203,13 @@ struct PasscodeScreen: View {
                 EmptyView()
             }
             
-        }.highPriorityGesture(dragGesture)
+        }.onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                authenticate()
+            }
+        }
+        .highPriorityGesture(dragGesture)
         .onAppear(perform: authenticate)
         .onAppear {
             NotificationCenter.default.addObserver(forName: NSNotification.Name("UpdateLayout"), object: nil, queue: .main) { (_) in
@@ -246,6 +252,7 @@ struct PasscodeScreen: View {
 
                    case .success:
                        print("SUCCESS")
+                        UserSettings.shared.biometricInAppStatus = true
                         UserSettings.shared.isBiometricDisabled = false
                         openHomeScreen = true
                    case .userDeclined:
@@ -361,7 +368,7 @@ struct PasscodeScreen: View {
     }
     
     func authenticate() {
-        if UserSettings.shared.biometricInAppStatus && mScreenState == .validatePasscode{
+        if UserSettings.shared.biometricInAppStatus && mScreenState != .newPasscode{
             AuthenticationHelper.authenticate(with: "Authenticate Biometric".localized())
         }
     }
